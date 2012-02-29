@@ -31,27 +31,33 @@
 					}
 					var pageList = $('#published-pages');
 					pageList.empty();
-					$.each(data, function(index, page) {
-						var path = $(document.createElement('h3'))
-							.addClass(path)
-							.text(page.path);
-						var div = $(document.createElement('div'));
-						var info = $(document.createElement('span'))
-							.addClass('lighter')
-							.text('Manually published by ');
-						div.append(info);
-						div.append(page.username);
-						var a = $(document.createElement('a'))
-							.attr('href', 'report-published-log.html' + sitename + '&path=' + page.path)
-							.css('padding-bottom', '0px')
-							.append(path)
-							.append(div);
+					if (data.length == 0) {
 						var li = $(document.createElement('li'))
-							.append(a);
-						pageList.append(li);
-					});
-					pageList.listview("refresh");
-				}
+							.text('There is no recently published content.');
+							pageList.append(li);
+						} else {
+							$.each(data, function(index, page) {
+								var path = $(document.createElement('h3'))
+									.addClass(path)
+									.text(page.path);
+								var div = $(document.createElement('div'));
+								var info = $(document.createElement('span'))
+									.addClass('lighter')
+									.text('Manually published by ');
+								div.append(info);
+								div.append(page.username);
+								var a = $(document.createElement('a'))
+									.attr('href', 'report-published-log.html' + sitename + '&path=' + page.path)
+									.css('padding-bottom', '0px')
+									.append(path)
+									.append(div);
+								var li = $(document.createElement('li'))
+									.append(a);
+								pageList.append(li);
+							});
+						}
+						pageList.listview("refresh");
+					}
 			});
 			$('.logout').click(function() {
 				$.ajax({

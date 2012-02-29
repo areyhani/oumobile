@@ -12,7 +12,7 @@
 <div data-role="page" id="report-published-log">
 	<div data-role="header">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
-		<h1 id="header">Recently Published Pages</h1>
+		<h1 id="header">Publish History</h1>
 		<a href="#" data-icon="gear" class="logout">Logout</a>
 	</div>
 	<div data-role="content">
@@ -31,14 +31,20 @@
 					}
 					var pageList = $('#pages-log');
 					pageList.empty();
-					$.each(data, function(index, page) {
-						var action = page.type.toLowerCase();
-						var username = page.username;
-						var date = page.date;
-						var li = $(document.createElement('li'))
-							.html(username + '<span class="lighter"> performed a ' + action + ' on ' + date + '</span>');
-						pageList.append(li);
-					});
+					if (data.length == 0) {
+							var li = $(document.createElement('li'))
+								.text('There is no publish history for this content.');
+							pageList.append(li);
+					} else {
+						$.each(data, function(index, page) {
+							var action = page.type.toLowerCase();
+							var username = page.username;
+							var date = page.date;
+							var li = $(document.createElement('li'))
+								.html(username + '<span class="lighter"> performed a ' + action + ' on ' + date + '</span>');
+							pageList.append(li);
+						});
+					}
 					pageList.listview("refresh");
 				}
 			});
