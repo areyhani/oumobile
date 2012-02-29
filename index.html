@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" data-theme="c" id="index">
+	<div data-role="header" style="text-align:center">
+		<img src="images/oucampus.png" title="OU Campus" />
+		<h1 style="display:inline">Mobile</h1>
+	</div>
+	<div data-role="content">
+		<h2>Login</h2>
+		<div class="settings">
+			<label for="username" class="setting">Username</label>
+			<input type="text" name="username" id="username" class="setting" />
+			<label for="password" class="setting">Password</label>
+			<input type="password" name="password" id="password" class="setting" />
+			<div style="margin: 5px 0px 5px 5px;">
+				<input type="button" data-inline="true" data-iconpos="center" value="Login" id="submit" />
+			</div>
+		</div>
+	</div>
+	<span id="dialogoutput" style="display:none;"></span>
+		<script type="text/javascript">
+		$('#index').on('pageinit', function() {
+			$('input').keypress(function(event) {
+				 if (event.which === 13) {
+					 $('#submit').click();
+				 }
+			});
+			$('#submit').click(function() {
+				var params = location.search;
+				var username = $('#username').val();
+				var password = $('#password').val();
+				$.ajax({
+					url: '/authentication/login' + params,
+					type: 'post',
+					data: {
+						'username': username,
+						'password': password
+					},
+					success: function(data) {
+						if (data.error) {
+							var message = data.error.message;
+							$('#dialogoutput').simpledialog({
+								prompt: message,
+								useDialogForceFalse: true,
+								cleanOnClose: true,
+								buttons : {
+									'OK': {
+										click: function () {
+											return true;
+										}
+									}
+								}
+							  });
+						} else {
+							window.location.href = 'sites.html';
+						}
+					}
+				});
+			});
+		});
+	</script>
+</div>
+</body>
+</html>

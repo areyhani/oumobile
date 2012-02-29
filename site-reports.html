@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" data-theme="c" id="site-reports">
+	<div data-role="header" style="text-align:center">
+		<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header">Site Reports</h1>
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+	<div data-role="content">
+	<script type="text/javascript">
+		$("#site-reports").on('pageinit', function() {
+			var sitename = location.search;
+			$('a').each(function(index, el) {
+				var aEl = $(el);
+				var elId = aEl.attr('id');
+				aEl.attr('href', 'report-' + elId + '.html' + sitename);
+			});
+			$('.logout').click(function() {
+				$.ajax({
+					url: '/authentication/logout',
+					type: 'get',
+					success: function(data) {
+						window.location.href = 'index.html';
+					}
+				});
+			});
+		});
+		$("#site-reports").on('pagebeforehide', function() {
+			$("#site-reports").off('pageinit');
+		});
+	</script>
+		<ul data-role="listview" data-theme="c" id="actions">
+			<li>
+				<a href="#" id="checkedout">
+					<img src="icons/checkin.png" alt="Checked Out Content" class="ui-li-icon ui-li-thumb">Checked Out Content
+				</a>
+			</li>
+			<li>
+				<a href="#" id="published">
+					<img src="icons/publish.png" alt="Recently Published Pages" class="ui-li-icon ui-li-thumb">Recently Published Pages
+				</a>
+			</li>
+			<li>
+				<a href="#" id="scheduled">
+					<img src="icons/remind.png" alt="Scheduled Actions" class="ui-li-icon ui-li-thumb">Scheduled Actions
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

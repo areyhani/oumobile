@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="site-scan">
+	<div data-role="header">
+		<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header">Site Scanner</h1>
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+	<div data-role="content">
+		<ol id="passes" data-role="listview" data-inset="true">
+			<li id="pass1">
+				<span>Synchronizing the database</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass2">
+				<span>Removing old entries</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass3" class="dmonly">
+				<span>Initializing</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass4" class="dmonly">
+				<span>Scanning Site</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+		</ol>
+		<div id="buttons" style="margin-top: 35px;">
+			<button id="start">Start Scan</button>
+		</div>
+	</div>
+		<script type="text/javascript">
+		var interval = null;
+		$('#site-scan').on('pageinit', function() {
+			var sitename = location.search;
+			$('#start').click(function() {
+				resetIcons();
+				$('#start').attr('disabled', 'disabled');
+				doScan(sitename);
+				if (interval === null) {
+					interval = setInterval(function() {
+						doScan(sitename);
+					}, 2000);
+				}
+				
+			});
+			$('.logout').click(function() {
+				$.ajax({
+					url: '/authentication/logout',
+					type: 'get',
+					success: function(data) {
+						window.location.href = 'index.html';
+					}
+				});
+			});
+		});
+		$('#site-scan').on('pagebeforehide', function() {
+			if (interval != null) {
+				clearInterval(interval);
+			}
+			$('#site-scan').off('pageinit');
+		});
+		function doScan(sitename) {
+			$.ajax({
+				url: '/sites/scan' + sitename,
+				type: 'post',
+				success: function(data) {
+					if (data.error) {
+						window.location.href = 'index.html';
+					} else {
+						var currentPass = data.current_pass;
+						if (data.done) {
+							$('span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+							$('#start').removeAttr('disabled');
+							clearInterval(interval);
+							interval = null;
+						} else {
+							var passes = $('#passes');
+							var totalPasses = data.total_passes;
+							$('li.dmonly').toggle(totalPasses == 4);
+							switch(currentPass) {
+							case 4:
+								$('span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								$('li#pass4 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+								break;
+							case 3:
+								$('li#pass3 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+								$('li#pass2 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								$('li#pass1 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								break;
+							case 2:
+								$('li#pass2 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+								$('li#pass1 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								break;
+							}
+						}
+					}
+				}
+			});
+		}
+		function resetIcons() {
+			$('.ui-icon').removeClass('ui-icon-check ui-icon-current').addClass('ui-icon-minus');
+			$('#pass1 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+		}
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="sites">
+	<div data-role="header" style="text-align:center">
+		<h1>Sites</h1>
+		<a href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">
+		<ul data-role="listview" id="site-list">
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$('#sites').on('pageshow', function() {
+			$.ajax({
+				url: '/sites/list',
+				type: 'get',
+				success: function(data) {
+					if (data.error) {
+						window.location.href = 'index.html';
+					}
+					var sites = $ ('#site-list');
+					sites.empty();
+					$.each(data, function(index, value) {
+						var count = $(document.createElement('span'))
+							.addClass('ui-li-count')
+							.text('Saves: ' + value.save_count);
+						var a = $(document.createElement('a'))
+							.attr({ href: 'site.html?site=' + value.name })
+							.text(value.name);
+						a.append(count);
+						var li = $(document.createElement('li')).append(a);
+						sites.append(li);
+					});
+					sites.listview("refresh");
+				}
+			});
+		});
+		$('.logout').click(function() {
+			$.ajax({
+				url: '/authentication/logout',
+				type: 'get',
+				success: function(data) {
+					window.location.href = 'index.html';
+				}
+			});
+		});
+	</script>
+</div>
+</body>
+</html>

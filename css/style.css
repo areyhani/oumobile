@@ -1,0 +1,44 @@
+div li span.ui-icon {
+	float: right;
+}
+
+div span.ui-icon {
+	float: left;
+}
+
+span.ui-icon-current {
+	background: transparent url('../icons/spinner.gif') no-repeat;
+}
+
+span.ui-icon-checkin {
+	background: transparent url("../icons/checkin.png") no-repeat;
+}
+
+span#message {
+	padding: 5px;
+}
+
+h3.path {
+	text-overflow: ellipses;
+}
+
+.lighter {
+	font-weight: normal;
+}
+li.pageitem {
+	cursor: pointer;
+}
+
+div.settings {
+	padding: 3px;
+	box-shadow: 1px 1px 10px 1px #888888;
+}
+
+input.setting {
+	margin: 0px 0px 1px 12px;
+	width: 90%;
+}
+
+label.setting {
+	margin: 11px 0px 1px 12px;
+}

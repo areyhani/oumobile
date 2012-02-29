@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="report-published">
+	<div data-role="header">
+		<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header">Recently Published Pages</h1>
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+	<div data-role="content">
+		<ul id="published-pages" data-role="listview" data-theme="d">
+		</ul>
+	</div>
+	<script type="text/javascript">
+		$("#report-published").on('pageinit', function() {
+			var sitename = location.search;
+			$.ajax({
+				url: '/sites/publish_report' + sitename,
+				type: 'get',
+				success: function(data) {
+					if (data.error) {
+						window.location.href = 'index.html';
+					}
+					var pageList = $('#published-pages');
+					pageList.empty();
+					$.each(data, function(index, page) {
+						var path = $(document.createElement('h3'))
+							.addClass(path)
+							.text(page.path);
+						var div = $(document.createElement('div'));
+						var info = $(document.createElement('span'))
+							.addClass('lighter')
+							.text('Manually published by ');
+						div.append(info);
+						div.append(page.username);
+						var a = $(document.createElement('a'))
+							.attr('href', 'report-published-log.html' + sitename + '&path=' + page.path)
+							.css('padding-bottom', '0px')
+							.append(path)
+							.append(div);
+						var li = $(document.createElement('li'))
+							.append(a);
+						pageList.append(li);
+					});
+					pageList.listview("refresh");
+				}
+			});
+			$('.logout').click(function() {
+				$.ajax({
+					url: '/authentication/logout',
+					type: 'get',
+					success: function(data) {
+						window.location.href = 'index.html';
+					}
+				});
+			});
+		});
+		$("#report-published").on('pagebeforehide', function() {
+			$("#report-published").off('pageinit');
+		});
+	</script>
+</div>
+</body>
+</html>

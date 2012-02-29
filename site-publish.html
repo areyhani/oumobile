@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>My Page</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="site-publish">
+	<script type="text/javascript">
+		var interval = null;
+		$('#site-publish').on('pageinit', function() {
+			var sitename = location.search;
+			$('#start').click(function() {
+				doPublish(sitename);
+			});
+			$('#display-errors').click(function() {
+				var errorList = $('#error-list');
+				if (errorList.is(':hidden')) {
+					$('#error-list').show();
+					$('#action').text('hide');
+				} else {
+					$('#error-list').hide();
+					$('#action').text('see');
+				}
+				return false;
+			});
+			$('.logout').click(function() {
+				$.ajax({
+					url: '/authentication/logout' + sitename,
+					type: 'get',
+					success: function(data) {
+						window.location.href = 'index.html';
+					}
+				});
+			});
+		});
+		
+		$('#site-publish').on('pagebeforehide', function() {
+			if (interval != null) {
+				clearInterval(interval);
+			}
+		});
+		
+		function doPublish(sitename) {
+			$.ajax({
+				url: '/sites/publish' + sitename,
+				type: 'post',
+				success: function(data) {
+					if (data.done) {
+						clearInterval(interval);
+						interval = null;
+						$('#start').removeAttr('disabled');
+						var msg;
+						if (data.error) {
+							msg = 'The site has been published, but some pages failed to published.';
+							var errorList = $('#error-list');
+							$.each(data.messages, function(index, error) {
+								var li = $(document.createElement('li')).text(error);
+								errorList.append(li);
+							});
+							errorList.listview("refresh");
+							$('#errors').show();
+							$('#progress').hide();
+						} else {
+							msg = 'The site has been successfully published.';
+						} 	
+						$('#message').text(msg);
+					} else if (data.error) {
+						//window.location.href = 'index.html';
+					} else {
+						if (interval === null) {
+							$('#start').attr('disabled', 'disabled');
+							interval = setInterval(function() {
+								doPublish(sitename);
+							}, 2000);
+						}
+						var published = data.published;
+						var filesPublished = data.files_published;
+						var status = $('#status');
+						var spinner = $('#progress');
+						if (status.is(':hidden')) {
+							status.show();
+						}
+						if (spinner.is(':hidden')) {
+							spinner.show();
+						}
+						 $('#message').text(filesPublished + (published === 1 ? ' file has' : ' files have') + ' been published.');
+					}
+				}
+			});
+		}
+	</script>
+	<div data-role="header">
+		<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header">Site Publish</h1>
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+	<div data-role="content">
+		<div id="status" style="text-align:center">
+			<img id="progress" src="images/progress.gif" title="Publish Progress" style="display:none" />
+			<br />
+			<span id="message">&nbsp;</span>
+		</div>
+		<div id="buttons" style="margin-bottom: 35px;">
+			<button id="start">Publish</button>
+		</div>
+		<div id="errors" style="display:none;">
+			<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
+			<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
+			</ul>
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>
