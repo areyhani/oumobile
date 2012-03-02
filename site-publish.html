@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>My Page</title> 
+	<title>Site Publish</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
@@ -82,31 +82,36 @@
 						var filesPublished = data.files_published;
 						var status = $('#status');
 						var spinner = $('#progress');
+						var message = $('#message');
 						if (status.is(':hidden')) {
 							status.show();
 						}
 						if (spinner.is(':hidden')) {
 							spinner.show();
 						}
-						 $('#message').text(filesPublished + (published === 1 ? ' file has' : ' files have') + ' been published.');
+						if (message.is(':hidden')) {
+							message.show();
+							message.css('display','block');
+						}
+						message.text(filesPublished + (published === 1 ? ' file has' : ' files have') + ' been published.');
 					}
 				}
 			});
 		}
 	</script>
-	<div data-role="header">
+<div data-role="header" data-theme="b" style="background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
-		<h1 id="header">Site Publish</h1>
+		<h1 id="header"  >Site Publish</h1>
 		<a href="#" data-icon="gear" class="logout">Logout</a>
 	</div>
 	<div data-role="content">
 		<div id="status" style="text-align:center">
+		<h3> Gallena University </h3>
 			<img id="progress" src="images/progress.gif" title="Publish Progress" style="display:none" />
-			<br />
-			<span id="message">&nbsp;</span>
+			<span id="message" style="display:none">&nbsp;</span>
 		</div>
 		<div id="buttons" style="margin-bottom: 35px;">
-			<button id="start">Publish</button>
+			<button  data-theme="b" id="start">Publish</button>
 		</div>
 		<div id="errors" style="display:none;">
 			<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>

@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>My Page</title> 
+	<title>Site Scan</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" /> 
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -9,13 +9,13 @@
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 </head> 
 <body> 
-<div data-role="page" id="site-scan">
-	<div data-role="header">
+<div data-role="page"  data-theme="c" id="site-scan">
+<div data-role="header" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header">Site Scanner</h1>
 		<a href="#" data-icon="gear" class="logout">Logout</a>
 	</div>
-	<div data-role="content">
+	<div data-role="content"  data-theme="c">
 		<ol id="passes" data-role="listview" data-inset="true">
 			<li id="pass1">
 				<span>Synchronizing the database</span>
@@ -30,12 +30,12 @@
 				<span class="ui-icon ui-icon-minus"></span>
 			</li>
 			<li id="pass4" class="dmonly">
-				<span>Scanning Site</span>
+				<span >Scanning Site</span>
 				<span class="ui-icon ui-icon-minus"></span>
 			</li>
 		</ol>
-		<div id="buttons" style="margin-top: 35px;">
-			<button id="start">Start Scan</button>
+		<div id="buttons"   style="margin-top: 35px;">
+			<button   data-theme="b" id="start">Start Scan</button>
 		</div>
 	</div>
 		<script type="text/javascript">

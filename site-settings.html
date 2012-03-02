@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>My Page</title> 
+	<title>Site Settings</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" /> 
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
@@ -10,7 +10,7 @@
 </head> 
 <body> 
 <div data-role="page" data-theme="c" id="site-settings">
-	<div data-role="header" style="text-align:center">
+	<div data-role="header" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header">Site Settings</h1>
 		<a href="#" data-icon="gear" class="logout">Logout</a>
@@ -20,17 +20,17 @@
 		<div class="settings">
 			<input type="hidden" id="name" />
 			<label for="server" class="setting">Server:</label>
-			<input type="text" name="server" id="server" class="setting" />
+			<input type="text" data-theme="d" name="server" id="server" class="setting" />
 			<label for="username" class="setting">Username:</label>
-			<input type="text" name="username" id="username" class="setting" />
+			<input type="text"  data-theme="d" name="username" id="username" class="setting" />
 			<label for="password" class="setting">Password:</label>
-			<input type="password" name="password" id="password" class="setting" />
+			<input type="password"data-theme="d"  name="password" id="password" class="setting" />
 			<label for="http_root" class="setting">HTTP Root:</label>
-			<input type="text" name="http_root" id="http_root" class="setting" />
+			<input type="text" data-theme="d" name="http_root" id="http_root" class="setting" />
 			<label for="ftp_root" class="setting">FTP Root:</label>
-			<input type="text" name="ftp_root" id="ftp_root" class="setting" />
+			<input type="text" data-theme="d" name="ftp_root" id="ftp_root" class="setting" />
 			<div style="margin: 5px 0px 5px 5px;">
-				<input type="button" data-inline="true" data-iconpos="center" value="Save" id="save" />
+				<input type="button" data-theme="b" data-inline="true" data-iconpos="center" value="Save" id="save" />
 			</div>
 		</div>
 	</div>

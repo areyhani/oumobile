@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>My Page</title> 
+	<title>Log In</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" />
@@ -12,19 +12,19 @@
 </head> 
 <body> 
 <div data-role="page" data-theme="c" id="index">
-	<div data-role="header" style="text-align:center">
-		<img src="images/oucampus.png" title="OU Campus" />
-		<h1 style="display:inline">Mobile</h1>
+	<div data-role="header" data-theme="b" style="background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<img src="images/oucampus.png" title="OU Campus"  style="margin-left: 10px;" />
+		<h1 style="display:inline;margin:0px;">Mobile</h1>
 	</div>
 	<div data-role="content">
-		<h2>Login</h2>
+		<h2 style="margin-top:0px;" >Login</h2>
 		<div class="settings">
 			<label for="username" class="setting">Username</label>
 			<input type="text" name="username" id="username" class="setting" />
 			<label for="password" class="setting">Password</label>
 			<input type="password" name="password" id="password" class="setting" />
 			<div style="margin: 5px 0px 5px 5px;">
-				<input type="button" data-inline="true" data-iconpos="center" value="Login" id="submit" />
+				<input type="button"   data-theme="b" data-inline="true" data-iconpos="center" value="Login" id="submit" />
 			</div>
 		</div>
 	</div>
