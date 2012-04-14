@@ -12,7 +12,7 @@
 <div data-role="page" id="site-publish">
 	<script type="text/javascript">
 		var interval = null;
-		$('#site-publish').on('pageinit', function() {
+		$('#site-publish').on('pageshow', function() {
 			var sitename = location.search;
 			$('#start').click(function() {
 				doPublish(sitename);

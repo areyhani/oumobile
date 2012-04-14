@@ -19,7 +19,7 @@
 		<ul id="pages" data-role="listview" data-theme="d">
 		</ul>
 		<script type="text/javascript">
-			$('#report-checkout').on('pageinit', function() {
+			$('#report-checkout').on('pageshow', function() {
 				var sitename = location.search;
 				$.ajax({
 					url: '/pages/checkedout' + sitename,
@@ -85,15 +85,12 @@
 				$('.logout').click(function() {
 					$.ajax({
 						url: '/authentication/logout',
-						type: 'get',
+						type: 'post',
 						success: function(data) {
 							window.location.href = 'index.html';
 						}
 					});
 				});
-			});
-			$('#report-checkout').on('pagebeforehide', function() {
-				$('#report-checkout').off('pageinit');
 			});
 		</script>
 	</div>

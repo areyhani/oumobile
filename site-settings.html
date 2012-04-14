@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	$('#site-settings').on('pageinit', function() {
+	$('#site-settings').on('pageshow', function() {
 		var sitename = location.search;
 		$.ajax({
 			url: '/sites/view' + sitename,
@@ -74,7 +74,7 @@
 		$('.logout').click(function() {
 			$.ajax({
 				url: '/authentication/logout',
-				type: 'get',
+				type: 'post',
 				success: function(data) {
 					window.location.href = 'index.html';
 				}

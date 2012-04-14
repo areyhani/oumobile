@@ -20,11 +20,11 @@
 			<li>There are no scheduled actions.</li>
 		</ul>
 		<script type="text/javascript">
-			$('#report-scheduled').on('pageinit', function() {
+			$('#report-scheduled').on('pageshow', function() {
 				$('.logout').click(function() {
 					$.ajax({
 						url: '/authentication/logout',
-						type: 'get',
+						type: 'post',
 						success: function(data) {
 							window.location.href = 'index.html';
 						}

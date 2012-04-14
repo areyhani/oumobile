@@ -40,7 +40,7 @@
 	</div>
 		<script type="text/javascript">
 		var interval = null;
-		$('#site-scan').on('pageinit', function() {
+		$('#site-scan').on('pageshow', function() {
 			var sitename = location.search;
 			$('#start').click(function() {
 				resetIcons();
@@ -56,7 +56,7 @@
 			$('.logout').click(function() {
 				$.ajax({
 					url: '/authentication/logout',
-					type: 'get',
+					type: 'post',
 					success: function(data) {
 						window.location.href = 'index.html';
 					}
@@ -67,7 +67,6 @@
 			if (interval != null) {
 				clearInterval(interval);
 			}
-			$('#site-scan').off('pageinit');
 		});
 		function doScan(sitename) {
 			$.ajax({
