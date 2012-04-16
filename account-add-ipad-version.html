@@ -25,19 +25,32 @@
 
 		<a href="#" data-icon="gear" class="logout">Logout</a>
 	</div>
-	<div data-role="content">
+
+		<div data-role="content">
 
 
 	<form>
-<div data-role="collapsible-set" data-theme="b" data-content-theme="c">
+	
+	
+	<div class="ui-grid-a">
+	<div class="ui-block-a" style="width:260px; margin-left:8px; text-align:left;" >
+	<div data-role="content" class="ui-content" role="main">
 
-			
-			    <div data-role="collapsible" data-collapsed="true">
-                        <h3>
-                           General Settings
-                        </h3>
-                        
-                        <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+<div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+<div id="generalsettings" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">General Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="personalinformation" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Personal Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="publishsettings" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Publish Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="loginpage" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Login Page</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="optionalsettings" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-bottom ui-controlgroup-last ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">Optional Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+</div>
+
+</div>
+	</div>
+	<div class="ui-block-b" style="margin:20px 25px; width:65%" >
+	
+	<div id="generalsettings-div"> Genaral Settings
+	
+	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
                         
                   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="accountname" class="ui-input-text">Account Name: </label>
@@ -89,14 +102,13 @@
 				
 				</ul>
                         
-                        
-                        
-                    </div>
-                    <div data-role="collapsible" data-collapsed="true">
-                        <h3>
-                            Personal Information
-                        </h3>
-                        
+	
+	
+	
+	</div> <!-- general settings-->
+	<div id="personalinformation-div"> Personal  Information
+	
+	                    
         <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 		
@@ -463,13 +475,12 @@
 				
    		  
            </ul>
-                    </div>
-                    <div data-role="collapsible" data-collapsed="true">
-                        <h3>
-                            Publish Settings
-                        </h3>
-                        
-             <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	
+	
+	</div> <!-- personal information -->
+	<div id="publishsettings-div">Publish Settings 
+	
+	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
   	
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 			             	   <label for="pagecheck" class="ui-input-text">Page Check:</label>
@@ -503,16 +514,13 @@
                 
 						
 				</ul>
-                        
-                        
-                        
-                    </div>
-                    <div data-role="collapsible" data-collapsed="true">
-                        <h3>
-                            Login Page
-                    </h3>
-            
-            	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	
+	
+	</div> <!-- publish settings-->
+	<div id="loginpage-div">Login Page 
+	
+	
+	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -534,18 +542,10 @@
    		      </li>
                         
                         
-               </ul>         
-                        
-                        
-                        
-                        
-                    </div>
-                    <div data-role="collapsible" data-collapsed="true">
-                        <h3>
-                            Optional Settings
-                        </h3>
-                        
-            <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+               </ul>         </div> <!-- publish settings-->
+	<div id="optionalsettings-div">  Optional  Settings 
+	
+	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 				
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -608,15 +608,18 @@
 	
 			</ul>
                         
-                    </div>
-                </div>
+	</div> <!-- optional settings -->
 	
+	
+	
+	</div>
+</div><!-- /grid-a -->
+
 
 
 		
 		</form>
 	</div>
-	
 	
 	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
@@ -629,9 +632,59 @@
 </div>
 
 </div>
-		
+</div>		
 			<script type="text/javascript">
 
+
+
+
+			$('#generalsettings').live('click', function(){
+			$('#generalsettings-div').show();
+			$(this).addClass('ui-btn-active');
+			$('#personalinformation-div, #publishsettings-div , #loginpage-div , #optionalsettings-div').hide();
+			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-active');}
+			);
+			
+			 $('#personalinformation').live('click', function(){
+			 $('#personalinformation-div').show();
+			 $(this).addClass('ui-btn-active');
+			 $('#generalsettings-div, #publishsettings-div,#loginpage-div , #optionalsettings-div ').hide();
+			 $('#generalsettings, #publishsettings,#loginpage , #optionalsettings ').removeClass('ui-btn-active');
+
+			}
+			);
+			
+			
+		   $('#publishsettings').live('click', function(){
+		   $('#publishsettings-div').show();
+		   $(this).addClass('ui-btn-active');
+		   $('#generalsettings-div , #personalinformation-div , #loginpage-div , #optionalsettings-div ').hide();
+		   $('#generalsettings, #personalinformation , #loginpage , #optionalsettings').removeClass('ui-btn-active');
+
+			}
+			);
+			
+			$('#loginpage').live('click', function(){
+			$('#loginpage-div').show();
+			$(this).addClass('ui-btn-active');
+			$('#personalinformation-div , #publishsettings-div , #generalsettings-div , #optionalsettings-div ').hide();
+			$('#personalinformation , #publishsettings , #generalsettings , #optionalsettings ').removeClass('ui-btn-active');
+			}
+			);
+			
+			
+			 $('#optionalsettings').live('click', function(){
+			 $('#optionalsettings-div').show();
+			 $(this).addClass('ui-btn-active');
+			 $('#personalinformation-div , #publishsettings-div , #loginpage-div ,  #generalsettings-div').hide();
+			 $('#personalinformation , #publishsettings , #loginpage ,  #generalsettings').removeClass('ui-btn-active');
+
+			}
+			);
+		
+			
+		
+		
 		
 			$('.logout').click(function() {
 				$.ajax({
@@ -648,6 +701,6 @@
  		 $('#inlinecontent').simpledialog2();
 		});
 	    </script>
-</div>
+
 </body>
 </html>
