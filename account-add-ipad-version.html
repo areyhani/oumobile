@@ -11,7 +11,29 @@
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
 
+<style type="text/css">
 
+.ui-field-contain label.ui-slider {width:50%; }
+.ui-field-contain label.ui-input-text{ width:31%;padding-top:4px;}
+#personalinformation-div .ui-field-contain label.ui-input-text{ width:25%;padding-top:4px;}
+.ui-btn { margin:0px; }
+label.ui-input-text{ width:31%;padding-top:4px;}
+.ui-field-contain .ui-select {width:53%}
+.ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner{margin:0px;padding:4px 0px 4px 25px;}
+.ui-field-contain .ui-controlgroup-controls {margin-left:15%; width:80%}
+.ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,input.ui-input-text, textarea.ui-input-text{width:45%}
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
+.ui-content .ui-listview-inset{margin:0px;}
+.ui-btn-active {
+    background: -moz-linear-gradient(#EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
+    border: 1px solid #BBBBBB;
+    color: #101010;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #FFFFFF;
+}
+
+
+</style>
 	
 	
 	
@@ -19,25 +41,25 @@
 <body> 
 <div data-role="page" id="accountdiv" >
 
-	<div data-role="header" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header"> New Account </h1>
 
 		<a href="#" data-icon="gear" class="logout">Logout</a>
 	</div>
 
-		<div data-role="content">
+<div data-role="content" style="padding:10px 1px;">
 
 
 	<form>
 	
 	
 	<div class="ui-grid-a">
-	<div class="ui-block-a" style="width:260px; margin-left:8px; text-align:left;" >
-	<div data-role="content" class="ui-content" role="main">
+	<div class="ui-block-a" style="width:230px; margin-left:8px; text-align:left;" >
+	<div  style="padding: 0px 5px" data-role="content" class="ui-content" role="main">
 
 <div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-<div id="generalsettings" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">General Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="generalsettings" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-active" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">General Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="personalinformation" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Personal Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="publishsettings" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Publish Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="loginpage" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Login Page</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
@@ -46,9 +68,9 @@
 
 </div>
 	</div>
-	<div class="ui-block-b" style="margin:20px 25px; width:65%" >
+	<div class="ui-block-b" style="margin:0px 10px; width:60%" >
 	
-	<div id="generalsettings-div"> Genaral Settings
+	<div id="generalsettings-div" style="display:block" >
 	
 	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
                         
@@ -57,24 +79,28 @@
 	        	<input type="text" value="" id="accountname" name="accountname" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
-						<li>
-                  <div>
-                  <label for="editor-label" class="ui-input-text">Select an Editor: </label>
-	              <select  id="editor" name="editor" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-						<option value="2">EOPro</option>
+
+					
+					
+	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+    <div>
+        <label for="editor-label" style="width:33%;padding-top:5px;margin-right:-3px;" class="ui-input-text">Select an Editor: </label>
+	      <select name="editor" id="state" style="width:53%;" data-theme="c"  data-iconshadow="false">
+	            <option selected="selected">Select a State</option>
+		                <option value="2">EOPro</option>
 						<option value="3">OmniDev + EOPro</option>
 						<option value="4">EditLive</option>
 						<option value="5">OmniDev + EditLive</option>
 						<option value="6">Universal Editor v2 (IE,Fx) + v1 (Safari)</option>
 						<option value="7" selected="selected">TinyMCE (latest)</option>
-					</select>
-					</div>
-					</li>
-					
+				
+			</select>
+		</div>
+		</li>
 				
 					
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="xhtml" id="slider2-label" class="ui-slider">XHTML</label>
+	        	<label style="width:30%" for="xhtml" id="slider2-label" class="ui-slider">XHTML</label>
 				<select data-role="slider" id="xhtml" name="xhtml" class="ui-slider-switch">
 					<option value="off">Off</option>
 					<option selected="selected" value="on">On</option>
@@ -106,7 +132,7 @@
 	
 	
 	</div> <!-- general settings-->
-	<div id="personalinformation-div"> Personal  Information
+	<div id="personalinformation-div" style="display:none">
 	
 	                    
         <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
@@ -139,26 +165,23 @@
 				</li>
 				
 				
-			<li>
-			<a href="#" id="opendialog" data-theme="c" data-role="button">Address</a>
-	     	<div id="inlinecontent" style="display:none" data-theme="b"  
-  		  data-options='{"mode":"blank","headerText":"Address","headerTheme":"b","headerClose":true,"blankContent":true}' data-theme="b" >
-
-   		  <ul data-role='listview'  data-theme="b">
-        	<li>
+				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  <label for="street" class="ui-input-text">Street</label>
 	        	<input type="text" value="" id="street" name="street" class="ui-input-text ui-body-c ui-corner-all ">
    		  </li>
-   		  <li>
+   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
    		  <label for="city" class="ui-input-text">City</label>
 	        	<input type="text" value="" id="city" name="city" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		  </li>
-  <li>
-    <div>
+   		  
+   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 <div>
+      	<label for="state" class="ui-input-text">State:</label>
 	   <select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-		            <option>Select a State</option>
+	 
+		            <option selected="selected">Select a State</option>
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
 					<option value="AZ">Arizona</option>
@@ -211,20 +234,21 @@
 					<option value="WY">Wyoming</option>
 	</select>
 </div>
-</li>
+			</li>
 
 
-   		   <li>
+   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
    		  <label for="name" class="ui-input-text">Zip</label>
 	        	<input type="text" value="" id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		  </li>
    		  
-   	 <li>
+   	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
     <div>
+      	<label for="country" class="ui-input-text">Country:</label>
 	   <select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-	                <option>Select a country</option>
+	                <option selected="selected">Select a country</option>
 					<option value="AF">Afghanistan</option>
 					<option value="AL">Albania</option>
 					<option value="DZ">Algeria</option>
@@ -466,19 +490,15 @@
 					</select>
 					</div>
 					</li>
-   		  
-	      </ul>
-   			 <a rel='close' data-theme="a" data-inline ="false" data-role='button' href='#'>Ok</a>
-		</div>	
-			</li>	
-	
+   			
 				
-   		  
-           </ul>
-	
-	
+	 </ul>
+
 	</div> <!-- personal information -->
-	<div id="publishsettings-div">Publish Settings 
+	
+	
+	
+	<div id="publishsettings-div"  style="display:none">
 	
 	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
   	
@@ -507,7 +527,7 @@
 			</li>
              
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="publishthreshold" class="ui-input-text">Publish Threshold:</label>
+				<label style="width:40%" for="publishthreshold" class="ui-input-text">Publish Threshold:</label>
 	        	<input type="text" value="" id="publishthreshold" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
                         
@@ -517,33 +537,38 @@
 	
 	
 	</div> <!-- publish settings-->
-	<div id="loginpage-div">Login Page 
+	
+	
+	<div id="loginpage-div" style="display:none; height:100%">
 	
 	
 	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:200px"  for="shibboleth" class="ui-input-text"> CAS or Shibboleth URL</label>
+   				<label  style="width:47%"  for="shibboleth" class="ui-input-text"> CAS or Shibboleth URL</label>
 	        	<input type="text" value="" id="shibboleth" name="shibboleth" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
    		  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
-   				<label style="width:200px" for="announcementurl" class="ui-input-text"> Announcement URL</label>
+   				<label  style="width:47%"  for="announcementurl" class="ui-input-text"> Announcement URL</label>
 	        	<input type="text" value="" id="announcementurl" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
    		      			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
-   				<label style="width:200px"  for="logouturl" class="ui-input-text">  Logout URL</label>
+   				<label  style="width:47%"  for="logouturl" class="ui-input-text">  Logout URL</label>
 	        	<input type="text" value="" id="logouturl" name="logouturl" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
                         
                         
-               </ul>         </div> <!-- publish settings-->
-	<div id="optionalsettings-div">  Optional  Settings 
+               </ul>         </div> <!--Login Page-->
+               
+               
+               
+	<div id="optionalsettings-div"  style="display:none"> 
 	
 	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
@@ -615,13 +640,10 @@
 	</div>
 </div><!-- /grid-a -->
 
-
-
-		
-		</form>
+</form>
 	</div>
 	
-	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div data-role="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">

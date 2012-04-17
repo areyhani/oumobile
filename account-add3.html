@@ -10,7 +10,26 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+<style type="text/css">
 
+.ui-field-contain label.ui-input-text{padding-top:4px;}
+#personalinformation-div .ui-field-contain label.ui-input-text{ padding-top:4px;}
+.ui-btn { margin:0px; }
+label.ui-input-text{padding-top:4px;}
+.ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner{margin:0px;padding:4px 0px 4px 25px;}
+.ui-field-contain .ui-controlgroup-controls {margin-left:15%; width:80%}
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
+.ui-content .ui-listview-inset{margin:0px;}
+.ui-btn-active {
+    background: -moz-linear-gradient(#EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
+    border: 1px solid #BBBBBB;
+    color: #101010;
+    font-weight: bold;
+    text-shadow: 0 1px 1px #FFFFFF;
+}
+
+
+</style>
 
 	
 	
@@ -549,8 +568,8 @@
 		
 				
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
-				<select data-role="slider" id="addons" name="addons" class="ui-slider-switch">
+	        	<label   for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
+	        	<select data-mini="true" name="slider"id="addons" name="addons"  data-role="slider">
 					<option value="off">Off</option>
 					<option  selected="selected"  value="on">On</option>
 				</select>
