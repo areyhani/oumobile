@@ -24,13 +24,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,input.ui-input-text, textarea.ui-input-text{width:45%}
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
 .ui-content .ui-listview-inset{margin:0px;}
-.ui-btn-active {
-    background: -moz-linear-gradient(#EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
-    border: 1px solid #BBBBBB;
-    color: #101010;
-    font-weight: bold;
-    text-shadow: 0 1px 1px #FFFFFF;
-}
 
 
 </style>
@@ -59,7 +52,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div  style="padding: 0px 5px" data-role="content" class="ui-content" role="main">
 
 <div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-<div id="generalsettings" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-active" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">General Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="generalsettings" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-hover-c" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">General Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="personalinformation" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Personal Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="publishsettings" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Publish Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="loginpage" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Login Page</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
@@ -662,16 +655,16 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 			$('#generalsettings').live('click', function(){
 			$('#generalsettings-div').show();
-			$(this).addClass('ui-btn-active');
+			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div, #publishsettings-div , #loginpage-div , #optionalsettings-div').hide();
-			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-active');}
+			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');}
 			);
 			
 			 $('#personalinformation').live('click', function(){
 			 $('#personalinformation-div').show();
-			 $(this).addClass('ui-btn-active');
+			 $(this).addClass('ui-btn-hover-c');
 			 $('#generalsettings-div, #publishsettings-div,#loginpage-div , #optionalsettings-div ').hide();
-			 $('#generalsettings, #publishsettings,#loginpage , #optionalsettings ').removeClass('ui-btn-active');
+			 $('#generalsettings, #publishsettings,#loginpage , #optionalsettings ').removeClass('ui-btn-hover-c');
 
 			}
 			);
@@ -679,27 +672,27 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			
 		   $('#publishsettings').live('click', function(){
 		   $('#publishsettings-div').show();
-		   $(this).addClass('ui-btn-active');
+		   $(this).addClass('ui-btn-hover-c');
 		   $('#generalsettings-div , #personalinformation-div , #loginpage-div , #optionalsettings-div ').hide();
-		   $('#generalsettings, #personalinformation , #loginpage , #optionalsettings').removeClass('ui-btn-active');
+		   $('#generalsettings, #personalinformation , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
 
 			}
 			);
 			
 			$('#loginpage').live('click', function(){
 			$('#loginpage-div').show();
-			$(this).addClass('ui-btn-active');
+			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div , #publishsettings-div , #generalsettings-div , #optionalsettings-div ').hide();
-			$('#personalinformation , #publishsettings , #generalsettings , #optionalsettings ').removeClass('ui-btn-active');
+			$('#personalinformation , #publishsettings , #generalsettings , #optionalsettings ').removeClass('ui-btn-hover-c');
 			}
 			);
 			
 			
 			 $('#optionalsettings').live('click', function(){
 			 $('#optionalsettings-div').show();
-			 $(this).addClass('ui-btn-active');
+			 $(this).addClass('ui-btn-hover-c');
 			 $('#personalinformation-div , #publishsettings-div , #loginpage-div ,  #generalsettings-div').hide();
-			 $('#personalinformation , #publishsettings , #loginpage ,  #generalsettings').removeClass('ui-btn-active');
+			 $('#personalinformation , #publishsettings , #loginpage ,  #generalsettings').removeClass('ui-btn-hover-c');
 
 			}
 			);
