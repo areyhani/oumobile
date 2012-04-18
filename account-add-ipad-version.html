@@ -508,13 +508,13 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					<div class="ui-checkbox"><input type="checkbox" class="custom" id="spellcheck" name="spellcheck"><label for="spellcheck" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span  style="padding-top:4px" class="ui-btn-text">Spell Check:</span></span></label></div>
 					
 	
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="checkbox-2a" name="checkbox-2a"><label for="checkbox-2a" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Link Check</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="linkcheck" name="linkcheck"><label for="linkcheck" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Link Check</span></span></label></div>
 					
 	
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="checkbox-3a" name="checkbox-3a"><label for="checkbox-3a" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px" class="ui-btn-text">Page Validate</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="pagevalidate" name="pagevalidate"><label for="pagevalidate" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px" class="ui-btn-text">Page Validate</span></span></label></div>
 					
 	
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="checkbox-4a" name="checkbox-4a"><label for="checkbox-4a" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span style="padding-left:30px;padding-top:4px" class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">Accessibility Check</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility"><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span style="padding-left:30px;padding-top:4px" class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">Accessibility Check</span></span></label></div>
 					
 			    </div></fieldset>
 			</li>
@@ -524,7 +524,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="publishthreshold" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
                         
-                
+                <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label style="width:40%" for="tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
+	        	<input type="text" value="" id="tweet" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
 						
 				</ul>
 	
@@ -636,12 +639,12 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 </form>
 	</div>
 	
-	<div data-role="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div data-role="footer" id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
 <li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Submit</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="createNewAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
 <li class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 </ul>
 </div>
@@ -654,32 +657,35 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 
 			$('#generalsettings').live('click', function(){
+			$(this).dblclick();
 			$('#generalsettings-div').show();
 			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div, #publishsettings-div , #loginpage-div , #optionalsettings-div').hide();
-			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');}
+			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
+			}
 			);
 			
 			 $('#personalinformation').live('click', function(){
+			 $(this).dblclick();
 			 $('#personalinformation-div').show();
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#generalsettings-div, #publishsettings-div,#loginpage-div , #optionalsettings-div ').hide();
 			 $('#generalsettings, #publishsettings,#loginpage , #optionalsettings ').removeClass('ui-btn-hover-c');
-
 			}
 			);
 			
 			
 		   $('#publishsettings').live('click', function(){
+		   $(this).dblclick();
 		   $('#publishsettings-div').show();
 		   $(this).addClass('ui-btn-hover-c');
 		   $('#generalsettings-div , #personalinformation-div , #loginpage-div , #optionalsettings-div ').hide();
 		   $('#generalsettings, #personalinformation , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
-
 			}
 			);
 			
 			$('#loginpage').live('click', function(){
+			$(this).dblclick();
 			$('#loginpage-div').show();
 			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div , #publishsettings-div , #generalsettings-div , #optionalsettings-div ').hide();
@@ -689,15 +695,103 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			
 			
 			 $('#optionalsettings').live('click', function(){
+			 $(this).dblclick();
 			 $('#optionalsettings-div').show();
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#personalinformation-div , #publishsettings-div , #loginpage-div ,  #generalsettings-div').hide();
 			 $('#personalinformation , #publishsettings , #loginpage ,  #generalsettings').removeClass('ui-btn-hover-c');
-
 			}
 			);
 		
 			
+		     $('#createNewAccount').click(function() {
+		      			var params=location.search;
+		      			var accountname=$('#accountname').val();
+		      			var firstname = $('#firstname').val();
+		      			var lastname = $ ('#lastname').val();
+		      			var organization =$ ('#organization').val();
+		      			var street = $('#street').val();
+		      			var city = $ ('#city').val();
+		      			var state =$('#state').val();
+		      			var zip =$('#zip').val();
+		      			var country= $('#country').val();
+		      			var phone = $('#phone').val();
+		      			var email = $('#email').val();
+		      			var editor = $('#editor').val();
+		      			var xhtml = $('#xhtml').val();
+		      			var timezone = $('#timezone').val();
+		      			var locale = $('#timezone').val();
+		      			var helpurl = $('#helpurl').val();
+		      			var logourl = $('#logourl').val();
+		      			var pagecheck = $('#pagecheck').val();
+		      			var spellcheck =$('#spellcheck').val();
+		      			var linkcheck = $ ('#linkcheck').val();
+		      			var pagevalidate =$('#pagevalidate').val();
+		      			var accessibility =$('#accessibility').val();
+		      			var publishthreshold =$('#publishthreshold').val();
+		      			var tweet = $ ('#tweet').val();
+		      			var cas = $('#cas').val();
+		      			var announcementurl = $('#announcementurl').val();
+		      			var logouturl = $('#logouturl').val();
+		      			var addons = $('#addons').val();
+		      			var dependancymanager= $('#dependancymanager').val();
+		      			var docucomp= $('#docucomp').val();
+		      			var revealpass= $('#revealpass').val();
+		      			var searchon =$('#searchon').val();
+		      			var ldpimage =$('#ldpimagegallery').val();
+		      			var hideaccount =$('#hideaccount').val();
+		     
+		     		$.ajax({
+		     					url: '/accounts/new',
+		     					type:'post',
+		     					data:{
+		     					'account':	accountname,
+		      					'first_name': firstname,
+		      				    'last_name': lastname,
+		      					//'organization': organization,
+		      				    //'street':street,
+		      					//'city': city,
+		      			       //'state':state,
+		      					//'zip': zip,
+		      					//'country':country,
+		      					'phone': phone,
+		      					'email':email,
+		      					'editor':editor,
+		      					'xhtml': xhtml,
+		      					'timezone':timezone,
+		      					'locale':locale,
+		      					'help': helpurl,
+		      					'logo_url':logourl,
+								 'page_check':pagecheck,
+								 'spell_check':spellcheck,
+								 'link_check':linkcheck,
+								 'page_validate': pagevalidate,
+								 'accessibility':accessibility,
+		      			        'publish_threshold':publishthreshold,
+		      			        'default_tweet':  tweet,
+		      					'sso_url':cas,
+		      					'announcement_url':announcementurl,
+		      					'logout_url':logouturl,
+		      					//'addons':addons,
+		      					'dependency_manager':dependancymanager,
+		      					'compare': docucomp ,
+		      			      	//'revealpass': revealpass,
+		      			        'search':searchon,
+		      			        'ldp_gallery':ldpimage,
+		      		            'hidden':hideaccount,
+		     					
+		     					
+		     					},
+		     					success: function(data){
+		     						//window.location.href='accounts.html' + params;	
+		     					}
+		     		
+		     		});
+		     
+		     } );
+		
+		
+				/*Create New account ajax */
 		
 		
 		
@@ -706,7 +800,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					url: '/authentication/logout',
 					type: 'post',
 					success: function(data) {
-						window.location.href = 'super-index.html';
+						//window.location.href = 'super-index.html'+ params;
 					}
 				});
 			});
