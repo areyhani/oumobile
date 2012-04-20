@@ -92,13 +92,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		</li>
 				
 					
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label style="width:30%" for="xhtml" id="slider2-label" class="ui-slider">XHTML</label>
-				<select data-role="slider" id="xhtml" name="xhtml" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected" value="on">On</option>
-				</select>
-		
+
 			</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="timezone" class="ui-input-text">Time Zone:</label>
@@ -558,7 +552,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="logouturl" name="logouturl" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-                        
+                     
                         
                </ul>         </div> <!--Login Page-->
                
@@ -645,7 +639,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <ul class="ui-grid-b">
 <li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
 <li id="createNewAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
+<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
@@ -718,9 +712,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var phone = $('#phone').val();
 		      			var email = $('#email').val();
 		      			var editor = $('#editor').val();
-		      			var xhtml = $('#xhtml').val();
 		      			var timezone = $('#timezone').val();
-		      			var locale = $('#timezone').val();
+		      			var locale = $('#locale').val();
 		      			var helpurl = $('#helpurl').val();
 		      			var logourl = $('#logourl').val();
 		      			var pagecheck = $('#pagecheck').val();
@@ -748,21 +741,20 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					'account':	accountname,
 		      					'first_name': firstname,
 		      				    'last_name': lastname,
-		      					//'organization': organization,
-		      				    //'street':street,
-		      					//'city': city,
-		      			       //'state':state,
-		      					//'zip': zip,
-		      					//'country':country,
+		      					'company': organization,
+		      				    'street':street,
+		      					'city': city,
+		      			     	'state':state,
+		      					'zip': zip,
+		      					'country':country,
 		      					'phone': phone,
 		      					'email':email,
-		      					'editor':editor,
-		      					'xhtml': xhtml,
-		      					'timezone':timezone,
+		      					'just_edit':editor,
+		      					'time_zone':timezone,
 		      					'locale':locale,
-		      					'help': helpurl,
+		      					'help_root': helpurl,
 		      					'logo_url':logourl,
-								 'page_check':pagecheck,
+								 'file_check':pagecheck,
 								 'spell_check':spellcheck,
 								 'link_check':linkcheck,
 								 'page_validate': pagevalidate,
@@ -772,18 +764,18 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      					'sso_url':cas,
 		      					'announcement_url':announcementurl,
 		      					'logout_url':logouturl,
-		      					//'addons':addons,
+		      					'addons':addons,
 		      					'dependency_manager':dependancymanager,
 		      					'compare': docucomp ,
-		      			      	//'revealpass': revealpass,
+		      			      	'show_pass': revealpass,
 		      			        'search':searchon,
-		      			        'ldp_gallery':ldpimage,
+		      			        'ldp':ldpimage,
 		      		            'hidden':hideaccount,
 		     					
 		     					
 		     					},
 		     					success: function(data){
-		     						//window.location.href='accounts.html' + params;	
+		     							window.location.href='accounts.html' + params;	
 		     					}
 		     		
 		     		});
@@ -792,7 +784,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		
 		
 				/*Create New account ajax */
+		// cancell Button
 		
+		
+		
+		$('#cancelBtn').click(function(){
+			window.location.href='accounts.html'+location.search;
+		
+		});
+		//cancel Button
 		
 		
 			$('.logout').click(function() {
@@ -800,7 +800,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					url: '/authentication/logout',
 					type: 'post',
 					success: function(data) {
-						//window.location.href = 'super-index.html'+ params;
+					window.location.href = 'super-index.html'+ params;
 					}
 				});
 			});

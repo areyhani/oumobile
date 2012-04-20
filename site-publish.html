@@ -50,6 +50,7 @@
 				url: '/sites/publish' + sitename,
 				type: 'post',
 				success: function(data) {
+
 					if (data.done) {
 						clearInterval(interval);
 						interval = null;
@@ -70,6 +71,7 @@
 						} 	
 						$('#message').text(msg);
 					} else if (data.error) {
+					console.log(data.error);
 						//window.location.href = 'index.html';
 					} else {
 						if (interval === null) {

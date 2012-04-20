@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Accounts</title> 
+	<title>Sites</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
@@ -12,19 +12,23 @@
  background-color: #1C5D93;
  background-image: -moz-linear-gradient(center top , #2276BB, #124065);
     }
+.ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
+.ui-btn-text{padding:10px;}
 
 </style>
 </head> 
 <body> 
-<div data-role="page" id="accounts">
+<div data-role="page" id="sites">
 		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
-	
-		<h1>Accounts</h1>
+			<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1 id="headerText">Sites</h1>
 		<a href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
 	<div data-role="content">
-		<ul data-role="listview" id="account-list">
+		<ul id="sites-list" data-theme="c" data-role="listview" class="ui-listview">
+		
+		
 		</ul>
 	</div>
 	
@@ -40,42 +44,57 @@
 
 </div>
 	<script type="text/javascript">
-		$('#accounts').on('pageshow', function() {
-			$.ajax({
-				url: '/accounts/list',
-				type: 'get',
-				success: function(data) {
-					if (data.error) {
-						window.location.href = 'super-index.html';
+		$('#sites').on('pageshow', function() {
+		var sites= $('#sites-list');
+			 $.ajax({
+					url:'/sites/list',
+					type: 'get',
+					success: function(data){
+					
+					if (data.error){
+					 window.location.href='super-index.html'+location.search;
+					 console.log(data.error);
 					}
-					var accounts = $ ('#account-list');
-					accounts.empty();
-					$.each(data, function(index, value) {
-						var count = $(document.createElement('span'))
-							.addClass('ui-li-count')
-							.text('Pages: ' + value.page_count);	
-							
-						var a = $(document.createElement('a'))
-							.attr({ href:'account.html?account=' + value.account })
-							.attr({rel:'external'})
-							.text(value.account);
-						a.append(count);
-						var li = $(document.createElement('li')).append(a);
-						accounts.append(li);
+					sites.empty();
+				     console.log(data);
+					
+					$.each(data,function(index,value){
+					var prams =location.search;
+					 var a = $(document.createElement('a'))
+					 	.attr({href:'site.html?account='+value.account+'&site='+value.site})
+					 	.attr({rel:'external'})
+					    .addClass('ui-link-inherit')
+					 	.text(value.site);
+					 	
+					 	
+					 var li =$(document.createElement('li'))
+					 		.addClass('ui-btn ui-btn-text ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c')
+					 		.attr({'data-theme': 'c'});
+					  var hyperli = li.append(a);
+					 sites.append(hyperli);
+					 
+					 var headerText =$('#headerText');
+					 var headerTextValue =$(document.createElement('span'))
+					 		.text('Account: '+ value.account + '   >>  Sites');
+					 		headerText.empty();
+					 	headerText.append(headerTextValue);
+			
 					});
-					accounts.listview("refresh");
-				}
-			});
-		});
+						//sites.listview("refresh");
+					}
+					});
+					});
+			
+
 		
 		$('#editBtn').click(function(){
 		
 				$.ajax({
-					url: '/accounts/list',
+					url: '/accounts/list'+location.search,
 					type: 'get',
 					success: function(data){
 						if (data.error){
-						window.location.href='super-index.html';
+						window.location.href='super-index.html'+location.search;
 						}
 						window.location.href='accounts-edit-mode.html'+ location.search;
 					}
@@ -85,7 +104,7 @@
 		
 			$('.logout').click(function() {
 			$.ajax({
-				url: '/authentication/logout',
+				url: '/authentication/logout'+location.search,
 				type: 'post',
 				success: function(data) {
 					window.location.href = 'super-index.html'+location.search;

@@ -12,7 +12,8 @@
  background-color: #1C5D93;
  background-image: -moz-linear-gradient(center top , #2276BB, #124065);
     }
-
+.ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
+.ui-btn-text{padding:10px;}
 </style>
 </head> 
 <body> 
@@ -21,7 +22,7 @@
 	
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1>Accounts Edit Mode</h1>
-		<a href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
+		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
 	<div data-role="content">
 	
@@ -36,8 +37,8 @@
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
 <li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li class="ui-block-b" id="editBtn"><a id="editBtnText"  data-theme="b" href="accounts-edit-mode.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-<li class="ui-block-c"><a  data-theme="b" href="account-add.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-b" id="editBtn"><a id="editBtnText"  data-theme="b" href="accounts-edit-mode.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="account-add.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
@@ -62,41 +63,27 @@
 						   var inputElement = $(document.createElement('input'))
 	                             .attr({type: 'checkbox' })
 	                             .attr({id: idCount+1 })
+	                             .addClass('custom')
 	                             .attr({value: value.account });
 	                             
-	                             
-	                     	var inputLabel = $(document.createElement('label'))
-	                             .addClass('ui-btn ui-btn-icon-left ui-checkbox-off ui-corner-top ui-btn-up-c')
-	                             .attr({for:idCount+1 });
-	                                     
-	                        var inputSpan = $(document.createElement('span'))
-									.addClass('ui-btn-inner ui-corner-top');
 									
 									
 						   var inputText =$(document.createElement('span'))
 						    		 .addClass('ui-btn-text')
+						    		  .attr({id:idCount+1})
 						     	   	 .text(value.account);
+						     	   	 
+						 var a = $(document.createElement('a'))
+						           .attr({href: 'account-edit.html?account=' + value.account })
+						           .attr({rel:'external'})
+						           .addClass('ui-link-inherit');
 							
-							var inputIntermediate = inputElement.after(inputText);
-							var inputIntermediate2= inputIntermediate.after(inputLabel);
-							var inputIntermediate3= inputIntermediate2.after(inputSpan);
-							accounts.append(inputIntermediate3);
+				
 					
-						//var count = $(document.createElement('span'))
-						//	.addClass('ui-li-count')
-						//	.text('Pages: ' + value.page_count);	
-							
-					 
-					 	 // var a = $(document.createElement('a'))
-							//.attr({ href: 'account.html?account=' + value.account })
-						//	.text(value.account);
-						
-						
-						
-							
-						//a.append(count);
-						//var li = $(document.createElement('li')).append(a);
-						//accounts.append(li);
+					         var hyperlinkInputText = a.append(inputText);
+							var addinputElement = inputElement.after(hyperlinkInputText);
+					     	var li = $(document.createElement('li')).append(addinputElement);
+							accounts.append(li);
 						idCount++;
 					});
 					accounts.listview("refresh");
@@ -119,10 +106,46 @@
 		});
 		
 		$('#editBtn').click(function() {
-		 window.location.href='accounts.html';
+		 window.location.href='accounts.html'+location.search;
 		
 		});
 		
+		
+	   $('#backBtn').click(function(){
+			window.location.href='accounts.html'+location.search;
+		
+		});
+		
+		$('#deleteBtn').click(function(){
+			var params= location.search;
+		$("input[type=checkbox][checked]").each( 
+   			 function() { 
+   			 $.ajax({
+			
+			url:'/accounts/delete?account='+params,
+			type:'post',
+			success: function(data){
+		
+			}
+			
+			});
+     
+     	  	 } 
+   			    );
+
+				//var acccountToDelete= 
+			
+			
+		});
+		
+		
+		
+		
+		
+		$('#addBtn').click(function(){
+		
+				window.location.href='account-add-ipad-version.html'+ location.search;
+		});
 	</script> 
 
 
