@@ -1,0 +1,156 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Sites Edit Mode</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<style type="text/css">
+.ou-back-color{
+ background-color: #1C5D93;
+ background-image: -moz-linear-gradient(center top , #2276BB, #124065);
+    }
+.ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
+.ui-btn-text{padding:10px;}
+</style>
+</head> 
+<body> 
+<div data-role="page" id="sites">
+		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	
+		<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1>Sites Edit Mode</h1>
+		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
+	</div>
+	<div data-role="content">
+	
+	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+     <fieldset  id="site-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
+		
+	</fieldset></div>
+	</div>
+	
+	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+<ul class="ui-grid-b">
+<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-b" id="editBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="site-add-ipad-version.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+</ul>
+</div>
+
+</div>
+	<script type="text/javascript">
+		$('#sites').on('pageshow', function() {
+			$.ajax({
+				url: '/sites/list',
+				type: 'get',
+				success: function(data) {
+					if (data.error) {
+						window.location.href = 'super-index.html';
+					}
+					
+					var sites = $ ('#site-list');
+					sites.empty();
+				    var idCount = 0;   
+				    
+					$.each(data, function(index, value) {
+					
+						
+						   var inputElement = $(document.createElement('input'))
+	                             .attr({type: 'checkbox' })
+	                             .attr({id: idCount+1 })
+	                             .addClass('custom')
+	                             .attr({value: value.site });
+	                             
+									
+									
+						   var inputText =$(document.createElement('span'))
+						    		 .addClass('ui-btn-text')
+						    		  .attr({id:idCount+1})
+						     	   	 .text(value.site);
+						     	   	 
+						 var a = $(document.createElement('a'))
+						           .attr({href: 'site-edit.html?site=' + value.site })
+						           .attr({rel:'external'})
+						           .addClass('ui-link-inherit');
+							
+				
+					
+					         var hyperlinkInputText = a.append(inputText);
+							var addinputElement = inputElement.after(hyperlinkInputText);
+					     	var li = $(document.createElement('li')).append(addinputElement);
+							sites.append(li);
+						idCount++;
+					});
+					sites.listview("refresh");
+				}
+			});
+		});
+		
+		
+
+		
+		
+		$('.logout').click(function() {
+			$.ajax({
+				url: '/authentication/logout',
+				type: 'post',
+				success: function(data) {
+					window.location.href = 'super-index.html';
+				}
+			});
+		});
+		
+		$('#editBtn').click(function() {
+		 window.location.href='site-add-ipad-version.html'+location.search;
+		
+		});
+		
+		
+	   $('#backBtn').click(function(){
+			window.location.href='sites.html'+location.search;
+		
+		});
+		
+		$('#deleteBtn').click(function(){
+			var params= location.search;
+		$("input[type=checkbox][checked]").each( 
+   			 function() { 
+   			 $.ajax({
+			
+			url:'/sites/delete?site='+params,
+			type:'post',
+			success: function(data){
+		
+			}
+			
+			});
+     
+     	  	 } 
+   			    );
+
+				//var acccountToDelete= 
+			
+			
+		});
+		
+		
+		
+		
+		
+		$('#addBtn').click(function(){
+		
+				window.location.href='site-add-ipad-version.html'+ location.search;
+		});
+	</script> 
+
+
+
+
+</div>
+</body>
+</html>
