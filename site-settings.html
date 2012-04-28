@@ -10,7 +10,7 @@
 </head> 
 <body> 
 <div data-role="page" data-theme="c" id="site-settings">
-	<div data-role="header" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div id="header" data-role="header" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header">Site Settings</h1>
 		<a href="#" data-icon="gear" class="logout">Logout</a>
@@ -35,6 +35,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		
 	$('#site-settings').on('pageshow', function() {
 		var sitename = location.search;
 		$.ajax({

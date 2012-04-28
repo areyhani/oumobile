@@ -17,18 +17,18 @@
 </head> 
 <body> 
 <div data-role="page" id="accounts">
-		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div class="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
 	
 		<h1>Accounts</h1>
 		<a href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
 	<div data-role="content">
-		<ul data-role="listview" id="account-list">
+		<ul data-filter="true"  data-role="listview" id="account-list">
 		</ul>
 	</div>
 	
-	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
@@ -40,6 +40,8 @@
 
 </div>
 	<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		
 		$('#accounts').on('pageshow', function() {
 			$.ajax({
 				url: '/accounts/list',

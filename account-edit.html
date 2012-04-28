@@ -34,7 +34,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <body> 
 <div data-role="page" id="accountdiv" >
 
-	<div data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div id="header" data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="headerEditAccount"> New Account </h1>
 
@@ -44,7 +44,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <div data-role="content" style="padding:10px 1px;">
 
 
-	<form>
+	<form id="form">
 	
 	
 	<div class="ui-grid-a">
@@ -633,7 +633,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 </form>
 	</div>
 	
-	<div data-role="footer" id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div id="footer" data-role="footer" id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
@@ -648,7 +648,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			<script type="text/javascript">
 
 
-
+			$.mobile.fixedToolbars.show(true);
+			$.mobile.fixedToolbars.show(true);
 
 			$('#generalsettings').live('click', function(){
 			$(this).dblclick();

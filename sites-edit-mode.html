@@ -18,7 +18,7 @@
 </head> 
 <body> 
 <div data-role="page" id="sites">
-		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div id="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1>Sites Edit Mode</h1>
@@ -32,7 +32,7 @@
 	</fieldset></div>
 	</div>
 	
-	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
@@ -44,6 +44,8 @@
 
 </div>
 	<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		
 		$('#sites').on('pageshow', function() {
 			$.ajax({
 				url: '/sites/list',

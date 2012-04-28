@@ -13,8 +13,8 @@
 
 <style type="text/css">
 
-.ui-field-contain label.ui-slider {width:50%; }
-.ui-field-contain label.ui-input-text{ width:31%;padding-top:4px;}
+.ui-field-contain label.ui-slider {width:42%; }
+.ui-field-contain label.ui-input-text{ width:36%;padding-top:4px;}
 #productioninformation-div .ui-field-contain label.ui-input-text{ width:25%;padding-top:4px;}
 .ui-btn { margin:0px; }
 label.ui-input-text{ width:31%;padding-top:4px;}
@@ -24,8 +24,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,input.ui-input-text, textarea.ui-input-text{width:45%}
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
 .ui-content .ui-listview-inset{margin:0px;}
-
-
+.productionserver-div .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner{padding-left:50px;}
+.productionserver-div .ui-checkbox .ui-icon, .ui-radio .ui-icon{top:0.8em}
+#sitepreference-div label { width:40%}
+#sitepreference-div label.inputb { width:35%}
+#templateDirectory .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search, input.ui-input-text, textarea.ui-input-text{margin:10px;}
 </style>
 	
 	
@@ -34,7 +37,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <body> 
 <div data-role="page" id="sitediv" >
 
-	<div data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div id="header" data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header"> New Site </h1>
 
@@ -53,11 +56,14 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 <div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 <div id="siteinformation" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-hover-c" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">Site Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-<div id="productioninformation" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Production Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 <div id="ldp" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">LDP Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-<div id="sitepreference" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Site Preference</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-<div id="publishSettings" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-bottom ui-controlgroup-last ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">Publish Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-<div id="wysiwygSettings" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-bottom ui-controlgroup-last ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">WYSIWYG Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="directEditBtn" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> Direct Edit Button</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+
+<div id="sitepreference" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Site Preferences</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="publishSettings" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Publish Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+
+<div id="wysiwygSettings" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">WYSIWYG</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="fileNaming" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-bottom ui-controlgroup-last ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">File Naming</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 </div>
 
 </div>
@@ -73,463 +79,186 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="sitename" name="sitename" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
+					</ul>
+					<br />
+					
+					<div class="ui-body ui-body-b ui-corner-all">
+				<div style="width:50%; padding:5px;font-weight:bold;" id="faddr-div" data-theme="b" class="oubox-edit-setting-field-div error">Production Server:</div> 
 
+			
+			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+		    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+		       <div class="oubox-edit-setting">
 					
-					
-	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    <div>
-        <label for="editor-label" style="width:33%;padding-top:5px;margin-right:-3px;" class="ui-input-text">Select an Editor: </label>
-	      <select name="editor" id="state" style="width:53%;" data-theme="c"  data-iconshadow="false">
-	            <option selected="selected">Select a State</option>
-		                <option value="2">EOPro</option>
-						<option value="3">OmniDev + EOPro</option>
-						<option value="4">EditLive</option>
-						<option value="5">OmniDev + EditLive</option>
-						<option value="6">Universal Editor v2 (IE,Fx) + v1 (Safari)</option>
-						<option value="7" selected="selected">TinyMCE (latest)</option>
-				
-			</select>
-		</div>
-		</li>
-				
-					
-
+					<div id="faddr-div" class="oubox-edit-setting-field-div error"><label for="faddr">Server:</label><input type="text" maxlength="64" size="64" name="faddr"  id="faddr"></div>
+				</div>
 			</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="timezone" class="ui-input-text">Time Zone:</label>
-	        	<input type="text" value="" id="timezone" name="timezone" class="ui-input-text ui-body-c ui-corner-all ">
-				</li> 
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="fuser-div" class="oubox-edit-setting-field-div ok"><label for="fuser">Username:</label><input type="text" maxlength="32" size="32" name="fuser" id="fuser"></div>
+				</div>
+			</li>
+	    	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div id="authtype-container" class="oubox-edit-setting">
+					<label for="fauthtype0">Authentication Type:</label>
+					    <fieldset data-role="controlgroup">
+					  
+					<input type="radio" checked="checked" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
+					<label for="fauthtype0"> Password</label>
+					<input type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
+					<label for="fauthtype1"> Public Key</label>
+					    </fieldset>
+		
+				</div>
+				</li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div id="password-container" class="oubox-edit-setting">
+					<div class="oubox-edit-setting-field-div">
+					<label for="pass">Password:</label>
+					<input type="password" maxlength="32" size="32" name="pass" id="pass"></div>
+				</div>
+				</li>	
+				
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="locale" class="ui-input-text">Locale:</label>
-	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
-				</li> 
+				<div id="umask-container" class="oubox-edit-setting">
+					<div data-role="fieldcontain" id="umask-div" class="oubox-edit-setting-field">
+					
+
+					<fieldset data-role="controlgroup">
+					<label for="umask">UMask:</label>
+					<input  type="radio" checked="checked" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+				    <input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label><br>
+				</fieldset>
+				</div>
+				</div>
+				</li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="froot-div" class="oubox-edit-setting-field-div error">
+					<label for="froot">FTP Root:</label>
+					<input type="text" maxlength="128" size="64" name="froot" id="froot"></div>
+				</div>
+				</li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="hroot-div" class="oubox-edit-setting-field-div error">
+					<label for="hroot">HTTP Root:</label>
+					<input type="text" maxlength="128" size="64" name="hroot" id="hroot"></div>
+				</div>
+				</li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="fhome-div" class="oubox-edit-setting-field-div ok">
+					<label for="fhome">FTP Home:</label>
+					<input type="text" maxlength="128" size="64" name="fhome" id="fhome"></div>
+				</div>
+				</li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="fpath-div" class="oubox-edit-setting-field-div ok">
+					<label for="fpath">FTP Directory:</label>
+					<input type="text" maxlength="128" size="64" name="fpath" id="fpath"></div>
+				</div>
+				</li>
+		    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="fpathi-div" class="oubox-edit-setting-field-div ok">
+					<label for="fpathi">Image Directory:</label>
+					<input type="text" maxlength="128" size="64" name="fpathi" id="fpathi"></div>
+				</div>
+				</li>
 				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="helpurl" class="ui-input-text">Help URL:</label>
-	        	<input type="text" value="" id="helpurl" name="helpurl" class="ui-input-text ui-body-c ui-corner-all ">
-				</li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="logourl" class="ui-input-text">Logo URL:</label>
-	        	<input type="text" value="" id="logourl" name="logourl" class="ui-input-text ui-body-c ui-corner-all ">
-				</li> 
+				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<div class="oubox-edit-setting">
+					<div id="fpathi-div" class="oubox-edit-setting-field-div ok">
+					<label for="fpathi">LDP Gallery Directory:</label>
+					<input type="text" maxlength="128" size="64" name="fpathi" id="fpathi"></div>
+				</div>
+				</li>
 				
+				<li id="templateDirectory" data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label style="width:42%"  for="uselocaltemplates" id="uselocaltemplates-label">Template Sourse: </label>
+				<select data-role="slider" id="uselocaltemplates" name="uselocaltemplates" class="ui-slider-switch">
+				<option  selected="selected" value="false">Remote</option>
+				<option value="true"> Local</option>	
+				</select>
+			
+
+				<div  id="LocalTemplatePath" class="oubox-edit-setting" style="display:none;margin-top:5px;">
+					<div id="Ltroot-div" class="oubox-edit-setting-field-div ok">
+					<label style="width:36%" class="ui-slider" > Local Template Directory:</label>
+					<input id="Ltroot" type="text" maxlength="128" size="64" name="LocalTemplatePath"></div>
+				</div>
+				
+				<div id="RemoteTemplatePath" class="oubox-edit-setting" style="display:block;margin-top:5px;">
+					<div id="Rtroot-div" class="oubox-edit-setting-field-div ok">
+				    <label style="width:36%" class="ui-slider">Remote Template Directory:</label>
+					<input id="Rtroot" type="text" maxlength="128" size="64" name="RemoteTemplatePath" ></div>
+				</div>
+				</li>
+		
+		
 				</ul>
+				</div>
+				
+
+			
                         
 	
 	
 	
-	</div> <!-- Site Information-->
-	<div id="productioninformation-div" style="display:none">
+	</div> 
+
 	
-	                    
-        <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-		
-		
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="firstname" class="ui-input-text">Firstname:</label>
-	        	<input type="text" value="" id="firstname" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="lastname" class="ui-input-text">Lastname:</label>
-	        	<input type="text" value="" id="lastname" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				
-				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="phone" class="ui-input-text">Phone:</label>
-	        	<input type="text" value="" id="phone" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="email" class="ui-input-text">Email:</label>
-	        	<input type="text" value="" id="email" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="Organization" class="ui-input-text">Organization</label>
-	        	<input type="text" value="" id="Organization" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				
-				
-				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  <label for="street" class="ui-input-text">Street</label>
-	        	<input type="text" value="" id="street" name="street" class="ui-input-text ui-body-c ui-corner-all ">
-   		  </li>
-   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   		  <label for="city" class="ui-input-text">City</label>
-	        	<input type="text" value="" id="city" name="city" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
-   		  </li>
-   		  
-   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		 <div>
-      	<label for="state" class="ui-input-text">State:</label>
-	   <select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-	 
-		            <option selected="selected">Select a State</option>
-					<option value="AL">Alabama</option>
-					<option value="AK">Alaska</option>
-					<option value="AZ">Arizona</option>
-					<option value="AR">Arkansas</option>
-					<option value="CA">California</option>
-					<option value="CO">Colorado</option>
-					<option value="CT">Connecticut</option>
-					<option value="DC">District of Columbia</option>
-					<option value="DE">Delaware</option>
-					<option value="FL">Florida</option>
-					<option value="GA">Georgia</option>
-					<option value="HI">Hawaii</option>
-					<option value="IA">Iowa</option>
-					<option value="ID">Idaho</option>
-					<option value="IL">Illinois</option>
-					<option value="IN">Indiana</option>
-					<option value="KS">Kansas</option>
-					<option value="KY">Kentucky</option>
-					<option value="LA">Louisiana</option>
-					<option value="MA">Massachusetts</option>
-					<option value="MD">Maryland</option>
-					<option value="ME">Maine</option>
-					<option value="MI">Michigan</option>
-					<option value="MN">Minnesota</option>
-					<option value="MO">Missouri</option>
-					<option value="MS">Mississippi</option>
-					<option value="MT">Montana</option>
-					<option value="NC">North Carolina</option>
-					<option value="ND">North Dakota</option>
-					<option value="NE">Nebraska</option>
-					<option value="NV">Nevada</option>
-					<option value="NJ">New Jersey</option>
-					<option value="NM">New Mexico</option>
-					<option value="NY">New York</option>
-					<option value="OH">Ohio</option>
-					<option value="OK">Oklahoma</option>
-					<option value="OR">Oregon</option>
-					<option value="PA">Pennsylvania</option>
-					<option value="RI">Rhode Island</option>
-					<option value="SC">South Carolina</option>
-					<option value="SD">South Dakota</option>
-					<option value="TN">Tennessee</option>
-					<option value="TX">Texas</option>
-					<option value="UT">Utah</option>
-					<option value="VA">Virginia</option>
-					<option value="VT">Vermont</option>
-					<option value="WA">Washington</option>
-					<option value="WI">Wisconsin</option>
-					<option value="WV">West Virginia</option>
-					<option value="WY">Wyoming</option>
-	</select>
-</div>
-			</li>
-
-
-   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   		  <label for="name" class="ui-input-text">Zip</label>
-	        	<input type="text" value="" id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
-   		  </li>
-   		  
-   	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    <div>
-      	<label for="country" class="ui-input-text">Country:</label>
-	   <select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-	                <option selected="selected">Select a country</option>
-					<option value="AF">Afghanistan</option>
-					<option value="AL">Albania</option>
-					<option value="DZ">Algeria</option>
-					<option value="AS">American Samoa</option>
-					<option value="AD">Andorra</option>
-					<option value="AO">Angola</option>
-					<option value="AI">Anguilla</option>
-					<option value="AQ">Antarctica</option>
-					<option value="AG">Antigua And Barbuda</option>
-					<option value="AR">Argentina</option>
-					<option value="AM">Armenia</option>
-					<option value="AW">Aruba</option>
-					<option value="AU">Australia</option>
-					<option value="AT">Austria</option>
-					<option value="AZ">Azerbaijan</option>
-					<option value="BS">Bahamas</option>
-					<option value="BH">Bahrain</option>
-					<option value="BD">Bangladesh</option>
-					<option value="BB">Barbados</option>
-					<option value="BY">Belarus</option>
-					<option value="BE">Belgium</option>
-					<option value="BZ">Belize</option>
-					<option value="BJ">Benin</option>
-					<option value="BM">Bermuda</option>
-					<option value="BT">Bhutan</option>
-					<option value="BO">Bolivia</option>
-					<option value="BA">Bosnia and Herzegovina</option>
-					<option value="BW">Botswana</option>
-					<option value="BV">Bouvet Island</option>
-					<option value="BR">Brazil</option>
-					<option value="IO">British Indian Ocean Territory</option>
-					<option value="BN">Brunei</option>
-					<option value="BG">Bulgaria</option>
-					<option value="BF">Burkina Faso</option>
-					<option value="BI">Burundi</option>
-					<option value="KH">Cambodia</option>
-					<option value="CM">Cameroon</option>
-					<option value="CA">Canada</option>
-					<option value="CV">Cape Verde</option>
-					<option value="KY">Cayman Islands</option>
-					<option value="CF">Central African Republic</option>
-					<option value="TD">Chad</option>
-					<option value="CL">Chile</option>
-					<option value="CN">China</option>
-					<option value="CX">Christmas Island</option>
-					<option value="CC">Cocos (Keeling) Islands</option>
-					<option value="CO">Colombia</option>
-					<option value="KM">Comoros</option>
-					<option value="CG">Congo</option>
-					<option value="CK">Cook Islands</option>
-					<option value="CR">Costa Rica</option>
-					<option value="CI">Cote D'Ivoire (Ivory Coast)</option>
-					<option value="HR">Croatia (Hrvatska)</option>
-					<option value="CU">Cuba</option>
-					<option value="CY">Cyprus</option>
-					<option value="CZ">Czech Republic</option>
-					<option value="KP">D.P.R. Korea</option>
-					<option value="CD">Dem Rep of Congo (Zaire)</option>
-					<option value="DK">Denmark</option>
-					<option value="DJ">Djibouti</option>
-					<option value="DM">Dominica</option>
-					<option value="DO">Dominican Republic</option>
-					<option value="TP">East Timor</option>
-					<option value="EC">Ecuador</option>
-					<option value="EG">Egypt</option>
-					<option value="SV">El Salvador</option>
-					<option value="GQ">Equatorial Guinea</option>
-					<option value="ER">Eritrea</option>
-					<option value="EE">Estonia</option>
-					<option value="ET">Ethiopia</option>
-					<option value="FK">Falkland Islands (Malvinas)</option>
-					<option value="FO">Faroe Islands</option>
-					<option value="FJ">Fiji</option>
-					<option value="FI">Finland</option>
-					<option value="FR">France</option>
-					<option value="GF">French Guiana</option>
-					<option value="PF">French Polynesia</option>
-					<option value="TF">French Southern Territories</option>
-					<option value="GA">Gabon</option>
-					<option value="GM">Gambia</option>
-					<option value="GE">Georgia</option>
-					<option value="DE">Germany</option>
-					<option value="GH">Ghana</option>
-					<option value="GI">Gibraltar</option>
-					<option value="GR">Greece</option>
-					<option value="GL">Greenland</option>
-					<option value="GD">Grenada</option>
-					<option value="GP">Guadeloupe</option>
-					<option value="GU">Guam</option>
-					<option value="GT">Guatemala</option>
-					<option value="GN">Guinea</option>
-					<option value="GW">Guinea-Bissau</option>
-					<option value="GY">Guyana</option>
-					<option value="HT">Haiti</option>
-					<option value="HM">Heard and McDonald Islands</option>
-					<option value="HN">Honduras</option>
-					<option value="HK">Hong Kong SAR, PRC</option>
-					<option value="HU">Hungary</option>
-					<option value="IS">Iceland</option>
-					<option value="IN">India</option>
-					<option value="ID">Indonesia</option>
-					<option value="IR">Iran</option>
-					<option value="IQ">Iraq</option>
-					<option value="IE">Ireland</option>
-					<option value="IL">Israel</option>
-					<option value="IT">Italy</option>
-					<option value="JM">Jamaica</option>
-					<option value="JP">Japan</option>
-					<option value="JO">Jordan</option>
-					<option value="KZ">Kazakhstan</option>
-					<option value="KE">Kenya</option>
-					<option value="KI">Kiribati</option>
-					<option value="KR">Korea</option>
-					<option value="KW">Kuwait</option>
-					<option value="KG">Kyrgyzstan</option>
-					<option value="LA">Lao</option>
-					<option value="LV">Latvia</option>
-					<option value="LB">Lebanon</option>
-					<option value="LS">Lesotho</option>
-					<option value="LR">Liberia</option>
-					<option value="LY">Libya</option>
-					<option value="LI">Liechtenstein</option>
-					<option value="LT">Lithuania</option>
-					<option value="LU">Luxembourg</option>
-					<option value="MO">Macao</option>
-					<option value="MK">Macedonia</option>
-					<option value="MG">Madagascar</option>
-					<option value="MW">Malawi</option>
-					<option value="MY">Malaysia</option>
-					<option value="MV">Maldives</option>
-					<option value="ML">Mali</option>
-					<option value="MT">Malta</option>
-					<option value="MH">Marshall Islands</option>
-					<option value="MQ">Martinique</option>
-					<option value="MR">Mauritania</option>
-					<option value="MU">Mauritius</option>
-					<option value="YT">Mayotte</option>
-					<option value="MX">Mexico</option>
-					<option value="FM">Micronesia</option>
-					<option value="MD">Moldova</option>
-					<option value="MC">Monaco</option>
-					<option value="MN">Mongolia</option>
-					<option value="MS">Montserrat</option>
-					<option value="MA">Morocco</option>
-					<option value="MZ">Mozambique</option>
-					<option value="MM">Myanmar</option>
-					<option value="NA">Namibia</option>
-					<option value="NR">Nauru</option>
-					<option value="NP">Nepal</option>
-					<option value="NL">Netherlands</option>
-					<option value="AN">Netherlands Antilles</option>
-					<option value="NC">New Caledonia</option>
-					<option value="NZ">New Zealand</option>
-					<option value="NI">Nicaragua</option>
-					<option value="NE">Niger</option>
-					<option value="NG">Nigeria</option>
-					<option value="NU">Niue</option>
-					<option value="NF">Norfolk Island</option>
-					<option value="MP">Northern Mariana Islands</option>
-					<option value="NO">Norway</option>
-					<option value="OM">Oman</option>
-					<option value="PK">Pakistan</option>
-					<option value="PW">Palau</option>
-					<option value="PA">Panama</option>
-					<option value="PG">Papua new Guinea</option>
-					<option value="PY">Paraguay</option>
-					<option value="PE">Peru</option>
-					<option value="PH">Philippines</option>
-					<option value="PN">Pitcairn</option>
-					<option value="PL">Poland</option>
-					<option value="PT">Portugal</option>
-					<option value="PR">Puerto Rico</option>
-					<option value="QA">Qatar</option>
-					<option value="RE">Reunion</option>
-					<option value="RO">Romania</option>
-					<option value="RU">Russia</option>
-					<option value="RW">Rwanda</option>
-					<option value="KN">Saint Kitts And Nevis</option>
-					<option value="LC">Saint Lucia</option>
-					<option value="VC">Saint Vincent And The Grenadines</option>
-					<option value="WS">Samoa</option>
-					<option value="SM">San Marino</option>
-					<option value="ST">Sao Tome and Principe</option>
-					<option value="SA">Saudi Arabia</option>
-					<option value="SN">Senegal</option>
-					<option value="SC">Seychelles</option>
-					<option value="SL">Sierra Leone</option>
-					<option value="SG">Singapore</option>
-					<option value="SK">Slovak Republic</option>
-					<option value="SI">Slovenia</option>
-					<option value="SB">Solomon Islands</option>
-					<option value="SO">Somalia</option>
-					<option value="ZA">South Africa</option>
-					<option value="GS">S. Georgia And S. Sandwich Isles</option>
-					<option value="ES">Spain</option>
-					<option value="LK">Sri Lanka</option>
-					<option value="SH">St Helena</option>
-					<option value="PM">St Pierre and Miquelon</option>
-					<option value="SD">Sudan</option>
-					<option value="SR">Suriname</option>
-					<option value="SJ">Svalbard And Jan Mayen Islands</option>
-					<option value="SZ">Swaziland</option>
-					<option value="SE">Sweden</option>
-					<option value="CH">Switzerland</option>
-					<option value="SY">Syria</option>
-					<option value="TW">Taiwan</option>
-					<option value="TJ">Tajikistan</option>
-					<option value="TZ">Tanzania</option>
-					<option value="TH">Thailand</option>
-					<option value="TG">Togo</option>
-					<option value="TK">Tokelau</option>
-					<option value="TO">Tonga</option>
-					<option value="TT">Trinidad And Tobago</option>
-					<option value="TN">Tunisia</option>
-					<option value="TR">Turkey</option>
-					<option value="TM">Turkmenistan</option>
-					<option value="TC">Turks And Caicos Islands</option>
-					<option value="TV">Tuvalu</option>
-					<option value="UG">Uganda</option>
-					<option value="UA">Ukraine</option>
-					<option value="AE">United Arab Emirates</option>
-					<option value="UK">United Kingdom</option>
-					<option value="US" selected="selected">United States</option>
-					<option value="UM">US Minor Outlying Isles</option>
-					<option value="UY">Uruguay</option>
-					<option value="UZ">Uzbekistan</option>
-					<option value="VU">Vanuatu</option>
-					<option value="VA">Vatican City State (Holy See)</option>
-					<option value="VE">Venezuela</option>
-					<option value="VN">Vietnam</option>
-					<option value="VG">Virgin Islands (British)</option>
-					<option value="VI">Virgin Islands (US)</option>
-					<option value="WF">Wallis And Futuna Islands</option>
-					<option value="EH">Western Sahara</option>
-					<option value="YE">Yemen</option>
-					<option value="YU">Yugoslavia</option>
-					<option value="ZM">Zambia</option>
-					<option value="ZW">Zimbabwe</option>
+	<!-- Direct Edit Button -->
+	<div id="directEditBtn-div" style="display:none;" >
+	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+                  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+                   <label for="btnType" class="ui-input-text">Button Type</label>
+                   <select id="btnType" name="btnType" onchange="toggleFileCheckList(this.value)">
+					<option value="0">None</option>
+					<option selected="selected" value="1">Standard</option>
+					<option value="2">Transparent</option>
 					</select>
-					</div>
-					</li>
-   			
+                  </li>
+                <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="btnCode" class="ui-input-text">Button Code: </label>
+	        	<input type="text" value="" id="btnCode" name="btnCode" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
 				
-	 </ul>
+	</ul>
+	</div> 
+	
+	
+	<!-- ldp -->
 
-	</div> <!-- personal information -->
-	
-	
-	
 	<div id="ldp-div"  style="display:none">
 	
 	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-  	
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			             	   <label for="pagecheck" class="ui-input-text">Page Check:</label>
-                   <select id="pagecheck" name="pagecheck" onchange="toggleFileCheckList(this.value)">
-							<option value="0">Disabled</option>
-							<option value="1">Admin Enabled</option>
-							<option value="2">User Enabled</option>
-							<option value="3" selected="selected">Force Enabled</option>
-					</select>
-	        	<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-label" role="heading">Choose :</div><div class="ui-controlgroup-controls">
-					
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="spellcheck" name="spellcheck"><label for="spellcheck" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span  style="padding-top:4px" class="ui-btn-text">Spell Check:</span></span></label></div>
-					
-	
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="linkcheck" name="linkcheck"><label for="linkcheck" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Link Check</span></span></label></div>
-					
-	
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="pagevalidate" name="pagevalidate"><label for="pagevalidate" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px" class="ui-btn-text">Page Validate</span></span></label></div>
-					
-	
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility"><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span style="padding-left:30px;padding-top:4px" class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">Accessibility Check</span></span></label></div>
-					
-			    </div></fieldset>
-			</li>
-             
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label style="width:40%" for="publishthreshold" class="ui-input-text">Publish Threshold:</label>
-	        	<input type="text" value="" id="publishthreshold" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-                        
                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label style="width:40%" for="tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
-	        	<input type="text" value="" id="tweet" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
+				<label style="width:40%" for="tweet" class="ui-input-text"> LDP Admin Host:</label>
+	        	<input type="text" value="" id="ldpAdminHost" name="ldpAdminHost" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 						
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li-statis ui-body-c">
+				<input type="button" id="downloadRegBtn" value="Download Reg File"/> 
+				
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li-statis ui-body-c">
+				<input type="button" id="testConnectivityBtn" value="Test Conectivity"/> 
+				
+				</li>
+				
+				
+						
+				
 				</ul>
 	
 	
 	</div> <!-- LDP Setting-->
 	
-	
+	<!-- Site Preferences --!>
 	<div id="sitepreference-div" style="display:none; height:100%">
 	
 	
@@ -537,86 +266,85 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:47%"  for="shibboleth" class="ui-input-text"> CAS or Shibboleth URL</label>
-	        	<input type="text" value="" id="shibboleth" name="shibboleth" class="ui-input-text ui-body-c ui-corner-all ">
+   				<label class="inputb" for="recyclebin" class="ui-input-text"> Recycle Bin</label>
+	        	<input type="text" value="/trash" id="recyclebin" name="recyclebin" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
    		  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
-   				<label  style="width:47%"  for="announcementurl" class="ui-input-text"> Announcement URL</label>
-	        	<input type="text" value="" id="announcementurl" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
+   				<label  class="inputb"    for="timeZone" class="ui-input-text"> Time Zone</label>
+	        	<input type="text" value="" id="timeZone" name="TimeZone" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
    		      			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
-   				<label  style="width:47%"  for="logouturl" class="ui-input-text">  Logout URL</label>
-	        	<input type="text" value="" id="logouturl" name="logouturl" class="ui-input-text ui-body-c ui-corner-all ">
+   				<label  class="inputb"  for="locale" class="ui-input-text">  Locale</label>
+	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-                     
-                        
-               </ul>         </div> <!--Site Preference-->
-               
-               
-               
-	<div id="publishSettings-div"  style="display:none"> 
-	
-	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-		
+   		      
+   		      
+   		      <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+    			<label  for="dm" id="dm-label" class="ui-slider">Dependency Manager:</label>
+				<select data-role="slider" id="dm" name="dm" class="ui-slider-switch">
+				<option  selected="selected" value="off">Off</option>
+				<option value="on"> On </option>
+					
+				</select>
+    
+    			</li>
 				
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
-				<select data-role="slider" id="addons" name="addons" class="ui-slider-switch">
+   		      
+   		      	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="addons" id="findreplace" class="ui-slider">Find / Replace</label>
+				<select data-role="slider" id="findreplace" name="findreplace" class="ui-slider-switch">
 					<option value="off">Off</option>
 					<option  selected="selected"  value="on">On</option>
 				</select>
 			</li>
-			
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="dependancymanager" id="dependancymanager-label" class="ui-slider"> Dependency Manager:</label>
-				<select data-role="slider" id="dependancymanager" name="dependancymanager" class="ui-slider-switch">
+                    
+            <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label  for="search" id="addons-label" class="ui-slider">Search:</label>
+				<select style="margin-buttom:5px;"  data-role="slider" id="search" name="search" class="ui-slider-switch">
 					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option  selected="selected"  value="on">On</option>
+				</select>
+				
+				<br /><br />
+
+				<input type="button"  id="buildIndex" value=" Build Index"/> 
+			</li>
+                        
+               </ul>      
+            </div> 
+               
+               
+               
+               
+	<div id="publishSettings-div" style="display:none"> 
+	
+	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="finalcheck" id="finalcheck-label" class="ui-slider">Final Check:</label>
+				<select data-role="slider" id="finalcheck" name="finalcheck" class="ui-slider-switch">
+					<option  selected="selected"  value="off">Off</option>
+					<option  value="on">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="docucomp" id="docucomp-label" class="ui-slider">Document Comparison:</label>
-				<select data-role="slider" id="docucomp" name="docucomp" class="ui-slider-switch">
+	        	<label for="removeoutags" id="removeoutags-label" class="ui-slider"> Remove OU Tags:</label>
+				<select data-role="slider" id="removeoutags" name="removeoutags" class="ui-slider-switch">
 					<option value="off">Off</option>
-					<option selected="selected"  value="on">On</option>
-				</select>
-			</li>
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="revealpass" id="revealpass-label" class="ui-slider">Reveal Site's Password:</label>
-				<select data-role="slider" id="revealpass" name="revealpass" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-			</li>
-			
-						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="ldpimagegallery" id="ldpimagegallery-label" class="ui-slider"> LDP - Image Gallery:</label>
-				<select data-role="slider" id="ldpimagegallery" name="ldpimagegallery" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
-			</li>
-						
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="searchon" id="searchon-label" class="ui-slider">Search On:</label>
-				<select data-role="slider" id="searchon" name="searchon" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected"  value="on">On</option>
+					<option selected="selected" value="on">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="hidesite" id="hidesite-label" class="ui-slider"> Hide site:</label>
-				<select data-role="slider" id="hidesite" name="hidesite" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
-				</select>
+			<label style="width:50%" for="wallpost" id="wallpost-label" class="ui-slider">Default Tweet / Wall Post:</label>
+			<br />
+	         <textarea style="width:85%; margin-left:15px;" cols="200" rows="8" name="wallpost" id="wallpost"></textarea>
 			</li>
 			
 			
@@ -628,19 +356,162 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	
 	<!-- wysiwyg Settings --!>
 	
-	<div class="wysiwygSettings-div">
-	
+	<div id="wysiwygSettings-div"  style="display:none;" >
+  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+                 
+                 
+                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+                   <label for="shorturl" class="ui-input-text">Short URL: </label>
+                   <select id="shorturl" name="shorturl" onchange="toggleFileCheckList(this.value)">
+					<option value="0">ABSOLUTE</option>
+					<option selected="selected" value="1">ROOT_RELATIVE</option>
+					<option value="2">PAGE_RELATIVE</option>
+					</select>
+                  </li>
+                  
+                  
+                  
+                   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+                  <label for="decorativeimages"  id="decorativeimages-label" class="ui-input-text"> Decorative Images: </label>
+                  <select name="decorativeimages" id="decorativeimages">
+						<option selected="selected" value="0">Disabled</option>
+						<option value="1">Admin Only</option>
+						<option value="2">All Users</option>
+				 </select>
+				
+				
+                  </li>
+                  
+                   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+                 <label for="toolbar"  id="toolbar-label" class="ui-input-text"> Toolbar: </label>
+                  <select name="toolbar" id="toolbar">
+						<option selected="selected" value="0">Default</option>
+						<option value="1">Toolbar1</option>
+						<option value="2">Toolbar2</option>
+				 </select>
+                   </li>
+                   
+    		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="asciionly" id="asciionly-label" class="ui-slider"> ASCII Only:</label>
+				<select data-role="slider" id="asciionly" name="asciionly" class="ui-slider-switch">
+				<option  selected="selected" value="off">Off</option>
+				<option value="on"> On </option>
+					
+				</select>
+			</li>
+			
+		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="imageresizing" id="imageresizing-label" class="ui-slider">Image Resizing:</label>
+				<select data-role="slider" id="imageresising" name="imageresizing" class="ui-slider-switch">
+					<option value="off">Off</option>
+					<option selected="selected" value="on">On</option>
+				</select>
+			</li>
+			
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="imagealignmentmenu" id="imageresizing-label" class="ui-slider">Image Alignment Menu:</label>
+				<select data-role="slider" id="imagealignmentmenu" name="imagealignmentmenu" class="ui-slider-switch">
+					<option value="off">Off</option>
+					<option selected="selected" value="on">On</option>
+				</select>
+			</li>
+    </ul>
 	
 	</div>
 	<!-- wysiwyg Settings --!>
 	
+		<!--File Naming +Binary File Naming--!>
+	<div id="fileNaming-div"   style="display:none;" >
+	
+    <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+    		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="defaultextension" class="ui-input-text"> Default Extention</label>
+	        	<input type="text" value="" id="defaultextension" name="defaultextension" class="ui-input-text ui-body-c ui-corner-all ">
+  		 	</li>
+   				      
+   			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="filenameregex" class="ui-input-text"> File Name Regex:</label>
+	        	<input type="text" value="" id="fielnameregex" name="filenameregex" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+   		    
+   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label  style="width:80%;" for="notregex" id="notregex-label" class="ui-slider"> Filename Must NOT Match Regex:</label>
+				<select data-role="slider" id="notregex" name="notregex" class="ui-slider-switch">
+				<option  selected="selected" value="off">Off</option>
+				<option value="on"> On </option>
+					
+				</select>
+			</li>
+			  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="filenameregex" class="ui-input-text"> File Name Regex:</label>
+	        	<input type="text" value="" id="fielnameregex" name="filenameregex" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="filenameregexDesc" class="ui-input-text"> File Name Regex description:</label>
+	        	<input type="text" value="" id="fielnameregexDesc" name="filenameregexDesc" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="filenameregexTest" class="ui-input-text">Test File Name Regex:</label>
+	        	<input type="text" value="" id="fielnameregexTest" name="filenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+			
+		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label style="width:80%;" for="uppercasefoldernames" id="notregex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
+				<select data-role="slider" id="uppercasefoldernames" name="uppercasefoldernames" class="ui-slider-switch">
+				<option  selected="selected" value="off">Off</option>
+				<option value="on"> On </option>
+					
+				</select>
+		</li>
+   		      
+   		
+   		      
+    </ul>
+    
+    <br />
+   <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+   
+    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+    Binary File Naming
+    
+    </li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="binaryfilenameregex" class="ui-input-text"> Binary File Name Regex:</label>
+	        	<input type="text" value="" id="binaryfielnameregex" name="binaryfilenameregex" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+   		    
+   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+    	<label  style="width:80%;" for="binarynotregex" id="binarynotregex-label" class="ui-slider">Binary Filename Must NOT Match Regex:</label>
+				<select data-role="slider" id="binarynotregex" name="binarynotregex" class="ui-slider-switch">
+				<option  selected="selected" value="off">Off</option>
+				<option value="on"> On </option>
+					
+				</select>
+    
+    </li>
+    			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="binaryfilenameregexDesc" class="ui-input-text"> Binary File Regex Description:</label>
+	        	<input type="text" value="" id="binaryfilenameregexDesc" name="binaryfilenameregexDesc" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+   		     <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  style="width:36%"  for="binaryfilenameregexTest" class="ui-input-text">Test Binary File Regex:</label>
+	        	<input type="text" value="" id="binaryfilenameregexTest" name="binaryfilenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
+   		    </li>
+   		    
+    </ul>
 	</div>
+	
+	
+	</div>
+	
+
+	
 </div><!-- /grid-a -->
 
 </form>
 	</div>
 	
-	<div data-role="footer" id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div id="footer" data-role="footer" id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
@@ -654,24 +525,24 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 </div>		
 			<script type="text/javascript">
 
-
+	$.mobile.fixedToolbars.show(true);
 
 
 			$('#siteinformation').live('click', function(){
 			$(this).dblclick();
 			$('#siteinformation-div').show();
 			$(this).addClass('ui-btn-hover-c');
-			$('#productioninformation-div, #ldp-div , #sitepreference-div , #publishSettings-div').hide();
-			$('#productioninformation , #ldp , #sitepreference , #publishSettings').removeClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div , #publishSettings-div ,#wysiwygSettings-div, #directEditBtn-div, #fileNaming-div' ).hide();
+			$('#productionserver , #ldp , #sitepreference , #publishSettings , #wysiwygSettings, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
 			}
 			);
 			
-			 $('#productioninformation').live('click', function(){
+			 $('#productionserver').live('click', function(){
 			 $(this).dblclick();
-			 $('#productioninformation-div').show();
+			 $('#productionserver-div').show();
 			 $(this).addClass('ui-btn-hover-c');
-			 $('#siteinformation-div, #ldp-div,#sitepreference-div , #publishSettings-div ').hide();
-			 $('#siteinformation, #ldp,#sitepreference , #publishSettings ').removeClass('ui-btn-hover-c');
+			 $('#siteinformation-div, #ldp-div,#sitepreference-div , #publishSettings-div  , #wysiwygSettings-div, #directEditBtn-div, #fileNaming-div').hide();
+			 $('#siteinformation, #ldp,#sitepreference , #publishSettings , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
 			}
 			);
 			
@@ -680,8 +551,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		   $(this).dblclick();
 		   $('#ldp-div').show();
 		   $(this).addClass('ui-btn-hover-c');
-		   $('#siteinformation-div , #productioninformation-div , #sitepreference-div , #publishSettings-div ').hide();
-		   $('#siteinformation, #productioninformation , #sitepreference , #publishSettings').removeClass('ui-btn-hover-c');
+		   $('#siteinformation-div , #productionserver-div , #sitepreference-div , #publishSettings-div , #wysiwygSettings-div , #directEditBtn-div , #fileNaming-div').hide();
+		   $('#siteinformation, #productionserver , #sitepreference , #publishSettings , #wysiwygSettings, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
 			}
 			);
 			
@@ -689,8 +560,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).dblclick();
 			$('#sitepreference-div').show();
 			$(this).addClass('ui-btn-hover-c');
-			$('#productioninformation-div , #ldp-div , #siteinformation-div , #publishSettings-div ').hide();
-			$('#productioninformation , #ldp , #siteinformation , #publishSettings ').removeClass('ui-btn-hover-c');
+			$('#productionserver-div , #ldp-div , #siteinformation-div , #publishSettings-div , #wysiwygSettings-div , #directEditBtn-div , #fileNaming-div').hide();
+			$('#productionserver , #ldp , #siteinformation , #publishSettings  , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
 			}
 			);
 			
@@ -699,8 +570,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).dblclick();
 			 $('#publishSettings-div').show();
 			 $(this).addClass('ui-btn-hover-c');
-			 $('#productioninformation-div , #ldp-div , #sitepreference-div ,  #siteinformation-div').hide();
-			 $('#productioninformation , #ldp , #sitepreference ,  #siteinformation').removeClass('ui-btn-hover-c');
+			 $('#productionserver-div , #ldp-div , #sitepreference-div ,  #siteinformation-div  , #wysiwygSettings-div,#directEditBtn-div , #fileNaming-div').hide();
+			 $('#productionserver , #ldp , #sitepreference ,  #siteinformation  , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
 			}
 			);
 			
@@ -708,89 +579,150 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).dblclick();
 			$('#wysiwygSettings-div').show();
 			$(this).addClass('ui-btn-hover-c');
-			$('#productioninformation-div, #ldp-div , #sitepreference-div , #publishSettings-div').hide();
-			$('#productioninformation , #ldp , #sitepreference , #publishSettings').removeClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #directEditBtn-div, #directEditBtn-div , #fileNaming-div').hide();
+			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings,#directEditBtn, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
 			}
 			);
 		
 			
+			$('#directEditBtn').live('click', function(){
+			$(this).dblclick();
+			$('#directEditBtn-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #wysiwygSettings-div, #fileNaming-div ').hide();
+			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings, #wysiwygSettings, #fileNaming').removeClass('ui-btn-hover-c');
+			}
+			);
+		
+		
+			$('#fileNaming').live('click', function(){
+			$(this).dblclick();
+			$('#fileNaming-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #wysiwygSettings-div, #directEditBtn-div').hide();
+			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings, #wysiwygSettings , #directEditBtn').removeClass('ui-btn-hover-c');
+			}
+			);
+		
+			$('#templateDirectory').live('click', function(){
+			$(this).dblclick();
+			var templateDirectory = $('#uselocaltemplates').val();
+			console.log(templateDirectory );
+			if(templateDirectory == "false"){ 
+			$('#LocalTemplatePath').hide();
+			$('#RemoteTemplatePath').show();
+			}
+			else{
+			$('#RemoteTemplatePath').hide();
+			$('#LocalTemplatePath').show();
+			}
+			
+			});
+		
+		
+		
+		
 		     $('#createNewSite').click(function() {
 		      			var params=location.search;
-		      			var sitename=$('#sitename').val();
-		      			var firstname = $('#firstname').val();
-		      			var lastname = $ ('#lastname').val();
-		      			var organization =$ ('#organization').val();
-		      			var street = $('#street').val();
-		      			var city = $ ('#city').val();
-		      			var state =$('#state').val();
-		      			var zip =$('#zip').val();
-		      			var country= $('#country').val();
-		      			var phone = $('#phone').val();
-		      			var email = $('#email').val();
-		      			var editor = $('#editor').val();
-		      			var timezone = $('#timezone').val();
-		      			var locale = $('#locale').val();
-		      			var helpurl = $('#helpurl').val();
-		      			var logourl = $('#logourl').val();
-		      			var pagecheck = $('#pagecheck').val();
-		      			var spellcheck =$('#spellcheck').val();
-		      			var linkcheck = $ ('#linkcheck').val();
-		      			var pagevalidate =$('#pagevalidate').val();
-		      			var accessibility =$('#accessibility').val();
-		      			var publishthreshold =$('#publishthreshold').val();
-		      			var tweet = $ ('#tweet').val();
-		      			var cas = $('#cas').val();
-		      			var announcementurl = $('#announcementurl').val();
-		      			var logouturl = $('#logouturl').val();
-		      			var addons = $('#addons').val();
-		      			var dependancymanager= $('#dependancymanager').val();
-		      			var docucomp= $('#docucomp').val();
-		      			var revealpass= $('#revealpass').val();
-		      			var searchon =$('#searchon').val();
-		      			var ldpimage =$('#ldpimagegallery').val();
-		      			var hidesite =$('#hidesite').val();
-		     
+		      			var sitename =$('#sitename').val();
+		      			var server = $('#faddr').val();
+		      			var userneme = $ ('#fuser').val();
+		      			//var authentication =$ ('#organization').val();
+		      			var password = $('#pass').val();
+		      			//var umask = $ ('#city').val();
+		      			var ftproot =$('#froot').val();
+		      			var httproot =$('#hroot').val();
+		      			var ftphome= $('#fhome').val();
+		      			var ftpdirectory = $('#fpath').val();
+		      			var imagedirectory = $('#fpathi').val();
+		      			var galleryPath =$('#galleryPath').val();
+		      			var uselocaltemplates=$('#uselocaltemplates').val();
+		      			var Rtemplatedirectory = $('#Rtroot').val();
+		      			var Ltemplatedirectory = $('#Ltroot').val();
+		      			var btnType = $('#btnType').val();
+		      			var btnCode = $('#btnCode').val();
+		      			var ldpAdminHost = $('#ldpAdminHost').val();
+		      			var downloadRegBtn = $('#downloadRegBtn').val();
+		      			var testConnectivityBtn = $('#testConnectivityBtn').val();
+		      			var recyclebin =$('#recyclebin').val();
+		      			var timeZone = $ ('#timeZone').val();
+		      			var locale =$('#locale').val();
+		      			var dm =$('#dm').val();
+		      			var findreplace =$('#findreplace').val();
+		      			var search = $ ('#search').val();
+		      			var buildIndex = $('#buildIndex').val();
+		      			var finalcheck = $('#finalcheck').val();
+		      			var removeoutags = $('#removeoutags').val();
+		      			var wallpost = $('#wallpost').val();
+		      			var shorturl= $('#shorturl').val();
+		      			var decorativeimages= $('#decorativeimages').val();
+		      			var toolbar= $('#toolbar').val();
+		      			var asciionly =$('#asciionly').val();
+		      			var imageresizing =$('#imageresizing').val();
+		      			var imagealignmentmenu =$('#imagealignmentmenu').val();
+		      			var defaultextension= $('#defaultextension').val();
+		      			var filenameregex= $('#filenameregex').val();
+		      			var filenameregexDesc=$('#filenameregexDesc').val();
+		      			var notregex= $('#notregex').val();
+		      			var binaryfilenameregexDesc =$('#binaryfilenameregexDesc').val();
+		      			var uppercasefoldernames= $('#uppercasefoldernames').val();
+		      			var binaryfilenameregex= $('#binaryfilenameregex').val();
+		      			var binarynotregex= $('#binarynotregex').val();
+		     		
+		     		
 		     		$.ajax({
-		     					url: '/sites/new',
+		     					url: '/sites/new'+ location.search,
 		     					type:'post',
 		     					data:{
-		     					'site':	sitename,
-		      					'first_name': firstname,
-		      				    'last_name': lastname,
-		      					'company': organization,
-		      				    'street':street,
-		      					'city': city,
-		      			     	'state':state,
-		      					'zip': zip,
-		      					'country':country,
-		      					'phone': phone,
-		      					'email':email,
-		      					'just_edit':editor,
-		      					'time_zone':timezone,
-		      					'locale':locale,
-		      					'help_root': helpurl,
-		      					'logo_url':logourl,
-								 'file_check':pagecheck,
-								 'spell_check':spellcheck,
-								 'link_check':linkcheck,
-								 'page_validate': pagevalidate,
-								 'accessibility':accessibility,
-		      			        'publish_threshold':publishthreshold,
-		      			        'default_tweet':  tweet,
-		      					'sso_url':cas,
-		      					'announcement_url':announcementurl,
-		      					'logout_url':logouturl,
-		      					'addons':addons,
-		      					'dependency_manager':dependancymanager,
-		      					'compare': docucomp ,
-		      			      	'show_pass': revealpass,
-		      			        'search':searchon,
-		      			        'ldp':ldpimage,
-		      		            'hidden':hidesite,
-		     					
+		     					'site': sitename,
+		     					'address':server,
+		     					'username':userneme,
+		     					'password':password,
+		     					'ftp_root':ftproot,
+		     					'http_root':httproot,
+		     					'ftp_home':ftphome,
+		     					'ftp_path':ftpdirectory,
+		     					'image_path':imagedirectory,
+		     					'ldp_gallery_path':galleryPath,
+		     					'local_templates':uselocaltemplates,
+		     					'local_template_path':Ltemplatedirectory,
+		     					'local_template_path':Rtemplatedirectory,
+		     					'button_type':btnType,
+		     					'button_code':btnCode,
+		     					//'':ldpAdminHost,
+		     					//'':downloadRegBtn,
+		     					//'':testConnectivityBtn,
+		     					'trash_path':recyclebin,
+		     					'time_zone':timeZone,
+		     					'locale':locale,
+		     					'dependency_mgr':dm,
+		     					'find_replace':findreplace,
+		     					'quick_search':search,
+		     					//'':buildIndex,
+		     					'final_check':finalcheck,
+		     					'filter_tags':removeoutags,
+		     					'default_tweet':wallpost,
+		     					'url_type':shorturl,
+		     					'decorative_images':decorativeimages,
+		     					'toolbar':toolbar,
+		     					'ascii_only':asciionly,
+		     					//'':imageresizing,
+		     					//'':imagealignmentmenu,
+		     					'default_extension':defaultextension,
+		     					'file_regex':filenameregex,
+		     					'negate_regex':notregex,
+		     					'file_regex_desc':filenameregexDesc,
+		     					//'':uppercasefoldernames,
+		     					//'':binaryfilenameregex,
+		     					//'':binarynotregex,
+		     					//'':binaryfilenameregexDesc,
 		     					
 		     					},
 		     					success: function(data){
+		     					if (data.error) {
+		     					console.log(data.error);
+									//window.location.href = 'super-index.html';
+									}
 		     							window.location.href='sites.html' + params;	
 		     					}
 		     		
@@ -809,6 +741,9 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		
 		});
 		//cancel Button
+		
+		
+		
 		
 		
 			$('.logout').click(function() {

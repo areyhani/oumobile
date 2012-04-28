@@ -37,35 +37,32 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <body> 
 
 <div data-role="page" id="account">
-		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div id="header" data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="accountHeader"></h1>
 		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
 		<div data-role="content">
-		<ul data-role="listview" id="account-list">
+		
+	<ul  class="ui-btn ui-btn-icon-right" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
+		<li data-role="list-divider">Sites</li>
 		<li id="sites" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
-		<a rel="external"href="sitelist.html" > Sites </a>
+		<a rel="external"href="sitelist.html" ><label for="usercount"> Number of Users:  </label> <span id="usercount"> <br /> <label for="pagecount">Number of Pages</label> </span> <span id="pagecount"> </span></a>
 		</li>
-		<li id="users" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
+    </ul>
+    
+    <br />
+    <ul data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
+		<li data-role="list-divider">Users</li>
+		<li id="sites" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
 		<a rel="external" href="userslist.html" > Users </a>
 		</li>
+    </ul>
 
-		</ul>
 	</div>
 	
-	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
-<div data-role="navbar" class="ui-navbar" role="navigation">
-<ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
-<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
-</ul>
-</div>
-
-</div>
 
 
 
@@ -74,7 +71,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 <script type="text/javascript">	
 
-
+	$.mobile.fixedToolbars.show(true);
 //accountDiv
 	$('#account').on('pageshow', function() {
 	var params =location.search;
@@ -85,7 +82,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				  if(data.error){
 				  window.location.href='super-index.html'+location.search;
 				  }
-				$('#accountHeader').text(data.account);
+				$('#accountHeader').text("Account: "+data.account);
 				 var accountDiv = $('#account');
 				// accountDiv.empty();
 				 

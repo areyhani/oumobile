@@ -18,21 +18,22 @@
 </head> 
 <body> 
 <div data-role="page" id="accounts">
-		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div id="header" data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1>Accounts Edit Mode</h1>
 		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
 	<div data-role="content">
-	
+	<form>
 	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
      <fieldset  id="account-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
 		
 	</fieldset></div>
+	</form>
 	</div>
 	
-	<div data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
@@ -44,6 +45,8 @@
 
 </div>
 	<script type="text/javascript">
+	$.mobile.fixedToolbars.show(true);
+		
 		$('#accounts').on('pageshow', function() {
 			$.ajax({
 				url: '/accounts/list',
@@ -63,6 +66,7 @@
 						   var inputElement = $(document.createElement('input'))
 	                             .attr({type: 'checkbox' })
 	                             .attr({id: idCount+1 })
+	                             .attr({name: idCount+1 })
 	                             .addClass('custom')
 	                             .attr({value: value.account });
 	                             
@@ -80,7 +84,7 @@
 							
 				
 					
-					         var hyperlinkInputText = a.append(inputText);
+					        var hyperlinkInputText = a.append(inputText);
 							var addinputElement = inputElement.after(hyperlinkInputText);
 					     	var li = $(document.createElement('li')).append(addinputElement);
 							accounts.append(li);
@@ -116,27 +120,32 @@
 		
 		});
 		
-		$('#deleteBtn').click(function(){
-			var params= location.search;
-		$("input[type=checkbox][checked]").each( 
-   			 function() { 
-   			 $.ajax({
-			
-			url:'/accounts/delete?account='+params,
-			type:'post',
-			success: function(data){
 		
-			}
-			
-			});
-     
-     	  	 } 
-   			    );
+		$('#deleteBtn').click(function() {
+			var params= location.search;
+			var deletArray =$("input:checked");
+   			 //console.log(deletArray);
+   			 var deleteString= "";
+   			 $.each(deletArray, function(index, value) { 
+ 				 console.log(index + ': ' + value.defaultValue); 
+ 				 deleteString= deleteString + '&account='+value.defaultValue;
+					});
+				console.log( deleteString);		
+			$.ajax({
+				url:'/accounts/delete?'+ deleteString,
+				type: 'post',
+				success: function(data) {
+					//window.location.href = 'accounts.html'+location.search;
+				},
+			complete: function () {
+            $.mobile.hidePageLoadingMsg();
+       		}
+
+				
+			}).done(function () { alert('Finished ajax'); }); 
+		});
 
 				//var acccountToDelete= 
-			
-			
-		});
 		
 		
 		

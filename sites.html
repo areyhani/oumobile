@@ -10,7 +10,7 @@
 </head> 
 <body> 
 <div data-role="page" id="sites">
-		<div data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div id="header" data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
 	
 		<h1>Sites</h1>
@@ -22,6 +22,9 @@
 	</div>
 	<script type="text/javascript">
 		$('#sites').on('pageshow', function() {
+		
+	$.mobile.fixedToolbars.show(true);
+		
 			$.ajax({
 				url: '/sites/list',
 				type: 'get',
