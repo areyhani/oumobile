@@ -135,14 +135,13 @@
 				url:'/accounts/delete?'+ deleteString,
 				type: 'post',
 				success: function(data) {
-					//window.location.href = 'accounts.html'+location.search;
+				window.location.href = 'accounts.html'+location.search;
 				},
 			complete: function () {
-            $.mobile.hidePageLoadingMsg();
-       		}
-
-				
-			}).done(function () { alert('Finished ajax'); }); 
+            $.mobile.showPageLoadingMsg();
+       			 }	
+			}).done(function(){
+		alert('success message');});
 		});
 
 				//var acccountToDelete= 

@@ -37,7 +37,7 @@
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
 <li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li id="deleteBtn" class="ui-block-b" id="editBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-b" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
 <li id="addBtn" class="ui-block-c"><a  data-theme="b" href="site-add-ipad-version.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
@@ -118,30 +118,33 @@
 		
 		});
 		
-		$('#deleteBtn').click(function(){
+	
+	//Delete Site
+		$('#deleteBtn').click(function() {
 			var params= location.search;
-		$("input[type=checkbox][checked]").each( 
-   			 function() { 
-   			 $.ajax({
-			
-			url:'/sites/delete?site='+params,
-			type:'post',
-			success: function(data){
-		
-			}
-			
-			});
-     
-     	  	 } 
-   			    );
-
-				//var acccountToDelete= 
-			
-			
+			var deletArray =$("input:checked");
+   			 console.log(deletArray);
+   			 var deleteString= "";
+   			 $.each(deletArray, function(index, value) { 
+ 				 console.log(index + ': ' + value.defaultValue); 
+ 				 deleteString= deleteString + '&site='+value.defaultValue;
+					});
+				console.log( deleteString);		
+			$.ajax({
+				url:'/sites/delete'+location.search+ deleteString,
+				type: 'post',
+				success: function(data) {
+				window.location.href = 'sitelist.html'+location.search;
+				},
+			complete: function () {
+            $.mobile.showPageLoadingMsg();
+       			 }	
+			}).done(function(){
+		    alert('success message');
 		});
-		
-		
-		
+		});
+
+		//Add Site
 		
 		
 		$('#addBtn').click(function(){
