@@ -9,6 +9,18 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.js"></script>
+	<style type="text/css">
+	input[type=checkbox]
+		{
+  		-ms-transform: scale(1.25); /* IE */
+  		-moz-transform: scale(1.25); /* FF */
+  		-webkit-transform: scale(1.25); /* Safari and Chrome */
+ 		 padding: 10px;
+ 		 margin:20px 15px 10px 15px;
+		}
+
+	
+	</style>
 </head> 
 <body> 
 <div data-role="page" data-theme="c" id="index">
@@ -19,27 +31,61 @@
 	<div data-role="content">
 		<h2 style="margin-top:0px;" >Super Admin Login</h2>
 		<div class="settings">
-			<label for="username" class="setting">Username</label>
-			<input type="text" name="username" id="username" class="setting" />
-			<label for="password" class="setting">Password</label>
-			<input type="password" name="password" id="password" class="setting" />
+
+		<div >	<label for="username" class="setting">Username</label> 
+			<input type="text" name="username" id="username" class="setting" /></div>
+		<div >	<label for="password" class="setting">Password</label>
+			<input type="password" name="password" id="password" class="setting" /> </div>
+	
+        <input id="rememberpass" name="rememberpass" class="custom" type="checkbox" data-role="none" />
+	  <label for ="rememberpass"> Remember Password </label>
+   
+				
 			<div style="margin: 5px 0px 5px 5px;">
-				<input type="button"   data-theme="b" data-inline="true" data-iconpos="center" value="Login" id="submit" />
+			<input type="button"   data-theme="b" data-inline="true" data-iconpos="center" value="Login" id="submit" />
 			</div>
 		</div>
 	</div>
 	<span id="dialogoutput" style="display:none;"></span>
 		<script type="text/javascript">
+		
 		$('#index').on('pageinit', function() {
+
+	     if (typeof(localStorage) == 'undefined' ) {
+	      console.log('Browser doesnt support localStorage');
+			}
+			else{
+			var setusername=localStorage.getItem('username');
+			var setPass=localStorage.getItem('pass');
+			$('#username').val(setusername);
+			$('#password').val(setPass);
+			}
+		
+		//submit when Enter Key is pressed
 			$('input').keypress(function(event) {
 				 if (event.which === 13) {
 					 $('#submit').click();
 				 }
+				 	 
+		
 			});
+			
 			$('#submit').click(function() {
 				var params = location.search;
+				var rememberpassword= $('#rememberpass').serialize();
+
+		
 				var username = $('#username').val();
 				var password = $('#password').val();
+				
+		// If Remember Pass is selected, save pass in local storage.
+		
+				if (rememberpassword.match("on")){ 
+				localStorage['username'] =username;
+				localStorage['pass']=password;
+				}
+				
+				
 				$.ajax({
 					url: '/authentication/admin_login' + params,
 					type: 'post',

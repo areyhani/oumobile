@@ -38,7 +38,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header"> New Account </h1>
 
-		<a href="#" data-icon="gear" class="logout">Logout</a>
+		<a href="" data-icon="gear" class="logout">Logout</a>
 	</div>
 
 <div data-role="content" style="padding:10px 1px;">
@@ -73,23 +73,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				</li>
 				
 
-					
-					
-	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    <div>
-        <label for="editor-label" style="width:33%;padding-top:5px;margin-right:-3px;" class="ui-input-text">Select an Editor: </label>
-	      <select name="editor" id="editor" style="width:53%;" data-theme="c"  data-iconshadow="false">
-	                    <option value="0" selected="selected">Select an Editor</option>
-		                <option value="1">EOPro</option>
-						<option value="2">OmniDev + EOPro</option>
-						<option value="3">EditLive</option>
-						<option value="4">OmniDev + EditLive</option>
-						<option value="5">Universal Editor v2 (IE,Fx) + v1 (Safari)</option>
-						<option value="6" selected="selected">TinyMCE (latest)</option>
-				
-			</select>
-		</div>
-		</li>
 				
 					
 
@@ -540,15 +523,17 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="shibboleth" name="shibboleth" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-   		  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		      
+   		  	  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
    				<label  style="width:47%"  for="announcementurl" class="ui-input-text"> Announcement URL</label>
 	        	<input type="text" value="" id="announcementurl" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-   		      			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		      
+   		      <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
-   				<label  style="width:47%"  for="logouturl" class="ui-input-text">  Logout URL</label>
+   				<label style="width:47%"  for="logouturl" class="ui-input-text">  Logout URL</label>
 	        	<input type="text" value="" id="logouturl" name="logouturl" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
@@ -566,55 +551,55 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
 				<select data-role="slider" id="addons" name="addons" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option  selected="selected"  value="on">On</option>
+					<option value="false">Off</option>
+					<option  selected="selected" value="true">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="dependancymanager" id="dependancymanager-label" class="ui-slider"> Dependency Manager:</label>
 				<select data-role="slider" id="dependancymanager" name="dependancymanager" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="docucomp" id="docucomp-label" class="ui-slider">Document Comparison:</label>
 				<select data-role="slider" id="docucomp" name="docucomp" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected"  value="on">On</option>
+					<option value="false">Off</option>
+					<option selected="selected" value="true">On</option>
 				</select>
 			</li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="revealpass" id="revealpass-label" class="ui-slider">Reveal Site's Password:</label>
 				<select data-role="slider" id="revealpass" name="revealpass" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
 						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="ldpimagegallery" id="ldpimagegallery-label" class="ui-slider"> LDP - Image Gallery:</label>
 				<select data-role="slider" id="ldpimagegallery" name="ldpimagegallery" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 						
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="searchon" id="searchon-label" class="ui-slider">Search On:</label>
 				<select data-role="slider" id="searchon" name="searchon" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected"  value="on">On</option>
+					<option value="false">Off</option>
+					<option selected="selected"  value="true">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="hideaccount" id="hideaccount-label" class="ui-slider"> Hide Account:</label>
 				<select data-role="slider" id="hideaccount" name="hideaccount" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
@@ -711,16 +696,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var country= $('#country').val();
 		      			var phone = $('#phone').val();
 		      			var email = $('#email').val();
-		      			var editor = $('#editor').val();
 		      			var timezone = $('#timezone').val();
 		      			var locale = $('#locale').val();
 		      			var helpurl = $('#helpurl').val();
 		      			var logourl = $('#logourl').val();
 		      			var pagecheck = $('#pagecheck').val();
-		      			var spellcheck =$('#spellcheck-span').hasClass('ui-checkbox-on');
-		      			var linkcheck = $ ('#linkcheck-span').hasClass('ui-checkbox-on');
-		      			var pagevalidate =$('#pagevalidate-span').hasClass('ui-checkbox-on');
-		      			var accessibility =$('#accessibility-span').hasClass('ui-checkbox-on');
+		      			var spellcheck =$('#spellcheck').serialize();
+		      			var linkcheck = $ ('#linkcheck').serialize();
+		      			var pagevalidate =$('#pagevalidate').serialize();
+		      			var accessibility =$('#accessibility').serialize();
 		      			var publishthreshold =$('#publishthreshold').val();
 		      			var tweet = $ ('#tweet').val();
 		      			var cas = $('#cas').val();
@@ -733,17 +717,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var searchon =$('#searchon').val();
 		      			var ldpimage =$('#ldpimagegallery').val();
 		      			var hideaccount =$('#hideaccount').val();
-		      			if(spellcheck== "false") {spellcheck=1;} else {spellcheck=0;}
-		      			if(linkcheck== "false") {linkcheck=1;} else {linkcheck=0;}
-		      			if(pagevalidate== "false") {pagevalidate=1;} else {pagevalidate=0;}
-		      			if(accessibility== "false") {accessibility=1;} else {accessibility=0;}
-		     
-		     
-		     
-		    				 console.log(spellcheck);
-		    				 console.log(linkcheck);
-		    				 console.log(pagevalidate);
-		    				 console.log(accessibility);
+		      			if(spellcheck.match("on")){spellcheck=1;} else {spellcheck=0;}
+		      			if(linkcheck.match("on")) {linkcheck=1;} else {linkcheck=0;}
+		      			if(pagevalidate.match("on")) {pagevalidate=1;} else {pagevalidate=0;}
+		      			if(accessibility.match("on")) {accessibility=1;} else {accessibility=0;}
+		        
+		                     console.log('spellcheck:'+spellcheck);
+		    				 console.log('linkcheck:'+linkcheck);
+		    				 console.log('pagevalidate:'+pagevalidate);
+		    				 console.log('accessibility:'+accessibility);
 		     
 		     
 		     
@@ -762,7 +744,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      					'country':country,
 		      					'phone': phone,
 		      					'email':email,
-		      					'just_edit':editor,
 		      					'time_zone':timezone,
 		      					'locale':locale,
 		      					'help_root': helpurl,
@@ -790,10 +771,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					success: function(data){
 		     					
 		     					if(data.error){
-		     					console.log(data.error);
+		     					alert(data.error);
+		     					//window.location.href='super-index.html'+params;
 		     					}
 		     					
-		     							window.location.href='accounts.html' + params;	
+		     					//window.location.href='accounts.html' + params;	
 		     					}
 		     		
 		     		});
@@ -814,11 +796,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		
 		
 			$('.logout').click(function() {
+			//localStorage.removeItem('username');
+			//localStorage.removeItem('pass');
 				$.ajax({
-					url: '/authentication/logout',
+					url: '/authentication/admin_logout',
 					type: 'post',
 					success: function(data) {
-					window.location.href = 'super-index.html'+ location.search;
+					if(data.error){console.log(data.error);}
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
 					}
 				});
 			});

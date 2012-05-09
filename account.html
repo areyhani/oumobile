@@ -48,7 +48,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<ul  class="ui-btn ui-btn-icon-right" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
 		<li data-role="list-divider">Sites</li>
 		<li id="sites" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
-		<a rel="external" id="sites" href="" ><label for="usercount"> Number of Users:  </label> <span id="usercount"> <br /> <label for="pagecount">Number of Pages</label> </span> <span id="pagecount"> </span></a>
+		<a rel="external"  href="" ><label  id="sitesc" for="usercount"> </label> <span id="usercount"> <br /> <label id="pagesc" for="pagecount"></label> </span> <span id="pagecount"> </span>
+		<span > <br /> <label id="savesc" for="savescount"></label> </span> <span id="savescount"> </span></a>
 		</li>
 	
     </ul>
@@ -56,8 +57,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
     <br />
     <ul data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
 		<li data-role="list-divider">Users</li>
-		<li id="sites" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
-		<a rel="external" id="users" href="" > Users </a>
+		<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
+		<a rel="external" id="usersc" href=""  id="usersc"  >  </a>
 		</li>
     </ul>
 
@@ -86,14 +87,19 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				$('#accountHeader').text("Account: "+data.account);
 				 var accountDiv = $('#account');
 				// accountDiv.empty();
-				 
+				 console.log(data);				
+			    $('#sitesc').text("Number of Sites: " + data.site_count);
+				$('#usersc').text("Number of Users: " + data.user_count);
+				$('#pagesc').text("Number of Pages: " + data.page_count);
+				$('#savesc').text("Number of Saved Pages: " + data.save_count);
 				}
 				
 				});
+				
 			
 		});
 //users
-$('#users').click(function(){
+$('#usersc').click(function(){
 		$.ajax({
 			url:'/users/list?account='+location.search,
 			type:'get',
@@ -142,11 +148,14 @@ $('#sites').click(function(){
 		
 	
 			$('.logout').click(function() {
+			localStorage.removeItem('username');
+			localStorage.removeItem('pass');
 				$.ajax({
-					url: '/authentication/logout',
+					url: '/authentication/admin_logout',
 					type: 'post',
 					success: function(data) {
-					window.location.href = 'super-index.html'+location.search;
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
 					}
 				});
 			});

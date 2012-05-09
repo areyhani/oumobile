@@ -75,23 +75,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 					
 					
-	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    <div>
-        <label for="editor-label" style="width:33%;padding-top:5px;margin-right:-3px;" class="ui-input-text">Select an Editor: </label>
-	      <select name="editor" id="state" style="width:53%;" data-theme="c"  data-iconshadow="false">
-	            <option selected="selected">Select a State</option>
-		                <option value="2">EOPro</option>
-						<option value="3">OmniDev + EOPro</option>
-						<option value="4">EditLive</option>
-						<option value="5">OmniDev + EditLive</option>
-						<option value="6">Universal Editor v2 (IE,Fx) + v1 (Safari)</option>
-						<option value="7" selected="selected">TinyMCE (latest)</option>
-				
-			</select>
-		</div>
-		</li>
-				
-					
 
 			</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -122,7 +105,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="personalinformation-div" style="display:none">
 	
 	                    
-        <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+        <ul id="email-ul" data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -141,7 +124,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="phone" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<li id="email-li" data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="email" class="ui-input-text">Email:</label>
 	        	<input type="text" value="" id="email" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
@@ -168,7 +151,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
       	<label for="state" class="ui-input-text">State:</label>
 	   <select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
 	 
-		            <option selected="selected">Select a State</option>
+		            <option value="0">Select a State</option>
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
 					<option value="AZ">Arizona</option>
@@ -225,17 +208,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 
    		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
    		  <label for="name" class="ui-input-text">Zip</label>
-	        	<input type="text" value="" id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
+	      <input  type="text" value="" data-theme="e" id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
    		  </li>
    		  
    	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
     <div>
       	<label for="country" class="ui-input-text">Country:</label>
 	   <select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-	                <option selected="selected">Select a country</option>
+	                <option value="0">Select a country</option>
 					<option value="AF">Afghanistan</option>
 					<option value="AL">Albania</option>
 					<option value="DZ">Algeria</option>
@@ -458,7 +439,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					<option value="UA">Ukraine</option>
 					<option value="AE">United Arab Emirates</option>
 					<option value="UK">United Kingdom</option>
-					<option value="US" selected="selected">United States</option>
+					<option value="US">United States</option>
 					<option value="UM">US Minor Outlying Isles</option>
 					<option value="UY">Uruguay</option>
 					<option value="UZ">Uzbekistan</option>
@@ -490,14 +471,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
   	
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			             	   <label for="pagecheck" class="ui-input-text">Page Check:</label>
-                   <select id="pagecheck" name="pagecheck" onchange="toggleFileCheckList(this.value)">
+			<label for="pagecheck" class="ui-input-text">Page Check:</label>
+                   <select id="pagecheck" name="pagecheck">
 							<option value="0">Disabled</option>
 							<option value="1">Admin Enabled</option>
 							<option value="2">User Enabled</option>
-							<option value="3" selected="selected">Force Enabled</option>
+							<option value="3">Force Enabled</option>
 					</select>
-	        	<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" /><div class="ui-controlgroup-label" role="heading">Choose :</div><div class="ui-controlgroup-controls">
+	        	<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+	        	<div class="ui-controlgroup-label" role="heading">Choose :</div><div class="ui-controlgroup-controls">
 					
 					<div class="ui-checkbox"><input type="checkbox" class="custom" id="spellcheck" name="spellcheck" value="1" /><label for="spellcheck" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-on" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span  style="padding-top:4px" class="ui-btn-text">Spell Check:</span></span></label></div>
 					
@@ -566,55 +548,48 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
 				<select data-role="slider" id="addons" name="addons" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option  selected="selected"  value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="dependancymanager" id="dependancymanager-label" class="ui-slider"> Dependency Manager:</label>
 				<select data-role="slider" id="dependancymanager" name="dependancymanager" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="docucomp" id="docucomp-label" class="ui-slider">Document Comparison:</label>
-				<select data-role="slider" id="docucomp" name="docucomp" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected"  value="on">On</option>
-				</select>
-			</li>
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="revealpass" id="revealpass-label" class="ui-slider">Reveal Site's Password:</label>
 				<select data-role="slider" id="revealpass" name="revealpass" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
 						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="ldpimagegallery" id="ldpimagegallery-label" class="ui-slider"> LDP - Image Gallery:</label>
 				<select data-role="slider" id="ldpimagegallery" name="ldpimagegallery" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 						
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="searchon" id="searchon-label" class="ui-slider">Search On:</label>
 				<select data-role="slider" id="searchon" name="searchon" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected"  value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="hideaccount" id="hideaccount-label" class="ui-slider"> Hide Account:</label>
 				<select data-role="slider" id="hideaccount" name="hideaccount" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option value="on">On</option>
+					<option value="false">Off</option>
+					<option value="true">On</option>
 				</select>
 			</li>
 			
@@ -644,13 +619,33 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 </div>
 
 </div>
-</div>		
+</div>	
+
+//alert page 
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h1 id="alert_title">alert title</h1>
+            <p id="alert_body">alert body</p>
+            <a href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+    </div>
+
+
+
+
 			<script type="text/javascript">
-
+			var validateError=0;
+			$(document).bind('mobileinit',function(){
+			$.mobile.selectmenu.prototype.options.nativeMenu = false;
+			});
 
 			$.mobile.fixedToolbars.show(true);
-			$.mobile.fixedToolbars.show(true);
-
+						
 			$('#generalsettings').live('click', function(){
 			$(this).dblclick();
 			$('#generalsettings-div').show();
@@ -703,7 +698,9 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			
 			// Particular site info ajax
 			
-			$('#accountdiv').on ('pageshow',function(){
+			$('#accountdiv').on('pageshow',function(e){
+			e.preventDefault();
+			
 			var accountsDiv =$('#accountdiv');
 			var params=location.search;
 			   $.ajax({
@@ -711,6 +708,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					type: 'get',
 					success: function(data){
 					if (data.error){
+					console.log(data.error);
 					   window.location.href='super-index.html'+params;
 					}
 					console.log(data);
@@ -726,33 +724,77 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      		$('#country').val(data.country);
 		      		$('#phone').val(data.phone);
 		      		$('#email').val(data.email);
-		      		$('#editor').val(data.just_edit);
 		      		$('#timezone').val(data.time_zone);
 		      		$('#locale').val(data.locale);
 		      		$('#helpurl').val(data.help_root);
 		      		$('#logourl').val(data.logo_url);
 		      		$('#pagecheck').val(data.file_check);
-		      		$('#spellcheck').val(data.spell_check);
-		      		$('#linkcheck').val(data.link_check);
-		      		$('#pagevalidate').val(data.page_validate);
-		      		//$('#accessibility').val(data.accessibility);
+		      		//console.log(data.spell_check);
+		      		if(!data.spell_check){
+		      		$("input#spellcheck[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
+		      		}
+		      		if(!data.link_check){
+		      		$("input#linkcheck[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
+		      		}
+		      		if(!data.page_validate){
+		      		$("input#pagevalidate[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
+		      		}
+		      		if(!data.accessibility){
+		      		$("input#accessibility[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
+		      		}
 		      		$('#publishthreshold').val(data.publish_threshold);
 		      		$('#tweet').val(data.default_tweet);
 		      		$('#cas').val(data.sso_url);
 		      		$('#announcementurl').val(data.announcement_url);
 		      		$('#logouturl').val(data.logout_url);
-		      		$('#addons').val(data.addons);
-		      		$('#dependancymanager').val(data.dependency_manager);
-		      		$('#docucomp').val(data.compare);
-		      		$('#revealpass').val(data.show_pass);
-		      		$('#searchon').val(data.search);
-		      		$('#ldpimagegallery').val(data.ldp);
-		      		$('#hideaccount').val(data.hidden);
-					//accountsDiv.page("refresh");
+
+		      		if(data.addons){
+		      		var addonsSwitch= $('#addons');
+		      		addonsSwitch[0].selectedIndex =1;
+		      		//console.log(addonsSwitch[0]);
+		      		addonsSwitch.slider("refresh");
+		      		}
+		      		
+		      		if(data.dependency_manager){
+		      		var dependancymanagerSwitch=$('#dependancymanager');
+		      		dependancymanagerSwitch[0].selectedIndex =1;
+		      		dependancymanagerSwitch.slider("refresh");
+		      		}
+		      		
+		      		if (data.show_pass){
+		      		var revealpassSwitch=$('#revealpass');
+		      		revealpassSwitch[0].selectedIndex = 1;
+		      		revealpassSwitch.slider("refresh");
+		      		}
+		      	
+		      		if(data.search){
+					var searchonSwitch = $("#searchon");
+					searchonSwitch[0].selectedIndex = 1;
+					searchonSwitch.slider("refresh");
 					}
+					
+					if(data.ldp){
+		      		var ldpimagegallerySwitch=$('#ldpimagegallery');
+		      		ldpimagegallerySwitch[0].selectedIndex = 1;
+		      		ldpimagegallerySwitch.slider("refresh");
+		      		}
+		      		
+		      		if(data.hidden){
+		      		var hidenaccountSwitch = $('#hideaccount');
+		      		hidenaccountSwitch[0].selectedIndex =1;
+		      		hidenaccountSwitch.slider("refresh");
+		      		}
+					//accountsDiv.page("refresh");
+
+
+		     
+					}
+		
 			
 			});
+ 				
 			});
+   
 			
 		     $('#saveAccount').click(function() {
 		          
@@ -774,10 +816,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var helpurl = $('#helpurl').val();
 		      			var logourl = $('#logourl').val();
 		      			var pagecheck = $('#pagecheck').val();
-		      			var spellcheck =$('#spellcheck').val();
-		      			var linkcheck = $ ('#linkcheck').val();
-		      			var pagevalidate =$('#pagevalidate').val();
-		      			var accessibility =$('#accessibility').val();
+		      			var spellcheck =$('#spellcheck').serialize();
+		      			var linkcheck = $ ('#linkcheck').serialize();
+		      			var pagevalidate =$('#pagevalidate').serialize();
+		      			var accessibility =$('#accessibility').serialize();
 		      			var publishthreshold =$('#publishthreshold').val();
 		      			var tweet = $ ('#tweet').val();
 		      			var cas = $('#cas').val();
@@ -785,11 +827,19 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var logouturl = $('#logouturl').val();
 		      			var addons = $('#addons').val();
 		      			var dependancymanager= $('#dependancymanager').val();
-		      			var docucomp= $('#docucomp').val();
 		      			var revealpass= $('#revealpass').val();
 		      			var searchon =$('#searchon').val();
 		      			var ldpimage =$('#ldpimagegallery').val();
 		      			var hideaccount =$('#hideaccount').val();
+		      			if(spellcheck.match("1")){spellcheck=1;} else {spellcheck=0;}
+		      			if(linkcheck.match("1")) {linkcheck=1;} else {linkcheck=0;}
+		      			if(pagevalidate.match("1")) {pagevalidate=1;} else {pagevalidate=0;}
+		      			if(accessibility.match("1")) {accessibility=1;} else {accessibility=0;}
+		      			
+		      				//console.log('spellcheck:'+spellcheck);
+		    				 //console.log('linkcheck:'+linkcheck);
+		    				 //console.log('pagevalidate:'+pagevalidate);
+		    				 //console.log('accessibility:'+accessibility);
 		     
 		     		$.ajax({
 		     					url: '/accounts/save'+params,
@@ -806,7 +856,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      					'country':country,
 		      					'phone': phone,
 		      					'email':email,
-		      					'just_edit':editor,
 		      					'time_zone':timezone,
 		      					'locale':locale,
 		      					'help_root': helpurl,
@@ -815,7 +864,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 								 'spell_check':spellcheck,
 								 'link_check':linkcheck,
 								 'page_validate': pagevalidate,
-								 'accessibility':accessibility,
+								 //'accessibility':accessibility,
 		      			        'publish_threshold':publishthreshold,
 		      			        'default_tweet':  tweet,
 		      					'sso_url':cas,
@@ -823,7 +872,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      					'logout_url':logouturl,
 		      					'addons':addons,
 		      					'dependency_manager':dependancymanager,
-		      					'compare': docucomp ,
 		      			      	'show_pass': revealpass,
 		      			        'search':searchon,
 		      			        'ldp':ldpimage,
@@ -832,21 +880,71 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					
 		     					},
 		     					success: function(data){
+	
+		     					console.log(data);
 		     					
 		     				//	var accountsDiv = $('#accountdiv');
-		     							if (data.error){
-		     							console.log(params);
-		     							console.log(data.error);
-		     						window.location.href='super-index.html'+params;
-		     							}
-		     							console.log(data);
-		     						window.location.href='accounts.html' + params;	
+		     		if (data.errors){	
+		     			$.mobile.changePage( $('#alert-page'),{
+   					 	type: "get", 
+    					data:"alert_message="+data.errors.email,
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true
+						});
+						
+						$("#alert_body","alert_title").empty();
+						
+					    $.each(data.errors, function(index,value) {
+					    console.log("title"+index);
+					    console.log("body"+value);
+		     		 	$("#alert_title").text(index);
+   						$("#alert_body").text(value);
+ 					   // var fieldChange=document.getElementById(index);
+						$("#email").attr("data-theme","e").textinput();
+						//errorMessage= errorMessage.append(value+'<br />');
+				   		});
+				   		
+			
+	
+
+	
+		     			/*var errorMessage= $(document.createElement('p'))
+		     			.attr({'data-theme':'b'});
+		     		*/
+		     	
+					}
+ 					
+ 					
+		     		if (data.error){
+		     						console.log(data.error);
+		     						$.ajax({
+									url: '/authentication/admin_logout',
+									type: 'post',
+									success: function(data) {
+									var skin = data.skin;
+									window.location.href = 'super-index.html?skin='+skin;
+									}
+									});
+		     					  }
+		     					     //window.location.href='accounts.html' + params;	
 		     						//accountsDiv.page("refresh"); this should be pageid.page("refresh");
 		     					}
 		     		
 		     		});
+		     		
+		     	
+    
+				//var itemtorefresh =$('#accountdiv');
+				//$('#accountdiv').page('refresh');
+          		//$("ul").listview('refresh');  
 		     
 		     } );
+		
+		     
+		    
+		     
+		     
 		     
 		     $('#cancelBtn').click(function(){
 		        var params=location.search;
@@ -856,22 +954,33 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		        success: function(data){
 		        		var accountsDiv =$('#accountdiv');
 		        		if(data.error){
-		        		window.location.href='super-index.html'+params;
+		        		$.ajax({
+							url: '/authentication/admin_logout',
+							type: 'post',
+							success: function(data) {
+							var skin = data.skin;
+							window.location.href = 'super-index.html?skin='+skin;
+								}
+				});
 		        		}
 		        	    window.location.href='accounts.html'+ params;
 		        	    //accountsDiv.page("refresh");
-		        }
-		        });
+		   		     }
+		      		  });
 		     
 		     });
 
 		
 			$('.logout').click(function() {
+			localStorage.removeItem('username');
+			localStorage.removeItem('pass');
+			
 				$.ajax({
-					url: '/authentication/logout',
+					url: '/authentication/admin_logout',
 					type: 'post',
 					success: function(data) {
-					window.location.href = 'super-index.html'+ params;
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
 					}
 				});
 			});

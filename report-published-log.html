@@ -63,15 +63,21 @@
 					pageList.listview("refresh");
 				}
 			});
-			$('.logout').click(function() {
+		
+					$('.logout').click(function() {
+			localStorage.removeItem('username');
+			localStorage.removeItem('pass');
 				$.ajax({
 					url: '/authentication/logout',
 					type: 'post',
 					success: function(data) {
-						window.location.href = 'index.html';
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
 					}
 				});
 			});
+		
+		
 		});
 		$('#report-published-log').on('pagebeforehide', function() {
 			$('#report-published-log').off('pageshow');

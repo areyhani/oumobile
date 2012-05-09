@@ -737,25 +737,39 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		
 		
 		$('#cancelBtn').click(function(){
-			window.location.href='sites.html'+location.search;
-		
+
+		$.ajax({
+			url:'/sites/list'+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='sitelist.html'+location.search;
+			}
+		});
+
+
 		});
 		//cancel Button
-		
-		
-		
-		
-		
+
+
 			$('.logout').click(function() {
+			localStorage.removeItem('username');
+			localStorage.removeItem('pass');
 				$.ajax({
 					url: '/authentication/logout',
 					type: 'post',
 					success: function(data) {
-					window.location.href = 'super-index.html'+ params;
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
 					}
 				});
 			});
 			
+		
+		
+	
 			
 		$(document).delegate('#opendialog', 'click', function() {
  		 $('#inlinecontent').simpledialog2();

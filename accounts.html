@@ -86,11 +86,15 @@
 		
 		
 			$('.logout').click(function() {
+			localStorage.removeItem('username');
+			localStorage.removeItem('pass');
+			
 			$.ajax({
-				url: '/authentication/logout',
+				url: '/authentication/admin_logout',
 				type: 'post',
 				success: function(data) {
-					window.location.href = 'super-index.html'+location.search;
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
 				}
 			});
 		});

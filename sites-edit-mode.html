@@ -76,7 +76,7 @@
 						     	   	 .text(value.site);
 						     	   	 
 						 var a = $(document.createElement('a'))
-						           .attr({href: 'site-edit.html?site=' + value.site })
+						           .attr({href: 'site-edit.html' + location.search })
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit');
 							
@@ -97,16 +97,19 @@
 
 		
 		
-		$('.logout').click(function() {
-			$.ajax({
-				url: '/authentication/logout',
-				type: 'post',
-				success: function(data) {
-					window.location.href = 'super-index.html';
-				}
+			$('.logout').click(function() {
+			localStorage.removeItem('username');
+			localStorage.removeItem('pass');
+				$.ajax({
+					url: '/authentication/admin_logout',
+					type: 'post',
+					success: function(data) {
+					var skin = data.skin;
+					window.location.href = 'super-index.html?skin='+skin;
+					}
+				});
 			});
-		});
-		
+			
 		$('#editBtn').click(function() {
 		 window.location.href='site-add-ipad-version.html'+location.search;
 		
