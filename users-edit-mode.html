@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Sites Edit Mode</title> 
+	<title>Users Edit Mode</title> 
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
@@ -21,18 +21,18 @@
 </style>
 </head> 
 <body> 
-<div data-role="page" id="sites">
+<div data-role="page" id="users">
 		<div id="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 	
-		<a href="#" data-rel="back" data-icon="back">Back</a>
-		<h1>Sites Edit Mode</h1>
-		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
+		<a id="backBtn"  href="#" data-rel="back" data-icon="back">Back</a>
+		<h1>Users Edit Mode</h1>
+		<a  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
-	<div data-role="content">
+	<div id="logout" data-role="content">
 	
 	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
-     <fieldset  id="site-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
-	  <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span> <span style="margin-left:10px;"  data-icon="gear"> Edit </span></li>
+     <fieldset  id="user-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
+	 <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span> <span style="margin-left:10px;"  data-icon="gear"> Edit </span></li>
 	
 	</fieldset></div>
 	</div>
@@ -41,9 +41,10 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
+
 <li id="deleteBtn" class="ui-block-a" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="l" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="user-add-ipad-version.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
@@ -51,37 +52,39 @@
 	<script type="text/javascript">
 		$.mobile.fixedToolbars.show(true);
 		
-		$('#sites').on('pageshow', function() {
+		$('#users').on('pageshow', function() {
 			$.ajax({
-				url: '/sites/list',
+				url: '/users/list'+location.search,
 				type: 'get',
 				success: function(data) {
 					if (data.error) {
-						window.location.href = 'super-index.html';
+					 console.log(data.error);
+						window.location.href = 'super-index.html'+location.search;
 					}
-					
-					var sites = $ ('#site-list');
-					//sites.empty();
+					 console.log(data);
+
+					var users = $ ('#user-list');
+					//users.empty();
 				    var idCount = 0;   
 				    
 					$.each(data, function(index, value) {
-					
+					 // console.log(data);
 						
 						   var inputElement = $(document.createElement('input'))
 	                             .attr({type: 'checkbox' })
 	                             .attr({id: idCount+1 })
 	                             .addClass('custom')
-	                             .attr({value: value.site });
+	                            .attr({'value': value.user });
 	                             
 									
 									
 						   var inputText =$(document.createElement('span'))
 						    		 .addClass('ui-btn-text')
 						    		  .attr({id:idCount+1})
-						     	   	 .text(value.site);
+						     	   	 .text(value.user);
 						     	   	 
 						 var a = $(document.createElement('a'))
-						           .attr({href: 'site-edit.html' + location.search })
+						           .attr({href: 'user-edit.html'+location.search +'&user=' + value.user })
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit');
 							
@@ -90,18 +93,16 @@
 					         var hyperlinkInputText = a.append(inputText);
 							var addinputElement = inputElement.after(hyperlinkInputText);
 					     	var li = $(document.createElement('li')).append(addinputElement);
-							sites.append(li);
+							users.append(li);
 						idCount++;
 					});
-					sites.listview("refresh");
+					users.listview("refresh");
 				}
 			});
 		});
 		
 		
 
-		
-		
 			$('.logout').click(function() {
 			localStorage.removeItem('username');
 			localStorage.removeItem('pass');
@@ -115,14 +116,15 @@
 				});
 			});
 			
+		
 		$('#editBtn').click(function() {
-		 window.location.href='site-add-ipad-version.html'+location.search;
+		 window.location.href='user-add-ipad-version.html'+location.search;
 		
 		});
 		
 		
 	   $('#backBtn').click(function(){
-			window.location.href='sites.html'+location.search;
+			window.location.href='users.html'+location.search;
 		
 		});
 		
@@ -130,38 +132,34 @@
 			window.location.href = 'sitelist.html'+location.search;
 		});
 		
-	
-	//Delete Site
+		
+		//Delete user
 		$('#deleteBtn').click(function() {
 			var params= location.search;
 			var deletArray =$("input:checked");
-   			 console.log(deletArray);
+   			 //console.log(deletArray);
    			 var deleteString= "";
    			 $.each(deletArray, function(index, value) { 
  				 console.log(index + ': ' + value.defaultValue); 
- 				 deleteString= deleteString + '&site='+value.defaultValue;
+ 				 deleteString= deleteString + '&user='+value.defaultValue;
 					});
 				console.log( deleteString);		
 			$.ajax({
-				url:'/sites/delete'+location.search+ deleteString,
+				url:'/users/delete'+location.search+ deleteString,
 				type: 'post',
 				success: function(data) {
-				window.location.href = 'sitelist.html'+location.search;
+					window.location.href = 'userslist.html'+location.search;
 				},
 			complete: function () {
             $.mobile.showPageLoadingMsg();
        			 }	
 			}).done(function(){
-		    alert('success message');
+		alert('success message');});
 		});
-		});
-
-		//Add Site
-		
 		
 		$('#addBtn').click(function(){
 		
-				window.location.href='site-add-ipad-version.html'+ location.search;
+				window.location.href='user-add-ipad-version.html'+ location.search;
 		});
 	</script> 
 

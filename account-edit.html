@@ -24,8 +24,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,input.ui-input-text, textarea.ui-input-text{width:45%}
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
 .ui-content .ui-listview-inset{margin:0px;}
-
-
+.help{ padding:5px; font-weight:normal;}
+.error{color:#B7110D;}
 </style>
 	
 	
@@ -66,34 +66,36 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="generalsettings-div" style="display:block" >
 	
 	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-                        
-                  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="accountname" class="ui-input-text">Account Name: </label>
-	        	<input  disabled="disabled"type="text" value="" id="accountname" name="accountname" class="ui-input-text ui-body-c ui-corner-all ">
+                
+                <li data-role="list-divider" id="accountHelp" class="help" style="display:none;"></li>       
+                <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label id="accountLabel" for="account" class="ui-input-text">Account Name: </label>
+	        	<input  disabled="disabled" type="text" value="" id="account" name="account" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
 				</li>
 				
-
-					
-					
-
-			</li>
+				<li data-role="list-divider" id="timezoneHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="timezone" class="ui-input-text">Time Zone:</label>
 	        	<input type="text" value="" id="timezone" name="timezone" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				
+				<li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="locale" class="ui-input-text">Locale:</label>
 	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				
+				<li data-role="list-divider" id="help_rootHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="helpurl" class="ui-input-text">Help URL:</label>
-	        	<input type="text" value="" id="helpurl" name="helpurl" class="ui-input-text ui-body-c ui-corner-all ">
+				<label id="help_rootLabel" for="help_root" class="ui-input-text">Help URL:</label>
+	        	<input type="text" value="" id="help_root" name="help_root" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
+				
+				<li data-role="list-divider" id="logo_urlHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="logourl" class="ui-input-text">Logo URL:</label>
-	        	<input type="text" value="" id="logourl" name="logourl" class="ui-input-text ui-body-c ui-corner-all ">
+				<label id="logo_urlLabel" for="logo_url" class="ui-input-text">Logo URL:</label>
+	        	<input type="text" value="" id="logo_url" name="logo_url" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				
 				</ul>
@@ -105,7 +107,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="personalinformation-div" style="display:none">
 	
 	                    
-        <ul id="email-ul" data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+        <ul  data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -113,7 +115,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="firstname" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="lastname" class="ui-input-text">Lastname:</label>
 	        	<input type="text" value="" id="lastname" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
@@ -123,11 +125,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				<label for="phone" class="ui-input-text">Phone:</label>
 	        	<input type="text" value="" id="phone" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
-				
-				<li id="email-li" data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="email" class="ui-input-text">Email:</label>
+				<li data-role="list-divider" id="emailHelp" class="help" style="display:none;"></li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label id="emailLabel" for="email" class="ui-input-text">Email:</label>
 	        	<input type="text" value="" id="email" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
+	        	</li>
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="Organization" class="ui-input-text">Organization</label>
@@ -136,20 +138,20 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				
 				
 				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  <label for="street" class="ui-input-text">Street</label>
+   		  		<label for="street" class="ui-input-text">Street</label>
 	        	<input type="text" value="" id="street" name="street" class="ui-input-text ui-body-c ui-corner-all ">
-   		  </li>
-   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 		 </li>
+   		 		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  
-   		  <label for="city" class="ui-input-text">City</label>
+   		 		 <label for="city" class="ui-input-text">City</label>
 	        	<input type="text" value="" id="city" name="city" class="ui-input-text ui-body-c ui-corner-all ">
    		  
-   		  </li>
+   		  		</li>
    		  
-   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		 <div>
-      	<label for="state" class="ui-input-text">State:</label>
-	   <select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+   		   		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				 <div>
+      			<label for="state" class="ui-input-text">State:</label>
+	  			 <select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
 	 
 		            <option value="0">Select a State</option>
 					<option value="AL">Alabama</option>
@@ -202,20 +204,20 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					<option value="WI">Wisconsin</option>
 					<option value="WV">West Virginia</option>
 					<option value="WY">Wyoming</option>
-	</select>
-</div>
+			</select>
+			</div>
 			</li>
 
 
    		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    		  <label for="name" class="ui-input-text">Zip</label>
-	      <input  type="text" value="" data-theme="e" id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
+	      <input  type="text" value="" id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
    		  </li>
    		  
-   	 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    <div>
+   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 <div>
       	<label for="country" class="ui-input-text">Country:</label>
-	   <select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+	   	<select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
 	                <option value="0">Select a country</option>
 					<option value="AF">Afghanistan</option>
 					<option value="AL">Albania</option>
@@ -460,19 +462,19 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					</li>
    			
 				
-	 </ul>
+			 </ul>
 
-	</div> <!-- personal information -->
+			</div> <!-- personal information -->
 	
 	
 	
-	<div id="publishsettings-div"  style="display:none">
+			<div id="publishsettings-div"  style="display:none">
 	
-	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-  	
+			 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+  			<li data-role="list-divider" id="page_checkLabelHelp" class="help" style="display:none;"></li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			<label for="pagecheck" class="ui-input-text">Page Check:</label>
-                   <select id="pagecheck" name="pagecheck">
+			<label id="page_checkLabel" for="page_check" class="ui-input-text">Page Check:</label>
+                   <select id="page_check" name="page_check">
 							<option value="0">Disabled</option>
 							<option value="1">Admin Enabled</option>
 							<option value="2">User Enabled</option>
@@ -493,45 +495,45 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility" value="1" /><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span style="padding-left:30px;padding-top:4px" class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-text">Accessibility Check</span></span></label></div>
 					
 			    </div></fieldset>
-			</li>
+				</li>
              
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label style="width:40%" for="publishthreshold" class="ui-input-text">Publish Threshold:</label>
 	        	<input type="text" value="" id="publishthreshold" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
-                        
+                
+                <li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>       
                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label style="width:40%" for="tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
-	        	<input type="text" value="" id="tweet" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
+				<label id="default_tweetLabel" style="width:40%" for="tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
+	        	<input type="text" value="" id="default_tweet" name="default_tweet" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 						
 				</ul>
 	
 	
-	</div> <!-- publish settings-->
+			</div> <!-- publish settings-->
 	
 	
-	<div id="loginpage-div" style="display:none; height:100%">
+			<div id="loginpage-div" style="display:none; height:100%">
 	
 	
-	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:47%"  for="shibboleth" class="ui-input-text"> CAS or Shibboleth URL</label>
-	        	<input type="text" value="" id="shibboleth" name="shibboleth" class="ui-input-text ui-body-c ui-corner-all ">
+   				<label id="sso_urlLabel" style="width:47%"  for="sso_url" class="ui-input-text"> CAS or Shibboleth URL</label>
+	        	<input type="text" value="" id="sso_url" name="sso_url" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-   		  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   				<label  style="width:47%"  for="announcementurl" class="ui-input-text"> Announcement URL</label>
-	        	<input type="text" value="" id="announcementurl" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
+   		        <li data-role="list-divider" id="announcement_urlHelp" class="help" style="display:none;"></li>
+   		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label id="announcement_urlLabel" style="width:47%"  for="announcement_url" class="ui-input-text"> Announcement URL</label>
+	        	<input type="text" value="" id="announcement_url" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
    		      </li>
-   		      			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   				<label  style="width:47%"  for="logouturl" class="ui-input-text">  Logout URL</label>
-	        	<input type="text" value="" id="logouturl" name="logouturl" class="ui-input-text ui-body-c ui-corner-all ">
+   		         <li data-role="list-divider" id="logout_urlHelp" class="help" style="display:none;"></li>
+   		      	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  id="logout_urlLabel" style="width:47%"  for="logout_url" class="ui-input-text">  Logout URL</label>
+	        	<input type="text" value="" id="logout_url" name="logout_url" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
                      
@@ -569,7 +571,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				</select>
 			</li>
 			
-						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 	        	<label for="ldpimagegallery" id="ldpimagegallery-label" class="ui-slider"> LDP - Image Gallery:</label>
 				<select data-role="slider" id="ldpimagegallery" name="ldpimagegallery" class="ui-slider-switch">
 					<option value="false">Off</option>
@@ -652,6 +654,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div, #publishsettings-div , #loginpage-div , #optionalsettings-div').hide();
 			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -661,6 +664,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#generalsettings-div, #publishsettings-div,#loginpage-div , #optionalsettings-div ').hide();
 			 $('#generalsettings, #publishsettings,#loginpage , #optionalsettings ').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -671,6 +675,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		   $(this).addClass('ui-btn-hover-c');
 		   $('#generalsettings-div , #personalinformation-div , #loginpage-div , #optionalsettings-div ').hide();
 		   $('#generalsettings, #personalinformation , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
+		   $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -680,6 +685,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div , #publishsettings-div , #generalsettings-div , #optionalsettings-div ').hide();
 			$('#personalinformation , #publishsettings , #generalsettings , #optionalsettings ').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -690,6 +696,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#personalinformation-div , #publishsettings-div , #loginpage-div ,  #generalsettings-div').hide();
 			 $('#personalinformation , #publishsettings , #loginpage ,  #generalsettings').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -713,7 +720,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					}
 					console.log(data);
 					$('#headerEditAccount').text(data.account);
-		      		$('#accountname').val(data.account);
+		      		$('#account').val(data.account);
 		      		$('#firstname').val(data.name.first_name);
 		      		$('#lastname').val(data.name.last_name);
 		      		$('#organization').val(data.company);
@@ -726,9 +733,9 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      		$('#email').val(data.email);
 		      		$('#timezone').val(data.time_zone);
 		      		$('#locale').val(data.locale);
-		      		$('#helpurl').val(data.help_root);
+		      		$('#help_root').val(data.help_root);
 		      		$('#logourl').val(data.logo_url);
-		      		$('#pagecheck').val(data.file_check);
+		      		$('#page_check').val(data.file_check);
 		      		//console.log(data.spell_check);
 		      		if(!data.spell_check){
 		      		$("input#spellcheck[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
@@ -743,10 +750,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      		$("input#accessibility[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
 		      		}
 		      		$('#publishthreshold').val(data.publish_threshold);
-		      		$('#tweet').val(data.default_tweet);
-		      		$('#cas').val(data.sso_url);
-		      		$('#announcementurl').val(data.announcement_url);
-		      		$('#logouturl').val(data.logout_url);
+		      		$('#default_tweet').val(data.default_tweet);
+		      		$('#sso_url').val(data.sso_url);
+		      		$('#announcement_url').val(data.announcement_url);
+		      		$('#logout_url').val(data.logout_url);
 
 		      		if(data.addons){
 		      		var addonsSwitch= $('#addons');
@@ -797,9 +804,12 @@ label.ui-input-text{ width:31%;padding-top:4px;}
    
 			
 		     $('#saveAccount').click(function() {
-		          
+		    		 var accountDiv= $('#accountdiv');
+		     		   // $.mobile.page("refresh");
+		     		    
+		     		    
 		      			var params=location.search;
-		      			var accountname=$('#accountname').val();
+		      			var accountname=$('#account').val();
 		      			var firstname = $('#firstname').val();
 		      			var lastname = $ ('#lastname').val();
 		      			var organization =$ ('#organization').val();
@@ -813,18 +823,18 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var editor = $('#editor').val();
 		      			var timezone = $('#timezone').val();
 		      			var locale = $('#locale').val();
-		      			var helpurl = $('#helpurl').val();
-		      			var logourl = $('#logourl').val();
-		      			var pagecheck = $('#pagecheck').val();
+		      			var helpurl = $('#help_root').val();
+		      			var logourl = $('#logo_url').val();
+		      			var pagecheck = $('#page_check').val();
 		      			var spellcheck =$('#spellcheck').serialize();
 		      			var linkcheck = $ ('#linkcheck').serialize();
 		      			var pagevalidate =$('#pagevalidate').serialize();
 		      			var accessibility =$('#accessibility').serialize();
 		      			var publishthreshold =$('#publishthreshold').val();
-		      			var tweet = $ ('#tweet').val();
-		      			var cas = $('#cas').val();
-		      			var announcementurl = $('#announcementurl').val();
-		      			var logouturl = $('#logouturl').val();
+		      			var tweet = $ ('#default_tweet').val();
+		      			var cas = $('#sso_url').val();
+		      			var announcementurl = $('#announcement_url').val();
+		      			var logouturl = $('#logout_url').val();
 		      			var addons = $('#addons').val();
 		      			var dependancymanager= $('#dependancymanager').val();
 		      			var revealpass= $('#revealpass').val();
@@ -879,44 +889,43 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					
 		     					
 		     					},
-		     					success: function(data){
-	
-		     					console.log(data);
+		     	success: function(data){
+					console.log(data);
 		     					
 		     				//	var accountsDiv = $('#accountdiv');
-		     		if (data.errors){	
+		     		if (data.errors){
 		     			$.mobile.changePage( $('#alert-page'),{
    					 	type: "get", 
     					data:"alert_message="+data.errors.email,
     					transition:"pop",
     					role: "dialog",
-    					reloadPage:true
+    					reloadPage:true,
 						});
 						
 						$("#alert_body","alert_title").empty();
 						
 					    $.each(data.errors, function(index,value) {
-					    console.log("title"+index);
-					    console.log("body"+value);
+					   // console.log("title"+index);
+					   // console.log("body"+value);
 		     		 	$("#alert_title").text(index);
    						$("#alert_body").text(value);
  					   // var fieldChange=document.getElementById(index);
-						$("#email").attr("data-theme","e").textinput();
+ 					   $("#"+index).addClass('ui-body-d');
+ 					   $("#"+index+"Label").addClass('error');
+						$("#"+index+"Help").show();
+						$("#"+index+"Help").text(value);
 						//errorMessage= errorMessage.append(value+'<br />');
 				   		});
 				   		
-			
-	
-
+			         console.log("An error occured, the page is not saved yet. Please fix the errors first.");
 	
 		     			/*var errorMessage= $(document.createElement('p'))
 		     			.attr({'data-theme':'b'});
 		     		*/
 		     	
 					}
- 					
- 					
-		     		if (data.error){
+					
+		     		else if (data.error){
 		     						console.log(data.error);
 		     						$.ajax({
 									url: '/authentication/admin_logout',
@@ -926,11 +935,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 									window.location.href = 'super-index.html?skin='+skin;
 									}
 									});
+								
 		     					  }
-		     					     //window.location.href='accounts.html' + params;	
-		     						//accountsDiv.page("refresh"); this should be pageid.page("refresh");
+		     		else{		  
+		     		console.log("page is saved");	
+		     		window.location.href='accounts-edit-mode.html' + params;	
+		     		//accountsDiv.page("refresh"); this should be pageid.page("refresh");
+		     		}
 		     					}
-		     		
+
 		     		});
 		     		
 		     	

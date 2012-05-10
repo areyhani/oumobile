@@ -42,25 +42,26 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="accountHeader"></h1>
 		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
-	</div>
+		</div>
 		<div data-role="content">
 		
-	<ul  class="ui-btn ui-btn-icon-right" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
-		<li data-role="list-divider">Sites</li>
-		<li id="sites" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
-		<a rel="external"  href="" ><label  id="sitesc" for="usercount"> </label> <span id="usercount"> <br /> <label id="pagesc" for="pagecount"></label> </span> <span id="pagecount"> </span>
-		<span > <br /> <label id="savesc" for="savescount"></label> </span> <span id="savescount"> </span></a>
+		<ul  class="ui-btn ui-btn-icon-right" data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
+		<li data-role="list-divider">Account Information:</li>
+		
+		<li  id="sites" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
+		<a rel="external"  href="" ><label  id="sitelabel" for="sitecount"> Sites </label> <span id="sitecount">  </span> </a>
+		</li>
+		
+		<li id="users"  data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
+		<a rel="external"  href="" ><label  id="userlabel" for="usercount"> Users </label> <span id="usercount">  </span> </a>
+		</li>
+		
+		<li  id="groups" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
+		<a rel="external"  href="" ><label  id="grouplabel" for="groupcount"> Groups </label> <span id="groupcount">  </span> </a>
 		</li>
 	
     </ul>
-    
-    <br />
-    <ul data-role="listview" data-inset="true" data-split-theme="d" data-split-icon="plus" >
-		<li data-role="list-divider">Users</li>
-		<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-count ui-btn-hover-c">
-		<a rel="external" id="usersc" href=""  id="usersc"  >  </a>
-		</li>
-    </ul>
+
 
 	</div>
 	
@@ -84,22 +85,36 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				  if(data.error){
 				  window.location.href='super-index.html'+location.search;
 				  }
+				  
 				$('#accountHeader').text("Account: "+data.account);
 				 var accountDiv = $('#account');
+				 var sitecount = $(document.createElement('span'))
+				.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+				.text('Total: ' + data.page_count);
+				
+				var usercount = $(document.createElement('span'))
+				.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+				.text('Total: ' + data.user_count);
+				
+				var groupcount = $(document.createElement('span'))
+				.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+				.text('Total: ' + data.group_count);
+				
+				$('#sitecount').append(sitecount);
+				$('#usercount').append(usercount);
+				$('#groupcount').append(groupcount);
+				
+				
 				// accountDiv.empty();
 				 console.log(data);				
-			    $('#sitesc').text("Number of Sites: " + data.site_count);
-				$('#usersc').text("Number of Users: " + data.user_count);
-				$('#pagesc').text("Number of Pages: " + data.page_count);
-				$('#savesc').text("Number of Saved Pages: " + data.save_count);
+
 				}
-				
 				});
 				
 			
 		});
 //users
-$('#usersc').click(function(){
+$('#users').click(function(){
 		$.ajax({
 			url:'/users/list?account='+location.search,
 			type:'get',
@@ -125,6 +140,20 @@ $('#sites').click(function(){
 			}
 		});
 });
+
+$('#groups').click(function(){
+		$.ajax({
+			url:'/groups/list'+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='grouplist.html'+location.search;
+			}
+		});
+});
+
 
 
 	

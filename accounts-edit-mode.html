@@ -14,6 +14,10 @@
     }
 .ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
 .ui-btn-text{padding:10px;}
+.ui-content {padding: 0 15px 15px;}
+.ui-content .ui-listview {
+    margin: -16px;
+}
 </style>
 </head> 
 <body> 
@@ -27,8 +31,9 @@
 	<div data-role="content">
 	<form>
 	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+	 
      <fieldset  id="account-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
-		
+		<li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span> <span style="margin-left:10px;"  data-icon="gear"> Edit </span></li>
 	</fieldset></div>
 	</form>
 	</div>
@@ -37,9 +42,9 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li id="deleteBtn" class="ui-block-b" id="editBtn"><a id="editBtnText"  data-theme="b" href="accounts-edit-mode.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="account-add.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="DoneBtn" class="ui-block-b"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
@@ -57,7 +62,7 @@
 					}
 					
 					var accounts = $ ('#account-list');
-					accounts.empty();
+					//accounts.empty();
 				    var idCount = 0;   
 				    
 					$.each(data, function(index, value) {
@@ -65,8 +70,8 @@
 						
 						   var inputElement = $(document.createElement('input'))
 	                             .attr({type: 'checkbox' })
-	                             .attr({id: idCount+1 })
-	                             .attr({name: idCount+1 })
+	                             .attr({id: idCount+1})
+	                             .attr({name: idCount+1})
 	                             .addClass('custom')
 	                             .attr({value: value.account });
 	                             
@@ -123,6 +128,10 @@
 	   $('#backBtn').click(function(){
 			window.location.href='accounts.html'+location.search;
 		
+		});
+		
+		$('#DoneBtn').click(function(){
+			window.location.href='accounts.html'+location.search;
 		});
 		
 		
