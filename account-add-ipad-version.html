@@ -10,6 +10,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 
 <style type="text/css">
 
@@ -25,7 +26,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
 .ui-content .ui-listview-inset{margin:0px;}
 
-
 </style>
 	
 	
@@ -34,7 +34,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <body> 
 <div data-role="page" id="accountdiv" >
 
-	<div id="header" data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div id="header" data-role="header" data-position="fixed" data-theme="b" class="omnistyle">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header"> New Account </h1>
 
@@ -66,17 +66,13 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="generalsettings-div" style="display:block" >
 	
 	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-                        
-                  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="accountname" class="ui-input-text">Account Name: </label>
-	        	<input type="text" value="" id="accountname" name="accountname" class="ui-input-text ui-body-c ui-corner-all ">
+	  
+                <li data-role="list-divider" id="accountHelp" class="help" style="display:none;"></li>       
+                <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label id="accountLabel" for="account" class="ui-input-text">Account Name: </label>
+	        	<input type="text" value="" id="account" name="account" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
-				
-
-				
-					
-
-			</li>
+				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="timezone" class="ui-input-text">Time Zone:</label>
 	        	<input type="text" value="" id="timezone" name="timezone" class="ui-input-text ui-body-c ui-corner-all ">
@@ -87,16 +83,19 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				
+				<li data-role="list-divider" id="help_rootHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="helpurl" class="ui-input-text">Help URL:</label>
-	        	<input type="text" value="" id="helpurl" name="helpurl" class="ui-input-text ui-body-c ui-corner-all ">
-				</li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="logourl" class="ui-input-text">Logo URL:</label>
-	        	<input type="text" value="" id="logourl" name="logourl" class="ui-input-text ui-body-c ui-corner-all ">
+				<label id="help_rootLabel" for="help_root" class="ui-input-text">Help URL:</label>
+	        	<input type="text" value="" id="help_root" name="help_root" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				
-				</ul>
+				<li data-role="list-divider" id="logo_urlHelp" class="help" style="display:none;"></li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label id="logo_urlLabel" for="logo_url" class="ui-input-text">Logo URL:</label>
+	        	<input type="text" value="" id="logo_url" name="logo_url" class="ui-input-text ui-body-c ui-corner-all ">
+				</li> 
+				
+		</ul>
                         
 	
 	
@@ -124,10 +123,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="phone" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
+				<li data-role="list-divider" id="emailHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="email" class="ui-input-text">Email:</label>
+				<label id="emailLabel" for="email" class="ui-input-text">Email:</label>
 	        	<input type="text" value="" id="email" name="name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
+	        	</li>
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="Organization" class="ui-input-text">Organization</label>
@@ -471,10 +471,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="publishsettings-div"  style="display:none">
 	
 	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-  	
+	 
+  			<li data-role="list-divider" id="page_checkLabelHelp" class="help" style="display:none;"></li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			     <label for="pagecheck" class="ui-input-text">Page Check:</label>
-                   <select id="pagecheck" name="pagecheck">
+			     <label id="page_checkLabel" for="page_check" class="ui-input-text">Page Check:</label>
+                   <select id="page_check" name="page_check">
 							<option value="0">Disabled</option>
 							<option value="1">Admin Enabled</option>
 							<option value="2">User Enabled</option>
@@ -501,9 +502,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	        	<input type="text" value="" id="publishthreshold" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
                         
+                <li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>    
                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label style="width:40%" for="tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
-	        	<input type="text" value="" id="tweet" name="publishthreshold" class="ui-input-text ui-body-c ui-corner-all ">
+				<label id="default_tweetLabel" style="width:40%" for="default_tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
+	        	<input type="text" value="" id="default_tweet" name="default_tweet" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 						
 				</ul>
@@ -517,26 +519,23 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	
 	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
-		
+				<li data-role="list-divider" id="sso_urlHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:47%"  for="shibboleth" class="ui-input-text"> CAS or Shibboleth URL</label>
-	        	<input type="text" value="" id="shibboleth" name="shibboleth" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
-   		      </li>
+   				<label id="sso_urlLabel" style="width:47%"  for="sso_url" class="ui-input-text"> CAS or Shibboleth URL</label>
+	        	<input type="text" value="" id="sso_url" name="sso_url" class="ui-input-text ui-body-c ui-corner-all ">
+   		  		</li>
+   		  		
+   		        <li data-role="list-divider" id="announcement_urlHelp" class="help" style="display:none;"></li>
+   		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label id="announcement_urlLabel" style="width:47%"  for="announcement_url" class="ui-input-text"> Announcement URL</label>
+	        	<input type="text" value="" id="announcement_url" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
+   		    	</li>
    		      
-   		  	  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   				<label  style="width:47%"  for="announcementurl" class="ui-input-text"> Announcement URL</label>
-	        	<input type="text" value="" id="announcementurl" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
-   		      </li>
-   		      
-   		      <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   				<label style="width:47%"  for="logouturl" class="ui-input-text">  Logout URL</label>
-	        	<input type="text" value="" id="logouturl" name="logouturl" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
-   		      </li>
+   		         <li data-role="list-divider" id="logout_urlHelp" class="help" style="display:none;"></li>
+   		      	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  id="logout_urlLabel" style="width:47%"  for="logout_url" class="ui-input-text">  Logout URL</label>
+	        	<input type="text" value="" id="logout_url" name="logout_url" class="ui-input-text ui-body-c ui-corner-all ">
+   		  		 </li>
                      
                         
                </ul>         </div> <!--Login Page-->
@@ -622,25 +621,39 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li id="createNewAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
+<li id="homeBtn" class="ui-block-a"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="createNewAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
 </div>
-</div>		
+</div>	
+
+<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">alert title</h3>
+            <p id="alert_body">alert body</p>
+            <a id="okBtn" href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+    </div>
+
 			<script type="text/javascript">
 
-	$.mobile.fixedToolbars.show(true);
-
-
+			$.mobile.fixedToolbars.show(true);
 			$('#generalsettings').live('click', function(){
 			$(this).dblclick();
 			$('#generalsettings-div').show();
 			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div, #publishsettings-div , #loginpage-div , #optionalsettings-div').hide();
 			$('#personalinformation , #publishsettings , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -650,6 +663,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#generalsettings-div, #publishsettings-div,#loginpage-div , #optionalsettings-div ').hide();
 			 $('#generalsettings, #publishsettings,#loginpage , #optionalsettings ').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -660,6 +674,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		   $(this).addClass('ui-btn-hover-c');
 		   $('#generalsettings-div , #personalinformation-div , #loginpage-div , #optionalsettings-div ').hide();
 		   $('#generalsettings, #personalinformation , #loginpage , #optionalsettings').removeClass('ui-btn-hover-c');
+		   $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -669,6 +684,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#personalinformation-div , #publishsettings-div , #generalsettings-div , #optionalsettings-div ').hide();
 			$('#personalinformation , #publishsettings , #generalsettings , #optionalsettings ').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -679,13 +695,14 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#personalinformation-div , #publishsettings-div , #loginpage-div ,  #generalsettings-div').hide();
 			 $('#personalinformation , #publishsettings , #loginpage ,  #generalsettings').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
 			}
 			);
 		
 			
 		     $('#createNewAccount').click(function() {
 		      			var params=location.search;
-		      			var accountname=$('#accountname').val();
+		      			var accountname=$('#account').val();
 		      			var firstname = $('#firstname').val();
 		      			var lastname = $ ('#lastname').val();
 		      			var organization =$ ('#organization').val();
@@ -698,18 +715,18 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var email = $('#email').val();
 		      			var timezone = $('#timezone').val();
 		      			var locale = $('#locale').val();
-		      			var helpurl = $('#helpurl').val();
-		      			var logourl = $('#logourl').val();
-		      			var pagecheck = $('#pagecheck').val();
+		      			var helpurl = $('#help_root').val();
+		      			var logourl = $('#logo_url').val();
+		      			var pagecheck = $('#page_check').val();
 		      			var spellcheck =$('#spellcheck').serialize();
 		      			var linkcheck = $ ('#linkcheck').serialize();
 		      			var pagevalidate =$('#pagevalidate').serialize();
 		      			var accessibility =$('#accessibility').serialize();
 		      			var publishthreshold =$('#publishthreshold').val();
-		      			var tweet = $ ('#tweet').val();
-		      			var cas = $('#cas').val();
-		      			var announcementurl = $('#announcementurl').val();
-		      			var logouturl = $('#logouturl').val();
+		      			var tweet = $ ('#default_tweet').val();
+		      			var cas = $('#sso_url').val();
+		      			var announcementurl = $('#announcement_url').val();
+		      			var logouturl = $('#logout_url').val();
 		      			var addons = $('#addons').val();
 		      			var dependancymanager= $('#dependancymanager').val();
 		      			var docucomp= $('#docucomp').val();
@@ -717,22 +734,22 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var searchon =$('#searchon').val();
 		      			var ldpimage =$('#ldpimagegallery').val();
 		      			var hideaccount =$('#hideaccount').val();
-		      			if(spellcheck.match("on")){spellcheck=1;} else {spellcheck=0;}
-		      			if(linkcheck.match("on")) {linkcheck=1;} else {linkcheck=0;}
-		      			if(pagevalidate.match("on")) {pagevalidate=1;} else {pagevalidate=0;}
-		      			if(accessibility.match("on")) {accessibility=1;} else {accessibility=0;}
+		      			if(spellcheck.match("on")){spellcheck=true;} else {spellcheck=false;}
+		      			if(linkcheck.match("on")) {linkcheck=true;} else {linkcheck=false;}
+		      			if(pagevalidate.match("on")) {pagevalidate=true;} else {pagevalidate=false;}
+		      			if(accessibility.match("on")) {accessibility=true;} else {accessibility=false;}
 		        
-		                     console.log('spellcheck:'+spellcheck);
-		    				 console.log('linkcheck:'+linkcheck);
-		    				 console.log('pagevalidate:'+pagevalidate);
-		    				 console.log('accessibility:'+accessibility);
+		                    //console.log('spellcheck:'+spellcheck);
+		    				// console.log('linkcheck:'+linkcheck);
+		    				// console.log('pagevalidate:'+pagevalidate);
+		    				//console.log('accessibility:'+accessibility);
 		     
 		     
 		     
 		     		$.ajax({
-		     					url: '/accounts/new',
-		     					type:'post',
-		     					data:{
+		     				url: '/accounts/new',
+		     				type:'post',
+		     				data:{
 		     					'account':	accountname,
 		      					'first_name': firstname,
 		      				    'last_name': lastname,
@@ -748,11 +765,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      					'locale':locale,
 		      					'help_root': helpurl,
 		      					'logo_url':logourl,
-								 'file_check':pagecheck,
-								 'spell_check':spellcheck,
-								 'link_check':linkcheck,
-								 'page_validate': pagevalidate,
-								 'accessibility':accessibility,
+								'file_check':pagecheck,
+								'spell_check':spellcheck,
+								'link_check':linkcheck,
+								'page_validate': pagevalidate,
+								'accessibility':accessibility,
 		      			        'publish_threshold':publishthreshold,
 		      			        'default_tweet':  tweet,
 		      					'sso_url':cas,
@@ -768,16 +785,86 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					
 		     					
 		     					},
-		     					success: function(data){
-		     					
-		     					if(data.error){
-		     					alert(data.error);
-		     					//window.location.href='super-index.html'+params;
-		     					}
-		     					
-		     					//window.location.href='accounts.html' + params;	
-		     					}
+		     		esuccess:function(data){
+		     		//add success to here
 		     		
+		     	    },
+		      		error: function(data){
+		      		console.log(data);
+						 var errorMessageObj =jQuery.parseJSON(data.responseText);
+						 var errorMessage_formvalidation = errorMessageObj.validation_errors;
+						 var system_error = errorMessageObj.error;
+
+		     		if ( errorMessage_formvalidation){
+		     		
+						$("#alert_body","alert_title").empty();
+						var errorCount=0;
+					      $.each( errorMessage_formvalidation, function(index,value) {;
+ 					 	  $("#"+index).addClass('ui-body-d');
+ 					      $("#"+index+"Label").addClass('error');
+						  $("#"+index+"Help").show();
+						  $("#"+index+"Help").addClass('errormessage');
+						  $("#"+index+"Help").text(value);
+					     	errorCount++;
+				   		});
+				   		
+			
+				   		
+						$.mobile.changePage($('#alert-page'),{
+						type: "get", 
+						//data:"alert_message="+data.errors.email,
+						data:"alert_message",
+						transition:"pop",
+						role: "dialog",
+						reloadPage:true,
+						});
+						
+	   	            	$("#alert_title").text("Error saving account : "+accountname);
+   						$("#alert_body").text("There are "+ errorCount +" errors in account settings. Please fix the errors first in order to save the account.");
+   						
+			         	console.log("An error occured, the account is not saved yet. Please fix the errors first.");
+
+		     			
+					}
+					
+		     		else if (system_error &&!(errorMessage_formvalidation)){
+		     						console.log(system_error);
+		     						
+									$.mobile.changePage($('#alert-page'),{
+									type: "get", 
+									//data:"alert_message="+data.errors.email,
+									data:"alert_message",
+									transition:"pop",
+									role: "dialog",
+									reloadPage:true,
+									});
+									$("#alert_title").text("Error saving account : "+accountname);
+   									$("#alert_body").text(system_error);
+												
+									$('#okBtn').click(function(){	
+									//Sql-error gonna change to Exists in the API
+								
+									if(errorMessageObj.code == "EXISTS"){
+									//window.location.href='accounts-edit-mode.html' + params;	
+									}
+									else{
+		     						$.ajax({
+									url: '/authentication/admin_logout',
+									type: 'post',
+									success: function(data) {
+
+									var skin = data.skin;
+									window.location.href = 'super-index.html?skin='+skin;
+									}
+									});}
+									
+									});
+		     					  }
+		     			else{		  
+		     		
+		     				window.location.href='accounts-edit-mode.html' + params;	
+		     			}
+		     					}
 		     		});
 		     
 		     } );
@@ -787,32 +874,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		// cancell Button
 		
 		
-		
+		$('#homeBtn').click(Common.home);
 		$('#cancelBtn').click(function(){
-			window.location.href='accounts.html'+location.search;
+			window.location.href='accounts-edit-mode.html' +location.search;	
 		
 		});
 		//cancel Button
-		
-		
-			$('.logout').click(function() {
-			//localStorage.removeItem('username');
-			//localStorage.removeItem('pass');
-				$.ajax({
-					url: '/authentication/admin_logout',
-					type: 'post',
-					success: function(data) {
-					if(data.error){console.log(data.error);}
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-					}
-				});
-			});
+		$('.logout').click(Common.logout);
+
 			
-			
-		$(document).delegate('#opendialog', 'click', function() {
- 		 $('#inlinecontent').simpledialog2();
-		});
 	    </script>
 
 </body>

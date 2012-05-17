@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <style type="text/css">
-.ou-back-color{
+.omnistyle{
  background-color: #1C5D93;
  background-image: -moz-linear-gradient(center top , #2276BB, #124065);
     }
@@ -42,13 +42,28 @@
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
 
-<li id="deleteBtn" class="ui-block-a" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="user-add-ipad-version.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-a" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="user-add-ipad-version.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
-
 </div>
+</div>
+<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">Delete User</h3>
+            <p id="alert_body">There were no User selected to delete.</p>
+            <a id="okBtn" href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+    </div>
+    
+    
 	<script type="text/javascript">
 		$.mobile.fixedToolbars.show(true);
 		
@@ -65,8 +80,7 @@
 
 					var users = $ ('#user-list');
 					//users.empty();
-				    var idCount = 0;   
-				    
+				    var idCount = 0;
 					$.each(data, function(index, value) {
 					 // console.log(data);
 						
@@ -95,6 +109,7 @@
 					     	var li = $(document.createElement('li')).append(addinputElement);
 							users.append(li);
 						idCount++;
+						
 					});
 					users.listview("refresh");
 				}
@@ -129,7 +144,7 @@
 		});
 		
 		$('#doneBtn').click(function(){
-			window.location.href = 'sitelist.html'+location.search;
+			window.location.href = 'sites.html'+location.search;
 		});
 		
 		
@@ -139,22 +154,54 @@
 			var deletArray =$("input:checked");
    			 //console.log(deletArray);
    			 var deleteString= "";
+   			 var userCount=0;
    			 $.each(deletArray, function(index, value) { 
  				 console.log(index + ': ' + value.defaultValue); 
  				 deleteString= deleteString + '&user='+value.defaultValue;
+ 				 userCount++;
 					});
-				console.log( deleteString);		
+					
+				console.log( deleteString);	
+				if (userCount ==0){
+				$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+				
+				}
+				else{
 			$.ajax({
 				url:'/users/delete'+location.search+ deleteString,
 				type: 'post',
 				success: function(data) {
-					window.location.href = 'userslist.html'+location.search;
+						$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+						$("#alert_title").empty();
+						$("#alert_body").empty();
+						$("#alert_title").text("Action: Delting a User:");
+   						$("#alert_body").text("Selected Users were successfully deleted.");
+					
 				},
 			complete: function () {
-            $.mobile.showPageLoadingMsg();
+         
        			 }	
 			}).done(function(){
-		alert('success message');});
+				});
+				}
+				});
+				
+		$('#okBtn').click(function(){
+		window.location.href = 'users-edit-mode.html'+location.search;
 		});
 		
 		$('#addBtn').click(function(){
@@ -166,6 +213,6 @@
 
 
 
-</div>
+
 </body>
 </html>

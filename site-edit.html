@@ -1,0 +1,325 @@
+zilla/5.0);
+			var resultisie7 = useAgent.contains(
+			$('#sitediv').on('pageshow',function(e){
+			//e.preventDefault();
+			console.log('Editing the site');
+			var params= location.search;
+			console.log(params);
+			var siteDiv= $('#sitediv');
+			$.ajax({
+		     		url: '/sites/view'+ location.search,
+		     		type:'get',
+		     		success: function(data){
+		     		console.log(data);
+		     		}});
+
+			});
+		
+         
+			$.mobile.fixedToolbars.show(true);
+			
+			$('#siteinformation').live('click', function(){
+			$(this).dblclick();
+			$('#siteinformation-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div , #publishSettings-div ,#wysiwygSettings-div, #directEditBtn-div, #fileNaming-div' ).hide();
+			$('#productionserver , #ldp , #sitepreference , #publishSettings , #wysiwygSettings, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
+			}
+			);
+			
+			 $('#productionserver').live('click', function(){
+			 $(this).dblclick();
+			 $('#productionserver-div').show();
+			 $(this).addClass('ui-btn-hover-c');
+			 $('#siteinformation-div, #ldp-div,#sitepreference-div , #publishSettings-div  , #wysiwygSettings-div, #directEditBtn-div, #fileNaming-div').hide();
+			 $('#siteinformation, #ldp,#sitepreference , #publishSettings , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
+			}
+			);
+			
+			
+		   $('#ldp').live('click', function(){
+		   $(this).dblclick();
+		   $('#ldp-div').show();
+		   $(this).addClass('ui-btn-hover-c');
+		   $('#siteinformation-div , #productionserver-div , #sitepreference-div , #publishSettings-div , #wysiwygSettings-div , #directEditBtn-div , #fileNaming-div').hide();
+		   $('#siteinformation, #productionserver , #sitepreference , #publishSettings , #wysiwygSettings, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+		   $.mobile.fixedToolbars.show(true);
+			}
+			);
+			
+			$('#sitepreference').live('click', function(){
+			$(this).dblclick();
+			$('#sitepreference-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div , #ldp-div , #siteinformation-div , #publishSettings-div , #wysiwygSettings-div , #directEditBtn-div , #fileNaming-div').hide();
+			$('#productionserver , #ldp , #siteinformation , #publishSettings  , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
+			}
+			);
+			
+			
+			 $('#publishSettings').live('click', function(){
+			 $(this).dblclick();
+			 $('#publishSettings-div').show();
+			 $(this).addClass('ui-btn-hover-c');
+			 $('#productionserver-div , #ldp-div , #sitepreference-div ,  #siteinformation-div  , #wysiwygSettings-div,#directEditBtn-div , #fileNaming-div').hide();
+			 $('#productionserver , #ldp , #sitepreference ,  #siteinformation  , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
+			}
+			);
+			
+			$('#wysiwygSettings').live('click', function(){
+			$(this).dblclick();
+			$('#wysiwygSettings-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #directEditBtn-div, #directEditBtn-div , #fileNaming-div').hide();
+			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings,#directEditBtn, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
+			}
+			);
+		
+			
+			$('#directEditBtn').live('click', function(){
+			$(this).dblclick();
+			$('#directEditBtn-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #wysiwygSettings-div, #fileNaming-div ').hide();
+			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings, #wysiwygSettings, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
+			}
+			);
+		
+		
+			$('#fileNaming').live('click', function(){
+			$(this).dblclick();
+			$('#fileNaming-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #wysiwygSettings-div, #directEditBtn-div').hide();
+			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings, #wysiwygSettings , #directEditBtn').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
+			}
+			);
+		
+			$('#templateDirectory').live('click', function(){
+			$(this).dblclick();
+			var templateDirectory = $('#use_local_templates').val();
+			console.log(templateDirectory );
+			if(templateDirectory == "false"){ 
+			$('#LocalTemplatePath').hide();
+			$('#RemoteTemplatePath').show();
+			}
+			else{
+			$('#RemoteTemplatePath').hide();
+			$('#LocalTemplatePath').show();
+			}
+			});
+
+		
+		
+		     $('#saveBtn').click(function() {
+		      			var params=location.search;
+		      			var sitename =$('#site').val();
+		      			var server = $('#address').val();
+		      			var userneme = $ ('#username').val();
+		      			//var authentication =$ ('#organization').val();
+		      			var password = $('#password').val();
+		      			var umask = $ ('#umask').val();
+		      			var ftproot =$('#ftp_root').val();
+		      			var httproot =$('#http_root').val();
+		      			var ftphome= $('#ftp_home').val();
+		      			var ftpdirectory = $('#ftp_path').val();
+		      			var imagedirectory = $('#img_path').val();
+		      			var galleryPath =$('#gallery_path').val();
+		      			var uselocaltemplates=$('#use_local_templates').val();
+		      			var Rtemplatedirectory = $('#remote_template_path').val();
+		      			var Ltemplatedirectory = $('#local_template_path').val();
+		      			var btnType = $('#button_type').val();
+		      			var btnCode = $('#button_code').val();
+		      			var ldpAdminHost = $('#ldpAdminHost').val();
+		      			var downloadRegBtn = $('#downloadRegBtn').val();
+		      			var testConnectivityBtn = $('#testConnectivityBtn').val();
+		      			var recyclebin =$('#trash_path').val();
+		      			var timeZone = $ ('#time_zone').val();
+		      			var locale =$('#locale').val();
+		      			var dm =$('#dependency_mgr').val();
+		      			var findreplace =$('#find_replace').val();
+		      			var search = $ ('#quick_search').val();
+		      			var buildIndex = $('#buildIndex').val();
+		      			var finalcheck = $('#final_check').val();
+		      			var removeoutags = $('#filter_tags').val();
+		      			var wallpost = $('#default_tweet').val();
+		      			var shorturl= $('#url_type').val();
+		      			var decorativeimages= $('#decorative_images').val();
+		      			var toolbar= $('#toolbar').val();
+		      			var asciionly =$('#asciiOnly').val();
+		      			var imageresizing =$('#imageresizing').val();
+		      			var imagealignmentmenu =$('#imagealignmentmenu').val();
+		      			var defaultextension= $('#default_extension').val();
+		      			var filenameregex= $('#file_regex').val();
+		      			var filenameregexDesc=$('#file_regex_desc').val();
+		      			var negate_regex= $('#negate_regex').val();
+		      			var binaryfilenameregexDesc =$('#binaryfilenameregexDesc').val();
+		      			var uppercasefoldernames= $('#uppercasefoldernames').val();
+		      			var binaryfilenameregex= $('#bin_file_regex').val();
+		      			var binarynotregex= $('#binarynotregex').val();
+		     		
+		     		
+		     		$.ajax({
+		     					url: '/sites/new'+ location.search,
+		     					type:'post',
+		     					data:{
+		     					'site': sitename,
+		     					'address':server,
+		     					'username':userneme,
+		     					'password':password,
+		     					'ftp_root':ftproot,
+		     					'http_root':httproot,
+		     					'ftp_home':ftphome,
+		     					'ftp_path':ftpdirectory,
+		     					'image_path':imagedirectory,
+		     					'ldp_gallery_path':galleryPath,
+		     					'local_templates':uselocaltemplates,
+		     					'local_template_path':Ltemplatedirectory,
+		     					'local_template_path':Rtemplatedirectory,
+		     					'button_type':btnType,
+		     					'button_code':btnCode,
+		     					//'':ldpAdminHost,
+		     					//'':downloadRegBtn,
+		     					//'':testConnectivityBtn,
+		     					'trash_path':recyclebin,
+		     					'time_zone':timeZone,
+		     					'locale':locale,
+		     					'dependency_mgr':dm,
+		     					'find_replace':findreplace,
+		     					'quick_search':search,
+		     					//'':buildIndex,
+		     					'final_check':finalcheck,
+		     					'filter_tags':removeoutags,
+		     					'default_tweet':wallpost,
+		     					'url_type':shorturl,
+		     					'decorative_images':decorativeimages,
+		     					'toolbar':toolbar,
+		     					'ascii_only':asciionly,
+		     					//'':imageresizing,
+		     					//'':imagealignmentmenu,
+		     					'default_extension':defaultextension,
+		     					'file_regex':filenameregex,
+		     					'negate_regex':negate_regex,
+		     					'file_regex_desc':filenameregexDesc,
+		     					//'':uppercasefoldernames,
+		     					//'':binaryfilenameregex,
+		     					//'':binarynotregex,
+		     					//'':binaryfilenameregexDesc,
+		     					
+		     					},
+		     		success:function(data){
+		     		//add success to here
+		     		
+		     	    },
+		      		error: function(data){
+						console.log(data);
+						 var errorMessageObj =jQuery.parseJSON(data.responseText);
+						 var errorMessage_formvalidation = errorMessageObj.validation_errors;
+						 var system_error = errorMessageObj.error;
+					
+		     		if ( errorMessage_formvalidation){
+						$("#alert_body","alert_title").empty();
+						var errorCount=0;
+					      $.each( errorMessage_formvalidation, function(index,value) {;
+ 					 	  $("#"+index).addClass('ui-body-d');
+ 					      $("#"+index+"Label").addClass('error');
+						  $("#"+index+"Help").show();
+						  $("#"+index+"Help").addClass('errormessage');
+						  $("#"+index+"Help").text(value);
+					     	errorCount++;
+				   		});
+				   		
+			
+				   		
+						$.mobile.changePage($('#alert-page'),{
+						type: "get", 
+						//data:"alert_message="+data.errors.email,
+						data:"alert_message",
+						transition:"pop",
+						role: "dialog",
+						reloadPage:true,
+						});
+						
+	   	            	$("#alert_title").text("Error saving account : "+accountname);
+   						$("#alert_body").text("There are "+ errorCount +" errors in account settings. Please fix the errors first in order to save the account.");
+   						
+			         	console.log("An error occured, the site is not saved yet. Please fix the errors first.");
+
+		     			
+					}
+					
+		     		else if (system_error &&!(errorMessage_formvalidation)){
+		     						console.log(system_error);
+		     						
+									$.mobile.changePage($('#alert-page'),{
+									type: "get", 
+									//data:"alert_message="+data.errors.email,
+									data:"alert_message",
+									transition:"pop",
+									role: "dialog",
+									reloadPage:true,
+									});
+									$("#alert_title").text("Error saving account : "+accountname);
+   									$("#alert_body").text(system_error);
+												
+									 $('#okBtn').click(function(){
+									 		     						
+		     						$.ajax({
+									url: '/authentication/admin_logout',
+									type: 'post',
+									success: function(data) {
+									var skin = data.skin;
+									window.location.href = 'super-index.html?skin='+skin;
+									}
+									});
+									});
+		     					  }
+		     		else{		  
+		     		
+		     		window.location.href='sites-edit-mode.html' + params;	
+		     		//accountsDiv.page("refresh"); this should be pageid.page("refresh");
+		     		}
+		     					}
+		     		
+		     		});
+		     
+		     } );
+		
+		
+				/*Create New site ajax */
+		// cancell Button
+		
+		
+		
+		$('#cancelBtn').click(function(){
+
+		$.ajax({
+			url:'/sites/list'+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='sites.html'+location.search;
+			}
+		});
+
+
+		});
+		//cancel Button
+		$('.logout').click(Common.logout);
+		$('#homeBtn').click(Common.home);
+		$(document).delegate('#opendialog', 'click', function() {
+ 		 $('#inlinecontent').simpledialog2();
+		});
+	    </script>
+
+</body>
+</html>

@@ -7,11 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
 <style type="text/css">
-.ou-back-color{
- background-color: #1C5D93;
- background-image: -moz-linear-gradient(center top , #2276BB, #124065);
-    }
+
 .ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
 .ui-btn-text{padding:10px;}
 .ui-content {padding: 0 15px 15px;}
@@ -22,7 +20,7 @@
 </head> 
 <body> 
 <div data-role="page" id="sites">
-		<div id="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div id="header"  data-role="header" data-theme="b" class="omnistyle">
 	
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1>Sites Edit Mode</h1>
@@ -41,13 +39,32 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li id="deleteBtn" class="ui-block-a" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="l" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-a" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="l" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
 </div>
+</div>
+
+
+<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">Delet Site</h3>
+            <p id="alert_body"> There were no Site selected to delete.</p>
+            <a id="okBtn"  href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+</div>
+
+
+
 	<script type="text/javascript">
 		$.mobile.fixedToolbars.show(true);
 		
@@ -59,7 +76,7 @@
 					if (data.error) {
 						window.location.href = 'super-index.html';
 					}
-					
+				
 					var sites = $ ('#site-list');
 					//sites.empty();
 				    var idCount = 0;   
@@ -81,7 +98,7 @@
 						     	   	 .text(value.site);
 						     	   	 
 						 var a = $(document.createElement('a'))
-						           .attr({href: 'site-edit.html' + location.search })
+						           .attr({href: 'site-edit.html?account='+value.account+'&site='+value.site})
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit');
 							
@@ -102,19 +119,7 @@
 
 		
 		
-			$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-				$.ajax({
-					url: '/authentication/admin_logout',
-					type: 'post',
-					success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-					}
-				});
-			});
-			
+		$('.logout').click(Common.logout);	
 		$('#editBtn').click(function() {
 		 window.location.href='site-add-ipad-version.html'+location.search;
 		
@@ -127,47 +132,72 @@
 		});
 		
 		$('#doneBtn').click(function(){
-			window.location.href = 'sitelist.html'+location.search;
+			window.location.href = 'sites.html'+location.search;
 		});
 		
 	
 	//Delete Site
 		$('#deleteBtn').click(function() {
-			var params= location.search;
-			var deletArray =$("input:checked");
+		     var siteCount=0;
+			 var params= location.search;
+			 var deletArray =$("input:checked");
    			 console.log(deletArray);
    			 var deleteString= "";
    			 $.each(deletArray, function(index, value) { 
  				 console.log(index + ': ' + value.defaultValue); 
  				 deleteString= deleteString + '&site='+value.defaultValue;
+ 				 siteCount++;
 					});
 				console.log( deleteString);		
-			$.ajax({
+				if(siteCount==0){
+				$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+				}
+				else{
+				$.ajax({
 				url:'/sites/delete'+location.search+ deleteString,
 				type: 'post',
 				success: function(data) {
-				window.location.href = 'sitelist.html'+location.search;
+				$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+						$("#alert_title").empty();
+						$("#alert_body").empty();
+						$("#alert_title").text("Action: Delting a Site:");
+   						$("#alert_body").text("Selected Sites were successfully deleted.");
 				},
-			complete: function () {
-            $.mobile.showPageLoadingMsg();
+				complete: function () {
        			 }	
-			}).done(function(){
-		    alert('success message');
-		});
-		});
+				}).done(function(){
+				});}
+				});
 
 		//Add Site
 		
 		
-		$('#addBtn').click(function(){
+		$('#okBtn').click(function(){
+		window.location.href = 'sites-edit-mode.html'+location.search;
+		});
 		
-				window.location.href='site-add-ipad-version.html'+ location.search;
+		$('#addBtn').click(function(){
+		window.location.href='site-add-ipad-version.html'+ location.search;
 		});
 	</script> 
 
 
 
 
-</div>
+
 </body>
 </html>

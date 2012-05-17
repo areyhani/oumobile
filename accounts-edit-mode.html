@@ -7,11 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
 <style type="text/css">
-.ou-back-color{
- background-color: #1C5D93;
- background-image: -moz-linear-gradient(center top , #2276BB, #124065);
-    }
 .ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
 .ui-btn-text{padding:10px;}
 .ui-content {padding: 0 15px 15px;}
@@ -42,13 +39,29 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-<li id="DoneBtn" class="ui-block-b"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="DoneBtn" class="ui-block-b"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
 </div>
+
+</div>
+<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">Delet Account</h3>
+            <p id="alert_body"> There were no Account Selected to delete.</p>
+            <a id="okBtn"  href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+</div>
+
 	<script type="text/javascript">
 	$.mobile.fixedToolbars.show(true);
 		
@@ -104,20 +117,7 @@
 
 		
 		
-		$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-			
-			
-			$.ajax({
-				url: '/authentication/admin_logout',
-				type: 'post',
-				success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-				}
-			});
-		});
+		$('.logout').click(Common.logout);
 		
 		$('#editBtn').click(function() {
 		 window.location.href='accounts.html'+location.search;
@@ -138,31 +138,59 @@
 		$('#deleteBtn').click(function() {
 			var params= location.search;
 			var deletArray =$("input:checked");
+			var deleteCount=0;
    			 //console.log(deletArray);
    			 var deleteString= "";
    			 $.each(deletArray, function(index, value) { 
  				 console.log(index + ': ' + value.defaultValue); 
  				 deleteString= deleteString + '&account='+value.defaultValue;
+ 				 deleteCount++;
 					});
-				console.log( deleteString);		
-			$.ajax({
-				url:'/accounts/delete?'+ deleteString,
-				type: 'post',
-				success: function(data) {
-				window.location.href = 'accounts.html'+location.search;
-				},
-			complete: function () {
-            $.mobile.showPageLoadingMsg();
-       			 }	
-			}).done(function(){
-		alert('success message');});
-		});
+				console.log( deleteString);	
+			
+				
+				if (deleteCount==0){
+				$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});}
+				else{
+				$.ajax({
+						url:'/accounts/delete?'+ deleteString,
+						type: 'post',
+						success: function(data) {
+						$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+						$("#alert_title").empty();
+						$("#alert_body").empty();
+						$("#alert_title").text("Action: Delting an Account:");
+   						$("#alert_body").text("Selected accounts were successfully deleted.");
+						},
+					complete: function () {
+       				 }	
+					}).done(function(){
+						
+					});
+					}
+					});
 
 				//var acccountToDelete= 
 		
 		
 		
-		
+		$('#okBtn').click(function(){
+		window.location.href = 'accounts-edit-mode.html'+location.search;
+		});
 		
 		$('#addBtn').click(function(){
 		
@@ -170,9 +198,5 @@
 		});
 	</script> 
 
-
-
-
-</div>
 </body>
 </html>

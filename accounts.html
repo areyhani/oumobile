@@ -7,17 +7,11 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-<style type="text/css">
-.ou-back-color{
- background-color: #1C5D93;
- background-image: -moz-linear-gradient(center top , #2276BB, #124065);
-    }
-
-</style>
+	<script type="text/javascript" src="js/common.js"></script>
 </head> 
 <body> 
 <div data-role="page" id="accounts">
-		<div class="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div class="header omnistyle"  data-role="header" data-theme="b" >
 	
 	
 		<h1>Accounts</h1>
@@ -32,9 +26,9 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
-<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li class="ui-block-a" id="homeBtn"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
+<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
@@ -85,24 +79,10 @@
 		});
 		
 		
-			$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-			
-			$.ajax({
-				url: '/authentication/admin_logout',
-				type: 'post',
-				success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-				}
-			});
-		});
-		
-		
-			$('#addBtn').click(function(){
-		
-				window.location.href='account-add-ipad-version.html'+ location.search;
+		$("#homeBtn").click(Common.home);
+		$('.logout').click(Common.logout);
+		$('#addBtn').click(function(){
+		window.location.href='account-add-ipad-version.html'+ location.search;
 		});
 		
 	

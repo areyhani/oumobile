@@ -10,7 +10,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
-
+<script type="text/javascript" src="js/common.js"></script>
 <style type="text/css">
 
 .ui-field-contain label.ui-slider {width:42%; }
@@ -37,9 +37,9 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <body> 
 <div data-role="page" id="sitediv" >
 
-	<div id="header" data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div id="header" data-role="header" data-position="fixed" data-theme="b" class="omnistyle">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
-		<h1 id="header"> New Site </h1>
+		<h1 id="header"> Add Site </h1>
 
 		<a href="#" data-icon="gear" class="logout">Logout</a>
 	</div>
@@ -72,129 +72,146 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	
 	<div id="siteinformation-div" style="display:block" >
 	
-	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-                        
-                  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="sitename" class="ui-input-text">Site Name: </label>
-	        	<input type="text" value="" id="sitename" name="sitename" class="ui-input-text ui-body-c ui-corner-all ">
+	  <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
+                <li data-role="list-divider" id="siteHelp" class="help" style="display:none;"></li>       
+                <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label  id="siteLabel" for="site" class="ui-input-text">Site Name: </label>
+	        	<input type="text" value="" id="site" name="site" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
-				
-					</ul>
-					<br />
+				</ul>
+				<br />
 					
-					<div class="ui-body ui-body-b ui-corner-all">
-				<div style="width:50%; padding:5px;font-weight:bold;" id="faddr-div" data-theme="b" class="oubox-edit-setting-field-div error">Production Server:</div> 
+				<div class="ui-body ui-body-b ui-corner-all">
+				<div style="width:50%; padding:5px;font-weight:bold;" id="address-div" data-theme="b" class="oubox-edit-setting-field-div">Production Server:</div> 
 
 			
-			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-		    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-		       <div class="oubox-edit-setting">
-					
-					<div id="faddr-div" class="oubox-edit-setting-field-div error"><label for="faddr">Server:</label><input type="text" maxlength="64" size="64" name="faddr"  id="faddr"></div>
-				</div>
-			</li>
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<div class="oubox-edit-setting">
-					<div id="fuser-div" class="oubox-edit-setting-field-div ok"><label for="fuser">Username:</label><input type="text" maxlength="32" size="32" name="fuser" id="fuser"></div>
-				</div>
-			</li>
-	    	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<div id="authtype-container" class="oubox-edit-setting">
-					<label for="fauthtype0">Authentication Type:</label>
-					    <fieldset data-role="controlgroup">
-					  
-					<input type="radio" checked="checked" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
-					<label for="fauthtype0"> Password</label>
-					<input type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
-					<label for="fauthtype1"> Public Key</label>
-					    </fieldset>
-		
-				</div>
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+				<li data-role="list-divider" id="addressHelp" class="help" style="display:none;"></li>       
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				   <div class="oubox-edit-setting">
+					<div id="address-div" class="oubox-edit-setting-field-div  "><label id="addressLabel" for="address">Server:</label><input type="text" maxlength="64" size="64" name="address"  id="address"></div>
+					</div>
 				</li>
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<div id="password-container" class="oubox-edit-setting">
-					<div class="oubox-edit-setting-field-div">
-					<label for="pass">Password:</label>
-					<input type="password" maxlength="32" size="32" name="pass" id="pass"></div>
-				</div>
-				</li>	
 				
+				<li data-role="list-divider" id="usernameHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<div class="oubox-edit-setting">
+						<div id="username-div" class="oubox-edit-setting-field-div ok"><label id="usernameLabel" for="username">Username:</label><input type="text" maxlength="32" size="32" name="username" id="username"></div>
+					</div>
+				</li>
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<div id="umask-container" class="oubox-edit-setting">
-					<div data-role="fieldcontain" id="umask-div" class="oubox-edit-setting-field">
+					<div id="authtype-container" class="oubox-edit-setting">
+						<label for="fauthtype0">Authentication Type:</label>
+							<fieldset data-role="controlgroup">
+						  
+						<input type="radio" checked="checked" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
+						<label for="fauthtype0"> Password</label>
+						<input type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
+						<label for="fauthtype1"> Public Key</label>
+							</fieldset>
+			
+					</div>
+					</li>
 					
-
-					<fieldset data-role="controlgroup">
-					<label for="umask">UMask:</label>
-					<input  type="radio" checked="checked" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
-				    <input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label><br>
-				</fieldset>
-				</div>
-				</div>
-				</li>
+				<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<div id="password-container" class="oubox-edit-setting">
+						<div class="oubox-edit-setting-field-div">
+						<label id="passwordLabel" for="password">Password:</label>
+						<input type="password" maxlength="32" size="32" name="password" id="password"></div>
+					</div>
+					</li>	
+					
+					<li data-role="list-divider" id="umaskHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<div id="umask-container" class="oubox-edit-setting">
+						<div data-role="fieldcontain" id="umask-div" class="oubox-edit-setting-field">
+						<fieldset data-role="controlgroup">
+						<label id="umaskLabel" for="umask">UMask:</label>
+						<input  type="radio" checked="checked" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+						<input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label><br>
+					</fieldset>
+					</div>
+					</div>
+					</li>
+			
+			<li data-role="list-divider" id="ftp_rootHelp" class="help" style="display:none;"></li> 
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div class="oubox-edit-setting">
-					<div id="froot-div" class="oubox-edit-setting-field-div error">
-					<label for="froot">FTP Root:</label>
-					<input type="text" maxlength="128" size="64" name="froot" id="froot"></div>
+					<div id="ftp_root-div" class="oubox-edit-setting-field-div  ">
+					<label id="ftp_rootLabel" for="ftp_root">FTP Root:</label>
+					<input type="text" maxlength="128" size="64" name="ftp_root" id="ftp_root"></div>
 				</div>
-				</li>
+			</li>
+			
+			
+			<li data-role="list-divider" id="http_rootHelp" class="help" style="display:none;"></li> 
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div class="oubox-edit-setting">
-					<div id="hroot-div" class="oubox-edit-setting-field-div error">
-					<label for="hroot">HTTP Root:</label>
-					<input type="text" maxlength="128" size="64" name="hroot" id="hroot"></div>
+					<div id="http_root-div" class="oubox-edit-setting-field-div  ">
+					<label id="http_rootLabel" for="http_root">HTTP Root:</label>
+					<input type="text" maxlength="128" size="64" name="http_root" id="http_root"></div>
 				</div>
 				</li>
+				
+			<li data-role="list-divider" id="ftp_homeHelp" class="help" style="display:none;"></li> 	
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div class="oubox-edit-setting">
-					<div id="fhome-div" class="oubox-edit-setting-field-div ok">
-					<label for="fhome">FTP Home:</label>
-					<input type="text" maxlength="128" size="64" name="fhome" id="fhome"></div>
+					<div id="ftp_home-div" class="oubox-edit-setting-field-div ok">
+					<label id="ftp_homeLabel" for="ftp_home">FTP Home:</label>
+					<input type="text" maxlength="128" size="64" name="ftp_home" id="ftp_home"></div>
 				</div>
 				</li>
+				
+			<li data-role="list-divider" id="ftp_pathHelp" class="help" style="display:none;"></li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div class="oubox-edit-setting">
-					<div id="fpath-div" class="oubox-edit-setting-field-div ok">
-					<label for="fpath">FTP Directory:</label>
-					<input type="text" maxlength="128" size="64" name="fpath" id="fpath"></div>
+					<div id="ftp_path-div" class="oubox-edit-setting-field-div ok">
+					<label id="ftp_pathLabel" for="ftp_path">FTP Directory:</label>
+					<input type="text" maxlength="128" size="64" name="ftp_path" id="ftp_path"></div>
 				</div>
 				</li>
+				
+			<li data-role="list-divider" id="img_pathHelp" class="help" style="display:none;"></li>
 		    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div class="oubox-edit-setting">
-					<div id="fpathi-div" class="oubox-edit-setting-field-div ok">
-					<label for="fpathi">Image Directory:</label>
-					<input type="text" maxlength="128" size="64" name="fpathi" id="fpathi"></div>
+					<div id="img_path-div" class="oubox-edit-setting-field-div ok">
+					<label id="img_pathLabel" for="img_path">Image Directory:</label>
+					<input type="text" maxlength="128" size="64" name="img_path" id="img_path"></div>
 				</div>
 				</li>
 				
-				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<li data-role="list-divider" id="gallery_pathHelp" class="help" style="display:none;"></li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div class="oubox-edit-setting">
-					<div id="fpathi-div" class="oubox-edit-setting-field-div ok">
-					<label for="fpathi">LDP Gallery Directory:</label>
-					<input type="text" maxlength="128" size="64" name="fpathi" id="fpathi"></div>
+					<div id="gallery_path-div" class="oubox-edit-setting-field-div ok">
+					<label id="gallery_pathLabel" for="gallery_path">LDP Gallery Directory:</label>
+					<input type="text" maxlength="128" size="64" name="gallery_path" id="gallery_path"></div>
 				</div>
 				</li>
-				
+			   
+			    <li data-role="list-divider" id="remote_template_pathHelp" class="help" style="display:none;"></li>
+			    <li data-role="list-divider" id="local_template_pathHelp" class="help" style="display:none;"></li>
 				<li id="templateDirectory" data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label style="width:42%"  for="uselocaltemplates" id="uselocaltemplates-label">Template Sourse: </label>
-				<select data-role="slider" id="uselocaltemplates" name="uselocaltemplates" class="ui-slider-switch">
+				<label id="use_local_templatesLabel"  style="width:42%"  for="use_local_templates" id="use_local_templates-label">Template Sourse: </label>
+				<select data-role="slider" id="use_local_templates" name="use_local_templates" class="ui-slider-switch">
 				<option  selected="selected" value="false">Remote</option>
 				<option value="true"> Local</option>	
 				</select>
 			
-
+			
 				<div  id="LocalTemplatePath" class="oubox-edit-setting" style="display:none;margin-top:5px;">
-					<div id="Ltroot-div" class="oubox-edit-setting-field-div ok">
-					<label style="width:36%" class="ui-slider" > Local Template Directory:</label>
-					<input id="Ltroot" type="text" maxlength="128" size="64" name="LocalTemplatePath"></div>
+					<div id="local_template_path-div" class="oubox-edit-setting-field-div ok">
+					<label id="local_template_pathLabel"style="width:36%" class="ui-slider" > Local Template Directory:</label>
+					<input id="local_template_path" type="text" maxlength="128" size="64" name="LocalTemplatePath"></div>
 				</div>
 				
+	
 				<div id="RemoteTemplatePath" class="oubox-edit-setting" style="display:block;margin-top:5px;">
-					<div id="Rtroot-div" class="oubox-edit-setting-field-div ok">
-				    <label style="width:36%" class="ui-slider">Remote Template Directory:</label>
-					<input id="Rtroot" type="text" maxlength="128" size="64" name="RemoteTemplatePath" ></div>
+					<div id="remote_template_path-div" class="oubox-edit-setting-field-div ok">
+				    <label id="remote_template_pathLabel" style="width:36%" class="ui-slider">Remote Template Directory:</label>
+					<input id="remote_template_path" type="text" maxlength="128" size="64" name="RemoteTemplatePath" ></div>
 				</div>
 				</li>
 		
@@ -215,16 +232,18 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="directEditBtn-div" style="display:none;" >
 	  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
                   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-                   <label for="btnType" class="ui-input-text">Button Type</label>
-                   <select id="btnType" name="btnType" onchange="toggleFileCheckList(this.value)">
+                   <label for="button_type" class="ui-input-text">Button Type</label>
+                   <select id="button_type" name="button_type" onchange="toggleFileCheckList(this.value)">
 					<option value="0">None</option>
 					<option selected="selected" value="1">Standard</option>
 					<option value="2">Transparent</option>
 					</select>
                   </li>
+                  
+                <li data-role="list-divider" id="remote_template_pathHelp" class="help" style="display:none;"></li>
                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label for="btnCode" class="ui-input-text">Button Code: </label>
-	        	<input type="text" value="" id="btnCode" name="btnCode" class="ui-input-text ui-body-c ui-corner-all ">
+				<label id=""  for="button_code" class="ui-input-text">Button Code: </label>
+	        	<input type="text" value="" id="button_code" name="button_code" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
 	</ul>
@@ -235,9 +254,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 	<div id="ldp-div"  style="display:none">
 	
-	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	 <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
+	 			<li data-role="list-divider" id="ldpAdminHostHelp" class="help" style="display:none;"></li>
                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label style="width:40%" for="tweet" class="ui-input-text"> LDP Admin Host:</label>
+				<label id="ldpAdminHostLabel"  style="width:40%" for="tweet" class="ui-input-text"> LDP Admin Host:</label>
 	        	<input type="text" value="" id="ldpAdminHost" name="ldpAdminHost" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 						
@@ -262,31 +282,34 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="sitepreference-div" style="display:none; height:100%">
 	
 	
-	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
 		
 		
+				
+				<li data-role="list-divider" id="trash_pathHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label class="inputb" for="recyclebin" class="ui-input-text"> Recycle Bin</label>
-	        	<input type="text" value="/trash" id="recyclebin" name="recyclebin" class="ui-input-text ui-body-c ui-corner-all ">
+   				<label id="trash_pathLabel" class="inputb" for="trash_path" class="ui-input-text"> Recycle Bin</label>
+	        	<input type="text" value="/trash" id="trash_path" name="trash_path" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-   		  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   				<label  class="inputb"    for="timeZone" class="ui-input-text"> Time Zone</label>
-	        	<input type="text" value="" id="timeZone" name="TimeZone" class="ui-input-text ui-body-c ui-corner-all ">
+   		      
+   		        <li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>
+   		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  		<label  id="time_zoneLabel" class="inputb" for="time_zone" class="ui-input-text"> Time Zone</label>
+	        	<input type="text" value="" id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
-   		      			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   		  
-   				<label  class="inputb"  for="locale" class="ui-input-text">  Locale</label>
+   		        <li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li>
+   		      	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   				<label  id="localeLabel" class="inputb"  for="locale" class="ui-input-text">  Locale</label>
 	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
    		  
    		      </li>
    		      
-   		      
+   		    
    		      <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    			<label  for="dm" id="dm-label" class="ui-slider">Dependency Manager:</label>
-				<select data-role="slider" id="dm" name="dm" class="ui-slider-switch">
+    			<label  for="dependency_mgr" id="dependency_mgr-label" class="ui-slider">Dependency Manager:</label>
+				<select data-role="slider" id="dependency_mgr" name="dependency_mgr" class="ui-slider-switch">
 				<option  selected="selected" value="off">Off</option>
 				<option value="on"> On </option>
 					
@@ -294,18 +317,18 @@ label.ui-input-text{ width:31%;padding-top:4px;}
     
     			</li>
 				
-   		      
+   		        
    		      	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="addons" id="findreplace" class="ui-slider">Find / Replace</label>
-				<select data-role="slider" id="findreplace" name="findreplace" class="ui-slider-switch">
+	        	<label for="addons" id="find_replace" class="ui-slider">Find / Replace</label>
+				<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch">
 					<option value="off">Off</option>
 					<option  selected="selected"  value="on">On</option>
 				</select>
 			</li>
-                    
-            <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label  for="search" id="addons-label" class="ui-slider">Search:</label>
-				<select style="margin-buttom:5px;"  data-role="slider" id="search" name="search" class="ui-slider-switch">
+                   
+               <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label  for="quick_search" id="addons-label" class="ui-slider">Search:</label>
+				<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch">
 					<option value="off">Off</option>
 					<option  selected="selected"  value="on">On</option>
 				</select>
@@ -324,27 +347,29 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<div id="publishSettings-div" style="display:none"> 
 	
 	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-
+			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="finalcheck" id="finalcheck-label" class="ui-slider">Final Check:</label>
-				<select data-role="slider" id="finalcheck" name="finalcheck" class="ui-slider-switch">
+	        	<label for="final_check" id="final_check-label" class="ui-slider">Final Check:</label>
+				<select data-role="slider" id="final_check" name="final_check" class="ui-slider-switch">
 					<option  selected="selected"  value="off">Off</option>
 					<option  value="on">On</option>
 				</select>
 			</li>
 			
+			
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="removeoutags" id="removeoutags-label" class="ui-slider"> Remove OU Tags:</label>
-				<select data-role="slider" id="removeoutags" name="removeoutags" class="ui-slider-switch">
+	        	<label for="filter_tags" id="filter_tags-label" class="ui-slider"> Remove OU Tags:</label>
+				<select data-role="slider" id="filter_tags" name="filter_tags" class="ui-slider-switch">
 					<option value="off">Off</option>
 					<option selected="selected" value="on">On</option>
 				</select>
 			</li>
 			
+			<li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			<label style="width:50%" for="wallpost" id="wallpost-label" class="ui-slider">Default Tweet / Wall Post:</label>
+			<label id="default_tweetLabel" style="width:50%" for="default_tweet" id="default_tweet-label" class="ui-slider">Default Tweet / Wall Post:</label>
 			<br />
-	         <textarea style="width:85%; margin-left:15px;" cols="200" rows="8" name="wallpost" id="wallpost"></textarea>
+	         <textarea style="width:85%; margin-left:15px;" cols="200" rows="8" name="default_tweet" id="default_tweet"></textarea>
 			</li>
 			
 			
@@ -357,12 +382,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	<!-- wysiwyg Settings --!>
 	
 	<div id="wysiwygSettings-div"  style="display:none;" >
-  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-                 
-                 
+ 				 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
                  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-                   <label for="shorturl" class="ui-input-text">Short URL: </label>
-                   <select id="shorturl" name="shorturl" onchange="toggleFileCheckList(this.value)">
+                   <label for="url_type" class="ui-input-text">Short URL: </label>
+                   <select id="url_type" name="url_type" onchange="toggleFileCheckList(this.value)">
 					<option value="0">ABSOLUTE</option>
 					<option selected="selected" value="1">ROOT_RELATIVE</option>
 					<option value="2">PAGE_RELATIVE</option>
@@ -372,50 +395,49 @@ label.ui-input-text{ width:31%;padding-top:4px;}
                   
                   
                    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-                  <label for="decorativeimages"  id="decorativeimages-label" class="ui-input-text"> Decorative Images: </label>
-                  <select name="decorativeimages" id="decorativeimages">
+                  <label for="decorative_images"  id="decorative_images-label" class="ui-input-text"> Decorative Images: </label>
+                  <select name="decorative_images" id="decorative_images">
 						<option selected="selected" value="0">Disabled</option>
 						<option value="1">Admin Only</option>
 						<option value="2">All Users</option>
 				 </select>
-				
-				
                   </li>
                   
+                 
                    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-                 <label for="toolbar"  id="toolbar-label" class="ui-input-text"> Toolbar: </label>
-                  <select name="toolbar" id="toolbar">
+                   <label for="toolbar"  id="toolbar-label" class="ui-input-text"> Toolbar: </label>
+                     <select name="toolbar" id="toolbar">
 						<option selected="selected" value="0">Default</option>
 						<option value="1">Toolbar1</option>
 						<option value="2">Toolbar2</option>
-				 </select>
+                    </select>
                    </li>
-                   
-    		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="asciionly" id="asciionly-label" class="ui-slider"> ASCII Only:</label>
-				<select data-role="slider" id="asciionly" name="asciionly" class="ui-slider-switch">
-				<option  selected="selected" value="off">Off</option>
-				<option value="on"> On </option>
-					
-				</select>
-			</li>
-			
-		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="imageresizing" id="imageresizing-label" class="ui-slider">Image Resizing:</label>
-				<select data-role="slider" id="imageresising" name="imageresizing" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected" value="on">On</option>
-				</select>
-			</li>
-			
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label for="imagealignmentmenu" id="imageresizing-label" class="ui-slider">Image Alignment Menu:</label>
-				<select data-role="slider" id="imagealignmentmenu" name="imagealignmentmenu" class="ui-slider-switch">
-					<option value="off">Off</option>
-					<option selected="selected" value="on">On</option>
-				</select>
-			</li>
-    </ul>
+			   
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="asciiOnly" id="asciiOnly-label" class="ui-slider"> ASCII Only:</label>
+					<select data-role="slider" id="asciiOnly" name="asciiOnly" class="ui-slider-switch">
+					<option  selected="selected" value="off">Off</option>
+					<option value="on"> On </option>
+						
+					</select>
+				</li>
+				
+			 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="imageresizing" id="imageresizing-label" class="ui-slider">Image Resizing:</label>
+					<select data-role="slider" id="imageresising" name="imageresizing" class="ui-slider-switch">
+						<option value="off">Off</option>
+						<option selected="selected" value="on">On</option>
+					</select>
+				</li>
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="imagealignmentmenu" id="imageresizing-label" class="ui-slider">Image Alignment Menu:</label>
+					<select data-role="slider" id="imagealignmentmenu" name="imagealignmentmenu" class="ui-slider-switch">
+						<option value="off">Off</option>
+						<option selected="selected" value="on">On</option>
+					</select>
+				</li>
+ 	   </ul>
 	
 	</div>
 	<!-- wysiwyg Settings --!>
@@ -423,80 +445,89 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		<!--File Naming +Binary File Naming--!>
 	<div id="fileNaming-div"   style="display:none;" >
 	
-    <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-    		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="defaultextension" class="ui-input-text"> Default Extention</label>
-	        	<input type="text" value="" id="defaultextension" name="defaultextension" class="ui-input-text ui-body-c ui-corner-all ">
-  		 	</li>
-   				      
-   			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="filenameregex" class="ui-input-text"> File Name Regex:</label>
-	        	<input type="text" value="" id="fielnameregex" name="filenameregex" class="ui-input-text ui-body-c ui-corner-all ">
-   		    </li>
-   		    
-   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label  style="width:80%;" for="notregex" id="notregex-label" class="ui-slider"> Filename Must NOT Match Regex:</label>
-				<select data-role="slider" id="notregex" name="notregex" class="ui-slider-switch">
-				<option  selected="selected" value="off">Off</option>
-				<option value="on"> On </option>
+			<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
+				   <li data-role="list-divider" id="default_extensionHelp" class="help" style="display:none;"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label  id="default_extensionLabel" style="width:36%"  for="default_extension" class="ui-input-text"> Default Extention</label>
+						<input type="text" value="" id="default_extension" name="default_extension" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
 					
-				</select>
-			</li>
-			  			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="filenameregex" class="ui-input-text"> File Name Regex:</label>
-	        	<input type="text" value="" id="fielnameregex" name="filenameregex" class="ui-input-text ui-body-c ui-corner-all ">
-   		    </li>
-   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="filenameregexDesc" class="ui-input-text"> File Name Regex description:</label>
-	        	<input type="text" value="" id="fielnameregexDesc" name="filenameregexDesc" class="ui-input-text ui-body-c ui-corner-all ">
-   		    </li>
-   		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="filenameregexTest" class="ui-input-text">Test File Name Regex:</label>
-	        	<input type="text" value="" id="fielnameregexTest" name="filenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
-   		    </li>
-			
-		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-	        	<label style="width:80%;" for="uppercasefoldernames" id="notregex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
-				<select data-role="slider" id="uppercasefoldernames" name="uppercasefoldernames" class="ui-slider-switch">
-				<option  selected="selected" value="off">Off</option>
-				<option value="on"> On </option>
+					<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>	      
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label  style="width:36%"  for="filenameregex" class="ui-input-text"> File Name Regex:</label>
+						<input type="text" value="" id="fielnameregex" name="filenameregex" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
 					
-				</select>
-		</li>
-   		      
-   		
-   		      
-    </ul>
+				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label  style="width:80%;" for="notregex" id="notregex-label" class="ui-slider"> Filename Must NOT Match Regex:</label>
+						<select data-role="slider" id="negate_regex" name="negate_regex" class="ui-slider-switch">
+						<option  selected="selected" value="off">Off</option>
+						<option value="on"> On </option>
+							
+						</select>
+					</li>
+						<li data-role="list-divider" id="file_regexHelp" class="help" style="display:none;"></li>
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label id="file_regexLabel" style="width:36%"  for="file_regex" class="ui-input-text"> File Name Regex:</label>
+						<input type="text" value="" id="file_regex" name="file_regex" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					
+					<li data-role="list-divider" id="file_regex_descHelp" class="help" style="display:none;"></li>
+				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label id="file_regex_descLabel" style="width:36%"  for="file_regex_desc" class="ui-input-text"> File Name Regex description:</label>
+						<input type="text" value="" id="file_regex_desc" name="file_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					
+					<li data-role="list-divider" id="filenameregexTestHelp" class="help" style="display:none;"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label id="filenameregexTestLabel" style="width:36%"  for="filenameregexTest" class="ui-input-text">Test File Name Regex:</label>
+						<input type="text" value="" id="fielnameregexTest" name="filenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label style="width:80%;" for="uppercasefoldernames" id="negate_regex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
+						<select data-role="slider" id="uppercasefoldernames" name="uppercasefoldernames" class="ui-slider-switch">
+						<option  selected="selected" value="off">Off</option>
+						<option value="on"> On </option>
+							
+						</select>
+				</li>
+					  
+				
+					  
+				  </ul>
     
     <br />
-   <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-   
-    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    Binary File Naming
-    
-    </li>
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="binaryfilenameregex" class="ui-input-text"> Binary File Name Regex:</label>
-	        	<input type="text" value="" id="binaryfielnameregex" name="binaryfilenameregex" class="ui-input-text ui-body-c ui-corner-all ">
-   		    </li>
-   		    
-   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-    	<label  style="width:80%;" for="binarynotregex" id="binarynotregex-label" class="ui-slider">Binary Filename Must NOT Match Regex:</label>
-				<select data-role="slider" id="binarynotregex" name="binarynotregex" class="ui-slider-switch">
+  			<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
+				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				Binary File Naming</li>
+				
+				<li data-role="list-divider" id="bin_file_regexHelp" class="help" style="display:none;"></li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label id="bin_file_regexLabel" style="width:36%"  for="bin_file_regex" class="ui-input-text"> Binary File Name Regex:</label>
+					<input type="text" value="" id="binaryfielnameregex" name="bin_file_regex" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+		
+	  		 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+    			<label  style="width:80%;" for="binarynegate_regex" id="binarynegate_regex-label" class="ui-slider">Binary Filename Must NOT Match Regex:</label>
+				<select data-role="slider" id="binarynegate_regex" name="binarynegate_regex" class="ui-slider-switch">
 				<option  selected="selected" value="off">Off</option>
 				<option value="on"> On </option>
 					
 				</select>
-    
-    </li>
+   			 </li>
+   			 <li data-role="list-divider" id="button_codeHelp" class="help" style="display:none;"></li>
     			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="binaryfilenameregexDesc" class="ui-input-text"> Binary File Regex Description:</label>
+   				<label  id="button_codeLabel" style="width:36%"  for="binaryfilenameregexDesc" class="ui-input-text"> Binary File Regex Description:</label>
 	        	<input type="text" value="" id="binaryfilenameregexDesc" name="binaryfilenameregexDesc" class="ui-input-text ui-body-c ui-corner-all ">
    		    </li>
+   		    <li data-role="list-divider" id="binaryfilenameregexTestHelp" class="help" style="display:none;"></li>
    		     <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-   				<label  style="width:36%"  for="binaryfilenameregexTest" class="ui-input-text">Test Binary File Regex:</label>
+   				<label  id="binaryfilenameregexTestLabel" style="width:36%"  for="binaryfilenameregexTest" class="ui-input-text">Test Binary File Regex:</label>
 	        	<input type="text" value="" id="binaryfilenameregexTest" name="binaryfilenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
    		    </li>
+   		    
    		    
     </ul>
 	</div>
@@ -515,25 +546,39 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li id="createNewSite" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
+<li id="homeBtn" class="ui-block-a"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="CreateNewSite" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Save</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 </ul>
 </div>
-
 </div>
-</div>		
+</div>	
+
+	<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">alert title</h3>
+            <p id="alert_body">alert body</p>
+            <a id="okBtn"  href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+    </div>
+	
 			<script type="text/javascript">
 
-	$.mobile.fixedToolbars.show(true);
-
-
+			$.mobile.fixedToolbars.show(true);
+			
 			$('#siteinformation').live('click', function(){
 			$(this).dblclick();
 			$('#siteinformation-div').show();
 			$(this).addClass('ui-btn-hover-c');
 			$('#productionserver-div, #ldp-div , #sitepreference-div , #publishSettings-div ,#wysiwygSettings-div, #directEditBtn-div, #fileNaming-div' ).hide();
 			$('#productionserver , #ldp , #sitepreference , #publishSettings , #wysiwygSettings, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -543,6 +588,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#siteinformation-div, #ldp-div,#sitepreference-div , #publishSettings-div  , #wysiwygSettings-div, #directEditBtn-div, #fileNaming-div').hide();
 			 $('#siteinformation, #ldp,#sitepreference , #publishSettings , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -553,6 +599,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		   $(this).addClass('ui-btn-hover-c');
 		   $('#siteinformation-div , #productionserver-div , #sitepreference-div , #publishSettings-div , #wysiwygSettings-div , #directEditBtn-div , #fileNaming-div').hide();
 		   $('#siteinformation, #productionserver , #sitepreference , #publishSettings , #wysiwygSettings, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+		   $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -562,6 +609,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#productionserver-div , #ldp-div , #siteinformation-div , #publishSettings-div , #wysiwygSettings-div , #directEditBtn-div , #fileNaming-div').hide();
 			$('#productionserver , #ldp , #siteinformation , #publishSettings  , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -572,6 +620,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			 $(this).addClass('ui-btn-hover-c');
 			 $('#productionserver-div , #ldp-div , #sitepreference-div ,  #siteinformation-div  , #wysiwygSettings-div,#directEditBtn-div , #fileNaming-div').hide();
 			 $('#productionserver , #ldp , #sitepreference ,  #siteinformation  , #wysiwygSettings,#directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			 $.mobile.fixedToolbars.show(true);
 			}
 			);
 			
@@ -581,6 +630,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #directEditBtn-div, #directEditBtn-div , #fileNaming-div').hide();
 			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings,#directEditBtn, #directEditBtn, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 		
@@ -591,6 +641,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #wysiwygSettings-div, #fileNaming-div ').hide();
 			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings, #wysiwygSettings, #fileNaming').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 		
@@ -601,12 +652,13 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			$(this).addClass('ui-btn-hover-c');
 			$('#productionserver-div, #ldp-div , #sitepreference-div ,  #siteinformation-div , #publishSettings-div, #wysiwygSettings-div, #directEditBtn-div').hide();
 			$('#productionserver, #siteinformation  , #ldp , #sitepreference , #publishSettings, #wysiwygSettings , #directEditBtn').removeClass('ui-btn-hover-c');
+			$.mobile.fixedToolbars.show(true);
 			}
 			);
 		
 			$('#templateDirectory').live('click', function(){
 			$(this).dblclick();
-			var templateDirectory = $('#uselocaltemplates').val();
+			var templateDirectory = $('#use_local_templates').val();
 			console.log(templateDirectory );
 			if(templateDirectory == "false"){ 
 			$('#LocalTemplatePath').hide();
@@ -622,51 +674,51 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		
 		
 		
-		     $('#createNewSite').click(function() {
+		     $('#CreateNewSite').click(function() {
 		      			var params=location.search;
-		      			var sitename =$('#sitename').val();
-		      			var server = $('#faddr').val();
-		      			var userneme = $ ('#fuser').val();
+		      			var sitename =$('#site').val();
+		      			var server = $('#address').val();
+		      			var userneme = $ ('#username').val();
 		      			//var authentication =$ ('#organization').val();
-		      			var password = $('#pass').val();
-		      			//var umask = $ ('#city').val();
-		      			var ftproot =$('#froot').val();
-		      			var httproot =$('#hroot').val();
-		      			var ftphome= $('#fhome').val();
-		      			var ftpdirectory = $('#fpath').val();
-		      			var imagedirectory = $('#fpathi').val();
-		      			var galleryPath =$('#galleryPath').val();
-		      			var uselocaltemplates=$('#uselocaltemplates').val();
-		      			var Rtemplatedirectory = $('#Rtroot').val();
-		      			var Ltemplatedirectory = $('#Ltroot').val();
-		      			var btnType = $('#btnType').val();
-		      			var btnCode = $('#btnCode').val();
+		      			var password = $('#password').val();
+		      			var umask = $ ('#umask').val();
+		      			var ftproot =$('#ftp_root').val();
+		      			var httproot =$('#http_root').val();
+		      			var ftphome= $('#ftp_home').val();
+		      			var ftpdirectory = $('#ftp_path').val();
+		      			var imagedirectory = $('#img_path').val();
+		      			var galleryPath =$('#gallery_path').val();
+		      			var uselocaltemplates=$('#use_local_templates').val();
+		      			var Rtemplatedirectory = $('#remote_template_path').val();
+		      			var Ltemplatedirectory = $('#local_template_path').val();
+		      			var btnType = $('#button_type').val();
+		      			var btnCode = $('#button_code').val();
 		      			var ldpAdminHost = $('#ldpAdminHost').val();
 		      			var downloadRegBtn = $('#downloadRegBtn').val();
 		      			var testConnectivityBtn = $('#testConnectivityBtn').val();
-		      			var recyclebin =$('#recyclebin').val();
-		      			var timeZone = $ ('#timeZone').val();
+		      			var recyclebin =$('#trash_path').val();
+		      			var timeZone = $ ('#time_zone').val();
 		      			var locale =$('#locale').val();
-		      			var dm =$('#dm').val();
-		      			var findreplace =$('#findreplace').val();
-		      			var search = $ ('#search').val();
+		      			var dm =$('#dependency_mgr').val();
+		      			var findreplace =$('#find_replace').val();
+		      			var search = $ ('#quick_search').val();
 		      			var buildIndex = $('#buildIndex').val();
-		      			var finalcheck = $('#finalcheck').val();
-		      			var removeoutags = $('#removeoutags').val();
-		      			var wallpost = $('#wallpost').val();
-		      			var shorturl= $('#shorturl').val();
-		      			var decorativeimages= $('#decorativeimages').val();
+		      			var finalcheck = $('#final_check').val();
+		      			var removeoutags = $('#filter_tags').val();
+		      			var wallpost = $('#default_tweet').val();
+		      			var shorturl= $('#url_type').val();
+		      			var decorativeimages= $('#decorative_images').val();
 		      			var toolbar= $('#toolbar').val();
-		      			var asciionly =$('#asciionly').val();
+		      			var asciionly =$('#asciiOnly').val();
 		      			var imageresizing =$('#imageresizing').val();
 		      			var imagealignmentmenu =$('#imagealignmentmenu').val();
-		      			var defaultextension= $('#defaultextension').val();
-		      			var filenameregex= $('#filenameregex').val();
-		      			var filenameregexDesc=$('#filenameregexDesc').val();
-		      			var notregex= $('#notregex').val();
+		      			var defaultextension= $('#default_extension').val();
+		      			var filenameregex= $('#file_regex').val();
+		      			var filenameregexDesc=$('#file_regex_desc').val();
+		      			var negate_regex= $('#negate_regex').val();
 		      			var binaryfilenameregexDesc =$('#binaryfilenameregexDesc').val();
 		      			var uppercasefoldernames= $('#uppercasefoldernames').val();
-		      			var binaryfilenameregex= $('#binaryfilenameregex').val();
+		      			var binaryfilenameregex= $('#bin_file_regex').val();
 		      			var binarynotregex= $('#binarynotregex').val();
 		     		
 		     		
@@ -710,7 +762,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					//'':imagealignmentmenu,
 		     					'default_extension':defaultextension,
 		     					'file_regex':filenameregex,
-		     					'negate_regex':notregex,
+		     					'negate_regex':negate_regex,
 		     					'file_regex_desc':filenameregexDesc,
 		     					//'':uppercasefoldernames,
 		     					//'':binaryfilenameregex,
@@ -718,14 +770,81 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					//'':binaryfilenameregexDesc,
 		     					
 		     					},
-		     					success: function(data){
-		     					if (data.error) {
-		     					console.log(data.error);
-									//window.location.href = 'super-index.html';
-									}
-		     							window.location.href='sites.html' + params;	
-		     					}
+		     		success:function(data){
+		     		//add success to here
 		     		
+		     		
+		     	    },
+		      		error: function(data){
+						console.log(data);
+						 var errorMessageObj =jQuery.parseJSON(data.responseText);
+						 var errorMessage_formvalidation = errorMessageObj.validation_errors;
+						 var system_error = errorMessageObj.error;
+					
+		     		if ( errorMessage_formvalidation){
+						$("#alert_body","alert_title").empty();
+						var errorCount=0;
+					      $.each( errorMessage_formvalidation, function(index,value) {;
+ 					 	  $("#"+index).addClass('ui-body-d');
+ 					      $("#"+index+"Label").addClass('error');
+						  $("#"+index+"Help").show();
+						  $("#"+index+"Help").addClass('errormessage');
+						  $("#"+index+"Help").text(value);
+					     	errorCount++;
+				   		});
+				   		
+			
+				   		
+						$.mobile.changePage($('#alert-page'),{
+						type: "get", 
+						//data:"alert_message="+data.errors.email,
+						data:"alert_message",
+						transition:"pop",
+						role: "dialog",
+						reloadPage:true,
+						});
+						
+	   	            	$("#alert_title").text("Error saving account : "+accountname);
+   						$("#alert_body").text("There are "+ errorCount +" errors in account settings. Please fix the errors first in order to save the account.");
+   						
+			         	console.log("An error occured, the site is not saved yet. Please fix the errors first.");
+
+		     			
+					}
+					
+		     		else if (system_error &&!(errorMessage_formvalidation)){
+		     						console.log(system_error);
+		     						
+									$.mobile.changePage($('#alert-page'),{
+									type: "get", 
+									//data:"alert_message="+data.errors.email,
+									data:"alert_message",
+									transition:"pop",
+									role: "dialog",
+									reloadPage:true,
+									});
+									$("#alert_title").text("Error saving account : "+accountname);
+   									$("#alert_body").text(system_error);
+												
+									 $('#okBtn').click(function(){
+									 		     						
+		     						$.ajax({
+									url: '/authentication/admin_logout',
+									type: 'post',
+									success: function(data) {
+									var skin = data.skin;
+									window.location.href = 'super-index.html?skin='+skin;
+									}
+									});
+									});
+		     					  }
+		     		else{		  
+		     		
+		     		window.location.href='sites-edit-mode.html' + params;	
+		     		//accountsDiv.page("refresh"); this should be pageid.page("refresh");
+		     		}
+		     					}
+
 		     		});
 		     
 		     } );
@@ -745,32 +864,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 			if(data.error){
 			window.location.href='super-index.html'+location.search;
 			}
-			window.location.href='sitelist.html'+location.search;
+			window.location.href='sites.html'+location.search;
 			}
 		});
 
 
 		});
+		$('#homeBtn').click(Common.home);
 		//cancel Button
-
-
-			$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-				$.ajax({
-					url: '/authentication/logout',
-					type: 'post',
-					success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-					}
-				});
-			});
-			
-		
-		
-	
-			
+		$('.logout').click(Common.logout);
 		$(document).delegate('#opendialog', 'click', function() {
  		 $('#inlinecontent').simpledialog2();
 		});

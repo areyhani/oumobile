@@ -10,6 +10,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 <script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
 
 <style type="text/css">
 
@@ -24,8 +25,6 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,input.ui-input-text, textarea.ui-input-text{width:45%}
 .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
 .ui-content .ui-listview-inset{margin:0px;}
-.help{ padding:5px; font-weight:normal;}
-.error{color:#B7110D;}
 </style>
 	
 	
@@ -34,7 +33,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 <body> 
 <div data-role="page" id="accountdiv" >
 
-	<div id="header" data-role="header" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	<div id="header" data-role="header" data-position="fixed" data-theme="b" class="omnistyle">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="headerEditAccount"> New Account </h1>
 
@@ -519,12 +518,12 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	
 			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 		
-		
+	        	<li data-role="list-divider" id="sso_urlHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    				<label id="sso_urlLabel" style="width:47%"  for="sso_url" class="ui-input-text"> CAS or Shibboleth URL</label>
 	        	<input type="text" value="" id="sso_url" name="sso_url" class="ui-input-text ui-body-c ui-corner-all ">
-   		  
-   		      </li>
+   		  	    </li>
+   		  	    
    		        <li data-role="list-divider" id="announcement_urlHelp" class="help" style="display:none;"></li>
    		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
    				<label id="announcement_urlLabel" style="width:47%"  for="announcement_url" class="ui-input-text"> Announcement URL</label>
@@ -614,16 +613,16 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li id="saveAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Save</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
+<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="saveAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Save</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
 </div>
 </div>	
 
-//alert page 
+<!--alert page -->
 <div data-role="page" data-theme="b" id="alert-page">
         <div data-theme="b" data-role="header">
             <h1>Alert</h1>
@@ -631,12 +630,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
         </div>
 
         <div data-role="content">
-            <h1 id="alert_title">alert title</h1>
+            <h3 id="alert_title">alert title</h3>
             <p id="alert_body">alert body</p>
-            <a href="#" data-role="button" data-rel="back">OK</a>        
+            <a id="okBtn"  href="#" data-role="button" data-rel="back">OK</a>        
         </div>
     </div>
-
 
 
 
@@ -721,34 +719,40 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 					console.log(data);
 					$('#headerEditAccount').text(data.account);
 		      		$('#account').val(data.account);
-		      		$('#firstname').val(data.name.first_name);
-		      		$('#lastname').val(data.name.last_name);
+		      		$('#firstname').val(data.first_name);
+		      		$('#lastname').val(data.last_name);
 		      		$('#organization').val(data.company);
 		      		$('#street').val(data.street);
 		      		$('#city').val(data.city);
-		      		$('#state').val(data.state);
+		      		$('#state').val(data.state).selectmenu('refresh', true);
 		      		$('#zip').val(data.zip);
-		      		$('#country').val(data.country);
+		      		$('#country').val(data.country).selectmenu('refresh', true);
 		      		$('#phone').val(data.phone);
 		      		$('#email').val(data.email);
 		      		$('#timezone').val(data.time_zone);
 		      		$('#locale').val(data.locale);
 		      		$('#help_root').val(data.help_root);
 		      		$('#logourl').val(data.logo_url);
-		      		$('#page_check').val(data.file_check);
-		      		//console.log(data.spell_check);
-		      		if(!data.spell_check){
+		      		$('#page_check').val(data.file_check).selectmenu('refresh', true);
+		      		console.log(data.spell_check);
+		      		if(data.spell_check){
 		      		$("input#spellcheck[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-		      		}
-		      		if(!data.link_check){
+		      		}else{
+		      		$("input#spellcheck[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
+		      		
+		      		if(data.link_check){
 		      		$("input#linkcheck[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-		      		}
-		      		if(!data.page_validate){
+		      		}else{
+		      		$("input#linkcheck[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
+		      		
+		      		if(data.page_validate){
 		      		$("input#pagevalidate[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-		      		}
-		      		if(!data.accessibility){
+		      		}else{$("input#pagevalidate[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
+		      		
+		      		if(data.accessibility){
 		      		$("input#accessibility[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-		      		}
+		      		}else{$("input#accessibility[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
+		      		
 		      		$('#publishthreshold').val(data.publish_threshold);
 		      		$('#default_tweet').val(data.default_tweet);
 		      		$('#sso_url').val(data.sso_url);
@@ -804,10 +808,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
    
 			
 		     $('#saveAccount').click(function() {
-		    		 var accountDiv= $('#accountdiv');
 		     		   // $.mobile.page("refresh");
-		     		    
-		     		    
+		     		    $('.error').removeClass('error');
+		     		    $('.errormessage').empty();
+		     		    $('.errormessage').hide();
 		      			var params=location.search;
 		      			var accountname=$('#account').val();
 		      			var firstname = $('#firstname').val();
@@ -841,10 +845,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			var searchon =$('#searchon').val();
 		      			var ldpimage =$('#ldpimagegallery').val();
 		      			var hideaccount =$('#hideaccount').val();
-		      			if(spellcheck.match("1")){spellcheck=1;} else {spellcheck=0;}
-		      			if(linkcheck.match("1")) {linkcheck=1;} else {linkcheck=0;}
-		      			if(pagevalidate.match("1")) {pagevalidate=1;} else {pagevalidate=0;}
-		      			if(accessibility.match("1")) {accessibility=1;} else {accessibility=0;}
+		      			if(spellcheck.match("1")){spellcheck=true;} else {spellcheck=false;}
+		      			if(linkcheck.match("1")) {linkcheck=true;} else {linkcheck=false;}
+		      			if(pagevalidate.match("1")) {pagevalidate=true;} else {pagevalidate=false;}
+		      			if(accessibility.match("1")) {accessibility=true;} else {accessibility=false;}
 		      			
 		      				//console.log('spellcheck:'+spellcheck);
 		    				 //console.log('linkcheck:'+linkcheck);
@@ -889,57 +893,76 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					
 		     					
 		     					},
-		     	success: function(data){
-					console.log(data);
-		     					
-		     				//	var accountsDiv = $('#accountdiv');
-		     		if (data.errors){
-		     			$.mobile.changePage( $('#alert-page'),{
-   					 	type: "get", 
-    					data:"alert_message="+data.errors.email,
-    					transition:"pop",
-    					role: "dialog",
-    					reloadPage:true,
-						});
-						
-						$("#alert_body","alert_title").empty();
-						
-					    $.each(data.errors, function(index,value) {
-					   // console.log("title"+index);
-					   // console.log("body"+value);
-		     		 	$("#alert_title").text(index);
-   						$("#alert_body").text(value);
- 					   // var fieldChange=document.getElementById(index);
- 					   $("#"+index).addClass('ui-body-d');
- 					   $("#"+index+"Label").addClass('error');
-						$("#"+index+"Help").show();
-						$("#"+index+"Help").text(value);
-						//errorMessage= errorMessage.append(value+'<br />');
+		     		success:function(data){
+		     		//add success to here
+		
+		     	    },
+		      		error: function(data){
+						 var errorMessageObj =jQuery.parseJSON(data.responseText);
+						 var errorMessage_formvalidation = errorMessageObj.validation_errors;
+						 var system_error = errorMessageObj.error;
+					
+		     		if ( errorMessage_formvalidation){
+						$("#alert_body").empty();
+						$("#alert_title").empty();
+						var errorCount=0;
+					      $.each( errorMessage_formvalidation, function(index,value) {;
+ 					 	  $("#"+index).addClass('ui-body-d');
+ 					      $("#"+index+"Label").addClass('error');
+						  $("#"+index+"Help").show();
+						  $("#"+index+"Help").addClass('errormessage');
+						  $("#"+index+"Help").text(value);
+					     	errorCount++;
 				   		});
 				   		
-			         console.log("An error occured, the page is not saved yet. Please fix the errors first.");
-	
-		     			/*var errorMessage= $(document.createElement('p'))
-		     			.attr({'data-theme':'b'});
-		     		*/
-		     	
+			
+				   		
+						$.mobile.changePage($('#alert-page'),{
+						type: "get", 
+						//data:"alert_message="+data.errors.email,
+						data:"alert_message",
+						transition:"pop",
+						role: "dialog",
+						reloadPage:true,
+						});
+						
+	   	            	$("#alert_title").text("Error saving account : "+accountname);
+   						$("#alert_body").text("There are "+ errorCount +" errors in account settings. Please fix the errors first in order to save the account.");
+   						
+			         	console.log("An error occured, the account is not saved yet. Please fix the errors first.");
+
+		     			
 					}
 					
-		     		else if (data.error){
-		     						console.log(data.error);
+		     		else if (system_error &&!(errorMessage_formvalidation)){
+		     						console.log(system_error);
+		     						
+									$.mobile.changePage($('#alert-page'),{
+									type: "get", 
+									//data:"alert_message="+data.errors.email,
+									data:"alert_message",
+									transition:"pop",
+									role: "dialog",
+									reloadPage:true,
+									});
+									$("#alert_title").text("Error saving account : "+accountname);
+   									$("#alert_body").text(system_error);
+												
+									 $('#okBtn').click(function(){
+									 		     						
 		     						$.ajax({
 									url: '/authentication/admin_logout',
 									type: 'post',
 									success: function(data) {
 									var skin = data.skin;
-									window.location.href = 'super-index.html?skin='+skin;
+									//window.location.href = 'super-index.html?skin='+skin;
 									}
 									});
-								
+									});
 		     					  }
 		     		else{		  
-		     		console.log("page is saved");	
-		     		window.location.href='accounts-edit-mode.html' + params;	
+		     		
+		     	//	window.location.href='accounts-edit-mode.html' + params;	
 		     		//accountsDiv.page("refresh"); this should be pageid.page("refresh");
 		     		}
 		     					}
@@ -954,51 +977,9 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     
 		     } );
 		
-		     
-		    
-		     
-		     
-		     
-		     $('#cancelBtn').click(function(){
-		        var params=location.search;
-		        $.ajax({
-		        url:'/accounts/list'+params ,
-		        type:'get',
-		        success: function(data){
-		        		var accountsDiv =$('#accountdiv');
-		        		if(data.error){
-		        		$.ajax({
-							url: '/authentication/admin_logout',
-							type: 'post',
-							success: function(data) {
-							var skin = data.skin;
-							window.location.href = 'super-index.html?skin='+skin;
-								}
-				});
-		        		}
-		        	    window.location.href='accounts.html'+ params;
-		        	    //accountsDiv.page("refresh");
-		   		     }
-		      		  });
-		     
-		     });
-
+		    $('#cancelBtn').click(Common.cancel);
+			$('.logout').click(Common.logout);
 		
-			$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-			
-				$.ajax({
-					url: '/authentication/admin_logout',
-					type: 'post',
-					success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-					}
-				});
-			});
-			
-
 	    </script>
 
 </body>

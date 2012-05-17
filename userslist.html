@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 <style type="text/css">
-.ou-back-color{
+.omnistyle{
  background-color: #1C5D93;
  background-image: -moz-linear-gradient(center top , #2276BB, #124065);
     }
@@ -19,10 +19,10 @@
 </head> 
 <body> 
 <div data-role="page" id="users">
-		<div id="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<div id="header" data-role="header" data-theme="b" class="omnistyle">
 	
 			<a href="#" data-rel="back" data-icon="back">Back</a>
-		<h1 id="headerText">Users</h1>
+		<h1 id="headerText" >Users</h1>
 		<a href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
 	</div>
 	<div data-role="content">
@@ -39,9 +39,9 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
-<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  ou-back-color"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
+<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
 
@@ -92,7 +92,7 @@
 					 
 					 var headerText =$('#headerText');
 					 var headerTextValue =$(document.createElement('span'))
-					 		//.text('Account: '+ value.account + '   >>  Users');
+					 		.text('Users');
 					 		headerText.empty();
 					 	headerText.append(headerTextValue);
 			

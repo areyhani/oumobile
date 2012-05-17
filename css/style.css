@@ -42,3 +42,12 @@ input.setting {
 label.setting {
 	margin: 11px 0px 1px 12px;
 }
+
+.omnistyle{
+background-color:#1C5D93;
+background-image:-moz-linear-gradient(center top , #2276BB, #124065);
+background-image:-webkit-linear-gradient(center top , #2276BB, #124065);
+background-image:-webkit-linear-gradient( #2276BB, #124065);
+}
+.help{ padding:5px; font-weight:normal;}
+.error{color:#B7110D;}
