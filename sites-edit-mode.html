@@ -8,6 +8,8 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
+	
 <style type="text/css">
 
 .ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
@@ -67,7 +69,8 @@
 
 	<script type="text/javascript">
 		$.mobile.fixedToolbars.show(true);
-		
+		var Browser = browserdetect();
+		console.log(Browser);
 		$('#sites').on('pageshow', function() {
 			$.ajax({
 				url: '/sites/list',
@@ -97,8 +100,14 @@
 						    		  .attr({id:idCount+1})
 						     	   	 .text(value.site);
 						     	   	 
+						var editPath ='site-edit.html';
+						
+						if(Browser.iphone){
+							editPath ='site-edit.html-iphone.html';
+							}
+							
 						 var a = $(document.createElement('a'))
-						           .attr({href: 'site-edit.html?account='+value.account+'&site='+value.site})
+						           .attr({href: editPath + '?account='+value.account+'&site='+value.site})
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit');
 							
@@ -120,8 +129,13 @@
 		
 		
 		$('.logout').click(Common.logout);	
-		$('#editBtn').click(function() {
-		 window.location.href='site-add-ipad-version.html'+location.search;
+		
+		$('#addBtn').click(function() {
+		var addPath= 'site-add-ipad-version.html';
+		if(Browser.iphone){
+		addPath =  'site-add-iphone-version.html';
+		}
+		 window.location.href= addPath +location.search;
 		
 		});
 		
@@ -189,10 +203,7 @@
 		$('#okBtn').click(function(){
 		window.location.href = 'sites-edit-mode.html'+location.search;
 		});
-		
-		$('#addBtn').click(function(){
-		window.location.href='site-add-ipad-version.html'+ location.search;
-		});
+
 	</script> 
 
 

@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
 	<style type="text/css">
 	input[type=checkbox]
 		{
@@ -29,7 +30,7 @@
 		<h1 style="display:inline;margin:0px;">Mobile</h1>
 	</div>
 	<div data-role="content">
-		<h2 style="margin-top:0px;" >Super Admin Login</h2>
+		<h2 id="test" style="margin-top:0px;" >Super Admin Login</h2>
 		<div class="settings">
 
 		<div >	<label for="username" class="setting">Username</label> 
@@ -65,33 +66,11 @@
 	
 	
 		<script type="text/javascript">
+		var Browser = browserdetect();
+		console.log(Browser);
+		
 		//Browser Detection
-		
-  	  	var UserAgent = navigator.userAgent;
-   		var Browser = {
-     		 iphone: UserAgent.match(/(iPhone)/),
-     		 ipad: UserAgent.match(/(iPad)/),
-      		 blackberry: UserAgent.match(/BlackBerry/),
-     		 android: UserAgent .match(/Android/)
-   		 };
-
-     if (Browser.iphone){
-        console.log("Load Iphone Version.");
-     }
-     else if(Browser.ipad){
-        console.log("Load Ipad Version.");
-     }
-     else{
-     console.log("Load Desktop Version.");
-     }
-     
-
-	//Browser Detection
-		
-	
-		
 		$('#index').on('pageinit', function() {
-
 	     	if (typeof(localStorage) == 'undefined' ) {
 	     	 console.log('Browser doesnt support localStorage');
 			}
@@ -102,24 +81,38 @@
 			$('#password').val(setPass);
 			}
 		
+
 		//submit when Enter Key is pressed
 			$('input').keypress(function(event) {
 				 if (event.which === 13) {
 					 $('#submit').click();
 				 	}
 				 	});
+				 	
+			if(Browser.desktop){
+					 $("alert_title").empty();
+				     $("#alert_body").empty();
+					 $("#alert_title").text("Warning");
+   					 $("#alert_body").text("You are viewing OUMobile in a desktop. This feature is designed for mobile devices. For the best experience, we suggest you login to normal OUCampus when you are using desktop. ");
+						$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+			}
+			
+			
 			});
 			
 			$('#submit').click(function() {
 				var params = location.search;
 				var rememberpassword= $('#rememberpass').serialize();
-
-		
 				var username = $('#username').val();
 				var password = $('#password').val();
 				
 		// If Remember Pass is selected, save pass in local storage.
-		
 				if (rememberpassword.match("on")){ 
 				localStorage['username'] =username;
 				localStorage['pass']=password;

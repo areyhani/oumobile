@@ -51,6 +51,11 @@
 			$.ajax({
 				url: '/sites/publish' + sitename,
 				type: 'post',
+				error: function(data){
+				
+				
+				
+				}
 				success: function(data) {
 
 					if (data.done) {

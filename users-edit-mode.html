@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
 <style type="text/css">
 .omnistyle{
  background-color: #1C5D93;
@@ -66,7 +67,7 @@
     
 	<script type="text/javascript">
 		$.mobile.fixedToolbars.show(true);
-		
+		var Browser = browserdetect();
 		$('#users').on('pageshow', function() {
 			$.ajax({
 				url: '/users/list'+location.search,
@@ -96,9 +97,15 @@
 						    		 .addClass('ui-btn-text')
 						    		  .attr({id:idCount+1})
 						     	   	 .text(value.user);
-						     	   	 
+						  
+						  
+						var editPath = 'user-edit.html';
+						if(Browser.iphone){
+							editPath = 'user-edit-iphone.html';
+							}
+							
 						 var a = $(document.createElement('a'))
-						           .attr({href: 'user-edit.html'+location.search +'&user=' + value.user })
+						           .attr({href: editPath + location.search +'&user=' + value.user })
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit');
 							
@@ -205,8 +212,11 @@
 		});
 		
 		$('#addBtn').click(function(){
-		
-				window.location.href='user-add-ipad-version.html'+ location.search;
+		var addPath= 'user-add-ipad-version.html';
+		if(Browser.iphone){
+		var addPath= 'user-add-iphone-version.html';
+		}
+		window.location.href= addPath + location.search;
 		});
 	</script> 
 

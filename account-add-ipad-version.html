@@ -785,92 +785,23 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		     					
 		     					
 		     					},
-		     		esuccess:function(data){
+		     		success:function(data){
 		     		//add success to here
 		     		
 		     	    },
 		      		error: function(data){
 		      		console.log(data);
-						 var errorMessageObj =jQuery.parseJSON(data.responseText);
-						 var errorMessage_formvalidation = errorMessageObj.validation_errors;
-						 var system_error = errorMessageObj.error;
-
-		     		if ( errorMessage_formvalidation){
-		     		
-						$("#alert_body","alert_title").empty();
-						var errorCount=0;
-					      $.each( errorMessage_formvalidation, function(index,value) {;
- 					 	  $("#"+index).addClass('ui-body-d');
- 					      $("#"+index+"Label").addClass('error');
-						  $("#"+index+"Help").show();
-						  $("#"+index+"Help").addClass('errormessage');
-						  $("#"+index+"Help").text(value);
-					     	errorCount++;
-				   		});
-				   		
-			
-				   		
-						$.mobile.changePage($('#alert-page'),{
-						type: "get", 
-						//data:"alert_message="+data.errors.email,
-						data:"alert_message",
-						transition:"pop",
-						role: "dialog",
-						reloadPage:true,
-						});
-						
-	   	            	$("#alert_title").text("Error saving account : "+accountname);
-   						$("#alert_body").text("There are "+ errorCount +" errors in account settings. Please fix the errors first in order to save the account.");
-   						
-			         	console.log("An error occured, the account is not saved yet. Please fix the errors first.");
-
-		     			
-					}
-					
-		     		else if (system_error &&!(errorMessage_formvalidation)){
-		     						console.log(system_error);
-		     						
-									$.mobile.changePage($('#alert-page'),{
-									type: "get", 
-									//data:"alert_message="+data.errors.email,
-									data:"alert_message",
-									transition:"pop",
-									role: "dialog",
-									reloadPage:true,
-									});
-									$("#alert_title").text("Error saving account : "+accountname);
-   									$("#alert_body").text(system_error);
-												
-									$('#okBtn').click(function(){	
-									//Sql-error gonna change to Exists in the API
-								
-									if(errorMessageObj.code == "EXISTS"){
-									//window.location.href='accounts-edit-mode.html' + params;	
-									}
-									else{
-		     						$.ajax({
-									url: '/authentication/admin_logout',
-									type: 'post',
-									success: function(data) {
-
-									var skin = data.skin;
-									window.location.href = 'super-index.html?skin='+skin;
-									}
-									});}
-									
-									});
-		     					  }
-		     			else{		  
-		     		
-		     				window.location.href='accounts-edit-mode.html' + params;	
-		     			}
+		      		var name=accountname;
+		      		var pageType="account";
+		      		var mode= "add";
+					Common.errorhandler(data,pageType,mode,name);
 		     					}
 		     		});
 		     
 		     } );
 		
 		
-				/*Create New account ajax */
+		/*Create New account ajax */
 		// cancell Button
 		
 		

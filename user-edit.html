@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
-
+	<script type="text/javascript" src="js/common.js"></script>
 
 <style type="text/css">
 
@@ -68,7 +68,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
   
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="username" class="ui-input-text">Username:</label>
-	        	<input type="text" value="" id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
+	        	<input  disabled="disabled"  type="text" value="" id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -269,7 +269,7 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="homeBtn" class="ui-block-a"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
 <li id="saveAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Save</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
 <li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 </ul>
@@ -330,6 +330,15 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		      			$.ajax({
 		      			url: '/users/view'+location.search,
 		      			type:'get',
+		      			
+		      			error: function(data){
+		      			console.log(data);
+						var name=accountname;
+						var pageType="user";
+						var mode= "edit";
+						Common.errorhandler(data, pageType,mode,name);
+		      			},
+		      			
 		      			success:function(data){
 		      			if (data.error){
 		      			console.log(data.error);
@@ -392,20 +401,8 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 		//cancel Button
 		
 		
-			$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-				$.ajax({
-					url: '/authentication/admin_logout',
-					type: 'post',
-					success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-					}
-				});
-			});
-			
-			
+		$('.logout').click(Common.logout);
+		$('#homeBtn').click(Common.home);
 			
 		$(document).delegate('#opendialog', 'click', function() {
  		 $('#inlinecontent').simpledialog2();

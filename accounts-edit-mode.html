@@ -8,6 +8,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
 <style type="text/css">
 .ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
 .ui-btn-text{padding:10px;}
@@ -64,6 +65,8 @@
 
 	<script type="text/javascript">
 	$.mobile.fixedToolbars.show(true);
+		var Browser = browserdetect();
+		console.log(Browser);
 		
 		$('#accounts').on('pageshow', function() {
 			$.ajax({
@@ -94,12 +97,16 @@
 						    		 .addClass('ui-btn-text')
 						    		  .attr({id:idCount+1})
 						     	   	 .text(value.account);
-						     	   	 
-						 var a = $(document.createElement('a'))
-						           .attr({href: 'account-edit.html?account=' + value.account })
+						var editPath ='account-edit.html';
+						
+						if(Browser.iphone){
+							editPath ='account-edit-iphone.html';
+							}
+							
+							 var a = $(document.createElement('a'))
+						           .attr({href: editPath +'?account=' + value.account })
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit');
-							
 				
 					
 					        var hyperlinkInputText = a.append(inputText);
@@ -193,8 +200,11 @@
 		});
 		
 		$('#addBtn').click(function(){
-		
-				window.location.href='account-add-ipad-version.html'+ location.search;
+		var addPath= 'account-add-ipad-version.html';
+		if(Browser.iphone){
+		var addPath= 'account-add-iphone-version.html';
+		}
+				window.location.href= addPath + location.search;
 		});
 	</script> 
 
