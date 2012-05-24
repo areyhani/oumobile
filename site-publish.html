@@ -7,17 +7,56 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
 </head> 
 <body> 
 <div data-role="page" id="site-publish">
+
+<div id="header" data-role="header" data-theme="b" style="background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<a href="#" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header"  >Site Publish</h1>
+		<a href="#" data-icon="gear" class="logout"><span id="userLogout">Logout</span></a>
+	</div>
+	<div data-role="content">
+		<div id="status" style="text-align:center">
+		<h3 id="siteName" > Gallena University </h3>
+			<img id="progress" src="images/progress.gif" title="Publish Progress" style="display:none" />
+			<span id="message" style="display:none">&nbsp;</span>
+		</div>
+		<div id="buttons" style="margin-bottom: 35px;">
+			<button  data-theme="b" id="start">Publish</button>
+		</div>
+		<div id="errors" style="display:none;">
+			<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
+			<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
+			</ul>
+		</div>
+	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+<ul class="ui-grid-b">
+<li class="ui-block-a"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
+<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+</ul>
+</div>
+
+</div>	
+		
+	</div>
+</div>
+
 	<script type="text/javascript">
 	$.mobile.fixedToolbars.show(true);
-		
 		var interval = null;
+
 		$('#site-publish').on('pageshow', function() {
+		$('#siteName').text(localStorage.getItem("site"));
+		Common.subuserLogoutBtn();
 			var sitename = location.search;
 			$('#start').click(function() {
 				doPublish(sitename);
+				
 			});
 			$('#display-errors').click(function() {
 				var errorList = $('#error-list');
@@ -39,25 +78,24 @@
 					}
 				});
 			});
-		});
+			$.mobile.page();  });
 		
 		$('#site-publish').on('pagebeforehide', function() {
 			if (interval != null) {
 				clearInterval(interval);
 			}
 		});
+	
 		
 		function doPublish(sitename) {
 			$.ajax({
-				url: '/sites/publish' + sitename,
+				url: '/sites/publish?account=Atena2&site=Atena-Site',
 				type: 'post',
 				error: function(data){
-				
-				
-				
-				}
+				 console.log(data);
+				},
 				success: function(data) {
-
+						console.log(data);
 					if (data.done) {
 						clearInterval(interval);
 						interval = null;
@@ -107,39 +145,7 @@
 				}
 			});
 		}
+			
 	</script>
-<div id="header" data-role="header" data-theme="b" style="background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
-		<a href="#" data-rel="back" data-icon="back">Back</a>
-		<h1 id="header"  >Site Publish</h1>
-		<a href="#" data-icon="gear" class="logout">Logout</a>
-	</div>
-	<div data-role="content">
-		<div id="status" style="text-align:center">
-		<h3> Gallena University </h3>
-			<img id="progress" src="images/progress.gif" title="Publish Progress" style="display:none" />
-			<span id="message" style="display:none">&nbsp;</span>
-		</div>
-		<div id="buttons" style="margin-bottom: 35px;">
-			<button  data-theme="b" id="start">Publish</button>
-		</div>
-		<div id="errors" style="display:none;">
-			<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
-			<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
-			</ul>
-		</div>
-	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
-
-<div data-role="navbar" class="ui-navbar" role="navigation">
-<ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
-<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
-</ul>
-</div>
-
-</div>	
-		
-	</div>
-</div>
 </body>
 </html>

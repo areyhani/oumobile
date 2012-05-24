@@ -31,6 +31,66 @@ var Common = {
 		});
 		
 	},
+	
+	subuserLogout: function(){
+			$.ajax({
+			 url:'/authentication/logout',
+			 type:'post',
+			 error:function(data){
+			  console.log(data);},
+			 success: function(data){
+			 console.log(data);
+			// window.location.href = 'account.html'+location.search;
+			 },
+	});
+	},
+	subuserlogin:function Subuserlogin(subuser){
+				var params = location.search;
+				var skin ='skin';
+				//should be deteled after putting oumobile in skin
+				var newskin = window.location.pathname.substr(1).split("/")[0];
+				if(newskin != "oumobile"){
+				skin = newskin;
+				}
+				// new skin submission
+				console.log($.mobile.path.parseUrl());
+				$.ajax({
+					url: '/authentication/login'+location.search,
+					type: 'post',
+					data: {
+						'skin': skin,
+						'username':subuser,
+					},
+					error: function(data){
+		      		console.log(data);
+		       	var pageType="user";
+		      		var  mode="login";
+		      		var name = localStorage.getItem('account');
+					Common.errorhandler(data,pageType, mode ,name);
+		     		},
+					success: function(data) {
+							console.log(data);
+							var  nextstepurl='sites.html'+location.search+'&status=logedin'; 
+							var site =localStorage.getItem('site');
+							if(location.search.match(/&site=(.*)/)){
+	           				nextstepurl ='site.html?site='+site;
+	           				 }
+							window.location.href =  nextstepurl;
+							localStorage.setItem('user',subuser);
+					}
+					});
+			},
+     subuserLogoutBtn: function(){
+     		$('#userLogout').text(localStorage.getItem("user"));
+			$('#userLogout').hover(function(){
+			$('#userLogout').text("Logout");
+			},function(){
+			$('#userLogout').text(localStorage.getItem("user"));
+			$.mobile.page();
+			});
+     
+     },
+	
 	cancel: function(){
 			var params=location.search;
 			$.ajax({

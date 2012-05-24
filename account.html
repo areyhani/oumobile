@@ -77,6 +77,10 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 	$.mobile.fixedToolbars.show(true);
 //accountDiv
 	$('#account').on('pageshow', function() {
+	if(localStorage.getItem('account')){
+	localStorage.removeItem('account');
+	}
+	
 	var params =location.search;
 			$.ajax({
 				url:'/accounts/view' + params,
@@ -103,11 +107,11 @@ label.ui-input-text{ width:31%;padding-top:4px;}
 				$('#sitecount').append(sitecount);
 				$('#usercount').append(usercount);
 				$('#groupcount').append(groupcount);
-				
+				localStorage.setItem('account',data.account);
 				
 				// accountDiv.empty();
 				 console.log(data);				
-
+				
 				}
 				});
 				
@@ -137,6 +141,7 @@ $('#sites').click(function(){
 			window.location.href='super-index.html'+location.search;
 			}
 			window.location.href='sites.html'+location.search;
+
 			}
 		});
 });

@@ -49,6 +49,7 @@
 					},
 					success: function(data) {
 						if (data.error) {
+						console.log(data.error);
 							var message = data.error.message;
 							$('#dialogoutput').simpledialog({
 								prompt: message,
@@ -63,7 +64,8 @@
 								}
 							  });
 						} else {
-							window.location.href = 'sites.html';
+						console.log('hey'+data);
+						window.location.href = 'sites.html';
 						}
 					}
 				});

@@ -7,35 +7,17 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
 </head> 
 <body> 
 <div data-role="page" data-theme="c" id="site-reports">
 	<div id="header" data-role="header" data-theme="b"  style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
 		<a href="#" data-rel="back" data-icon="back">Back</a>
 		<h1 id="header">Site Reports</h1>
-		<a href="#" data-icon="gear" class="logout">Logout</a>
+		<a href="#" data-icon="gear" class="logout"><span id="userLogout">Logout</span></a>
 	</div>
 	<div data-role="content">
-	<script type="text/javascript">
-		$.mobile.fixedToolbars.show(true);
-		$("#site-reports").on('pageshow', function() {
-			var sitename = location.search;
-			$('a.report-item').each(function(index, el) {
-				var aEl = $(el);
-				var elId = aEl.attr('id');
-				aEl.attr('href', 'report-' + elId + '.html' + sitename);
-			});
-			$('.logout').click(function() {
-				$.ajax({
-					url: '/authentication/logout',
-					type: 'post',
-					success: function(data) {
-						window.location.href = 'index.html';
-					}
-				});
-			});
-		});
-	</script>
+	
 		<ul data-role="listview" data-theme="c" id="actions">
 			<li>
 				<a href="#" id="checkedout" class="report-item">
@@ -66,5 +48,26 @@
 
 </div>
 </div>
+<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		Common.subuserLogout();
+		$("#site-reports").on('pageshow', function() {
+			var sitename = location.search;
+			$('a.report-item').each(function(index, el) {
+				var aEl = $(el);
+				var elId = aEl.attr('id');
+				aEl.attr('href', 'report-' + elId + '.html' + sitename);
+			});
+			$('.logout').click(function() {
+				$.ajax({
+					url: '/authentication/logout',
+					type: 'post',
+					success: function(data) {
+						window.location.href = 'index.html';
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

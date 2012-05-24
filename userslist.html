@@ -40,19 +40,23 @@
 
 <div data-role="navbar" class="ui-navbar" role="navigation">
 <ul class="ui-grid-b">
-<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li class="ui-block-a" id="homeBtn"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
 <li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
 <li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 </ul>
 </div>
-
+</div>
+</div>
 </div>
 	<script type="text/javascript">
 	
 	$.mobile.fixedToolbars.show(true);
 		
 		$('#users').on('pageshow', function() {
-		var users= $('#users-list');
+	    if(localStorage.getItem('user')){
+	      localStorage.removeItem('user');
+	     }
+		     var users= $('#users-list');
 			 $.ajax({
 					url:'/users/list'+location.search,
 					type: 'get',
@@ -71,11 +75,12 @@
 					var privilege = $(document.createElement('span'))
 						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 						.text('Privilege: ' + value.privilege);	
+						
 					//console.log(value.user);
 					var prams =location.search;
 					 var a = $(document.createElement('a'))
 					    // .attr({href:' '})
-					 	.attr({'onClick':'Subuserlogin()'})
+					 	.attr({'onClick':'Common.subuserlogin("'+value.user+'")'})
 					 	.attr({rel:'external'})
 					    .addClass('ui-link-inherit')
 					 	.text(value.user);
@@ -122,63 +127,16 @@
 		});
 		
 		
-			$('.logout').click(function() {
-			localStorage.removeItem('username');
-			localStorage.removeItem('pass');
-				$.ajax({
-					url: '/authentication/admin_logout',
-					type: 'post',
-					success: function(data) {
-					var skin = data.skin;
-					window.location.href = 'super-index.html?skin='+skin;
-					}
-				});
-			});
-			
-
-		
+		$('.logout').click(Common.logout);
 		$('#addBtn').click(function(){
-		window.location.href='user-add-ipad-version.html'+ location.search;
+			window.location.href='user-add-ipad-version.html'+ location.search;
 		});
-		
-		
-		
-		function Subuserlogin(){
-		       console.log('hey');
-				var params = location.search;
-				console.log(params);
-				/*var username = $('#username').val();
-				var password = $('#password').val();
-				
-				$.ajax({
-					url: '/authentication/login'+user,
-					type: 'post',
-					data: {
-						'username': username,
-						'password': password
-					},
-					error: function(data){
-		      		console.log(data);
-		      		var pageType="user";
-		      		var  mode="login";
-		      		var name = accountname;
-					Common.errorhandler(data,pageType, mode ,name);
-		     		},
-					success: function(data) {
-							window.location.href = 'sites.html';
-					
-				});
-			}*/
-		}
+		$('#homeBtn').click(Common.home);
+
 	
 		
 	
 		
 	</script> 
-
-
-
-
-</div>
 </body>
 </html>

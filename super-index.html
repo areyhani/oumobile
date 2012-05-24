@@ -59,16 +59,19 @@
         <div data-role="content">
             <h3 id="alert_title">alert title</h3>
             <p id="alert_body">alert body</p>
-            <a href="#" data-role="button" data-rel="back">OK</a>        
+            <a id="okBtn" href="" data-role="button" data-rel="back" >OK</a>        
         </div>
     </div>
 
 	
 	
 		<script type="text/javascript">
-		var Browser = browserdetect();
-		console.log(Browser);
-		
+	var platform= browserdetect();
+	BrowserDetect.init();
+	var browser = BrowserDetect.browser;
+	var version = BrowserDetect.version;
+		console.log('Platform: '+platform+'Browser: '+browser);
+		//var flag="true";
 		//Browser Detection
 		$('#index').on('pageinit', function() {
 	     	if (typeof(localStorage) == 'undefined' ) {
@@ -80,7 +83,6 @@
 			$('#username').val(setusername);
 			$('#password').val(setPass);
 			}
-		
 
 		//submit when Enter Key is pressed
 			$('input').keypress(function(event) {
@@ -88,8 +90,8 @@
 					 $('#submit').click();
 				 	}
 				 	});
-				 	
-			if(Browser.desktop){
+
+			if(platform.desktop && browser=="Firefox"){
 					 $("alert_title").empty();
 				     $("#alert_body").empty();
 					 $("#alert_title").text("Warning");
@@ -101,6 +103,11 @@
     					role: "dialog",
     					reloadPage:true,
 						});
+			 $('#okBtn').click(function(){
+			 $('#alert-page').dialog('close');
+			//window.location.href="super-index.html?skin=skin";
+           //flag="false";
+			 });
 			}
 			
 			
