@@ -1,0 +1,450 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title> Add User</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" /> 
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/mobile-style.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+	
+	
+	
+</head> 
+<body> 
+<div  data-role="page" id="userdiv"   style="padding-top:0px;">
+
+	<div id="header" data-role="header" data-fullscreen="true" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<a href="#"rel="external" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header"> New User </h1>
+
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+
+<div data-role="content">
+<form id="form">
+
+	<div data-role="collapsible-set" data-theme="b" data-content-theme="c">
+
+			
+			    <div  class="coll" data-role="collapsible" data-collapsed="true">
+                        <h3>
+                           User Information
+                        </h3>
+	
+	  			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+                        
+  
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="username" class="ui-input-text">Username:</label>
+	        	<input type="text" value=" " id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="lastname" class="ui-input-text">Password:</label>
+	        	<input type="password" value="" id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="firstname" class="ui-input-text">Firstname:</label>
+	        	<input type="text" value="" id="firstname" name="firstname" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="lastname" class="ui-input-text">Lastname:</label>
+	        	<input type="text" value="" id="lastname" name="lastname" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+								
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="email" class="ui-input-text">E-mail:</label>
+	        	<input type="text" value="" id="email" name="name" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="phone" class="ui-input-text">Phone:</label>
+	        	<input type="text" value="" id="phone" name="name" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="timezone" class="ui-input-text">Time Zone</label>
+	        	<input type="text" value="" id="timezone" name="timezone" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+				
+				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  		<label for="locale" class="ui-input-text">Locale</label>
+	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
+   		  		</li>
+   		 
+	
+				
+				</ul> <br />
+				
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+     	
+     		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			  <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-controls">
+			<div class="ui-checkbox"><input type="checkbox" id="creategroup" class="custom" name="sendmessage"><label for="creategroup" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Create Group for this User:</span></span></label></div>
+	        </div></fieldset>
+	        </li>
+	        </ul>
+	        <br /> 
+			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+     	
+     		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			  <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div  id="controler" class="ui-controlgroup-controls">
+			<div class="ui-checkbox"><input type="checkbox" id="sendmessage" class="custom" name="sendmessage"><label for="sendmessage" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"   class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Welcome Message:</span></span></label></div>
+	        </div></fieldset>
+	        </li>
+	        
+			<li  data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			<div id="showmessagedetails"   style="display:none;">
+	        	<fieldset  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-controls">
+				
+					<div class="ui-checkbox"><input type="checkbox" id="sendpass" class="custom" name="sendpass"><label for="sendpass" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"  class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Password in Message</span></span></label></div>
+					
+			    </div></fieldset>
+			
+				<div data-role="fieldcontain">
+	            <label  for="textarea">Additional Message to User:</label><br />
+	           <textarea class="textarea1" cols="40" rows="8" name="welcomeM" id="welcomeM"></textarea>
+               </div>
+               </div>
+			</li>
+			
+			</ul>
+             
+	
+	
+	</div> <!-- User Information-->
+	
+	
+		<div  class="coll" data-role="collapsible" data-collapsed="true">
+                        <h3>
+                         Preferences
+                        </h3>
+	
+	                    
+        <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+		
+				
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+	        	<label for="just_edit" id="just_edit-label" class="ui-slider"> Just Edit:</label>
+				<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
+					<option  selected="selected"   value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</li>
+   		  
+   		  	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+	        	<label for="justEdit" id="justEdit-label" class="ui-slider">JustEdit:</label>
+				<select data-role="slider" id="justEdit" name="justEdit" class="ui-slider-switch">
+					<option  selected="selected"   value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</li>
+			
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+	        	<label for="pagecheck" id="pagecheck-label" class="ui-slider">Page Check:</label>
+				<select data-role="slider" id="pagecheck" name="pagecheck" class="ui-slider-switch">
+					<option  selected="selected"   value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</li>
+			
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+	        	<label for="failedlogin" id="failedlogin-label" class="ui-slider">Failed Login Notification:</label>
+				<select data-role="slider" id="failedlogin" name="failedlogin" class="ui-slider-switch">
+					<option  selected="selected"   value="off">Off</option>
+					<option value="on">On</option>
+				</select>
+			</li>
+
+   			
+				
+	 </ul>
+
+	</div> <!-- Prefrences -->
+	
+	
+	
+	 <div  class="coll" data-role="collapsible" data-collapsed="true">
+                        <h3>
+                          Restrictions
+                        </h3>
+	
+	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	 
+	 
+	   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			<label for="userlevel" class="ui-input-text">User Level:</label>
+	 			 <select name="userlevel" id="userlevel" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+					<option selected="selected" value="null">None</option>
+				</select>
+
+
+		</li>
+   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 <div>
+      	<label for="approver" class="ui-input-text">Approver:</label>
+	 			 <select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+					<option selected="selected" value="0">0-Reviewer</option>
+					<option value="1">1-Contributor</option>
+					<option value="2">2-Contributor</option>
+					<option value="3">3-Contributor</option>
+					<option value="4">4-Contributor</option>
+					<option value="5">5-Editor</option>
+					<option value="6">6-Editor</option>
+					<option value="7">7-Editor</option>
+					<option value="8">8-Designer</option>
+					<option value="9">9-Asst. Admin</option>
+					<option value="10">10-Administrator</option>
+				</select>
+				
+			</div>
+			</li>
+			
+			<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+	        	<label for="enforceApprover" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
+				<select data-role="slider" id="enforceApprover" name="enforceApprover" class="ui-slider-switch">
+					<option  selected="selected" value="off">No</option>
+					<option value="on">Yes</option>
+				</select>
+			</li>
+			
+			
+			
+	   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 <div>
+      	<label for="toolbar" class="ui-input-text">Toolbar:</label>
+	   <select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+				<option selected="selected" value="null">Default</option>
+
+			</select>
+			</div>
+			</li>
+				</ul>
+	
+	
+	</div> <!--Restriction-->
+	
+	
+	<div  class="coll" data-role="collapsible" data-collapsed="true">
+                        <h3>
+                          LDAP Configuration
+                        </h3>
+	
+	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+		
+		
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   			
+   		        <label for="authtype" class="ui-input-text">Authentication Type:</label>
+	   			<select name="authtype" id="authtype" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+				    <option selected="selected" value="0">Simple</option>
+					<option value="1">Simple (SSL)</option>
+					<option value="2">Simple (StartTLS)</option>
+				</select>
+   		      </li>
+
+   		      <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  
+   				<label  style="width:47%"  for="hostname" class="ui-input-text"> Hostname:</label>
+	        	<input type="text" value="" id="hostname" name="hostname" class="ui-input-text ui-body-c ui-corner-all ">
+   		  
+   		      </li>
+   		        <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  
+   				<label  style="width:47%"  for="dn" class="ui-input-text"> DN:</label>
+	        	<input type="text" value="" id="dn" name="dn" class="ui-input-text ui-body-c ui-corner-all ">
+   		  
+   		      </li>
+                     
+                        
+               </ul>         
+    </div> 
+      </div>         
+               
+<!--LDAP Configuration-->
+
+
+</form>
+	</div><!-- content -->
+<div  id="footer" data-role="footer"  data-fullscreen="true"  id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+<div data-role="navbar" class="ui-navbar" role="navigation">
+<ul class="ui-grid-b">
+<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="createNewUser" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
+</ul>
+</div>
+
+</div>
+</div>
+
+
+<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">alert title</h3>
+            <p id="alert_body">alert body</p>
+            <a id="okBtn" href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+    </div>
+			<script type="text/javascript">
+			$.mobile.fixedToolbars.show(true);
+			 $.mobile.fixedToolbars.show(true);
+			 
+			 $('.coll').click(function(){
+			  $.mobile.fixedToolbars.show(true);
+			 });
+			$('#sendmessage').click(function(){
+			var serializedelement =$(this).serialize();
+			//console.log(serializedelement);
+			if (serializedelement=='sendmessage=on'){
+			$('#showmessagedetails').show('slidedown',false,true);
+			}
+			else{$('#showmessagedetails').hide('slideup',false,true);}
+			});
+
+			
+			
+		     $('#createNewUser').click(function() {
+		      			var params=location.search;
+		      			var username=$('#username').val();
+		      			var password = $('#password').val();
+		      			var firstname = $ ('#firstname').val();
+		      			var lastname =$ ('#lastname').val();
+		      			var email = $('#email').val();
+		      			var phone = $ ('#phone').val();
+		      			var timezone =$('#timezone').val();
+		      			var locale =$('#locale').val();
+		      			var creategroup = $('#creategroup').val();
+		      			var sendmessage = $('#sendmessage').val();
+		      			var welcomeM = $('#welcomeM').val();
+		      			var just_edit = $('#just_edit').val();
+		      			var pagecheck = $('#pagecheck').val();
+		      			var failedlogin = $('#failedlogin').val();
+		      			var userlevel = $('#userlevel').val();
+		      			var approver = $('#approver').val();
+		      			var enforceApprover =$('#enforceApprover').val();
+		      			var toolbar = $ ('#toolbar').val();
+		      			var authtype =$('#authtype').val();
+		      			var hostname=$('#hostname').val();
+		      			var dn =$('#dn').val();
+		      			
+		      			//if(spellcheck== "false") {spellcheck=1;} else {spellcheck=0;}
+		      			//if(linkcheck== "false") {linkcheck=1;} else {linkcheck=0;}
+		      			//if(pagevalidate== "false") {pagevalidate=1;} else {pagevalidate=0;}
+		      			//if(accessibility== "false") {accessibility=1;} else {accessibility=0;}
+		     
+		      		console.log(username);
+		      		console.log(password);
+		      		console.log( firstname);
+		      		console.log(lastname);
+ 					console.log(email);
+ 					console.log(phone);
+		      		console.log( timezone);
+		      		console.log( locale);
+		      		console.log( creategroup);
+		      		console.log(sendmessage);
+		      		console.log( welcomeM );
+		      		console.log( addson );
+		      		console.log(just_edit);
+		      		console.log(pagecheck);
+		      		console.log(failedlogin);
+		      		console.log(userlevel );
+		      		 console.log(approver );
+		      		 console.log(enforceApprover);
+		      		 console.log( toolbar);
+		      		 console.log( authtype);
+		      		 console.log( hostname);
+		      		 console.log(dn);
+		      			
+		     
+		     
+		     		$.ajax({
+		     					url: '/users/new',
+		     					type:'post',
+		     					data:{
+		     					'user':	username,
+		      					'first_name': password,
+		      				    'last_name': firstname,
+		      					'company': lastname,
+		      				    'street':email,
+		      					'city': phone,
+		      			     	'state':timezone,
+		      					'zip':locale,
+		      					'country':creategroup,
+		      					'phone': sendmessage,
+		      					'email': welcomeM ,
+		      					'just_edit':just_edit ,
+								 'file_check':pagecheck,
+								 'spell_check':failedlogin,
+								 'link_check':userlevel,
+								 'page_validate': approver ,
+								 'accessibility':enforceApprover,
+		      			        'publish_threshold':toolbar,
+		      			        'default_tweet':authtype,
+		      					'sso_url': hostname,
+		      					'announcement_url':dn,
+
+		     					
+		     					
+		     					},
+		     					error: function(data){
+		     					console.log(data);
+		      					var name=accountname;
+		      					var pageType="user";
+		      					var mode= "add";
+								Common.errorhandler(data, pageType,mode,name);
+		     					},
+		     					success: function(data){
+		     					if(data.error){
+		     					console.log(data.error);
+		     					}
+		     					console.log(data);
+		     					window.location.href='users.html' + params;	
+		     					}
+		     		
+		     		});
+		     
+		     } );
+		
+		
+		/*Create New user ajax */
+		// cancell Button
+
+		$('#cancelBtn').click(function(){
+
+		$.ajax({
+			url:'/users/list?account='+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='userslist.html'+location.search;
+			}
+		});
+		
+		});
+		//cancel Button
+		$('.logout').click(Common.logout);	
+		$(document).delegate('#opendialog', 'click', function() {
+ 		 $('#inlinecontent').simpledialog2();
+		});
+	    </script>
+
+</body>
+</html>

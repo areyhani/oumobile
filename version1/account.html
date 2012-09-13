@@ -1,0 +1,164 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Account</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" /> 
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="icomoon/style.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+<script type="text/javascript" src="js/tooltip.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</head> 
+<body> 
+
+<div  class="icon-alignment" data-role="page" id="account">
+		<div id="header" data-role="header" data-theme="b" class="omnistyle">
+	
+		<a href="#"rel="external" data-rel="back" data-icon="back">Back</a>
+		<h1 id="accountHeader"></h1>
+		<a id="backBtn"  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
+		</div>
+		<div data-role="content">
+		
+		<ul data-role="listview" data-theme="c" id="account-actions">
+	
+		<li data-role="list-divider">Account Information:</li>
+		
+			<li>
+		<a class="sites"  rel="external"  href="" >
+		<span class="col-a"><div class="icon-background">
+		<i class="icon-globe">&nbsp;</i> </div>
+		<label class="label" id="sitelabel" for="sitecount"> Sites </label></span> <span  id="sitecount">  </span> </a> <a title=" " class="sites" rel="tooltip" id="sitestooltip" >&nbsp;</a>
+		</li>
+		
+			<li>
+		<a class="users" rel="external"  href="" >
+		<span class="col-a">
+		<div class="icon-background">
+		<i class="icon-user-2">&nbsp;</i> </div>
+		<label class="label" id="userlabel" for="usercount"> Users </label> </span><span  id="usercount">  </span> </a><a title=" "  rel="tooltip" class="users" id="userstooltip">&nbsp;</a>
+		</li>
+		
+			<li>
+		<a class="groups" rel="external"  href="" >
+		<span class="col-a">
+		<div class="icon-background">
+		<i class="icon-users">&nbsp;</i> </div><label class="label" id="grouplabel" for="groupcount"> Groups </label></span> <span  id="groupcount">  </span> </a><a title=" adsffasf" rel="tooltip" class="groups" id="groupstooltip">&nbsp; </a>
+		</li>
+	
+    </ul>
+
+
+	</div>
+	
+
+
+
+
+
+
+
+<script type="text/javascript">	
+	$.mobile.fixedToolbars.show(true);
+    //accountDiv
+		$('#account').on('pageshow', function() {
+	var params =location.search;
+	$.ajax({
+				url:'/accounts/view' + params,
+				type:'get',
+				success:function(data){
+				localStorage.setItem('account',data.account);
+				  if(data.error){
+				  window.location.href='super-index.html'+location.search;
+				  }
+				  
+				$('#accountHeader').text("Account: "+data.account);
+				 var accountDiv = $('#account');
+				 var sitecount = $(document.createElement('span'))
+				.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+				.text('Total: ' + data.page_count);
+				
+				var usercount = $(document.createElement('span'))
+				.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+				.text('Total: ' + data.user_count);
+				
+				var groupcount = $(document.createElement('span'))
+				.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+				.text('Total: ' + data.group_count);
+				
+				$('#sitecount').append(sitecount);
+				$('#usercount').append(usercount);
+				$('#groupcount').append(groupcount);
+				localStorage.setItem('account',data.account);
+				$('#sitestooltip').attr({'title':'Show all sites of account: '+ data.account});
+				$('#userstooltip').attr({'title':'Show all users of account: '+ data.account});
+				$('#groupstooltip').attr({'title':'Show all groups of account: '+ data.account});
+				// accountDiv.empty();
+				 console.log(data);				
+				
+				}
+				});	
+		});
+	//users
+		$('.users').click(function(){
+		$.ajax({
+			url:'/users/list?account='+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='userslist.html'+location.search;
+			}
+		});
+});
+		$('.sites').click(function(){
+		$.ajax({
+			url:'/sites/list'+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='sites.html'+location.search;
+
+			}
+		});
+});
+		$('.groups').click(function(){
+		$.ajax({
+			url:'/groups/list'+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='grouplist.html'+location.search;
+			}
+		});
+});
+	// cancell Button
+		$('#cancelBtn').click(function(){
+		$.ajax({
+			url: '/accounts/list'+location.search,
+			type:'get',
+			success:function(data){
+			if (data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='accounts.html'+location.search;	
+			}
+		
+		});
+		});
+	//cancel Button
+		$('.logout').click(Common.logout);
+	    </script>
+
+</body>
+</html>

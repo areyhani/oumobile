@@ -1,0 +1,82 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Published Log</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="report-published-log">
+<div data-role="header" data-theme="b" style="background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<a href="#"rel="external" data-rel="back" data-icon="back">Back</a>
+		<h5 id="header">Report</h5>
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+	<div data-role="content">
+	<ul id="pages-log" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
+	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete">Published Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> Check In</span></li>
+		</ul>
+	</div>
+	
+		<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+<ul class="ui-grid-b">
+<li class="ui-block-a"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li class="ui-block-b" id="editBtn"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
+<li class="ui-block-c" id="addBtn" ><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+</ul>
+</div>
+
+
+	<script type="text/javascript">	
+	$.mobile.fixedToolbars.show(true);
+
+		$('#report-published-log').on('pageshow', function() {
+		
+		var sitename = location.search;
+		var account = localStorage.getItem('account');
+		var site = localStorage.getItem('site');
+			$.ajax({
+				url: '/pages/publish_log?account='+account+'&site='+site,
+				type: 'get',
+				success: function(data) {
+					if (data.error) {
+						//window.location.href = 'index.html';
+					}
+					var pageList = $('#pages-log');
+					pageList.empty();
+					if (data.length == 0) {
+							var li = $(document.createElement('li'))
+								.text('There is no publish history for this content.');
+							pageList.append(li);
+					} else {
+						$.each(data, function(index, page) {
+							var action = page.type.toLowerCase();
+							var username = page.username;
+							var date = page.date;
+							var li = $(document.createElement('li'))
+								.html(username + '<span class="lighter"> performed a ' + action + ' on ' + date + '</span>');
+							pageList.append(li);
+						});
+					}
+					pageList.listview("refresh");
+				}
+			});
+		
+			
+		
+		
+		});
+		$('.logout').click(Common.subuserlogout);
+		$('#report-published-log').on('pagebeforehide', function() {
+			$('#report-published-log').off('pageshow');
+		});
+	</script>
+</div>
+</body>
+</html>

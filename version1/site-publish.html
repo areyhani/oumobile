@@ -1,0 +1,139 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Site Publish</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="icomoon/style.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
+</head> 
+<body> 
+<div data-role="page"   id="site-publish">
+
+<div id="header" data-role="header" data-theme="b"  class="omnistyle" >
+		<a href="#"rel="external" data-rel="back" data-icon="back">Back</a>
+		<h1 id="header"  >Site Publish</h1>
+		<a href="#" data-icon="gear" class="logout"><span id="userLogout">Logout</span></a>
+</div>
+<div data-role="content" style="overflow-y:hidden;min-height:300px">
+     <ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
+		<li>		
+			<div id="status" style="text-align:center">
+				<h3 id="siteName" > Site </h3>
+					<span id="progress" data-inset="true" class=" frame ui-corner-all ui-shadow" style="display:none" ><img  src="images/progress.gif" title="Publish Progress"  /></span>
+					<span id="message" style="display:none">&nbsp;</span>
+			</div>
+			<div id="buttons" style="margin-bottom: 35px;">
+					<button  data-theme="b" id="start">Publish</button>
+			</div>
+			<div id="errors" style="display:none;">
+					<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
+					<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
+					</ul>
+			</div>
+		</li>
+  	</ul>
+</div>
+</div> 
+
+	<script type="text/javascript">
+	$.mobile.fixedToolbars.show(true);
+	var platform= browserdetect();
+	var interval = null;
+	if(platform.ipad ||platform.desktop ){
+		$('#buttons').css('margin','30px');
+	}
+	$('#site-publish').on('pageshow', function() {
+		$('#siteName').text(localStorage.getItem("site"));
+		Common.subuserLogoutBtn();
+			var sitename = location.search;
+			$('#start').click(function() {
+				doPublish(sitename);
+			});
+			$('#display-errors').click(function() {
+				var errorList = $('#error-list');
+				if (errorList.is(':hidden')) {
+					$('#error-list').show();
+					$('#action').text('hide');
+				} else {
+					$('#error-list').hide();
+					$('#action').text('see');
+				}
+				return false;
+			});
+		
+		$.mobile.page();  
+		});
+	$('#site-publish').on('pagebeforehide', function() {
+			if (interval != null) {
+				clearInterval(interval);
+				}
+		});
+	$('.logout').click(Common.subuserlogout);
+	function doPublish(sitename) {
+			$.ajax({
+				url: '/sites/publish?account=Atena2&site=Atena-Site',
+				type: 'post',
+				error: function(data){
+				 console.log(data);
+				},
+				success: function(data) {
+						console.log(data);
+					if (data.done) {
+						clearInterval(interval);
+						interval = null;
+						$('#start').removeAttr('disabled');
+						var msg;
+						if (data.error) {
+							msg = 'The site has been published, but some pages failed to published.';
+							var errorList = $('#error-list');
+							$.each(data.messages, function(index, error) {
+								var li = $(document.createElement('li')).text(error);
+								errorList.append(li);
+							});
+							errorList.listview("refresh");
+							$('#errors').show();
+							$('#progress').hide();
+						} else {
+							msg = 'The site has been successfully published.';
+						} 	
+						$('#message').text(msg);
+					} else if (data.error) {
+					console.log(data.error);
+						//window.location.href = 'index.html';
+					} else {
+						if (interval === null) {
+							$('#start').attr('disabled', 'disabled');
+							$('#start').addClass('mobile-button-disabled ui-state-disabled');
+							interval = setInterval(function() {
+								doPublish(sitename);
+							}, 2000);
+						}
+						var published = data.published;
+						var filesPublished = data.files_published;
+						var status = $('#status');
+						var spinner = $('#progress');
+						var message = $('#message');
+						if (status.is(':hidden')) {
+							status.show();
+						}
+						if (spinner.is(':hidden')) {
+							spinner.show();
+						}
+						if (message.is(':hidden')) {
+							message.show();
+							message.css('display','block');
+						}
+						message.text(filesPublished + (published === 1 ? ' file has' : ' files have') + ' been published.');
+					}
+				}
+			});
+		}
+			
+	</script>
+</body>
+</html>

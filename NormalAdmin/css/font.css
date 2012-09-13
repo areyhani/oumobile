@@ -1,0 +1,61 @@
+@media (min-width: 780px) {
+    body,label.ui-slider,.oubox-edit-setting label,.ui-checkbox-off .ui-btn-text,.ui-checkbox-on .ui-btn-text,.ui-li-static .ui-input-text,.ui-li-divider, .ui-li-static,.ui-radio .ui-btn-text,.ui-grid-b.ui-btn-hover-c,.ui-grid-blabel.ui-slider ,.ui-grid-blabel.ui-input-text,.ui-grid-b .ui-li-divider,.ui-grid-b .ui-li-static,.ui-grid-b .ui-controlgroup .ui-checkbox label,.ui-grid-b .ui-controlgroup .ui-radio label,.ui-grid-b span.ui-slider-label{
+        font-size: 14px;
+        font-weight: normal;
+        color: #464646;
+  	    text-shadow: 0 1px 0 #FFFFFF;
+    }
+}
+
+@media (max-width: 780px) {
+    body,label.ui-slider,.oubox-edit-setting label,.ui-checkbox-off .ui-btn-text,.ui-checkbox-on .ui-btn-text,.ui-li-static .ui-input-text,.ui-li-divider, .ui-li-static,.ui-radio .ui-btn-text,.ui-grid-b .ui-btn-hover-c,.ui-grid-blabel.ui-slider,.ui-grid-b label.ui-input-text,.ui-grid-b .ui-li-divider,.ui-grid-b .ui-li-static,.ui-grid-b .ui-controlgroup .ui-checkbox label,.ui-grid-b  .ui-controlgroup .ui-radio label,.ui-grid-b  span.ui-slider-label {
+        font-size: 13px;
+        font-weight: normal;
+        color: #464646;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+}
+
+@media (max-width:624px ) {
+   body ,.oubox-edit-setting label,label.ui-slider,.ui-checkbox-off .ui-btn-text,.ui-checkbox-on .ui-btn-text,.ui-li-static .ui-input-text,.ui-li-divider, .ui-li-static,.ui-radio .ui-btn-text,.ui-grid-b .ui-btn-hover-c,.ui-grid-b  label.ui-slider,.ui-grid-b  label.ui-input-text,.ui-grid-b  .ui-li-divider,.ui-grid-b  .ui-li-static,.ui-grid-b  .ui-controlgroup .ui-checkbox label,.ui-grid-b  .ui-controlgroup .ui-radio label,.ui-grid-b  span.ui-slider-label{
+        font-size: 12px;
+        font-weight:normal;
+        color: #464646;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+}
+
+.ui-grid-a ui-btn-text,.ui-grid-b  .ui-grid-a .ui-btn-hover-c{
+		font-weight: bold;
+}
+
+.ui-body-c, .ui-dialog.ui-overlay-c,.ui-grid-b .ui-grid-b .ui-btn-up-c {
+        font-size: 13px;
+        font-weight: bold;
+        color: #464646;
+        text-shadow: 0 1px 0 #FFFFFF;
+    }
+
+
+.help {
+    font-weight: normal;
+    padding: 5px;
+}
+.error {
+    color: #B7110D;
+    font-weight: bold;
+}
+.ui-bar-b {
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px #254F7A;
+}
+    
+ .settings label, .settings .ui-input-text,.ui-input-search .ui-input-text {
+    	font-size: 14px;
+        margin-left: 16px;
+        font-weight:normal;
+        color: #464646;
+        text-shadow: 0 1px 0 #FFFFFF;
+}
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Site</title> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" type="text/css" href="icomoon/style.css" />
+<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" /> 
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/tooltip.js"></script>
+</head> 
+<body> 
+<div data-role="page" id="site" >
+	<div id="header" data-role="header" data-theme="b" class="omnistyle">
+		<a href="#" rel="external" data-rel="back" data-icon="back">Back</a>
+		<h5 id="headertitle">Site Actions</h5>
+		<a  href="#" data-icon="gear" class="logout"><span id="userLogout">Logout</span></a>
+	</div>
+	<div class="icon-alignment"  data-role="content">
+		<ul data-role="listview" data-theme="c" id="actions">
+			<li>
+				<a rel="external" href="#" class="publish">
+				<span class="icon-background">
+				<span class="icon-publish">&nbsp;</span> </span>
+					Publish<a title=" "  rel="tooltip" class="publish" id="publish">&nbsp;</a>
+				</a>
+			</li>
+			<li>
+				<a rel="external" href="#" class="reports">
+				<span class="icon-background">
+				<span class="icon-book_alt2">&nbsp;</span> </span>
+				Reports<a title=" "  rel="tooltip" class="reports" id="reports">&nbsp;</a>
+				</a>
+			</li>
+			<li>
+				<a rel="external" href="#" class="scan">
+				<span class="icon-background">
+				<span class="icon-picassa">&nbsp;</span> </span>
+				Scan<a title=" "  rel="tooltip" class="scan" id="scan">&nbsp;</a>
+				</a>
+			</li>
+			<li>
+				<a rel="external" href="#" class="settings">
+				<span class="icon-background">
+				<span class="icon-settings">&nbsp;</span> </span>
+				Settings<a title=" "  rel="tooltip" class="settings" id="settings">&nbsp;dasf</a>
+				</a>
+			</li>
+		</ul>
+	</div>
+	</div>
+	<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		var site=localStorage.getItem('site');
+		var sessionObj = Common.whoamI();
+		var user = sessionObj.user;
+	
+		//console.log(site);
+		Common.subuserLogoutBtn();
+		$('#site').on('pageshow', function() {
+			console.log('user:'+sessionObj.user);
+			var sitename = location.search;
+			$('#headertitle').text(site);
+			$('.publish').attr({'href': 'site-publish.html' + sitename});
+			$('.reports').attr({'href': 'site-reports.html' + sitename});
+			$('.scan').attr({'href': 'site-scan.html' + sitename});
+			$('.settings').attr({'href':'site-settings.html' + sitename});
+			
+			$('#publish').attr({'title': 'Publish site: ' + site});
+			$('#reports').attr({'title': 'Get reports of site: ' + site});
+			$('#scan').attr({'title': 'Scan site: ' + site});
+			$('#settings').attr({'title': 'Edit the settings of site: ' + site+ " as user : " + user} );
+			
+			$('.logout').click(Common.subuserLogout);
+		});
+		
+		$.mobile.page();
+	</script>
+
+</body>
+</html>

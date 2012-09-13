@@ -1,44 +1,4 @@
-.ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b
-{
-color: white;
-font-weight: bold;
-text-decoration: none;
-}
 
-.ui-btn-up-b
-{
-border: 1px solid #397114;
-background: #5aab25;
-text-shadow: 0 -1px 1px #397114;
-background-image: -moz-linear-gradient(top, #7ec44f,  #2D792D);
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #87c45e), color-stop(1, #619e39));
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#7ec44f', EndColorStr='#5aab25')";
-}
-
-.ui-btn-down-b
-{
-border: 1px solid #457823;
-background: #7ec44f;
-text-shadow: 0 -1px 1px #457823;
-background-image: -moz-linear-gradient(top, #619e39, #7ec44f);
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #619e39), color-stop(1, #7ec44f));
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#619e39', EndColorStr='#7ec44f')";
-}
-
-.ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b
-{
-color: white;
-font-weight: bold;
-text-decoration: none;
-}
-
-.ui-bar-b {
-    background: -moz-linear-gradient(#999999,#999999) repeat scroll 0 0 #999999;
-    border: 1px solid #999999;
-    color: #FFFFFF;
-    font-weight: bold;
-    text-shadow: 0 -1px 1px #397114;
-}
 div li span.ui-icon {
 	float: right;
 }
@@ -84,6 +44,12 @@ label.setting {
 	margin: 11px 0px 1px 12px;
 }
 
+.omnistyle{
+background-color:#1C5D93;
+background-image:-moz-linear-gradient(center top , #2276BB, #124065);
+background-image:-webkit-linear-gradient(center top , #2276BB, #124065);
+background-image:-webkit-linear-gradient( #2276BB, #124065);
+}
 
 
 .user-icon{
@@ -158,7 +124,7 @@ color:#FFFFFF;}
 .icon-background{
     background-color: #CCCCCC;
     border-radius: 0.5em 0.5em 0.5em 0.5em;
-    color: #2D792D;
+    color: #627AAD;
     margin: 0 10px 0 0;
     padding: 7px 2px 5px 8px;
     overflow: hidden;
@@ -195,8 +161,8 @@ color:#FFFFFF;}
     padding: 0 2px 0 15px;
 }
 .ui-checkbox .ui-btn-inner{border:none;}
-#accountview .ui-li-count, #siteview .ui-li-count, #userview .ui-li-count{ font-size:11px;padding:3px 5px;  margin:0px 32px;}
-#accountview .col-a,#siteview .col-a,#userview .col-a{float:left;}
+#accountview .ui-li-count{ font-size:11px;padding:3px 5px; float:right; margin:0px 32px;}
+#accountview .col-a{float:left;}
 .frame{
 list-style:none;
 padding:10px 20px;
@@ -308,18 +274,18 @@ font-size:14px;
 margin-left:4px;
 
 }
-.account-info, .site-info,.user-info, .group-info{
+.account-info{
     border-top: 1px dotted gray;
     margin-left: 67px;
     margin-right: 20px;
     padding-top: 5px;
 } 
- .account-label, .site-label, .user-label, .group-label{
+ .account-label{
  	margin-bottom: 15px;
     margin-left: 70px;
     margin-top: 10px;
     }
-  #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count,#userview  .ui-li-count,#groupview  .ui-li-count, .information {
+  #accountview .account-info .ui-li-count {
     float: right;
     font-size: 11px;
     left: 185px;
@@ -327,50 +293,12 @@ margin-left:4px;
     padding: 0px;
     position: absolute;
     text-align: center;
-
+    width: 10%;
 }
-  #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count, #userview .ui-li-count,  #groupview .ui-li-count{
-      width: 10%;
-  }
+
 
 
 .action-btn-row1{
   
     }
     
-
-.omnistyle{
-background-color: #3A9A3A;
-background-image:-moz-linear-gradient(center top , #42B142, #2D792D);
-background-image:-webkit-linear-gradient(center top , #42B142, #2D792D);
-background-image:-webkit-linear-gradient(  #42B142, #2D792D);
-}
-.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
-    background-color: #2D792D;
-}
-.ui-btn-hover-b, .ui-btn-active {
-    background: -moz-linear-gradient( #42B142, #2D792D); repeat scroll 0 0 #4596CE;
-    border: 1px solid #155678;
-    color: #FFFFFF;
-    cursor: pointer;
-    font-family: Helvetica,Arial,sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-    text-shadow: 0 -1px 1px #145072;
-}
-
-.ui-block-a .ui-btn-hover-c, #publishsettings-div .ui-btn-up-b, #publishsettings-div .ui-btn-hover-b, #publishsettings-div .ui-btn-active 
-{
-    background: -moz-linear-gradient(#EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
-    border: 1px solid #BBBBBB;
-    color: #101010;
-    font-weight: bold;
-    text-shadow: 0 1px 1px #FFFFFF;
-}
-
-
-#feedback { font-size: 1.4em; }
-#selectable .ui-selecting { background: #FECA40; }
-#selectable .ui-selected { background: #F39814; color: white; }
-#selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-#selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }

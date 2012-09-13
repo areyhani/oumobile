@@ -1,0 +1,397 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>  Edit User</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+
+<style type="text/css">
+
+.ui-field-contain label.ui-slider {width:50%; }
+.ui-field-contain label.ui-input-text{ width:31%;padding-top:4px;}
+#personalinformation-div .ui-field-contain label.ui-input-text{ width:25%;padding-top:4px;}
+.ui-btn { margin:0px; }
+label.ui-input-text{ width:31%;padding-top:4px;}
+.ui-field-contain .ui-select {width:53%}
+.ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner{margin:0px;padding:4px 0px 4px 25px;}
+.ui-field-contain .ui-controlgroup-controls {margin-left:15%; width:80%}
+.ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,input.ui-input-text, textarea.ui-input-text{width:45%}
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li{padding:0.5em 15px;}
+.ui-content .ui-listview-inset{margin:0px;}
+.textarea1{ margin-left: 34%;}
+
+</style>
+	
+	
+	
+</head> 
+<body> 
+<div  data-role="page" id="userdiv"   style="padding-top:0px;">
+
+	<div id="header" data-role="header" data-fullscreen="true" data-position="fixed" data-theme="b" style="text-align:center; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+		<a href="#"rel="external" data-rel="back" data-icon="back">Back</a>
+		<h1 id="headerEditUser"> </h1>
+
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+
+<div data-role="content" style="padding:10px 1px;">
+
+
+	<form id="form">
+	
+	
+	<div class="ui-grid-a">
+	<div class="ui-block-a" style="width:230px; margin-left:8px; text-align:left;" >
+	<div  style="padding: 0px 5px" data-role="content" class="ui-content" role="main">
+
+<div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+<div id="userinformation" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-hover-c" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text">User Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="preferences" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Preferences</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="restrictions" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">Restrictions</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+<div id="LDAPconfiguration" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b" data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">LDAP Configuration</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+
+</div>
+
+</div>
+	</div>
+	<div class="ui-block-b" style="margin:0px 10px; width:60%" >
+	
+	<div id="userinformation-div" style="display:block" >
+	
+	  			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+                        
+  
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="username" class="ui-input-text">Username:</label>
+	        	<input  disabled="disabled"  type="text" value="" id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="lastname" class="ui-input-text">Password:</label>
+	        	<input type="password" value="" id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="firstname" class="ui-input-text">Firstname:</label>
+	        	<input type="text" value="" id="firstname" name="firstname" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="lastname" class="ui-input-text">Lastname:</label>
+	        	<input type="text" value="" id="lastname" name="lastname" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+								
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="email" class="ui-input-text">E-mail:</label>
+	        	<input type="text" value="" id="email" name="name" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="phone" class="ui-input-text">Phone:</label>
+	        	<input type="text" value="" id="phone" name="name" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				<label for="timezone" class="ui-input-text">Time Zone</label>
+	        	<input type="text" value="" id="timezone" name="timezone" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				
+				
+				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  		<label for="locale" class="ui-input-text">Locale</label>
+	        	<input type="text" value="" id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
+   		  		</li>
+   		 
+	
+				
+				</ul> <br />
+				
+             
+	
+	
+	</div> <!-- User Information-->
+	<div id="preferences-div" style="display:none">
+	
+	                    
+        <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+		
+				
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="just_edit" id="just_edit-label" class="ui-slider">Just Edit:</label>
+				<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
+					<option  selected="selected" value="false">Off</option>
+					<option value="true">On</option>
+				</select>
+			</li>
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="addtodictionary" id="addtodictionary-label" class="ui-slider">Add to Dictionary:</label>
+				<select data-role="slider" id="addtodictionary" name="addtodictionary" class="ui-slider-switch">
+					<option  selected="selected"  value="false">Off</option>
+					<option value="true">On</option>
+				</select>
+			</li>
+   		 
+			
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="pagecheck" id="pagecheck-label" class="ui-slider">Page Check:</label>
+				<select data-role="slider" id="pagecheck" name="pagecheck" class="ui-slider-switch">
+					<option  selected="selected"   value="false">Off</option>
+					<option value="true">On</option>
+				</select>
+			</li>
+			
+			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="failedlogin" id="failedlogin-label" class="ui-slider">Failed Login Notification:</label>
+				<select data-role="slider" id="failedlogin" name="failedlogin" class="ui-slider-switch">
+					<option  selected="selected"   value="false">Off</option>
+					<option value="true">On</option>
+				</select>
+			</li>
+
+   			
+				
+	 </ul>
+
+	</div> <!-- Prefrences -->
+	
+	
+	
+	<div id="restrictions-div"  style="display:none">
+	
+	 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	 
+	 
+	   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			<label for="userlevel" class="ui-input-text">User Level:</label>
+	 			 <select name="userlevel" id="userlevel" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+					<option selected="selected" value="null">None</option>
+				</select>
+
+
+		</li>
+   		   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 <div>
+      	<label for="approver" class="ui-input-text">Approver:</label>
+	 			 <select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+					<option selected="selected" value="0">0-Reviewer</option>
+					<option value="1">1-Contributor</option>
+					<option value="2">2-Contributor</option>
+					<option value="3">3-Contributor</option>
+					<option value="4">4-Contributor</option>
+					<option value="5">5-Editor</option>
+					<option value="6">6-Editor</option>
+					<option value="7">7-Editor</option>
+					<option value="8">8-Designer</option>
+					<option value="9">9-Asst. Admin</option>
+					<option value="10">10-Administrator</option>
+				</select>
+				
+			</div>
+			</li>
+			
+			<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	        	<label for="enforceApprover" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
+				<select data-role="slider" id="enforceApprover" name="enforceApprover" class="ui-slider-switch">
+					<option  selected="selected" value="off">No</option>
+					<option value="on">Yes</option>
+				</select>
+			</li>
+			
+			
+			
+	   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		 <div>
+      	<label for="toolbar" class="ui-input-text">Toolbar:</label>
+	   <select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+				<option selected="selected" value="null">Default</option>
+
+			</select>
+			</div>
+			</li>
+				</ul>
+	
+	
+	</div> <!--Restriction-->
+	
+	
+	<div id="LDAPconfiguration-div" style="display:none; height:100%">
+	
+	
+	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+		
+		
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   			
+   		        <label for="authtype" class="ui-input-text">Authentication Type:</label>
+	   			<select name="authtype" id="authtype" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+				    <option selected="selected" value="0">Simple</option>
+					<option value="1">Simple (SSL)</option>
+					<option value="2">Simple (StartTLS)</option>
+				</select>
+   		      </li>
+
+   		      <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  
+   				<label  style="width:47%"  for="hostname" class="ui-input-text"> Hostname:</label>
+	        	<input type="text" value="" id="hostname" name="hostname" class="ui-input-text ui-body-c ui-corner-all ">
+   		  
+   		      </li>
+   		        <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+   		  
+   				<label  style="width:47%"  for="dn" class="ui-input-text"> DN:</label>
+	        	<input type="text" value="" id="dn" name="dn" class="ui-input-text ui-body-c ui-corner-all ">
+   		  
+   		      </li>
+                     
+                        
+               </ul>         
+    </div> 
+               
+               
+<!--LDAP Configuration-->
+               
+	
+	
+	
+	</div>
+</div><!-- /grid-a -->
+
+</form>
+	</div>
+	
+	<div  id="footer" data-role="footer"   data-fullscreen="true"  id="footer" data-position="fixed"  class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+<ul class="ui-grid-b">
+<li id="homeBtn" class="ui-block-a"><a data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+<li id="saveAccount" class="ui-block-b"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Save</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="cancelBtn" class="ui-block-c"><a  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
+</ul>
+</div>
+
+</div>
+</div>		
+<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		$('#userinformation').live('click', function(){
+			$.mobile.fixedToolbars.show(true);
+			$(this).dblclick();
+			$('#userinformation-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#LDAPconfiguration-div, #restrictions-div , #preferences-div').hide();
+			$('#LDAPconfiguration , #restrictions , #preferences ').removeClass('ui-btn-hover-c');
+			}
+			);
+		$('#preferences').live('click', function(){
+			 //$.mobile.fixedToolbars.show(true);
+			 $(this).dblclick();
+			 $('#preferences-div').show();
+			 $(this).addClass('ui-btn-hover-c');
+			 $('#LDAPconfiguration-div, #restrictions-div,#userinformation-div ').hide();
+			 $('#LDAPconfiguration, #restrictions,#userinformation ').removeClass('ui-btn-hover-c');
+			}
+			);
+		$('#restrictions').live('click', function(){
+		   	$.mobile.fixedToolbars.show(true);
+		   $(this).dblclick();
+		   $('#restrictions-div').show();
+		   $(this).addClass('ui-btn-hover-c');
+		   $('#LDAPconfiguration-div , #preferences-div , #userinformation-div ').hide();
+		   $('#LDAPconfiguration, #preferences , #userinformation ').removeClass('ui-btn-hover-c');
+			}
+			);
+		$('#LDAPconfiguration').live('click', function(){
+			$.mobile.fixedToolbars.show(true);
+			$(this).dblclick();
+			$('#LDAPconfiguration-div').show();
+			$(this).addClass('ui-btn-hover-c');
+			$('#restrictions-div , #preferences-div , #userinformation-div').hide();
+			$('#restrictions , #preferences , #userinformation').removeClass('ui-btn-hover-c');
+			}
+			);	
+		$('#userdiv').on ('pageshow',function(){
+	
+		      			var params=location.search;
+		      			var userdiv =$('#userdiv');
+		      			$.ajax({
+		      			url: '/users/view'+location.search,
+		      			type:'get',
+		      			
+		      			error: function(data){
+		      			console.log(data);
+						var name=accountname;
+						var pageType="user";
+						var mode= "edit";
+						Common.errorhandler(data, pageType,mode,name);
+		      			},
+		      			
+		      			success:function(data){
+		      			if (data.error){
+		      			console.log(data.error);
+		      			window.location.href= 'super-index.html'+params;
+		      			}
+		      			console.log(data);
+		      		    $('#headerEditUser').text(data.username);
+		      			$('#username').val(data.username);
+		      			$('#password').val('');
+		      			$('#firstname').val(data.firstname);
+		      			$('#lastname').val(data.lastname);
+		      			$('#email').val(data.email);
+		      			$('#phone').val(data.phone);
+		      			$('#timezone').val(data.timezone);
+		      			$('#locale').val(data.locale);
+		      			$('#just_edit').val('data.just_Edit');
+		      			$('#dictionary_add').val('data.dictionary_add');
+		      			$('#pagecheck').val('data.pagecheck');
+		      			$('#failedlogin').val('data.failed_login_notify');
+		      			$('#userlevel').val('data.userlevel');
+		      			$('#approver').val('data.approver');
+		      			$('#enforceApprover').val('data.enforceApprover');
+		      			$('#toolbar').val('data.toolbar');
+		      			$('#authtype').val('data.authtype');
+		      			$('#hostname').val(data.hostname);
+		      			$('#dn').val(data.dn);
+
+	
+		      			//if(spellcheck== "false") {spellcheck=1;} else {spellcheck=0;}
+		      			//if(linkcheck== "false") {linkcheck=1;} else {linkcheck=0;}
+		      			//if(pagevalidate== "false") {pagevalidate=1;} else {pagevalidate=0;}
+		      			//if(accessibility== "false") {accessibility=1;} else {accessibility=0;}
+		      			
+		      				      			}
+		      			});
+
+		     
+		     } );
+		/*Create New user ajax */
+		// cancell Button
+		$('#cancelBtn').click(function(){
+
+		$.ajax({
+			url:'/users/list?account='+location.search,
+			type:'get',
+			success: function(data){
+			if(data.error){
+			window.location.href='super-index.html'+location.search;
+			}
+			window.location.href='userslist.html'+location.search;
+			}
+		});
+		
+		});
+		//cancel Button
+		$('.logout').click(Common.logout);
+		$('#homeBtn').click(Common.home);	
+		$(document).delegate('#opendialog', 'click', function() {
+ 		 $('#inlinecontent').simpledialog2();
+		});
+</script>
+
+</body>
+</html>

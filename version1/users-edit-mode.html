@@ -1,0 +1,199 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Users Edit Mode</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+<style type="text/css">
+.omnistyle{
+ background-color: #1C5D93;
+ background-image: -moz-linear-gradient(center top , #2276BB, #124065);
+    }
+.ui-li-has-arrow .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-arrow {display:inline;}
+.ui-btn-text{padding:10px;}
+.ui-content {padding: 0 15px 15px;}
+.ui-content .ui-listview {
+    margin: -16px;
+}
+</style>
+</head> 
+<body> 
+<div data-role="page" id="users">
+		<div id="header"  data-role="header" data-theme="b" style="text-align:center;background-color:#1C5D93; background-image:-moz-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient(center top , #2276BB, #124065);background-image:-webkit-linear-gradient( #2276BB, #124065);">
+	
+		<a id="backBtn"  href="#"rel="external" data-rel="back" data-icon="back">Back</a>
+		<h1>Users Edit Mode</h1>
+		<a  href="#" data-icon="gear" class="logout ui-btn-right">Logout</a>
+	</div>
+	<div id="logout" data-role="content">
+	
+	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+     <fieldset  id="user-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
+	 <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span> <span style="margin-left:10px;"  data-icon="gear"> Edit </span></li>
+	
+	</fieldset></div>
+	</div>
+	
+	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+
+<div data-role="navbar" class="ui-navbar" role="navigation">
+<ul class="ui-grid-b">
+
+<li id="deleteBtn" class="ui-block-a" id="deleteBtn"><a id="editBtnText"  data-theme="b" href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text"   >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+<li id="doneBtn" class="ui-block-b"><a data-theme="b" href="super-index.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+<li id="addBtn" class="ui-block-c"><a  data-theme="b" href="user-add-ipad.html" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+</ul>
+</div>
+</div>
+</div>
+<!--alert page -->
+<div data-role="page" data-theme="b" id="alert-page">
+        <div data-theme="b" data-role="header">
+            <h1>Alert</h1>
+
+        </div>
+
+        <div data-role="content">
+            <h3 id="alert_title">Delete User</h3>
+            <p id="alert_body">There were no User selected to delete.</p>
+            <a id="okBtn" href="#" data-role="button" data-rel="back">OK</a>        
+        </div>
+    </div>
+    
+    
+<script type="text/javascript">
+		$.mobile.fixedToolbars.show(true);
+		var Browser = browserdetect();
+		$('#users').on('pageshow', function() {
+			$.ajax({
+				url: '/users/list'+location.search,
+				type: 'get',
+				success: function(data) {
+					if (data.error) {
+					 console.log(data.error);
+						window.location.href = 'super-index.html'+location.search;
+					}
+					 console.log(data);
+
+					var users = $ ('#user-list');
+					//users.empty();
+				    var idCount = 0;
+					$.each(data, function(index, value) {
+					 // console.log(data);
+						
+						   var inputElement = $(document.createElement('input'))
+	                             .attr({type: 'checkbox' })
+	                             .attr({id: idCount+1 })
+	                             .addClass('custom')
+	                            .attr({'value': value.user });
+	                             
+									
+									
+						   var inputText =$(document.createElement('span'))
+						    		 .addClass('ui-btn-text')
+						    		  .attr({id:idCount+1})
+						     	   	 .text(value.user);
+						  
+						  
+						var editPath = 'user-edit-ipad.html';
+						if(Browser.iphone){
+							editPath = 'user-edit-iphone.html';
+							}
+							
+						 var a = $(document.createElement('a'))
+						           .attr({href: editPath + location.search +'&user=' + value.user })
+						           .attr({rel:'external'})
+						           .addClass('ui-link-inherit');
+							
+				
+					
+					         var hyperlinkInputText = a.append(inputText);
+							var addinputElement = inputElement.after(hyperlinkInputText);
+					     	var li = $(document.createElement('li')).append(addinputElement);
+							users.append(li);
+						idCount++;
+						
+					});
+					users.listview("refresh");
+				}
+			});
+		});
+		$('.logout').click(Common.logout);
+		$('#editBtn').click(function() {
+		 window.location.href='user-add-ipad.html'+location.search;
+		
+		});
+	    $('#backBtn').click(function(){
+			window.location.href='users.html'+location.search;
+		});
+		$('#doneBtn').click(function(){
+			window.location.href = 'sites.html'+location.search;
+		});
+		//Delete user
+		$('#deleteBtn').click(function() {
+			var params= location.search;
+			var deletArray =$("input:checked");
+   			 //console.log(deletArray);
+   			 var deleteString= "";
+   			 var userCount=0;
+   			 $.each(deletArray, function(index, value) { 
+ 				 console.log(index + ': ' + value.defaultValue); 
+ 				 deleteString= deleteString + '&user='+value.defaultValue;
+ 				 userCount++;
+					});
+					
+				console.log( deleteString);	
+				if (userCount ==0){
+				$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+				
+				}
+				else{
+			$.ajax({
+				url:'/users/delete'+location.search+ deleteString,
+				type: 'post',
+				success: function(data) {
+						$.mobile.changePage($('#alert-page'),{
+   					 	type: "get", 
+   					 	//data:"alert_message="+data.errors.email,
+    					data:"alert_message",
+    					transition:"pop",
+    					role: "dialog",
+    					reloadPage:true,
+						});
+						$("#alert_title").empty();
+						$("#alert_body").empty();
+						$("#alert_title").text("Action: Delting a User:");
+   						$("#alert_body").text("Selected Users were successfully deleted.");
+					
+				},
+			complete: function () {
+         
+       			 }	
+			}).done(function(){
+				});
+				}
+				});	
+		$('#okBtn').click(function(){
+		window.location.href = 'users-edit-mode.html'+location.search;
+		});
+		$('#addBtn').click(function(){Common.add('user');});
+</script> 
+
+
+
+
+
+</body>
+</html>

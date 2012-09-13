@@ -1,0 +1,144 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Site Scan</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+	<link rel="stylesheet" type="text/css" href="icomoon/style.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/browserdetection.js"></script>
+
+</head> 
+<body> 
+<div data-role="page"  data-theme="c" id="site-scan" style="overflow-y:hidden">
+<div id="header" class="omnistyle" data-role="header" data-theme="b">
+		<a href="#" rel="external" data-rel="back" data-icon="back">Back</a>
+		<h3 id="headertext">Site Scanner</h3>
+		<a href="#" data-icon="gear" class="logout">Logout</a>
+	</div>
+	<div data-role="content" style="overflow-y:hidden" data-theme="c" >
+	<ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
+	<li>
+		<ol id="passes" data-role="listview" data-inset="true">
+			<li id="pass1">
+				<span>Synchronizing database</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass2">
+				<span>Removing old entries</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass3" >
+				<span>Initializing</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass4">
+				<span >Scanning Site</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+		</ol>
+		<div id="buttons"   style="margin-top: 30px;">
+			<button   data-theme="b" id="start">Start Scan</button>
+		</div>
+	</li></ul>
+	</div>
+	</div>
+<script type="text/javascript">
+		
+	$.mobile.fixedToolbars.show(true);
+	var platform= browserdetect();
+	if(platform.ipad ||platform.desktop ){
+	$('#buttons').css('margin','30px');
+
+	}
+	var site= localStorage.getItem('site');
+	var account = localStorage.getItem('account');
+	var user = localStorage.getItem('user');
+		var interval = null;
+		$('#site-scan').on('pageshow', function() {
+			var sitename = location.search;
+			$('#start').click(function() {
+				resetIcons();
+				$('#start').attr('disabled', 'disabled');
+				doScan(site);
+				if (interval === null) {
+					interval = setInterval(function() {
+						doScan(site);
+					}, 2000);
+				}
+				
+			});
+			$('.logout').click(function() {
+				$.ajax({
+					url: '/authentication/logout',
+					type: 'post',
+					success: function(data) {
+						window.location.href = 'index.html';
+					}
+				});
+			});
+		});
+		$('#site-scan').on('pagebeforehide', function() {
+			if (interval != null) {
+				clearInterval(interval);
+			}
+		});
+		$('.logout').click(Common.subuserlogout);
+		function doScan(site) {
+			$.ajax({
+				url: '/sites/scan?account=' + account + '&site='+site,
+				type: 'post',
+				success: function(data) {
+					if (data.error) {
+					console.log(data.error);
+						window.location.href = 'super-index.html';
+					} else {
+						var currentPass = data.current_pass;
+						if (data.finished) {
+							if(totalPasses != 4){
+							$('li#pass1 span.ui-icon, li#pass2 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+							}else{
+								$('span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+							}
+							$('#start').removeAttr('disabled');
+							clearInterval(interval);
+							interval = null;
+						} else {
+							var passes = $('#passes');
+							var totalPasses = data.total_passes;
+							if(totalPasses != 4){
+							$('li#pass3').addClass('dmonly'); 
+							$('li#pass4').addClass('dmonly'); 
+							}
+							switch(currentPass) {
+							case 4:
+								$('span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								$('li#pass4 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+								break;
+							case 3:
+								$('li#pass3 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+								$('li#pass2 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								$('li#pass1 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								break;
+							case 2:
+								$('li#pass2 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+								$('li#pass1 span.ui-icon').removeClass('ui-icon-current ui-icon-minus').addClass('ui-icon-check');
+								break;
+							}
+						}
+					}
+				}
+			});
+		}
+		function resetIcons() {
+			$('.ui-icon').removeClass('ui-icon-check ui-icon-current').addClass('ui-icon-minus');
+			$('#pass1 span.ui-icon').removeClass('ui-icon-minus').addClass('ui-icon-current');
+		}
+		$.mobile.page();
+	</script>
+
+</body>
+</html>
