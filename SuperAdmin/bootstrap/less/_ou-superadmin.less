@@ -1,0 +1,565 @@
+/*!
+ * Bootstrap v2.0.3
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+// CSS Reset
+@import "reset.less";
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+// Grid system and page structure
+@import "scaffolding.less";
+@import "grid.less";
+@import "layouts.less";
+
+// Base CSS
+@import "type.less";
+@import "code.less";
+@import "forms.less";
+@import "tables.less";
+
+// Components: common
+@import "sprites.less";
+@import "dropdowns.less";
+@import "wells.less";
+@import "component-animations.less";
+@import "close.less";
+
+// Components: Buttons & Alerts
+@import "buttons.less";
+@import "button-groups.less";
+@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import "navs.less";
+@import "navbar.less";
+@import "breadcrumbs.less";
+@import "pagination.less";
+@import "pager.less";
+
+// Components: Popovers
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+
+// Components: Misc
+@import "thumbnails.less";
+@import "labels-badges.less";
+@import "progress-bars.less";
+@import "accordion.less";
+@import "carousel.less";
+@import "hero-unit.less";
+
+// Utility classes
+@import "utilities.less"; // Has to be last to override when necessary
+//------------ OU custom styles
+
+@blueOU: #2276bb;
+@activeRed: #dd4b39;
+
+a {
+	cursor: pointer;
+}
+
+[class^="icon-"] {
+    background-image: url("/skin/admin10/bootstrap/img/glyphicons-halflings.png");
+}
+
+.icon-white {
+    background-image: url("/skin/admin10/bootstrap/img/glyphicons-halflings-white.png");
+}
+
+.caret-right {
+	border-color: transparent transparent transparent #333;
+	border-style: solid;
+	border-width: 5px;
+	content: "&rarr;";
+	opacity: 0.8;
+	vertical-align: baseline;
+}
+
+.caret-up {
+	border-color: transparent transparent #333 transparent ;
+	border-style: solid;
+	border-width: 5px;
+	content: "&uarr;";
+	opacity: 0.8;
+	vertical-align: top;
+}
+
+.caret-down {
+	border-color: #333 transparent transparent transparent;
+	border-style: solid;
+	border-width: 5px;
+	content: "&darr;";
+	opacity: 0.8;
+	vertical-align: middle;
+}
+
+
+.tooltip {
+	font-size: 12px;
+	font-weight: bold;
+	&.in {
+		.opacity(100);
+	}
+}
+
+.spacer {
+	padding: 0 3px;
+}
+
+.control-group.error .help-block {
+	color: @gray;
+}
+
+#loading-graphic {
+	margin-right: 10px;
+}
+
+#ou-topbar {
+	margin-bottom: 0px;
+	.brand {
+		padding-bottom: 10px;
+	}
+	i {
+		margin-right: 2px;
+	}
+	.dropdown-menu {
+		margin-top: 0;
+	}
+	.container-fluid {
+		min-width: 1000px;
+	}
+	.badge {
+		background-color: @red;
+		color: #fff;
+		font-weight: bold;
+		font-size: 10px;
+		line-height: 1;
+		position: absolute;
+		right: 0px;
+		top: 6px;
+		padding: 1px 2px;
+		border-radius: 1px;
+	}
+	.navbar-inner {
+		//#gradient > .vertical(@blueOU, darken(@blueOU,20%));
+		#gradient > .vertical(darken(@btnSuccessBackground,10%),darken(@btnSuccessBackground,25%));
+	}
+	.nav > li > a {
+		color: #ddd;
+		&.user {
+			cursor: default;
+		}
+		&:hover, &.user {
+			color: @white;
+		}
+		&.active {
+			color: @white;
+			font-weight: bold;
+			background-color: rgba(255,255,255,0.1);
+		}
+	}
+	.nav > li.open > a {
+		color: @white;
+	}
+}
+
+#ou-location {
+	#gradient > .vertical(#f9f9f9, darken(#f9f9f9,15%);
+	.navbar-fixed-top;
+	top: 40px;
+	z-index: 6;
+	border-bottom: 2px groove #fff;
+	.container-fluid {
+		min-width: 1000px;
+	}
+	.caret-right {
+		margin-left: 6px;
+	}
+	.ou-section {
+		float: left;
+		border-right: 2px groove #fff;
+		padding: 6px 15px 6px 0;
+		font-weight: bold;
+	}
+	.ou-breadcrumb, .ou-site {
+		float: left;
+		padding: 6px 0px;
+		margin-left: 15px;
+	}
+	.ou-account {
+		float: left;
+		border-right: 2px groove #fff;
+		border-left: 2px groove #fff;
+		padding: 6px 15px 6px;
+	}
+}
+
+.container.main {
+	margin-top: 72px;
+}
+
+#form-login {
+	width: 520px;
+	margin: 0 auto;
+	margin-top: 20px;
+	h3 {
+		margin-bottom: 8px;
+	}
+	#password, .btn {
+		margin-left: 4px;
+	}
+	#username-label, #password-label {
+		.ie7-inline-block();
+		display: inline-block;
+		width: 210px;
+		margin-bottom: 4px;
+	}
+	#login-message {
+		width: 496px;
+		margin-top: 18px;
+		padding: 8px;
+		text-align: center;
+	}
+}
+
+#error-msg {
+	width: 520px;
+	margin: 20px auto;
+	padding: 0px;
+	text-align: center;
+	.message {
+		border-bottom: 1px solid @errorBorder;
+		padding: 12px 0;
+	}
+	.btn {
+		margin: 8px 0;
+	}
+}
+
+#loading-msg {
+	width: 520px;
+	margin: 20px auto;
+	padding: 8px;
+	img {
+		margin-right: 10px;
+	}
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.nav-fixed-left {
+	float: left;
+	position: fixed;
+	top: 92px;
+	width: 200px;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 1px #eee;
+	a {
+		display: block;
+		padding: 6px 10px;
+		border-bottom: 1px solid #ccc;
+		background-color: #fbfbfb;
+		&:hover {
+			color: @linkColorHover;
+			background-color: @grayLighter;
+			text-decoration: none;
+		}
+		&.active, &.active:hover {
+			color: @gray;
+			font-weight: bold;
+			border-left: 2px solid @activeRed;
+			background-color: @white;
+			text-decoration: none;
+		}
+	}
+	h4 {
+		#gradient > .vertical(#f9f9f9, darken(#f9f9f9,10%);
+		border-bottom: 1px solid #ccc;
+		padding: 8px;
+		overflow: hidden;
+	}
+	.sites {
+		border-bottom: 2px solid #ccc;
+	}
+}
+
+.main-right {
+	margin-left: 220px;
+}
+
+#accounts-header, #users-header, #sites-header {
+	padding: 8px;
+	margin-top: 20px;
+	#gradient > .vertical(#f9f9f9, darken(#f9f9f9,10%);
+	border: 1px solid #ccc;
+	border-radius: 5px 5px 0 0;
+	.range, .hidden-count {
+		vertical-align: middle;
+	}
+	form {
+		.ie7-inline-block();
+		display: inline-block;
+		margin: 0 0 0 5px;
+		select {
+			width: 50px;
+		}
+	}
+	.search-query {
+		margin-left: 5px;
+		padding-right: 25px;
+	}
+	.icon-remove {
+		position: relative;
+		left: -25px;
+		top: 3px;
+		cursor: pointer;
+	}
+}
+
+#new-account, #new-user, #new-site {
+	.btn-success;
+	//.buttonBackground(#62c462, #51a351);
+	//text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+	//color: @white;
+}
+
+#accounts-list, #users-list, #sites-list {
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0 0 5px 5px;
+	table {
+		margin-bottom: 6px;
+		th, td {
+			padding: 6px 0px 6px 12px;
+		}
+		th {
+			cursor: pointer;
+			&:hover {
+				text-decoration: underline;
+			}
+			&.actions {
+				padding-left: 18px;
+				cursor: auto;
+				&:hover { text-decoration: none; }
+			}
+			.caret {
+				margin-left: 5px;
+			}
+		}
+		tr.filter {
+			display: none;
+		}
+		&.fixed-header {
+			thead, tbody {
+				display: block;
+				margin-left: 20px;
+			}
+			tbody {
+				overflow: auto;
+			}
+			th, td {
+				padding: 6px;
+			}
+			th.actions {
+				padding-left: 13px;
+			}
+		}
+		a.action {
+			padding: 6px;
+			cursor: pointer;
+			&:hover {
+				background-color: #ddd;
+			}
+			&.danger:hover {
+				background-color: @errorBackground;
+			}
+		}
+	}
+}
+#accounts-list {
+	table {
+		td.account a { display: block; }
+		tr.hidden {
+			color: #999;
+			font-style: italic;
+			a {
+				color: #999;
+			}
+		}
+		tr.hide {
+			display: none;
+		}
+		&.fixed-header {
+			.account, .name {
+				width: 186px;
+			}
+			.created, .saved {
+				width: 130px;
+			}
+			.saves, .pages {
+				width: 60px;
+			}
+			.actions {
+				width: 60px;
+			}
+			th.actions {
+				padding-left: 13px;
+			}
+		}
+	}
+}
+
+#about-modal {
+	display: none;
+	.logo img {
+		background-color: @blueOU;
+		padding: 10px;
+		border-radius: 5px;
+	}
+	h4 {
+		margin-bottom: 10px;
+	}
+}
+
+#account-tabs-wrapper {
+	background-color: @white;
+	border-bottom: 1px solid #ddd;
+	height: 27px;
+	padding-top: 8px;
+	position: fixed;
+	top: 72px;
+	width: 940px;
+	z-index: 3;
+}
+
+#account-tabs {
+	float: left;
+	margin-bottom: 10px;
+	a {
+		display: block;
+		float: left;
+		padding: 4px 8px;
+		margin: 0 5px;
+		color: @gray;
+		&:hover {
+			color: @linkColorHover;
+			border-bottom: 2px solid @linkColorHover;
+			text-decoration: none;
+		}
+		&.active {
+			color: @activeRed;
+			font-weight: bold;
+			border-bottom: 2px solid @activeRed;
+			&:hover {
+				color: @activeRed;
+				cursor: auto;
+			}
+		}
+	}
+}
+
+#users-list {
+	table {
+		&.fixed-header {
+			table-layout: fixed;
+			td.user a { display: block; }
+			td div {
+				overflow: hidden;
+			}
+			.user, .user div {
+				width: 120px;
+			}
+			.name, .name div {
+				width: 150px;
+			}
+			.email, .email div {
+				width: 185px;
+			}
+			.privilege {
+				width: 40px;
+			}
+			.actions {
+				width: 120px;
+			}
+		}
+	}
+}
+
+#sites-list {
+	table {
+		&.fixed-header {
+			table-layout: fixed;
+			td div {
+				overflow: hidden;
+			}
+			td.site a { display: block; }
+			.site, .site div {
+				width: 180px;
+			}
+			.url, .url div {
+				width: 180px;
+			}
+			.saved, .saved div {
+				width: 140px;
+			}
+			.saves, .saves div {
+				width: 60px;
+			}
+		}
+	}
+}
+
+#account-settings, #site-settings, #user-settings {
+	margin: 20px 0 400px 0;
+	.cancel {
+		margin-left: 10px;
+	}
+	fieldset {
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 1px @grayLighter;
+		margin-bottom: 18px;
+		h4 {
+			padding: 8px 16px;
+			margin-bottom: 18px;
+			#gradient > .vertical(#f9f9f9, darken(#f9f9f9,10%);
+			border-bottom: 1px solid #ccc;
+		}
+	}
+	textarea {
+		resize: none;
+	}
+}
+
+#form-submit-status {
+	margin-left: 8px;
+	&.success {
+		color: @successText;
+		font-weight: bold;
+	}
+	&.error {
+		color: @errorText;
+		font-weight: bold;
+	}
+	i {
+		margin-right: 4px;
+	}
+}
+
+
