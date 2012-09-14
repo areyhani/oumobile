@@ -1370,7 +1370,15 @@ window.userEditView = Backbone.View.extend({
 	pageShow: function(){
 	var usercontext = $('#userform').serializeObject();
 	console.log(usercontext);
-		$.mobile.fixedToolbars.show(true);
+
+			$('#sendmessage').click(function(){
+			var serializedelement =$(this).serialize();
+			//console.log(serializedelement);
+			if (serializedelement=='sendmessage=on'){
+			$('#showmessagedetails').show('slidedown',false,true);
+			}
+			else{$('#showmessagedetails').hide('slideup',false,true);}
+			});
 		var user= this.user;
 			if (this.editType == "edit"){
 				   var userdiv =$('#userdiv');

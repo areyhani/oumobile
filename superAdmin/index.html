@@ -974,7 +974,7 @@
 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 	<li data-role="fieldcontain"   class="alert_body help" style="display:none;margin-bottom: 1.5em;"></li>
 </ul>
-<div data-role="collapsible-set" data-theme="b " data-content-theme="c">
+<div data-role="collapsible-set" data-theme="b" data-content-theme="c">
  <div   id="generalsettings" class="coll" data-role="collapsible" data-collapsed="true">
 	<h3>
 	 <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
@@ -1119,7 +1119,7 @@
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div>
 					<label for="country" class="ui-input-text">Country:</label>
-					<select name="country" id="country" style="min-width:100px" data-theme="b "  data-iconshadow="false">
+					<select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
 									<option value="0">Select a country</option>
 									<option value="AF">Afghanistan</option>
 									<option value="AL">Albania</option>
@@ -1383,10 +1383,10 @@
 				 </select>
 	            <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 	             <div class="ui-controlgroup-label" role="heading"></div><div class="ui-controlgroup-controls">
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="spell_check" name="spell_check"><label for="spell_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span style="padding-left:40px;" class="ui-btn-text">Spell Check:</span></span></label></div>
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="link_check" name="link_check"><label for="link_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Link Check</span></span></label></div>
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="page_validate" name="page_validate"><label for="page_validate" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;"  class="ui-btn-text">Page Validate</span></span></label></div>
-					<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility"><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span  style="padding-left:40px;"  class="ui-btn-text">Accessibility Check</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="spell_check" name="spell_check"><label for="spell_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span style="padding-left:40px;" class="ui-btn-text">Spell Check:</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="link_check" name="link_check"><label for="link_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Link Check</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="page_validate" name="page_validate"><label for="page_validate" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;"  class="ui-btn-text">Page Validate</span></span></label></div>
+					<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility"><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span  style="padding-left:40px;"  class="ui-btn-text">Accessibility Check</span></span></label></div>
    			    </div>
    			  </fieldset>
 			 </li>
@@ -2495,7 +2495,7 @@
 					</li>
 					<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label     for="ldap_dn" class="ui-input-text"> DN:</label>
+						<label   for="ldap_dn" class="ui-input-text"> DN:</label>
 						<input type="text" value="<%= data.ldp_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>       
 				</ul>         
@@ -2566,7 +2566,7 @@
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 						<div class="ui-controlgroup-controls">
-							<div class="ui-checkbox"><input type="checkbox" id="created" class="custom" name="created"><label for="created" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Create Group for this User:</span></span></label></div>
+							<div class="ui-checkbox"><input type="checkbox" id="created" class="custom" name="created"><label for="created" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Create Group for this User:</span></span></label></div>
 						</div>
 					</fieldset>
 				</li>
@@ -2576,7 +2576,7 @@
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 						<div  id="controler" class="ui-controlgroup-controls">
-							<div class="ui-checkbox"><input type="checkbox" id="sendmessage" class="custom" name="sendmessage"><label for="sendmessage" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b "   class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Welcome Message:</span></span></label></div>
+							<div class="ui-checkbox"><input type="checkbox" id="sendmessage" class="custom" name="sendmessage"><label for="sendmessage" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"   class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Welcome Message:</span></span></label></div>
 						</div>
 					</fieldset>
 				</li>
@@ -2584,12 +2584,12 @@
 				    <div id="showmessagedetails"   style="display:none;">
 						<fieldset  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 							<div class="ui-controlgroup-controls">
-								<div class="ui-checkbox"><input type="checkbox" id="sendpass" class="custom" name="sendpass"><label for="sendpass" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b "  class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Password in Message</span></span></label></div>	
+								<div class="ui-checkbox"><input type="checkbox" id="sendpass" class="custom" name="sendpass"><label for="sendpass" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"  class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Password in Message</span></span></label></div>	
 							</div>
 						</fieldset>
 						<div data-role="fieldcontain">
-							<label  for="textarea">Additional Message to User:</label><br />
-							<textarea class="textarea1" cols="40" rows="8" name="welcomeM" id="welcomeM"></textarea>
+							<label  style="width:30%; min-width:150px;" for="textarea" class="ui-input-text">Additional Message to User:</label><br />
+							<textarea style="margin-left:5%;min-width:200px;" class="textarea1" cols="40" rows="8" name="welcomeM" id="welcomeM"></textarea>
 					   </div>
 				    </div>
 				</li>
@@ -2699,15 +2699,15 @@
 						<option value="2">Simple (StartTLS)</option>
 					</select>
 				</li>
+				<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
 					<label  style="width:47%"  for="ldap_host" class="ui-input-text"> Hostname:</label>
-					<input type="text" value="<%= data.ldap_host %>"  id="ldap_host" name="ldap_host" class="ui-input-text ui-body-c ui-corner-all ">
+					<input type="text"  value="<%= data.ldap_host %>"  id="ldap_host" name="ldap_host" class="ui-input-text ui-body-c ui-corner-all " />
 				</li>
 				<li data-role="list-divider" id="ldap_dnHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label  style="width:47%"  for="ldap_dn" class="ui-input-text"> DN:</label>
-						<input type="text" value="<%= data.ldap_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all ">
+						<input   type="text" value="<%= data.ldap_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all " />
 				</li>        
             </ul>         
    		</div> <!-- collapsible -->
@@ -2736,31 +2736,31 @@
 <script type="text/template" id="header">
 	<div id="header" data-role="header" data-theme="b " class="omnistyle">
 <% if(page == "accounts") { %>
-		<a  data-icon="back" class=" logout"><span id="<%=logoutid%>">Logout</span></a>
+		<a  data-icon="back" data-direction="reverse" class=" logout"><span id="<%=logoutid%>">Logout</span></a>
 		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
 <% } else if(mode=="edit" || mode=="action"){%>	
 		<% if (editType =="add"){ %>
-		<a id="cancelBtn"   rel="external" data-role="back" data-icon="back">Cancel</a>
+		<a id="cancelBtn"  rel="external" data-role="back" data-direction="reverse" data-icon="back">Cancel</a>
 		<a   data-icon="gear" class="top-right-btn"><span id="save<%=page%>">Create</span></a>
 		<%} else if (editType =="edit"){ %>
-		<a  id="cancelBtn"  rel="external" data-role="back" data-icon="back">Cancel</a>
+		<a  id="cancelBtn"  rel="external" data-role="back" data-direction="reverse"  data-icon="back">Cancel</a>
 		<a   data-icon="gear" class="top-right-btn"><span id="save<%=page%>">Save</span></a>
 		<%} else if(page == "account"){ %>
 		<a  id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
-		<a  class="top-right-btn logout" data-icon="back" ><span id="<%=logoutid%>">Logout</span></a>
+		<a  class="top-right-btn logout" data-icon="back" data-direction="reverse" ><span id="<%=logoutid%>">Logout</span></a>
 		
 		<%} %>
 <% }else if (mode=="workflow"){ %>
-		<a   id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a   id="homeBtn" data-icon="home" data-direction="reverse" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
 		<% if ((page != "account")){%>
 		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
 		<%}%>
 	<% }else if (mode =="edit-mode"){ %>
-		<a   id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
-		<a   id="DoneBtn" data-icon="gear"  onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Done</span></a>
+		<a   id="homeBtn" data-icon="home" data-direction="reverse" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a   id="DoneBtn" data-icon="gear" data-direction="reverse" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Done</span></a>
 	<% }else {%>
-		<a  onClick="window.history.back();" rel="external" data-role="back" data-icon="back">Back</a>
-		<a   id="homeBtn" data-icon="gear"  onClick="Common.home('<%=skin%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Home</span></a>
+		<a  onClick="window.history.back();" rel="external" data-role="back"  data-direction="reverse" data-icon="back">Back</a>
+		<a   id="homeBtn" data-icon="gear"  data-direction="reverse" onClick="Common.home('<%=skin%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Home</span></a>
 <% }%>
 		<h5 id="headertitle"><%= headertitle%></h5>
 	</div>
@@ -2784,13 +2784,13 @@
 			<li id="cancelBtn" class="ui-block-c"><a  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
 	    <% }else{
 				if (mode=="workflow"){ %>
-					<li class="ui-block-a"  id="homeBtn"><a data-theme="b " onClick="Common.home('<%=skin%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-					<li class="ui-block-b" id="editBtn"><a data-theme="b " onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
+					<li class="ui-block-a"  id="homeBtn"><a data-theme="b" onClick="Common.home('<%=skin%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
+					<li class="ui-block-b" id="editBtn"><a data-theme="b" onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
 				<% } else{%>
 					<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-					<li id="DoneBtn" class="ui-block-b"><a data-theme="b " onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
+					<li id="DoneBtn" class="ui-block-b"><a data-theme="b" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
 				<% } %>
-					<li class="ui-block-c" id="addBtn" ><a data-theme="b "  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+					<li class="ui-block-c" id="addBtn" ><a data-theme="b"  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 		<% } %>
 		 </ul>
 	</div><!-- navbar -->
@@ -2804,7 +2804,7 @@
 	<div data-role="navbar" class="ui-navbar" role="navigation">
 		<ul class="ui-grid-b">
 					<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-					<li class="ui-block-c" id="addBtn" ><a data-theme="b "  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+					<li class="ui-block-c" id="addBtn" ><a data-theme="b"  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
 		 </ul>
 	</div><!-- navbar -->
 </div><!-- footer -->

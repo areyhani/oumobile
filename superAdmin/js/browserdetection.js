@@ -4,11 +4,12 @@
   	var phoneScreen = window.screen.width < 685;
   	console.log(UserAgent);
    	var Browser = {
+   			 desktop: UserAgent.match(/windows|linux|Macintosh/),
      		 phone: UserAgent.match(/(iPhone)/) || UserAgent.match(/phone/) || phoneWindow || phoneScreen,
      		 tablet: UserAgent.match(/(iPad)/),
       		 blackberry: UserAgent.match(/BlackBerry/),
-     		 android: UserAgent.match(/Android/),
-     		 desktop: UserAgent.match(/windows|linux|OS/)
+     		 android: UserAgent.match(/Android/)
+     		
    	};
      if (Browser.phone){
         console.log("Load phone Version.");

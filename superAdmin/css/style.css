@@ -34,7 +34,7 @@ text-decoration: none;
 
 .ui-bar-b {
     background: -moz-linear-gradient(#999999,#999999) repeat scroll 0 0 #999999;
-    border: 1px solid #999999;
+    border: none;
     color: #FFFFFF;
     font-weight: bold;
     text-shadow: 0 -1px 1px #397114;
@@ -340,16 +340,18 @@ margin-left:4px;
     
 
 .omnistyle{
-background-color: #3A9A3A;
-background-image:-moz-linear-gradient(center top , #42B142, #2D792D);
-background-image:-webkit-linear-gradient(center top , #42B142, #2D792D);
-background-image:-webkit-linear-gradient(  #42B142, #2D792D);
+	background-color: #3A9A3A;
+	background-image:-moz-linear-gradient(center top , #42B142, #2D792D);
+	background-image:-webkit-linear-gradient(center top , #42B142, #2D792D);
+	background-image:-webkit-linear-gradient(  #42B142, #2D792D);
 }
 .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
     background-color: #2D792D;
 }
 .ui-btn-hover-b, .ui-btn-active {
+    background-color: #2D792D;
     background: -moz-linear-gradient( #42B142, #2D792D); repeat scroll 0 0 #4596CE;
+    background-image: -webkit-linear-gradient (center top, #42B142, #2D792D);
     border: 1px solid #155678;
     color: #FFFFFF;
     cursor: pointer;
@@ -361,7 +363,9 @@ background-image:-webkit-linear-gradient(  #42B142, #2D792D);
 
 .ui-block-a .ui-btn-hover-c, #publishsettings-div .ui-btn-up-b, #publishsettings-div .ui-btn-hover-b, #publishsettings-div .ui-btn-active 
 {
-    background: -moz-linear-gradient(#EDEDED, #DADADA) repeat scroll 0 0 #DADADA;
+	background-color: #DADADA;
+	background-image:-moz-linear-gradient(center top ,#EDEDED, #DADADA);
+	background-image:-webkit-linear-gradient(center top , #EDEDED, #DADADA);
     border: 1px solid #BBBBBB;
     color: #101010;
     font-weight: bold;
