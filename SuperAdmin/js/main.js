@@ -246,16 +246,7 @@ window.adminLoginView = Backbone.View.extend({
 	            if (device.desktop){
 						new Messi('You are viewing OUMobile in a desktop. This feature is designed for mobile devices. For the best user experience, we suggest you to login to normal OU Campus when you are using desktop.', {title: 'Warning', titleClass: 'anim warning', modal:true, buttons: [{id: 0, label: 'Close', val: 'X'}],
 							callback :function(val){
-								   if (typeof(localStorage) == 'undefined' ) {
-										console.log('Browser doesnt support localStorage'); 
-									}
-									else{
-										var setusername=localStorage.getItem('username');
-										var setPass=localStorage.getItem('pass');
-										$('#username').val(setusername);
-										$('#password').val(setPass);
-									}
-									
+							
 								   //submit when Enter Key is pressed
 									$('input').keypress(function(event) {
 										 if (event.which === 13) {
@@ -275,18 +266,9 @@ window.adminLoginView = Backbone.View.extend({
 				return this;
 		},
 	adminLogin: function(){
-					// var skin = window.location.pathname.substr(1).split("/")[0];
-					var rememberpassword= $('#rememberpass').serialize();
+					var skin =this.skin;
 					var username = $('#username').val();
 					var password = $('#password').val();
-					
-					// If Remember Pass is selected, save pass in local storage.
-					console.log(rememberpassword.match("on"));
-					if (rememberpassword.match("on")){ 
-						localStorage.setItem('username',username);
-						localStorage.setItem('pass',password);
-					}
-					var skin =this.skin;
 					$.ajax({
 						url: '/authentication/admin_login?skin=' + skin,
 						type: 'post',
@@ -350,7 +332,7 @@ window.accountsView = Backbone.View.extend({
 									.attr({ href:'#'+skin+'/accounts/' + value.account })
 									.attr({rel:'external'})
 									.text(value.account)
-									.addClass('hyperlinkli');
+									.addClass('ui-link-inherit hyperlinkli');
 								a.append(count);
 								var li = $(document.createElement('li')).append(a);
 								accounts.append(li);
@@ -513,7 +495,6 @@ window.accountView = Backbone.View.extend({
 					},
 					type:'get',
 					success:function(data){
-						localStorage.setItem('account',data.name);
 						  if(data.error){
 							  console.log(data.error);
 							  window.app.navigate(skin+' ',{trigger:true});
@@ -521,36 +502,40 @@ window.accountView = Backbone.View.extend({
 						  
 						$('#accountHeader').text("Account: "+data.account);
 						 var accountDiv = $('#account');
-						 var sitecount = $(document.createElement('span'))
-						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
-						.text(data.site_count);
 						
-						var usercount = $(document.createElement('span'))
-						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
-						.text(data.user_count);
-						
-						var groupcount = $(document.createElement('span'))
-						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
-						.text( data.group_count);
-						
-						var pagecount = $(document.createElement('span'))
-						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
-						.text( data.page_count);
+
 						
 						$('#account-name').append(data.name);
 						$('#account-fname').append(data.first_name);
 						$('#account-lname').append(data.last_name);
 						$('#account-date').append(_.dateString(_.parseISO8601(data.created)));
-						$('#account-nsite').append(sitecount);
-						$('#account-npage').append(pagecount);
-						$('#account-ngroup').append(groupcount);
-						$('#account-nuser').append(usercount);
+						
+						var sitecounta = $(document.createElement('a'));
+						var sitecount = $(document.createElement('span'))
+						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+						.text(data.site_count);
+						$('#account-nsite').append(sitecounta).append(sitecount);
+						
+						var pagecounta = $(document.createElement('a'));
+						var pagecount = $(document.createElement('span'))
+						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+						.html(data.page_count);
+						$('#account-npage').append(pagecounta).append(pagecount);
+						
+						var groupcounta = $(document.createElement('a'));
+						var groupcount = $(document.createElement('span'))
+						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+						.html(data.group_count);
+						$('#account-ngroup').append(groupcounta).append(groupcount);
+						
+						var usercounta = $(document.createElement('a'));
+						var usercount = $(document.createElement('span'))
+						.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
+						.html(data.user_count);
+						$('#account-nuser').append(usercounta).append(usercount);
 				
 						
-						
-						
-						
-						localStorage.setItem('account',data.account);
+				
 						$('#sitestooltip').attr({'title':'Show all sites of account: '+ data.account});
 						$('#userstooltip').attr({'title':'Show all users of account: '+ data.account});
 						$('#groupstooltip').attr({'title':'Show all groups of account: '+ data.account});
@@ -881,13 +866,13 @@ window.groupView = Backbone.View.extend({
 		var site=this.site;
 		var accountDiv = $('#group');
 		 
-		
+		var membercounta = $(document.createElement('a'));
 		var membercount = $(document.createElement('span'))
 		.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 		.text( data.member_count);
 
 		$('#group-name').append(data.group);
-		$('#member-count').append(membercount);
+		$('#member-count').append(membercounta).append(membercount);
 		$('#headertitle').text(data.group);
 		$.each(data.members,function(index,value){
 
@@ -1092,9 +1077,6 @@ window.usersView = Backbone.View.extend({
 	pageShow:function(){
 
 			 $.mobile.fixedToolbars.show(true);
-				if(localStorage.getItem('user')){
-				 	 localStorage.removeItem('user');
-				 }
 			var sessionObj = Common.whoamI();
 			var user= sessionObj.user;
 			var skin= sessionObj.skin;
@@ -1175,11 +1157,12 @@ window.userView = Backbone.View.extend({
 		var site=this.site;
 		var accountDiv = $('#account');
 		 
-		
+		var savecounta = $(document.createElement('a'));
 		var savecount = $(document.createElement('span'))
 		.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
-		.text( data.save_count);
+		.text(data.save_count);
 		
+		var privilegea = $(document.createElement('a'));
 		var privilege = $(document.createElement('span'))
 		.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 		.text( data.privilege);
@@ -1199,13 +1182,13 @@ window.userView = Backbone.View.extend({
 		}
 		$('#user-name').append(data.user);
 		$('#approver').append(approver);
-		$('#privilege').append(privilege);
+		$('#privilege').append(privilegea).append(privilege);
 		$('#fname').append(data.first_name);
 		$('#lname').append(data.last_name);
 		$('#last-save-date').append(savedate);
 		$('#last-login-date').append(logindate);
 		
-		$('#save-count').append(savecount);
+		$('#save-count').append(savecounta).append(savecount);
 		$('#headertitle').text(user);
 
 
@@ -1505,9 +1488,6 @@ window.sitesView = Backbone.View.extend({
 	         var user= sessionObj.user;
 			 var account=this.account;
 			 var sites= $('#sites-list');
-			 if(localStorage.getItem('site')){
-			 	 localStorage.removeItem('site');
-			  }
 				 $.ajax({
 						url:'/sites/list?skin='+this.skin+'&account='+this.account,
 						type: 'get',
@@ -1529,12 +1509,14 @@ window.sitesView = Backbone.View.extend({
 									.attr({rel:'external'})
 									.addClass('ui-link-inherit hyperlinkli')
 									.text(value.site);
+								
+								var siteurla = $(document.createElement('a'));
 								var siteurl = $(document.createElement('span'))
 									.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 									.text(value.url);
 									
 								 var li =$(document.createElement('li')).append(a);
-								li.append(siteurl);
+								li.append(siteurla).append(siteurl);
 								 sites.append(li);
 								 
 								 var headerText =$('#headerText');
@@ -1690,7 +1672,7 @@ window.siteView = Backbone.View.extend({
 		var site=this.site;
 		var accountDiv = $('#account');
 		 
-		
+		var savecounta = $(document.createElement('a'));
 		var savecount = $(document.createElement('span'))
 		.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 		.text( data.save_count);
@@ -1708,7 +1690,7 @@ window.siteView = Backbone.View.extend({
 		
 		$('#site-name').append(data.site);
 		$('#last-save-date').append(date);
-		$('#save-count').append(savecount);
+		$('#save-count').append(savecounta).append(savecount);
 		$('#url').append(url);	
 		$('#headertitle').text(site);
 		

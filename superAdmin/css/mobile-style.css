@@ -2,8 +2,11 @@
 @media (max-width: 420px) {    
 .ui-bar-a {
 	background-color:#5E87B0;
+	background-image: -ms-linear-gradient(top, #81A8CE, #5E87B0);
+	background-image:-moz-linear-gradient(center top , #81A8CE, #5E87B0);
+	background-image:-webkit-linear-gradient(center top , #81A8CE, #5E87B0);
+	background-image:-webkit-linear-gradient(#81A8CE, #5E87B0);
     background: -moz-linear-gradient(#81A8CE, #5E87B0) repeat scroll 0 0 #5E87B0;
-    background-image: -webkit-linear-gradient(center top, #81A8CE, #5E87B0);
     border: 1px solid #456F9A;
     color: #FFFFFF;
     font-weight: bold;
@@ -11,8 +14,11 @@
 }
 .ui-btn-up-a {
 	background-color:#396B9E;
+	background-image: -ms-linear-gradient(top, #5F9CC5, #396B9E);
+	background-image:-moz-linear-gradient(center top , #5F9CC5, #396B9E);
+	background-image:-webkit-linear-gradient(center top , #5F9CC5, #396B9E);
+	background-image:-webkit-linear-gradient( #5F9CC5, #396B9E);
     background: -moz-linear-gradient(#5F9CC5, #396B9E) repeat scroll 0 0 #2567AB;
-    background-image: -webkit-linear-gradient( center top, #5F9CC5, #396B9E);
     border: 1px solid #145072;
     color: #FFFFFF;
     font-weight: bold;
@@ -68,8 +74,11 @@ div.ui-slider-switch {
 label.ui-slider{display:inline;}
 .ui-btn-hover-a {
 	background-color:#72B0D4;
+	background-image: -ms-linear-gradient(top,#72B0D4, #4B88B6);
+	background-image:-moz-linear-gradient(center top , #72B0D4, #4B88B6);
+	background-image:-webkit-linear-gradient(center top ,#72B0D4, #4B88B6);
+	background-image:-webkit-linear-gradient(#72B0D4, #4B88B6);
     background: -moz-linear-gradient(#72B0D4, #4B88B6) repeat scroll 0 0 #4B88B6;
-    background-image: -webkit-linear-gradient(#72B0D4, #4B88B6);
     border: 1px solid #00516E;
     color: #FFFFFF;
     font-weight: bold;
@@ -125,9 +134,11 @@ width:50%;  margin-bottom: 2px;}
 
 .ui-bar-b {
 	background-color: #999999;
+	background-image: -ms-linear-gradient(top,#999999, #999999);
+	background-image:-moz-linear-gradient(center top , #999999, #999999);
     background: -moz-linear-gradient(#999999,#999999) repeat scroll 0 0 #999999;
 	background-image:-webkit-linear-gradient(center top , #999999, #999999);
-	background-image:-webkit-linear-gradient(  #999999, #999999);
+	background-image:-webkit-linear-gradient( #999999, #999999);
     border: none;
     color: #FFFFFF;
     font-weight: bold;
@@ -135,9 +146,10 @@ width:50%;  margin-bottom: 2px;}
 }
 .omnistyle{
 	background-color: #3A9A3A;
+	background-image: -ms-linear-gradient(top,#42B142, #2D792D);
 	background-image:-moz-linear-gradient(center top , #42B142, #2D792D);
 	background-image:-webkit-linear-gradient(center top , #42B142, #2D792D);
-	background-image:-webkit-linear-gradient(  #42B142, #2D792D);
+	background-image:-webkit-linear-gradient( #42B142, #2D792D);
 }
 
 .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
@@ -145,7 +157,7 @@ width:50%;  margin-bottom: 2px;}
 }
 
 
-  #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count,#userview  .ui-li-count, .info {
+  #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count,#userview  .ui-li-count, .information {
     font-size: 11px;
     left: 165px;
     margin: 0 32px;
@@ -174,8 +186,8 @@ padding-top:0px;
 .icon-alignment .action-btn, .action-btn{
     margin-left: 0%;
     margin-right: 0%;
-    max-width: 180px; 
-    width: 50%;
+    max-width: 200px; 
+    width: 47%;
 }
 }
 
@@ -190,8 +202,8 @@ padding-top:0px;
 	.icon-alignment .action-btn, .action-btn{
     margin-left: 0;
     margin-right: 0;
-    max-width: 200px;
-    width: 50%;
+    max-width: 270px;
+    width: 45%;
 
 	}
  }

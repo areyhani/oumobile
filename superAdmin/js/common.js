@@ -60,7 +60,6 @@ var Common = {
 		{title: 'Warning', titleClass: 'anim warning', modal:true,buttons: [{id: 0, label: 'Yes', val: 'Y'}, {id: 1, label: 'No', val: 'N'}],
 		callback : function(val){
 			if(val == 'Y'){
-				localStorage.clear();
 				console.log('#logout');
 				$.ajax({
 					url: '/authentication/admin_logout',
@@ -100,7 +99,6 @@ var Common = {
 		{title: 'Warning', titleClass: 'anim warning', buttons: [{id: 0, label: 'Yes', val: 'Y'}, {id: 1, label: 'No', val: 'N'}],
 		callback: function(val){
 					if (val == 'Y'){
-								localStorage.clear();
 								console.log('subuserlogout');
 								$.ajax({
 										 url:'/authentication/logout',
@@ -135,7 +133,8 @@ var Common = {
 		      		console.log(data);
 		      	 	var pageType="user";
 		      		var mode="login";
-		      		var name = localStorage.getItem('account');
+		      		var sessionObj = Common.whoamI();
+		      		var name = this.account;
 					alertPage(data,pageType, mode ,name);
 		     		},
 					success: function(data) {
@@ -146,20 +145,10 @@ var Common = {
 	           				nextstepurl =data.skin+'/sites/'+account+'/'+site;
 	           				 }
 							window.app.navigate(nextstepurl, {trigger:true});
-							localStorage.setItem('user',subuser);
 					}
 					});
 			},
-    subuserLogoutBtn: function(){
-     		$('#userLogout').text(localStorage.getItem("user"));
-			$('#userLogout').hover(function(){
-			$('#userLogout').text("Logout");
-			},function(){
-			$('#userLogout').text(localStorage.getItem("user"));
-			$.mobile.page();
-			});
-     
-     },
+
 	direct: function(skin,account,element){
 			console.log('cancel: go to edit mode');
 			if(skin && account){
