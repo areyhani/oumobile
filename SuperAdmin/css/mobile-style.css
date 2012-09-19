@@ -27,7 +27,7 @@
 .slider-small{
     display: block;
     padding: 5px 15px;
-    height:30px;
+    height:32px;
 }
 
 label.ui-input-text, label.ui-slider, span.ui-slider-label {
@@ -60,7 +60,7 @@ top:0px;}
 
 div.ui-slider-switch {
 
-    height: 32px;
+    height: 28px;
     margin-left: 0;
     overflow: hidden;
     text-align: right;
@@ -157,17 +157,12 @@ width:50%;  margin-bottom: 2px;}
 }
 
 
-  #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count,#userview  .ui-li-count, .information {
-    font-size: 11px;
-    left: 165px;
-    margin: 0 32px;
-    padding: 0px;
-    position: absolute;
-    text-align: center;
 
+#accountview .ui-li-count, #siteview .ui-li-count, #userview .ui-li-count {
+    margin: 1;
 }
 .info {
- left: 140px;
+	 left: 140px;
 }
   #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count, #userview  .ui-li-count
   {
@@ -179,6 +174,15 @@ width:50%;  margin-bottom: 2px;}
 #userinformation .ui-checkbox .ui-btn-icon-left .ui-btn-inner,#userinformation .ui-radio .ui-btn-icon-left .ui-btn-inner{
 padding-top:0px;
  padding-left: 5%;
+}
+
+#remote_template_path-div, #local_template_path-div {
+    margin-left: 0px;
+    text-align: left;
+}
+.ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search,label.edit-element-label {
+    margin-left: 25%;
+    width: 50%;
 }
 
 

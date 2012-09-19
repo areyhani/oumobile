@@ -37,6 +37,7 @@ parseISO8601 : function(str) { // returns a Date object for ISO8601 date strings
 	return new Date(date + hourOffset + minuteOffset);
 }
 });
+
 var Common = {
     whoamI: function(){
     var sessionObj= new sessionClass();

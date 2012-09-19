@@ -3,8 +3,7 @@
 <head>
 
 <title>OU Mobile</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-
+ <meta name=viewport content="user-scalable=no,width=device-width,initial-scale=1, maximum-scale=1" />
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" />
@@ -37,36 +36,6 @@
 </div>     
 </script>
 
-<script type="text/template" id="account-v1">
-<div data-role="content" id="accountview" class="icon-alignment">
-		<ul data-role="listview" data-theme="c" id="account-actions">
-			<li data-role="list-divider">Account Information:</li>
-			
-			<li>
-			<a class="sites"  rel="external"  href="" >
-			<span class="col-a"><div class="icon-background">
-			<i class="icon-globe">&nbsp;</i> </div>
-			<label class="label" id="sitelabel" for="sitecount"> Sites </label></span> <span  id="sitecount">  </span> </a> <a title=" " class="sites" rel="tooltip" id="sitestooltip" >&nbsp;</a>
-			</li>
-			
-			<li>
-			<a class="users" rel="external"  href="" >
-			<span class="col-a">
-			<div class="icon-background">
-			<i class="icon-user-2">&nbsp;</i> </div>
-			<label class="label" id="userlabel" for="usercount"> Users </label> </span><span  id="usercount">  </span> </a><a title=" "  rel="tooltip" class="users" id="userstooltip">&nbsp;</a>
-			</li>
-			
-	        <li>
-			<a class="groups" rel="external"  href="" >
-			<span class="col-a">
-			<div class="icon-background">
-			<i class="icon-users">&nbsp;</i> </div><label class="label" id="grouplabel" for="groupcount"> Groups </label></span> <span  id="groupcount">  </span> </a><a title=" adsffasf" rel="tooltip" class="groups" id="groupstooltip">&nbsp; </a>
-			</li>
-		</ul>
-</div>
-</script>
-
 <script type="text/template" id="account">
 <div data-role="content" id="accountview" class="icon-alignment">
 			<ul data-role="listview" data-theme="c" data-inset="true"  id="account-actions">
@@ -74,8 +43,8 @@
 			<li>
 			<img  src="images/account-icon.png" title="account"   />
 			<div class="account-label">
-			<h1 id="account-name">Account Name: &nbsp; </h1> 
-			<span id="account-date"> Date Created:&nbsp; </span> <br />
+			<span>Account Name:<h1 style="display:inline;" id="account-name"> &nbsp; </h1> </span><br />
+			<span >Date Created: </span><span id="account-date" class="information"> &nbsp; </span> <br />
 			<span id="account-fname">First Name: &nbsp; </span> <br />
 			<span id="account-lname">Last Name: &nbsp; </span> <br />
 			</div>
@@ -110,12 +79,12 @@
 			<a style="float:right;" id="editBtn" class="users action-btn action-btn-row1" rel="external" data-role="button" data-theme="b " >
 			<span class="col-a">
 			<div class="icon-background">
-			<i class="icon-user-2">&nbsp;</i> </div>
+			<i class="icon-settings">&nbsp;</i> </div>
 			<label class="label" id="edit" for="settings"> Settings</label> </span><span  id="settings">  </span> </a>
 		</div>
+
 </div>
 </script>
-
 <script type="text/template" id="accounts">	
 	<div data-role="content">
 		<ul data-filter="true"  data-role="listview" id="account-list">
@@ -134,309 +103,6 @@
 	</form>
 	</div>
 </script>
-
-<script type="text/template" id="groupstemplate">	
- 	<div data-role="content" id="groups">
-		<ul id="groups-list" data-role="listview" data-theme="c" >
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Group</span> <span style="float:right;margin-right:2px;"  data-icon="gear">Members</span></li>
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="groupsEditMode">	
- 	<div data-role="content" class="editMode" id="groups">
-	<form>
-	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
-     <fieldset  id="groups-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
-	 <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span> </li>
-	</fieldset>
-	</div>
-	</form>
-	</div>	
-</script>
-<script type="text/template" id="grouptemplate">
-	<div data-role="content" id="groupview" class="icon-alignment">
-			<ul data-role="listview" data-theme="c" data-inset="true"  id="site-actions">
-			<li  id="group-info" data-role="list-divider" data-theme="c" >Group Information:</li>
-			<li style="padding:10px 0px 15px 15px;">
-			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
-			<div class="site-label">
-			<h1 id="group-name">Group Name: &nbsp; </h1> 
-			<span id="member-count">Number of Members: &nbsp; </span> <br />
-			</div>
-			<div class="group-info">
-			<ul id="members" data-role="listview"   data-inset="true"   data-theme="c" class="ui-corner-all"  >
-
-			</ul>
-			</div>
-			</li>	
-		</ul>
-
-</script>
-<script type="text/template" id="groupEdit">
-	<div data-role="content" id="groupview" class="icon-alignment">
-			<ul data-role="listview" data-theme="c" data-inset="true"  >
-			<li  id="group-info" data-role="list-divider" data-theme="c" >Group Information:</li>
-			<li style="padding:10px 0px 15px 15px;">
-			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
-			<div class="group-label">
-			<% if (editType == "edit"){ %>
-				<h1 id="group-name">Group Name: &nbsp; </h1> 
-				<span id="member-count">Number of Members: &nbsp; </span> <br />
-			<%} else{ %>
-				<h1 style="width:200px"  >Group Name: &nbsp;</h1> <input style="width:80%; margin-left:5%;"  id ="group-name"  /> 
-			<%} %>
-			
-			</div>
-			<div class="group-info">
-			<ul id="members"  data-role="listview"   data-inset="true"   data-theme="c" class="ui-corner-all"  >
-
-			</ul>
-			</div>
-			</li>	
-		</ul>
-
-</script>
-<script type="text/template" id="groupEditphone">
-	<div data-role="content" id="groupview" class="icon-alignment">
-			<ul data-role="listview" data-theme="c" data-inset="true"  >
-			<li  id="group-info" data-role="list-divider" data-theme="c" >Group Information:</li>
-			<li style="padding:10px 0px 15px 15px;">
-			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
-			<div class="group-label">
-			<% if (editType == "edit"){ %>
-				<h1 id="group-name">Group Name: &nbsp; </h1> 
-				<span id="member-count">Number of Members: &nbsp; </span> <br />
-			<%} else{ %>
-				<h1 style="width:200px"  >Group Name: &nbsp;</h1> <input style="width:80%; margin-left:5%;"  id ="group-name"  /> 
-			<%} %>
-			
-			</div>
-			<div class="group-info">
-			<ul id="members" data-role="listview"   data-inset="true"   data-theme="c" class="ui-corner-all"  >
-
-			</ul>
-			</div>
-			</li>	
-		</ul>
-
-</script>
-
-
-<script type="text/template" id="userstemplate">	
- 	<div data-role="content" id="users">
-	<ul id="users-list" data-role="listview" data-theme="c" >
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;    border-bottom-left-radius: 0em; border-bottom-right-radius: 0em;"> <span style="margin-left:-7px;" data-icon="delete"> User</span> </li>
-	</ul>
-	</div>
-</script>
-<script type="text/template" id="usersEditMode">	
- 	<div data-role="content" class="editMode" id="users">
-	<form>
-	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
-     <fieldset  id="user-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
-	 <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span></li>
-	</fieldset>
-	</div>
-	</form>
-	</div>	
-</script>
-<script type="text/template" id="usertemplate">
-	<div data-role="content" id="userview" class="icon-alignment">
-			<ul data-role="listview" data-theme="c" data-inset="true"  id="user-actions">
-			<li  id="user-info" data-role="list-divider" data-theme="c" > User Information:</li>
-			<li style="padding:10px 0px 15px 15px;">
-			<img  style="margin:2px"  src="images/user-icon.png" title="User" />
-			<div class="user-label">
-			<h1 id="user-name"> Username: &nbsp; </h1> 
-			<span >Privilege: <span id="privilege">&nbsp;</span> </span><br />
-			<span  >Firstname:<span id="fname" class="information"> &nbsp; </span></span><br />
-			<span  >Lastname:<span id="lname" class="information" > &nbsp; </span></span>
-			</div>
-			<div class="user-info">
-			<span >Approver:<span id="approver" class="information"> &nbsp; </span></span> <br />
-			<span id="last-login-date">Last Login: &nbsp; </span> <br />
-			<span id="last-save-date">Last Save: &nbsp; </span> <br />
-			<span id="save-count">Number of Saves: &nbsp; </span> <br />
-			
-			</div>
-			</li>
-			
-			
-		</ul>
-
-</script>
-<script type="text/template" id="sitestemplate">	
- 	<div data-role="content" id="sites">
-		<ul id="sites-list" data-role="listview" data-theme="c" >
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Site</span> <span style="float:right;margin-right:2px;"  data-icon="gear">Site URL</span></li>
-		</ul>
-	</div>
-</script>
-
-<script type="text/template"  id="sitesEditMode">
-	<div data-role="content" class="editMode" id="sites">
-	<form>
-	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
-     <fieldset  id="sites-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
-	  <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span></li>
-	</fieldset>
-	</div>
-	</form>
-	</div>
-</script>
-
-<script type="text/template" id="sitetemplate">
-	
-	
-	<div data-role="content" id="siteview" class="icon-alignment">
-			<ul data-role="listview" data-theme="c" data-inset="true"  id="site-actions">
-			<li  id="site-info" data-role="list-divider" data-theme="c" >Site Information:</li>
-			<li style="padding:10px 0px 15px 15px;">
-			<img  style="margin:2px"  src="images/site-icon.png" title="Site"   />
-			<div class="site-label">
-			<h1 id="site-name">Site Name: &nbsp; </h1> 
-			<span id="url" style="text-align:center"><span id="url-label">URL:</span> &nbsp; </span>
-			</div>
-			<div class="site-info">
-			<span id="last-save-date">Last Save: &nbsp; </span> <br />
-			<span id="save-count">Number of Saves: &nbsp; </span> <br />
-			
-			</div>
-			</li>
-			
-			
-		</ul>
-
-</script>
-
-<script type="text/template" id="sitePublish">
-	<div data-role="content" style="overflow-y:hidden;min-height:300px" id="site-publish">
-		 <ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
-			<li>		
-				<div id="status" style="text-align:center">
-					<h3 id="siteName" > Site </h3>
-						<span id="progress" data-inset="true" class=" frame ui-corner-all ui-shadow" style="display:none" ><img  src="images/progress.gif" title="Publish Progress"  /></span>
-						<span id="message" style="display:none">&nbsp;</span>
-				</div>
-				<div id="buttons" style="margin-bottom: 35px;">
-						<button  data-theme="b " id="start">Publish</button>
-				</div>
-				<div id="errors" style="display:none;">
-						<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
-						<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
-						</ul>
-				</div>
-			</li>
-		</ul>
-	</div>
-</script>
-
-<script type="text/template" id="siteReports"> 
-	<div class="icon-alignment"  data-role="content" id="site-reports">
-		<ul data-role="listview" data-theme="c" id="actions">
-			<li>
-				<a href=" " id="checkedout" class="report-item">
-				<span class="icon-background">
-				<span class="icon-light-bulb">&nbsp;</span> </span>
-				<label>Checked Out Content</label>
-				<a id="checkedouttooltip"  title=" "  rel="tooltip"  href=" " class="checkedout">&nbsp;</a>
-				</a>
-					
-			</li>
-			<li>
-				<a href=" " id="published"  class="report-item">
-				<span class="icon-background report-item">
-				<span class="icon-publish">&nbsp;</span> </span>
-				<label>Recently Published Pages </label>
-				<a id="publishedtooltip" title=" "  rel="tooltip" href=" " class="published">&nbsp;</a>
-				</a>
-			</li>
-			<li>
-				<a href=" "  id="scheduled" class="report-item">
-				<span class="icon-background">
-				<span class="icon-clock">&nbsp;</span> </span>
-				<label>Scheduled Actions</label>
-				<a id="scheduledtooltip" title=" "  rel="tooltip" href=" " class="scheduled">&nbsp;</a>
-				</a>
-			</li>	
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="siteReportCheckedOut">
-<div class="report">
-	<div data-role="content" id="report-checkout" >
-		<ul id="pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
-		<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete">Checked out Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> Check In</span></li>
-		</ul>
-	</div>
-</div>
-</script>
-<script type="text/template" id="siteReportPublished">
-	<div data-role="content" id="report-published">
-	<ul id="published-pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"></span></li>
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="siteReportScheduled">
-	<div data-role="content" id="report-scheduled">
-		<ul id="published-pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> </span></li>
-		</ul>
-	</div>
-</script>
-
-<script type="text/template" id="siteScan" >
-	<div data-role="content" data-theme="b " id="site-scan" style="overflow-y:hidden" >
-	<ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
-	<li>
-		<ol id="passes" data-role="listview" data-inset="true">
-			<li id="pass1">
-				<span>Synchronizing database</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-			<li id="pass2">
-				<span>Removing old entries</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-			<li id="pass3" >
-				<span>Initializing</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-			<li id="pass4">
-				<span >Scanning Site</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-		</ol>
-		<div id="buttons"   style="margin-top: 30px;">
-			<button   data-theme="b " id="start">Start Scan</button>
-		</div>
-	</li></ul>
-	</div>
-</script>
-
-<script type="text/template" id="siteSettings"> 
-	<div data-role="content"  id="site-settings">
-		<h3 id="sitename"></h3>
-		<div class="settings">
-			<input type="hidden" id="name" />
-			<label for="server" class="setting">Server:</label>
-			<input type="text" data-theme="d" name="server" id="server" class="setting" />
-			<label for="username" class="setting">Username:</label>
-			<input type="text"  data-theme="d" name="username" id="username" class="setting" />
-			<label for="password" class="setting">Password:</label>
-			<input type="password"data-theme="d"  name="password" id="password" class="setting" />
-			<label for="http_root" class="setting">HTTP Root:</label>
-			<input type="text" data-theme="d" name="http_root" id="http_root" class="setting" />
-			<label for="ftp_root" class="setting">FTP Root:</label>
-			<input type="text" data-theme="d" name="ftp_root" id="ftp_root" class="setting" />
-			<div style="margin: 5px 0px 5px 5px;">
-				<input type="button" data-theme="b " data-inline="true" data-iconpos="center" value="Save" id="save" />
-			</div>
-		</div>
-	</div>
-</script>
-<!-- The Templates -->
 <script type="text/template" id="accountEdit"> 
 <div data-role="content" style="padding:10px 1px;" id="accountdiv">
 <form id="accountform" name="accountform">	
@@ -965,7 +631,6 @@
 </form>
 </div>
 </script>
-
 <script type="text/template" id="accountEditphone">
 <div data-role="content">
 <form id="accountform" name="accountform">
@@ -1487,6 +1152,578 @@
 </div> <!-- content -->
 </script>
 
+<script type="text/template" id="groupstemplate">	
+ 	<div data-role="content" id="groups">
+		<ul id="groups-list" data-role="listview" data-theme="c" >
+			<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Group</span> <span style="float:right;margin-right:2px;"  data-icon="gear">Members</span></li>
+		</ul>
+	</div>
+	
+	
+	
+</script>
+<script type="text/template" id="groupsEditMode">	
+ 	<div data-role="content" class="editMode" id="groups">
+	<form>
+	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+     <fieldset  id="groups-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
+	 <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span> </li>
+	</fieldset>
+	</div>
+	</form>
+	</div>	
+</script>
+<script type="text/template" id="grouptemplate">
+
+<div data-role="content" id="groupview" class="icon-alignment">
+			<ul data-role="listview" data-theme="c" data-inset="true"  >
+			<li  id="group-info" data-role="list-divider" data-theme="c" >Group Information:</li>
+			<li style="padding:10px 0px 15px 15px;">
+			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
+			<div class="group-label">
+				<h1 id="group-name">Group Name: &nbsp; </h1> 
+				<span >Number of Members: &nbsp; &nbsp;</span><span id="member-count"> &nbsp; </span> <br />
+			</div>
+			<div class="group-info">
+			<ul id="members"  data-role="listview"   data-inset="true"   data-theme="c" class="ui-corner-all"  >
+
+			</ul>
+			</div>
+			</li>	
+		</ul>
+	</div>
+</script>
+<script type="text/template" id="groupEdit">
+	<div data-role="content" id="groupview" class="icon-alignment">
+			<ul data-role="listview" data-theme="c" data-inset="true"  >
+			<li  id="group-info" data-role="list-divider" data-theme="c" >Group Information:</li>
+			<li style="padding:10px 0px 15px 15px;">
+			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
+			<div class="group-label">
+			<% if (editType == "edit"){ %>
+				<h1 id="group-name">Group Name: &nbsp; </h1> 
+				<span >Number of Members: &nbsp; &nbsp;</span><span id="member-count"> &nbsp; </span> <br />
+			<%} else{ %>
+				<h1 style="width:200px"  >Group Name: &nbsp;</h1> <input style="width:80%; margin-left:5%;"  id ="group-name"  /> 
+			<%} %>
+			
+			</div>
+			<div class="group-info">
+			<ul id="members"  data-role="listview" data-filter="true"   data-inset="true"   data-theme="c" class="ui-corner-all"  >
+
+			</ul>
+			</div>
+			</li>	
+		</ul>
+	</div>
+</script>
+<script type="text/template" id="groupEditphone">
+		<div data-role="content" id="groupview" class="icon-alignment">
+			<ul data-role="listview" data-theme="c" data-inset="true"  >
+			<li  id="group-info" data-role="list-divider" data-theme="c" >Group Information:</li>
+			<li style="padding:10px 0px 15px 15px;">
+			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
+			<div class="group-label">
+			<% if (editType == "edit"){ %>
+				<h1 id="group-name">Group Name: &nbsp; </h1> 
+				<span >Number of Members: &nbsp; &nbsp;</span><span id="member-count"> &nbsp; </span> <br />
+			<%} else{ %>
+				<h1 style="width:200px"  >Group Name: &nbsp;</h1> <input style="width:80%; margin-left:5%;"  id ="group-name"  /> 
+			<%} %>
+			
+		</div>
+		<div class="group-info">
+			<ul id="members" data-role="listview"   data-inset="true"  data-filter="true"   data-theme="c" class="ui-corner-all"  >
+
+			</ul>
+			</div>
+			</li>	
+		</ul>
+		</div>
+
+</script>
+
+
+<script type="text/template" id="userstemplate">	
+ 	<div data-role="content" id="users">
+	<ul id="users-list" data-role="listview" data-theme="c" >
+	<li data-role="list-divider" style="padding-right:2px;font-size:13px;    border-bottom-left-radius: 0em; border-bottom-right-radius: 0em;"> <span style="margin-left:-7px;" data-icon="delete"> User</span> </li>
+	</ul>
+	</div>
+</script>
+<script type="text/template" id="usersEditMode">	
+ 	<div data-role="content" class="editMode" id="users">
+	<form>
+	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+     <fieldset  id="user-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
+	 <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span></li>
+	</fieldset>
+	</div>
+	</form>
+	</div>	
+</script>
+<script type="text/template" id="usertemplate">
+	<div data-role="content" id="userview" class="icon-alignment">
+			<ul data-role="listview" data-theme="c" data-inset="true"  id="user-actions">
+			<li  id="user-info" data-role="list-divider" data-theme="c" > User Information:</li>
+			<li style="padding:10px 0px 15px 15px;">
+			<img  style="margin:2px"  src="images/user-icon.png" title="User" />
+			<div class="user-label">
+			<h1 id="user-name"> Username: &nbsp; </h1> 
+			<span >Privilege: <span id="privilege">&nbsp;</span> </span><br />
+			<span  >Firstname:<span id="fname" class="information"> &nbsp; </span></span><br />
+			<span  >Lastname:<span id="lname" class="information" > &nbsp; </span></span>
+			</div>
+			<div class="user-info">
+			<span >Approver:<span id="approver" class="information"> &nbsp; </span></span> <br />
+			<span id="last-login-date">Last Login: &nbsp; </span> <br />
+			<span id="last-save-date">Last Save: &nbsp; </span> <br />
+			<span id="save-count">Number of Saves: &nbsp; </span> <br />
+			
+			</div>
+			</li>
+			
+			
+		</ul>
+
+</script>
+<script type="text/template" id="userEdit">
+<div data-role="content" style="padding:10px 1px;">
+<form id="userform" name="userform">
+<div class="ui-grid-a">
+		<div class="ui-block-a" style="width:230px; margin-left:8px; text-align:left;" >
+		<div  style="padding: 0px 5px" data-role="content" class="ui-content" role="main">
+			<div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+				<div id="userinformation" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-hover-c" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>User Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+				<div id="preferences" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Preferences</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+				<div id="restrictions" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Restrictions</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+				<div id="LDAPconfiguration" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>LDAP Configuration</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+			</div>
+		</div>
+		</div><!--block a -->
+		<div class="ui-block-b" style="margin:0px 10px; width:60%" >
+			<div id="userinformation-div" style="display:block" >
+				 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
+		   			 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
+		  		 </ul>
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+				    <li data-role="list-divider" id="usernameHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="username" class="ui-input-text">Username:</label>
+						<% if(editType == "edit"){ %>
+							<label class="edit-element-label"><%= data.username %> </label>
+						<%}else{%>
+							<input  type="text" value=""  id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
+						<%}%>
+					</li>
+						<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="lastname" class="ui-input-text">Password:</label>
+						<input type="password" value="<%= data.password %>"  id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="first_name" class="ui-input-text">Firstname:</label>
+						<input type="text" value="<%= data.first_name %>"  id="first_name" name="first_name" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="last_name" class="ui-input-text">Lastname:</label>
+						<input type="text" value="<%= data.last_name %>"  id="last_name" name="last_name" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>	
+					     <li data-role="list-divider" id="emailHelp" class="help" style="display:none;"></li>  
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="email" class="ui-input-text">E-mail:</label>
+						<input type="text" value="<%= data.email %>"  id="email" name="email" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>		
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="phone" class="ui-input-text">Phone:</label>
+						<input type="text" value="<%= data.phone%>"  id="phone" name="phone" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="time_zone" class="ui-input-text">Time Zone</label>
+						<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					<li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="locale" class="ui-input-text">Locale</label>
+						<input type="text" value="<%= data.locale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+				</ul> 
+				<br />
+			</div> <!-- User Information-->
+			<div id="preferences-div" style="display:none"> 
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
+		   			 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
+		  		 </ul>
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+					<li data-role="list-divider" id="just_editHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="just_edit" id="just_edit-label" class="ui-slider">Just Edit:</label>
+						<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
+							<option  selected="selected" value="false">Off</option>
+							<option value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="dictionary_add" id="dictionary_add-label" class="ui-slider">Add to Dictionary:</label>
+						<select data-role="slider" id="dictionary_add" name="dictionary_add" class="ui-slider-switch">
+							<option  selected="selected"  value="false">Off</option>
+							<option value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="page_check" id="pagecheck-label" class="ui-slider">Page Check:</label>
+						<select data-role="slider" id="page_check" name="page_check" class="ui-slider-switch">
+							<option  selected="selected"   value="false">Off</option>
+							<option value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="failed_login_notification" id="failed_login_notification-label" class="ui-slider">Failed Login Notification:</label>
+						<select data-role="slider" id="ffailed_login_notification" name="failed_login_notification" class="ui-slider-switch">
+							<option  selected="selected"   value="false">Off</option>
+							<option value="true">On</option>
+						</select>
+					</li>		
+			   </ul>
+			</div> <!-- Prefrences -->
+			<div id="restrictions-div"  style="display:none">
+			   <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
+		   			 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
+		   	  </ul>
+			  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+				   <li data-role="list-divider" id="privilegeHelp" class="help" style="display:none;"></li> 
+				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="privilege" class="ui-input-text">User Level:</label>
+						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+								<option selected="selected" value="0">0-Reviewer</option>
+								<option value="1">1-Contributor</option>
+								<option value="2">2-Contributor</option>
+								<option value="3">3-Contributor</option>
+								<option value="4">4-Contributor</option>
+								<option value="5">5-Editor</option>
+								<option value="6">6-Editor</option>
+								<option value="7">7-Editor</option>
+								<option value="8">8-Designer</option>
+								<option value="9">9-Asst. Admin</option>
+								<option value="10">10-Administrator</option>
+								
+						</select>
+					</li>
+					<li data-role="list-divider" id="approverHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					 <div>
+						<label for="approver" class="ui-input-text">Approver:</label>
+							 <select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+								<option selected="selected" value=" ">None</option>
+							  </select>	
+					 </div>
+					</li>
+					<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="enforceApprover" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
+						<select data-role="slider" id="enforceApprover" name="enforce_approver" class="ui-slider-switch">
+							<option  selected="selected" value="off">No</option>
+							<option value="on">Yes</option>
+						</select>
+					</li>	
+					<li data-role="list-divider" id="toolbarHelp" class="help" style="display:none;"></li> 
+				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					 <div>
+						<label for="toolbar" class="ui-input-text">Toolbar:</label>
+						<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+							<option selected="selected" value=" ">Default</option>
+						</select>
+					  </div>
+					</li>
+				</ul>
+			</div> <!--Restriction-->
+			<div id="LDAPconfiguration-div" style="display:none; height:100%">
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
+		   	 		<li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
+		   		</ul>
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+					<li data-role="list-divider" id="ldap_authHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="ldap_auth" class="ui-input-text">Authentication Type:</label>
+						<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+							<option selected="selected" value="0">Simple</option>
+							<option value="1">Simple (SSL)</option>
+							<option value="2">Simple (StartTLS)</option>
+						</select>
+					</li>
+					<li data-role="list-divider" id="ldap_dnHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label     for="ldap_host" class="ui-input-text"> Hostname:</label>
+						<input type="text" value="<%= data.lda_host %>"  id="ldap_host" name="ldap_host" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+					<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label   for="ldap_dn" class="ui-input-text"> DN:</label>
+						<input type="text" value="<%= data.ldp_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>       
+				</ul>         
+			</div> <!--LDAP Configuration-->
+		</div><!-- block b -->
+</div><!-- /grid-a -->
+</form>
+</div>
+</script>
+<script type="text/template" id="userEditphone"> 
+<div data-role="content">
+<form id="userform" name="userform">
+<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	<li data-role="fieldcontain"   class="alert_body help" style="display:none;margin-bottom: 1.5em;"></li>
+</ul>
+<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	<li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
+</ul>
+	<div data-role="collapsible-set" data-theme="b " data-content-theme="c">
+		<div  id="userinformation" data-role="collapsible" data-collapsed="true">
+			<h3>
+			   	<span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
+			   	User Information
+			</h3>
+	  		<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	  			<li data-role="list-divider" id="usernameHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="username" class="ui-input-text">Username:</label>
+					<% if(editType == "edit"){ %>
+						<label class="edit-element-label"> <%= data.username %> </label>
+					<%} else{ %>
+						<input type="text" value="" id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
+					<%}%>
+				</li>
+				<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="lastname" class="ui-input-text">Password:</label>
+					<input type="password" value="<%= data.password %>"  id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="first_name" class="ui-input-text">Firstname:</label>
+					<input type="text" value="<%= data.first_name %>"  id="first_name" name="first_name" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="last_name" class="ui-input-text">Lastname:</label>
+					<input type="text" value="<%= data.last_name %>"  id="last_name" name="last_name" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>			
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="email" class="ui-input-text">E-mail:</label>
+					<input type="text" value="<%= data.email %>"  id="email" name="email" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="phone" class="ui-input-text">Phone:</label>
+					<input type="text" value="<%= data.phone %>"  id="phone" name="phone" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="time_zone" class="ui-input-text">Time Zone</label>
+					<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>
+				 <li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li> 
+				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="locale" class="ui-input-text">Locale</label>
+					<input type="text" value="<%= data.loacale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
+   		  		</li>	
+			</ul> <br />	
+			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+						<div class="ui-controlgroup-controls">
+							<div class="ui-checkbox"><input type="checkbox" id="created" class="custom" name="created"><label for="created" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Create Group for this User:</span></span></label></div>
+						</div>
+					</fieldset>
+				</li>
+			</ul>
+			<br /> 
+			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+						<div  id="controler" class="ui-controlgroup-controls">
+							<div class="ui-checkbox"><input type="checkbox" id="sendmessage" class="custom" name="sendmessage"><label for="sendmessage" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"   class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Welcome Message:</span></span></label></div>
+						</div>
+					</fieldset>
+				</li>
+				<li  data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				    <div id="showmessagedetails"   style="display:none;">
+						<fieldset  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+							<div class="ui-controlgroup-controls">
+								<div class="ui-checkbox"><input type="checkbox" id="sendpass" class="custom" name="sendpass"><label for="sendpass" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"  class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Password in Message</span></span></label></div>	
+							</div>
+						</fieldset>
+						<div data-role="fieldcontain">
+							<label  style="width:30%; min-width:160px;" for="textarea" class="ui-input-text">Additional Message to User:</label><br />
+							<textarea style="margin-left:5%;min-width:200px;" class="textarea1" cols="40" rows="8" name="welcomeM" id="welcomeM"></textarea>
+					   </div>
+				    </div>
+				</li>
+			</ul>
+		</div> <!-- Collapsible User Information-->
+		<div  id="preferences" data-role="collapsible" data-collapsed="true">
+			<h3>
+					 <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
+					 Preferences 
+			</h3>       
+        	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+        	    <li data-role="list-divider" id="just_editHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="just_edit" id="just_edit-label" class="ui-slider"> Just Edit:</label>
+					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
+						<option  selected="selected"   value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</li>
+			  
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="just_edit" id="justEdit-label" class="ui-slider">JustEdit:</label>
+					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
+						<option  selected="selected"   value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="page_check" id="pagecheck-label" class="ui-slider">Page Check:</label>
+					<select data-role="slider" id="file_check" name="page_check" class="ui-slider-switch">
+						<option  selected="selected"   value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="failed_login_notification" id="failedlogin-label" class="ui-slider">Failed Login Notification:</label>
+					<select data-role="slider" id="failed_login_notification" name="failed_login_notification" class="ui-slider-switch">
+						<option  selected="selected"   value="off">Off</option>
+						<option value="on">On</option>
+					</select>
+				</li>	
+			</ul>	
+		</div> <!-- collapsible Prefrences -->
+	    <div  id="restrictions" data-role="collapsible" data-collapsed="true">
+			<h3>
+				  <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
+				  Restrictions
+			</h3>
+	 		<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+	 		    <li data-role="list-divider" id="privillegeHelp" class="help" style="display:none;"></li> 
+				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="privilege" class="ui-input-text">User Level:</label>
+						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+								<option selected="selected" value="0">0-Reviewer</option>
+								<option value="1">1-Contributor</option>
+								<option value="2">2-Contributor</option>
+								<option value="3">3-Contributor</option>
+								<option value="4">4-Contributor</option>
+								<option value="5">5-Editor</option>
+								<option value="6">6-Editor</option>
+								<option value="7">7-Editor</option>
+								<option value="8">8-Designer</option>
+								<option value="9">9-Asst. Admin</option>
+								<option value="10">10-Administrator</option>
+								
+						</select>
+					</li>
+				<li data-role="list-divider" id="approverHelp" class="help" style="display:none;"></li> 
+			   	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				 <div>
+					<label for="approver" class="ui-input-text">Approver:</label>
+					<select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+						 <option selected="selected" value=" ">None</option>
+					</select>
+				  </div>
+				</li>
+				<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="enforce_approver" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
+					<select data-role="slider" id="enforcea_pprover" name="enforce_approver" class="ui-slider-switch">
+						<option  selected="selected" value="off">No</option>
+						<option value="on">Yes</option>
+					</select>
+				</li>
+				<li data-role="list-divider" id="toolbarHelp" class="help" style="display:none;"></li> 
+		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				 	<div>
+						<label for="toolbar" class="ui-input-text">Toolbar:</label>
+			  			<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+							<option selected="selected" value=" ">Default</option>
+						</select>
+					</div>
+				</li>
+			</ul>
+		</div> <!-- Collapsible Restriction-->
+		<div  id="LDAPconfiguration" data-role="collapsible" data-collapsed="true">
+			<h3>
+				 <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
+				 LDAP Configuration
+			</h3>
+			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
+				<li data-role="list-divider" id="ldap_authHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="ldap_auth" class="ui-input-text">Authentication Type:</label>
+					<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+						<option selected="selected" value="0">Simple</option>
+						<option value="1">Simple (SSL)</option>
+						<option value="2">Simple (StartTLS)</option>
+					</select>
+				</li>
+				<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label  style="width:47%"  for="ldap_host" class="ui-input-text"> Hostname:</label>
+					<input type="text"  value="<%= data.ldap_host %>"  id="ldap_host" name="ldap_host" class="ui-input-text ui-body-c ui-corner-all " />
+				</li>
+				<li data-role="list-divider" id="ldap_dnHelp" class="help" style="display:none;"></li> 
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label  style="width:47%"  for="ldap_dn" class="ui-input-text"> DN:</label>
+						<input   type="text" value="<%= data.ldap_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all " />
+				</li>        
+            </ul>         
+   		</div> <!-- collapsible -->
+    </div>                  
+	<!--LDAP Configuration-->
+</form>
+</div><!-- content -->
+
+</script>
+
+
+
+<script type="text/template" id="sitestemplate">
+ 	<div data-role="content" id="sites">
+	<ul id="sites-list" data-role="listview" data-theme="c">
+	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Site</span> <span style="float:right;margin-right:2px;"  data-icon="gear">Site URL</span>
+	</ul>
+	</div>
+</script>
+<script type="text/template"  id="sitesEditMode">
+	<div data-role="content" class="editMode" id="sites">
+	<form>
+	 <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+     <fieldset  id="sites-list" data-role="listview" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical" >
+	  <li data-role="list-divider" > <span style="margin-left:-7px;" data-icon="delete"> Delete</span></li>
+	</fieldset>
+	</div>
+	</form>
+	</div>
+</script>
+<script type="text/template" id="sitetemplate">
+	
+	
+	<div data-role="content" id="siteview" class="icon-alignment">
+			<ul data-role="listview" data-theme="c" data-inset="true"  id="site-actions">
+			<li  id="site-info" data-role="list-divider" data-theme="c" >Site Information:</li>
+			<li style="padding:10px 0px 15px 15px;">
+			<img  style="margin:2px"  src="images/site-icon.png" title="Site"   />
+			<div class="site-label">
+			<h1 id="site-name">Site Name: &nbsp; </h1> 
+			<span id="url" style="text-align:center"><span id="url-label">URL:</span> &nbsp; </span>
+			</div>
+			<div class="site-info">
+			<span id="last-save-date">Last Save: &nbsp; </span> <br />
+			<span id="save-count">Number of Saves: &nbsp; </span> <br />
+			
+			</div>
+			</li>
+			
+			
+		</ul>
+
+</script>
 <script type="text/template" id="siteEdit">
 <div data-role="content" style="padding:10px 1px;" id="sitediv">
 <form id="siteform" name="siteform">
@@ -1824,7 +2061,7 @@
 				<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
 					<li data-role="list-divider" id="default_extensionHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-							<label  id="default_extensionLabel"  for="default_extension" class="ui-input-text"> Default Extention</label>
+							<label  id="default_extensionLabel"  for="default_extension" class="ui-input-text"> Default Extention:</label>
 							<input type="text" value="<%= data.default_extension %>"  id="default_extension" name="default_extension" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 						
@@ -2322,443 +2559,160 @@
 </div> <!-- content -->
 </script>
 
-<script type="text/template" id="userEdit">
-<div data-role="content" style="padding:10px 1px;">
-<form id="userform" name="userform">
-<div class="ui-grid-a">
-		<div class="ui-block-a" style="width:230px; margin-left:8px; text-align:left;" >
-		<div  style="padding: 0px 5px" data-role="content" class="ui-content" role="main">
-			<div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-				<div id="userinformation" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-hover-c" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>User Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-				<div id="preferences" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Preferences</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-				<div id="restrictions" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Restrictions</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-				<div id="LDAPconfiguration" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>LDAP Configuration</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
-			</div>
-		</div>
-		</div><!--block a -->
-		<div class="ui-block-b" style="margin:0px 10px; width:60%" >
-			<div id="userinformation-div" style="display:block" >
-				 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
-		   			 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
-		  		 </ul>
-				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-				    <li data-role="list-divider" id="usernameHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="username" class="ui-input-text">Username:</label>
-						<% if(editType == "edit"){ %>
-							<label class="edit-element-label"><%= data.username %> </label>
-						<%}else{%>
-							<input  type="text" value=""  id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
-						<%}%>
-					</li>
-						<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
-						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="lastname" class="ui-input-text">Password:</label>
-						<input type="password" value="<%= data.password %>"  id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="first_name" class="ui-input-text">Firstname:</label>
-						<input type="text" value="<%= data.first_name %>"  id="first_name" name="first_name" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="last_name" class="ui-input-text">Lastname:</label>
-						<input type="text" value="<%= data.last_name %>"  id="last_name" name="last_name" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>	
-					     <li data-role="list-divider" id="emailHelp" class="help" style="display:none;"></li>  
-						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="email" class="ui-input-text">E-mail:</label>
-						<input type="text" value="<%= data.email %>"  id="email" name="email" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>		
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="phone" class="ui-input-text">Phone:</label>
-						<input type="text" value="<%= data.phone%>"  id="phone" name="phone" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
-					<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="time_zone" class="ui-input-text">Time Zone</label>
-						<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
-					<li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="locale" class="ui-input-text">Locale</label>
-						<input type="text" value="<%= data.locale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
-				</ul> 
-				<br />
-			</div> <!-- User Information-->
-			<div id="preferences-div" style="display:none"> 
-				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
-		   			 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
-		  		 </ul>
-				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-					<li data-role="list-divider" id="just_editHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="just_edit" id="just_edit-label" class="ui-slider">Just Edit:</label>
-						<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
-							<option  selected="selected" value="false">Off</option>
-							<option value="true">On</option>
-						</select>
-					</li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="dictionary_add" id="dictionary_add-label" class="ui-slider">Add to Dictionary:</label>
-						<select data-role="slider" id="dictionary_add" name="dictionary_add" class="ui-slider-switch">
-							<option  selected="selected"  value="false">Off</option>
-							<option value="true">On</option>
-						</select>
-					</li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="page_check" id="pagecheck-label" class="ui-slider">Page Check:</label>
-						<select data-role="slider" id="page_check" name="page_check" class="ui-slider-switch">
-							<option  selected="selected"   value="false">Off</option>
-							<option value="true">On</option>
-						</select>
-					</li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="failed_login_notification" id="failed_login_notification-label" class="ui-slider">Failed Login Notification:</label>
-						<select data-role="slider" id="ffailed_login_notification" name="failed_login_notification" class="ui-slider-switch">
-							<option  selected="selected"   value="false">Off</option>
-							<option value="true">On</option>
-						</select>
-					</li>		
-			   </ul>
-			</div> <!-- Prefrences -->
-			<div id="restrictions-div"  style="display:none">
-			   <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
-		   			 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
-		   	  </ul>
-			  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-				   <li data-role="list-divider" id="privilegeHelp" class="help" style="display:none;"></li> 
-				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="privilege" class="ui-input-text">User Level:</label>
-						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-								<option selected="selected" value="0">0-Reviewer</option>
-								<option value="1">1-Contributor</option>
-								<option value="2">2-Contributor</option>
-								<option value="3">3-Contributor</option>
-								<option value="4">4-Contributor</option>
-								<option value="5">5-Editor</option>
-								<option value="6">6-Editor</option>
-								<option value="7">7-Editor</option>
-								<option value="8">8-Designer</option>
-								<option value="9">9-Asst. Admin</option>
-								<option value="10">10-Administrator</option>
-								
-						</select>
-					</li>
-					<li data-role="list-divider" id="approverHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					 <div>
-						<label for="approver" class="ui-input-text">Approver:</label>
-							 <select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-								<option selected="selected" value=" ">None</option>
-							  </select>	
-					 </div>
-					</li>
-					<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="enforceApprover" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
-						<select data-role="slider" id="enforceApprover" name="enforce_approver" class="ui-slider-switch">
-							<option  selected="selected" value="off">No</option>
-							<option value="on">Yes</option>
-						</select>
-					</li>	
-					<li data-role="list-divider" id="toolbarHelp" class="help" style="display:none;"></li> 
-				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					 <div>
-						<label for="toolbar" class="ui-input-text">Toolbar:</label>
-						<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-							<option selected="selected" value=" ">Default</option>
-						</select>
-					  </div>
-					</li>
-				</ul>
-			</div> <!--Restriction-->
-			<div id="LDAPconfiguration-div" style="display:none; height:100%">
-				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
-		   	 		<li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
-		   		</ul>
-				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-					<li data-role="list-divider" id="ldap_authHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="ldap_auth" class="ui-input-text">Authentication Type:</label>
-						<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-							<option selected="selected" value="0">Simple</option>
-							<option value="1">Simple (SSL)</option>
-							<option value="2">Simple (StartTLS)</option>
-						</select>
-					</li>
-					<li data-role="list-divider" id="ldap_dnHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label     for="ldap_host" class="ui-input-text"> Hostname:</label>
-						<input type="text" value="<%= data.lda_host %>"  id="ldap_host" name="ldap_host" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
-					<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label   for="ldap_dn" class="ui-input-text"> DN:</label>
-						<input type="text" value="<%= data.ldp_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>       
-				</ul>         
-			</div> <!--LDAP Configuration-->
-		</div><!-- block b -->
-</div><!-- /grid-a -->
-</form>
+<script type="text/template" id="sitePublish">
+	<div data-role="content" style="overflow-y:hidden;min-height:300px" id="site-publish">
+		 <ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
+			<li>		
+				<div id="status" style="text-align:center">
+					<h3 id="siteName" > Site </h3>
+						<span id="progress" data-inset="true" class=" frame ui-corner-all ui-shadow" style="display:none" ><img  src="images/progress.gif" title="Publish Progress"  /></span>
+						<span id="message" style="display:none">&nbsp;</span>
+				</div>
+				<div id="buttons" style="margin-bottom: 35px;">
+						<button  data-theme="b " id="start">Publish</button>
+				</div>
+				<div id="errors" style="display:none;">
+						<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
+						<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
+						</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+</script>
+<script type="text/template" id="siteReports"> 
+	<div class="icon-alignment"  data-role="content" id="site-reports">
+		<ul data-role="listview" data-theme="c" id="actions">
+			<li>
+				<a href=" " id="checkedout" class="report-item">
+				<span class="icon-background">
+				<span class="icon-light-bulb">&nbsp;</span> </span>
+				<label>Checked Out Content</label>
+				<a id="checkedouttooltip"  title=" "  rel="tooltip"  href=" " class="checkedout">&nbsp;</a>
+				</a>
+					
+			</li>
+			<li>
+				<a href=" " id="published"  class="report-item">
+				<span class="icon-background report-item">
+				<span class="icon-publish">&nbsp;</span> </span>
+				<label>Recently Published Pages </label>
+				<a id="publishedtooltip" title=" "  rel="tooltip" href=" " class="published">&nbsp;</a>
+				</a>
+			</li>
+			<li>
+				<a href=" "  id="scheduled" class="report-item">
+				<span class="icon-background">
+				<span class="icon-clock">&nbsp;</span> </span>
+				<label>Scheduled Actions</label>
+				<a id="scheduledtooltip" title=" "  rel="tooltip" href=" " class="scheduled">&nbsp;</a>
+				</a>
+			</li>	
+		</ul>
+	</div>
+</script>
+<script type="text/template" id="siteReportCheckedOut">
+<div class="report">
+	<div data-role="content" id="report-checkout" >
+		<ul id="pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
+		<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete">Checked out Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> Check In</span></li>
+		</ul>
+	</div>
 </div>
 </script>
-<script type="text/template" id="userEditphone"> 
-<div data-role="content">
-<form id="userform" name="userform">
-<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-	<li data-role="fieldcontain"   class="alert_body help" style="display:none;margin-bottom: 1.5em;"></li>
-</ul>
-<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-	<li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
-</ul>
-	<div data-role="collapsible-set" data-theme="b " data-content-theme="c">
-		<div  id="userinformation" data-role="collapsible" data-collapsed="true">
-			<h3>
-			   	<span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
-			   	User Information
-			</h3>
-	  		<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-	  			<li data-role="list-divider" id="usernameHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="username" class="ui-input-text">Username:</label>
-					<% if(editType == "edit"){ %>
-						<label class="edit-element-label"> <%= data.username %> </label>
-					<%} else{ %>
-						<input type="text" value="" id="username" name="username" class="ui-input-text ui-body-c ui-corner-all ">
-					<%}%>
-				</li>
-				<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="lastname" class="ui-input-text">Password:</label>
-					<input type="password" value="<%= data.password %>"  id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="first_name" class="ui-input-text">Firstname:</label>
-					<input type="text" value="<%= data.first_name %>"  id="first_name" name="first_name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="last_name" class="ui-input-text">Lastname:</label>
-					<input type="text" value="<%= data.last_name %>"  id="last_name" name="last_name" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>			
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="email" class="ui-input-text">E-mail:</label>
-					<input type="text" value="<%= data.email %>"  id="email" name="email" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="phone" class="ui-input-text">Phone:</label>
-					<input type="text" value="<%= data.phone %>"  id="phone" name="phone" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="time_zone" class="ui-input-text">Time Zone</label>
-					<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				 <li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li> 
-				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="locale" class="ui-input-text">Locale</label>
-					<input type="text" value="<%= data.loacale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
-   		  		</li>	
-			</ul> <br />	
-			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-						<div class="ui-controlgroup-controls">
-							<div class="ui-checkbox"><input type="checkbox" id="created" class="custom" name="created"><label for="created" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Create Group for this User:</span></span></label></div>
-						</div>
-					</fieldset>
-				</li>
-			</ul>
-			<br /> 
-			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-						<div  id="controler" class="ui-controlgroup-controls">
-							<div class="ui-checkbox"><input type="checkbox" id="sendmessage" class="custom" name="sendmessage"><label for="sendmessage" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"   class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Welcome Message:</span></span></label></div>
-						</div>
-					</fieldset>
-				</li>
-				<li  data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				    <div id="showmessagedetails"   style="display:none;">
-						<fieldset  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-							<div class="ui-controlgroup-controls">
-								<div class="ui-checkbox"><input type="checkbox" id="sendpass" class="custom" name="sendpass"><label for="sendpass" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"  class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Password in Message</span></span></label></div>	
-							</div>
-						</fieldset>
-						<div data-role="fieldcontain">
-							<label  style="width:30%; min-width:150px;" for="textarea" class="ui-input-text">Additional Message to User:</label><br />
-							<textarea style="margin-left:5%;min-width:200px;" class="textarea1" cols="40" rows="8" name="welcomeM" id="welcomeM"></textarea>
-					   </div>
-				    </div>
-				</li>
-			</ul>
-		</div> <!-- Collapsible User Information-->
-		<div  id="preferences" data-role="collapsible" data-collapsed="true">
-			<h3>
-					 <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
-					 Preferences 
-			</h3>       
-        	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-        	    <li data-role="list-divider" id="just_editHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="just_edit" id="just_edit-label" class="ui-slider"> Just Edit:</label>
-					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
-			  
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="just_edit" id="justEdit-label" class="ui-slider">JustEdit:</label>
-					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="page_check" id="pagecheck-label" class="ui-slider">Page Check:</label>
-					<select data-role="slider" id="file_check" name="page_check" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="failed_login_notification" id="failedlogin-label" class="ui-slider">Failed Login Notification:</label>
-					<select data-role="slider" id="failed_login_notification" name="failed_login_notification" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>	
-			</ul>	
-		</div> <!-- collapsible Prefrences -->
-	    <div  id="restrictions" data-role="collapsible" data-collapsed="true">
-			<h3>
-				  <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
-				  Restrictions
-			</h3>
-	 		<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-	 		    <li data-role="list-divider" id="privillegeHelp" class="help" style="display:none;"></li> 
-				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="privilege" class="ui-input-text">User Level:</label>
-						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-								<option selected="selected" value="0">0-Reviewer</option>
-								<option value="1">1-Contributor</option>
-								<option value="2">2-Contributor</option>
-								<option value="3">3-Contributor</option>
-								<option value="4">4-Contributor</option>
-								<option value="5">5-Editor</option>
-								<option value="6">6-Editor</option>
-								<option value="7">7-Editor</option>
-								<option value="8">8-Designer</option>
-								<option value="9">9-Asst. Admin</option>
-								<option value="10">10-Administrator</option>
-								
-						</select>
-					</li>
-				<li data-role="list-divider" id="approverHelp" class="help" style="display:none;"></li> 
-			   	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				 <div>
-					<label for="approver" class="ui-input-text">Approver:</label>
-					<select name="approver" id="appro ver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-						 <option selected="selected" value=" ">None</option>
-					</select>
-				  </div>
-				</li>
-				<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="enforce_approver" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
-					<select data-role="slider" id="enforcea_pprover" name="enforce_approver" class="ui-slider-switch">
-						<option  selected="selected" value="off">No</option>
-						<option value="on">Yes</option>
-					</select>
-				</li>
-				<li data-role="list-divider" id="toolbarHelp" class="help" style="display:none;"></li> 
-		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				 	<div>
-						<label for="toolbar" class="ui-input-text">Toolbar:</label>
-			  			<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-							<option selected="selected" value=" ">Default</option>
-						</select>
-					</div>
-				</li>
-			</ul>
-		</div> <!-- Collapsible Restriction-->
-		<div  id="LDAPconfiguration" data-role="collapsible" data-collapsed="true">
-			<h3>
-				 <span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
-				 LDAP Configuration
-			</h3>
-			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-				<li data-role="list-divider" id="ldap_authHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="ldap_auth" class="ui-input-text">Authentication Type:</label>
-					<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-						<option selected="selected" value="0">Simple</option>
-						<option value="1">Simple (SSL)</option>
-						<option value="2">Simple (StartTLS)</option>
-					</select>
-				</li>
-				<li data-role="list-divider" id="ldap_hostHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  style="width:47%"  for="ldap_host" class="ui-input-text"> Hostname:</label>
-					<input type="text"  value="<%= data.ldap_host %>"  id="ldap_host" name="ldap_host" class="ui-input-text ui-body-c ui-corner-all " />
-				</li>
-				<li data-role="list-divider" id="ldap_dnHelp" class="help" style="display:none;"></li> 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label  style="width:47%"  for="ldap_dn" class="ui-input-text"> DN:</label>
-						<input   type="text" value="<%= data.ldap_dn %>"  id="ldap_dn" name="ldap_dn" class="ui-input-text ui-body-c ui-corner-all " />
-				</li>        
-            </ul>         
-   		</div> <!-- collapsible -->
-    </div>                  
-	<!--LDAP Configuration-->
-</form>
-</div><!-- content -->
-
-</script>
-
-
-<script type="text/template" id="header-v1">
-	<div id="header" data-role="header" data-theme="b " class="omnistyle">
-<% if(page == "accounts") { %>
-		<a  data-icon="gear" class="top-right-btn ui-btn-right"><span id="<%=logoutid%>">Logout</span></a>
-<% } else{%>	
-		<a  onClick="window.history.back();" rel="external" data-role="back" data-icon="back">Back</a>
-		<a  data-icon="gear" class="top-right-btn"><span id="<%=logoutid%>">Logout</span></a>
-<% } %>
-		<h5 id="headertitle"><%= headertitle%></h5>
+<script type="text/template" id="siteReportPublished">
+	<div data-role="content" id="report-published">
+	<ul id="published-pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
+	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"></span></li>
+		</ul>
 	</div>
-
-
 </script>
+<script type="text/template" id="siteReportScheduled">
+	<div data-role="content" id="report-scheduled">
+		<ul id="published-pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
+	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> </span></li>
+		</ul>
+	</div>
+</script>
+<script type="text/template" id="siteScan" >
+	<div data-role="content" data-theme="b " id="site-scan" style="overflow-y:hidden" >
+	<ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
+	<li>
+		<ol id="passes" data-role="listview" data-inset="true">
+			<li id="pass1">
+				<span>Synchronizing database</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass2">
+				<span>Removing old entries</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass3" >
+				<span>Initializing</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+			<li id="pass4">
+				<span >Scanning Site</span>
+				<span class="ui-icon ui-icon-minus"></span>
+			</li>
+		</ol>
+		<div id="buttons"   style="margin-top: 30px;">
+			<button   data-theme="b " id="start">Start Scan</button>
+		</div>
+	</li></ul>
+	</div>
+</script>
+<script type="text/template" id="siteSettings"> 
+	<div data-role="content"  id="site-settings">
+		<h3 id="sitename"></h3>
+		<div class="settings">
+			<input type="hidden" id="name" />
+			<label for="server" class="setting">Server:</label>
+			<input type="text" data-theme="d" name="server" id="server" class="setting" />
+			<label for="username" class="setting">Username:</label>
+			<input type="text"  data-theme="d" name="username" id="username" class="setting" />
+			<label for="password" class="setting">Password:</label>
+			<input type="password"data-theme="d"  name="password" id="password" class="setting" />
+			<label for="http_root" class="setting">HTTP Root:</label>
+			<input type="text" data-theme="d" name="http_root" id="http_root" class="setting" />
+			<label for="ftp_root" class="setting">FTP Root:</label>
+			<input type="text" data-theme="d" name="ftp_root" id="ftp_root" class="setting" />
+			<div style="margin: 5px 0px 5px 5px;">
+				<input type="button" data-theme="b " data-inline="true" data-iconpos="center" value="Save" id="save" />
+			</div>
+		</div>
+	</div>
+</script>
+
 
 <script type="text/template" id="header">
 	<div id="header" data-role="header" data-theme="b " class="omnistyle">
 <% if(page == "accounts") { %>
-		<a  data-icon="back" data-direction="reverse" class=" logout"><span id="<%=logoutid%>">Logout</span></a>
-		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+		<a  data-icon="back" data-transition="fade" class="logout"><span id="<%=logoutid%>">Logout</span></a>
+		<a  id="editBtn" data-icon="gear"  data-transition="slidedown" onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
 <% } else if(mode=="edit" || mode=="action"){%>	
 		<% if (editType =="add"){ %>
-		<a id="cancelBtn"  rel="external" data-role="back" data-direction="reverse" data-icon="back">Cancel</a>
-		<a   data-icon="gear" class="top-right-btn"><span id="save<%=page%>">Create</span></a>
+		<a id="cancelBtn"  rel="external" data-role="back" data-transition="slideup" data-icon="back">Cancel</a>
+		<a   data-icon="gear" data-transition="slideup" class="top-right-btn"><span id="save<%=page%>">Create</span></a>
 		<%} else if (editType =="edit"){ %>
-		<a  id="cancelBtn"  rel="external" data-role="back" data-direction="reverse"  data-icon="back">Cancel</a>
-		<a   data-icon="gear" class="top-right-btn"><span id="save<%=page%>">Save</span></a>
+		<a  id="cancelBtn"  rel="external" data-role="back" data-transition="slideup" data-icon="back">Cancel</a>
+		<a   data-icon="gear" data-transition="slideup" class="top-right-btn"><span id="save<%=page%>">Save</span></a>
 		<%} else if(page == "account"){ %>
-		<a  id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
-		<a  class="top-right-btn logout" data-icon="back" data-direction="reverse" ><span id="<%=logoutid%>">Logout</span></a>
+		<a  id="homeBtn" data-icon="home"  data-transition="flip" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a  class="top-right-btn logout" data-icon="back" data-transition="fade" ><span id="<%=logoutid%>">Logout</span></a>
 		
 		<%} %>
 <% }else if (mode=="workflow"){ %>
-		<a   id="homeBtn" data-icon="home" data-direction="reverse" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a   id="homeBtn" data-icon="home" data-transition="flip" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
 		<% if ((page != "account")){%>
-		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+		<a  id="editBtn" data-icon="gear"  data-transition="slidedown" onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
 		<%}%>
 	<% }else if (mode =="edit-mode"){ %>
-		<a   id="homeBtn" data-icon="home" data-direction="reverse" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
-		<a   id="DoneBtn" data-icon="gear" data-direction="reverse" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Done</span></a>
+		<a   id="homeBtn" data-icon="home" data-transition="flip"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a   id="DoneBtn" data-icon="gear" data-transition="slideup" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Done</span></a>
 	<% }else {%>
 		<a  onClick="window.history.back();" rel="external" data-role="back"  data-direction="reverse" data-icon="back">Back</a>
-		<a   id="homeBtn" data-icon="gear"  data-direction="reverse" onClick="Common.home('<%=skin%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Home</span></a>
+		<a   id="homeBtn" data-icon="gear"  data-transition="flip" onClick="Common.home('<%=skin%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Home</span></a>
 <% }%>
 		<h5 id="headertitle"><%= headertitle%></h5>
 	</div>
@@ -2766,46 +2720,36 @@
 
 </script>
 
-<script type="text/template" id="footer-v1">
-<div id="content">
-</div>
-<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
-	<div data-role="navbar" class="ui-navbar" role="navigation">
-		<ul class="ui-grid-b">
-		<% if (mode == "edit"){ %>
-			<li id="homeBtn" class="ui-block-a"><a onClick="Common.home('<%=skin%>');" data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-		<%if(editType == "add"){ %>
-			<li id="create<%=page%>" class="ui-block-b"><a  data-theme="b " href="" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Create</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-		<%}else {%>	
-			<li id="save<%=page%>" class="ui-block-b"><a  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Save</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-		<%}%>	
-			<li id="cancelBtn" class="ui-block-c"><a  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">cancel</span><span class="ui-icon ui-icon-delete " style="left: -25px;"></span></a></li>
-	    <% }else{
-				if (mode=="workflow"){ %>
-					<li class="ui-block-a"  id="homeBtn"><a data-theme="b" onClick="Common.home('<%=skin%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home" style="left: -25px;"></span></a></li>
-					<li class="ui-block-b" id="editBtn"><a data-theme="b" onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Edit</span><span class="ui-icon ui-icon-gear" style="left: -25px;"></span></a></li>
-				<% } else{%>
-					<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-					<li id="DoneBtn" class="ui-block-b"><a data-theme="b" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text">Done</span><span class="ui-icon ui-icon-check" style="left: -25px;"></span></a></li>
-				<% } %>
-					<li class="ui-block-c" id="addBtn" ><a data-theme="b"  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
-		<% } %>
-		 </ul>
-	</div><!-- navbar -->
-</div><!-- footer -->
-</script>
-
 <script type="text/template" id="footer">
-<div id="content">
-</div>
-<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
-	<div data-role="navbar" class="ui-navbar" role="navigation">
-		<ul class="ui-grid-b">
-					<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
-					<li class="ui-block-c" id="addBtn" ><a data-theme="b"  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
-		 </ul>
-	</div><!-- navbar -->
-</div><!-- footer -->
+<% if(toolbar == "toolbar"){%>
+	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
+		<div data-role="navbar" class="ui-navbar" role="navigation">
+			<ul class="ui-grid-b">
+						<li id="deleteBtn" class="ui-block-a" id="editBtn"><a id="editBtnText"  data-theme="b " class="ui-btn ui-btn-icon-left ui-btn-up-b omnistyle"><span class="ui-btn-text" >Delete</span><span class="ui-icon ui-icon-delete" style="left: -25px;"></span></a></li>
+						<li class="ui-block-c" id="addBtn" ><a data-theme="b"  class="ui-btn ui-btn-icon-left ui-btn-up-b  omnistyle"><span class="ui-btn-text">Add</span><span class="ui-icon ui-icon-plus " style="left: -25px;"></span></a></li>
+			 </ul>
+		</div><!-- navbar -->
+	</div><!-- footer -->
+<% }else if (toolbar =="back"){ %>
+<div data-position="fixed" class="undo ui-footer ui-footer-fixed" data-theme="b">
+	<div data-theme="b" data-role="none" class="undo fade ui-fixed-overlay icon-background"  data-position="fixed" class="undo ui-footer ui-footer-fixed fade ui-fixed-overlay icon-background">
+			<a   title="Logout"  rel="tooltip" class="top-right-btn logout" data-icon="back" data-transition="fade" ><span id="logout"><i class="icon-arrow-up-left-2"> &nbsp;</i> </a>	
+		
+	</div>
+	
+	<div data-role="none"  class="undo fade ui-fixed-overlay icon-background" >
+			<a   title="Back"  rel="tooltip"  data-role="none" onClick="window.history.back();" rel="external" data-role="back"  data-direction="reverse" ><i class="icon-undo"> &nbsp;</i> </a>
+			
+	</div>
+		<div data-role="none" class="accountPage undo fade ui-fixed-overlay icon-background"  data-position="fixed" class="undo ui-footer ui-footer-fixed fade ui-fixed-overlay icon-background">
+			<a   data-role="none" title="My Account"  rel="tooltip"  rel="external" data-direction="reverse" ><i class="icon-documents"> &nbsp;</i> </a>
+	
+	</div>
+	
+
+</div>	
+<%}%>
+
 </script>
 
 <script type="text/template" id="alertmessage">
@@ -2820,6 +2764,8 @@
 			</div>
 	</div>
 </script>
+
+<!-- The Templates -->
     <!-- The Scripts --> 
 
     <script type="text/javascript" src="lib/jquery-1.7.1.min.js"></script>

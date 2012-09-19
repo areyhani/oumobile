@@ -360,7 +360,7 @@ window.accountsEditModeView = Backbone.View.extend({
 	render:function(){
 	   $(this.el).html(this.headertemplate({page:"account",mode:"edit-mode",editType:'add', skin:this.skin,account:this.account, site:this.site,logoutid:"logout", headertitle:"Accounts"}));
 	   $(this.el).append(this.template());
-	   $(this.el).append(this.footertemplate());
+	   $(this.el).append(this.footertemplate({toolbar : "toolbar"}));
 	   return this;
 	},
 	pageShow: function(){
@@ -677,12 +677,15 @@ window.groupsView = Backbone.View.extend({
 		'click .logout':'logout',
 		'click #addBtn': 'addBtn',
 		'click #homeBtn': 'homeBtn',
+		'click .accountPage' : 'accountPage'
 	},
 	template:_.template($('#groupstemplate').html()),
 	headertemplate:_.template($('#header').html()),
-	render:function () {
+	footertemplate:_.template($('#footer').html()),
+	render:function (){
 			$(this.el).html(this.headertemplate({page:"groups",skin:this.skin, account:this.account, site:this.site,logoutid:"logout",mode:"workflow",editType:" ",headertitle:"Groups"}));
 			$(this.el).append(this.template());
+			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
 	},
 	pageShow:function(){ 
@@ -708,8 +711,8 @@ window.groupsView = Backbone.View.extend({
 									.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 									.text('Total Members:  '+value.member_count);
 									
-								 var li =$(document.createElement('li')).append(a);
-								li.append(groupurl);
+								 var li =$(document.createElement('li'));
+								li.append(a).append(groupurl);
 								 sites.append(li);
 								 
 								 var headerText =$('#headerText');
@@ -726,6 +729,7 @@ window.groupsView = Backbone.View.extend({
 	addBtn:function(){Common.add(this.skin, this.account, '','account');},
 	homeBtn:function(){Common.home;},
 	logout:function(){Common.logout();},
+	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
 
 });
 window.groupsEditModeView = Backbone.View.extend({
@@ -744,7 +748,7 @@ initialize:function(){
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"group",mode:"edit-mode",editType:"add",skin:this.skin, account:this.account, site:this.site,logoutid:"logout",headertitle:"Groups"}));
 			$(this.el).append(this.template());
-			$(this.el).append(this.footertemplate()) ;
+			$(this.el).append(this.footertemplate({toolbar:"toolbar"})) ;
 			return this;
 	},
 	pageShow:function(){
@@ -847,13 +851,17 @@ window.groupView = Backbone.View.extend({
 	},
 	events:{
 		'pageshow' : 'pageShow',
-		'click #editBtn' : 'editBtn'
+		'click #editBtn' : 'editBtn',
+		'click .logout' :'logout',
+		'click .accountPage' : 'accountPage'
 	},
 	headertemplate:_.template($('#header').html()),
 	template:_.template($('#grouptemplate').html()),
+	footertemplate:_.template($('#footer').html()),
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"group",mode:"workflow",editType:" ",skin:this.skin, account:this.account, site:this.site,logoutid:"userLogout",headertitle:"Group Actions"}));
 			$(this.el).append(this.template());
+			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
 	},
 	pageShow: function(){
@@ -864,7 +872,7 @@ window.groupView = Backbone.View.extend({
 		var skin = sessionObj.skin;
 		var account = this.account;
 		var site=this.site;
-		var accountDiv = $('#group');
+		var groupDiv = $('#members');
 		 
 		var membercounta = $(document.createElement('a'));
 		var membercount = $(document.createElement('span'))
@@ -874,22 +882,21 @@ window.groupView = Backbone.View.extend({
 		$('#group-name').append(data.group);
 		$('#member-count').append(membercounta).append(membercount);
 		$('#headertitle').text(data.group);
-		$.each(data.members,function(index,value){
-
-			var member =$(document.createElement('li'))
-			.addClass('ui-li ui-li-static ui-body-c')
-			.attr({'data-theme': 'c'})
-			.text(value);
-			
-			$('#members').append(member);
 		
+		$.each(data.members,function(index,value){
+								var li = $(document.createElement('li'))
+								 .html(value);
+								 
+								groupDiv.append(li);
 		});
-
+			groupDiv.listview("refresh");
 
 	},
 	editBtn: function(){
 	Common.add(this.skin, this.account, this.group,'group','single','edit');
-	}
+	},
+	logout:function(){Common.logout();},
+	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
 
 });
 window.groupEditView = Backbone.View.extend({
@@ -929,7 +936,9 @@ window.groupEditView = Backbone.View.extend({
 		var skin = sessionObj.skin;
 		var account = this.account;
 		var site=this.site;
-		var groupDiv= $('#members');
+		var groupDiv = $('#members');
+		var membercount =0;
+				
 		 $.ajax({
 						url:'/users/list',
 						data:{'account':account},
@@ -941,7 +950,7 @@ window.groupEditView = Backbone.View.extend({
 								if (data.error){
 									 window.app.navigate(skin+' ',{trigger:true});
 									 console.log(data.error);
-									}
+									}	
 									
 								console.log(data);
 								$.each(data, function(index, value) {
@@ -960,22 +969,21 @@ window.groupEditView = Backbone.View.extend({
 								});
  
 								groupDiv.listview("refresh");
+								
 								$.each(membersdata.members,function(index,value){
 									$('#'+value).addClass('ui-btn-up-b selectedfilter');
 									$('#'+value+' a').css('color' ,'#FFFFFF');
 									$('#'+value+ ' span').addClass('ui-icon-check');
-								
+									membercount++;
+									$('#member-count').text(membercount);
 								});	
+							 
 							
 							}		
 					
 							
 				});
 
-		 
-	    $('#group-name').append(membersdata.group);
-		 //$('#member-count').append(membercount);
-		 $('#headertitle').text(membersdata.group);
          $("#members").selectable({
          selected: function(event,ui){
 				 var id =ui.selected.id;
@@ -987,7 +995,8 @@ window.groupEditView = Backbone.View.extend({
 							$('#'+id+' a').css('color' ,'#555555');
 							$('#'+id+ ' span').removeClass('ui-icon-check');
 							$('#'+id+ ' span').addClass('ui-icon-minus');
-			
+							membercount--;
+							$('#member-count').text(membercount);
 						
 				} else {   
 					$(ui.selected).addClass('ui-selectee')
@@ -997,9 +1006,15 @@ window.groupEditView = Backbone.View.extend({
 							$('#'+id+' a').css('color' ,'#FFFFFF');
 							$('#'+id+ ' span').removeClass('ui-icon-minus');
 							$('#'+id+ ' span').addClass('ui-icon-check');
+							membercount++;
+							$('#member-count').text(membercount);
 				}
+
 			}
 			 });
+		 $('#group-name').append(membersdata.group);
+		 $('#headertitle').text(membersdata.group);
+		 groupDiv.listview("refresh");
 },
 	GroupEdit: function(){
 		var selectedGroups = $('li:.selectedfilter');
@@ -1066,12 +1081,15 @@ window.usersView = Backbone.View.extend({
 		'click #editBtn': 'editBtn',
 		'click .logout':'logout',
 		'click #addBtn': 'addBtn',
+		'click .accountPage' : 'accountPage'
 	},
 	template:_.template($('#userstemplate').html()),
 	headertemplate:_.template($('#header').html()),
+	footertemplate:_.template($('#footer').html()),
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"users",skin:this.skin, account:this.account, site:this.site,logoutid:"logout",mode:"workflow",editType:" ",headertitle:"Users"}));
 			$(this.el).append(this.template());
+			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
 	},
 	pageShow:function(){
@@ -1131,6 +1149,7 @@ window.usersView = Backbone.View.extend({
 	},
 	addBtn:function(){Common.add(this.skin,this.account,this.site,'user');},
 	logout:function(){Common.logout();},
+	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
 });
 window.userView = Backbone.View.extend({
 	initialize:function(){
@@ -1138,13 +1157,17 @@ window.userView = Backbone.View.extend({
 	},
 	events:{
 		'pageshow' : 'pageShow',
-		'click #editBtn' : 'editBtn'
+		'click #editBtn' : 'editBtn',
+		'click .logout': 'logout',
+		'click .accountPage' : 'accountPage'
 	},
 	headertemplate:_.template($('#header').html()),
 	template:_.template($('#usertemplate').html()),
+	footertemplate:_.template($('#footer').html()),
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"user",mode:"workflow",editType:" ",skin:this.skin, account:this.account, site:this.site,logoutid:"userLogout",headertitle:"User Actions"}));
 			$(this.el).append(this.template());
+			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
 	},
 	pageShow: function(){
@@ -1169,11 +1192,11 @@ window.userView = Backbone.View.extend({
 		
 		
 		var savedate = $(document.createElement('span'))
-		.addClass('info')
+		.addClass('information')
 		.text(_.dateString(_.parseISO8601(data.last_saved)));
 		
 		var logindate = $(document.createElement('span'))
-		.addClass('info')
+		.addClass('information')
 		.text(_.dateString(_.parseISO8601(data.last_login)));
 		var approver = data.approver;
 		if(approver == ""){
@@ -1196,7 +1219,9 @@ window.userView = Backbone.View.extend({
 	},
 	editBtn: function(){
 	Common.add(this.skin, this.account, this.user,'user','single','edit');
-	}
+	},
+	logout:function(){Common.logout();},
+	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
 });
 window.usersEditModeView = Backbone.View.extend({
 initialize:function(){
@@ -1215,7 +1240,7 @@ initialize:function(){
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"user",skin:this.skin, account:this.account, site:this.site,logoutid:"logout",mode:"edit-mode",editType:"add",headertitle:"Users"}));
 			$(this.el).append(this.template());
-			$(this.el).append(this.footertemplate()) ;
+			$(this.el).append(this.footertemplate({toolbar:"toolbar"}));
 			return this;
 	},
 	pageShow:function(){
@@ -1475,12 +1500,15 @@ window.sitesView = Backbone.View.extend({
 		'click .logout':'logout',
 		'click #addBtn': 'addBtn',
 		'click #homeBtn': 'homeBtn',
+		'click .accountPage' : 'accountPage'
 	},
 	template:_.template($('#sitestemplate').html()),
 	headertemplate:_.template($('#header').html()),
+	footertemplate:_.template($('#footer').html()),
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"sites",mode:"workflow",editType:" ",skin:this.skin, account:this.account, site:this.site,logoutid:"logout",headertitle:"Sites"}));
 			$(this.el).append(this.template());
+			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
 	},
 	pageShow:function(){ 
@@ -1496,10 +1524,8 @@ window.sitesView = Backbone.View.extend({
 						},
 						success: function(data){
 							if (data.error){
-								 //window.location.href='super-index.html'+location.search;
 								 console.log(data.error);
 							}
-							//sites.empty();
 		
 							var params =location.search;
 							$.each(data,function(index,value){
@@ -1510,13 +1536,12 @@ window.sitesView = Backbone.View.extend({
 									.addClass('ui-link-inherit hyperlinkli')
 									.text(value.site);
 								
-								var siteurla = $(document.createElement('a'));
 								var siteurl = $(document.createElement('span'))
 									.addClass('ui-li-count ui-btn-up-c ui-btn-corner-all')
 									.text(value.url);
 									
 								 var li =$(document.createElement('li')).append(a);
-								li.append(siteurla).append(siteurl);
+								li.append(siteurl);
 								 sites.append(li);
 								 
 								 var headerText =$('#headerText');
@@ -1526,6 +1551,7 @@ window.sitesView = Backbone.View.extend({
 									headerText.append(headerTextValue);
 					
 							});
+					
 								sites.listview("refresh");
 						}
 						});
@@ -1533,6 +1559,7 @@ window.sitesView = Backbone.View.extend({
 	addBtn:function(){Common.add(this.skin,this.account,this.site,'site');},
 	homeBtn:function(){Common.home;},
 	logout:function(){Common.logout();},
+	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
 	
 
 });
@@ -1553,7 +1580,7 @@ window.sitesEditModeView =Backbone.View.extend({
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"site",skin:this.skin, account:this.account, site:this.site,logoutid:"logout",mode:"edit-mode",editType:"add",headertitle:"Sites"}));
 			$(this.el).append(this.template());
-			$(this.el).append(this.footertemplate()) ;
+			$(this.el).append(this.footertemplate({toolbar:"toolbar"})) ;
 			return this;
 	},
 	pageShow:function(){
@@ -1576,7 +1603,6 @@ window.sitesEditModeView =Backbone.View.extend({
 						console.log(data.error);
 					}
 					var sites = $('#sites-list');
-					//sites.empty();
 					$.each(data, function(index, value) {
 						   var inputElement = $(document.createElement('input'))
 	                             .attr({type: 'checkbox' })
@@ -1653,13 +1679,17 @@ window.siteView = Backbone.View.extend({
 	},
 	events:{
 		'pageshow' : 'pageShow',
-		'click #editBtn' : 'editBtn'
+		'click #editBtn' : 'editBtn',
+		'click .logout' :'logout',
+		'click .accountPage' : 'accountPage'
 	},
 	headertemplate:_.template($('#header').html()),
 	template:_.template($('#sitetemplate').html()),
+	footertemplate:_.template($('#footer').html()),
 	render:function (eventName) {
 			$(this.el).html(this.headertemplate({page:"site",mode:"workflow",editType:" ",skin:this.skin, account:this.account, site:this.site,logoutid:"userLogout",headertitle:"Site Actions"}));
 			$(this.el).append(this.template());
+			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
 	},
 	pageShow: function(){
@@ -1685,7 +1715,7 @@ window.siteView = Backbone.View.extend({
 		
 		
 		var date = $(document.createElement('span'))
-		.addClass('info')
+		.addClass('information')
 		.text(_.dateString(_.parseISO8601(data.last_saved)));
 		
 		$('#site-name').append(data.site);
@@ -1703,7 +1733,9 @@ window.siteView = Backbone.View.extend({
 	},
 	editBtn: function(){
 		Common.add(this.skin, this.account, this.site,'site','single','edit');
-	}
+	},
+	logout:function(){Common.logout();},
+	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
 });
 window.siteEditView = Backbone.View.extend({
 	initialize:function(){
@@ -1932,7 +1964,12 @@ var AppRouter = Backbone.Router.extend({
       accountEditview.editMode= editMode;
       accountEditview.editType= "edit";
       accountEditview.device=device;
-      accountEditview.headerTitle="Edit Account: "+account;
+	  if (device != 'phone'){
+			accountEditview.headerTitle="Edit Account: "+account;
+	  }else{
+			accountEditview.headerTitle= account;
+	  }
+
       this.changePage(accountEditview);
 		}
 		});
@@ -1990,7 +2027,12 @@ var AppRouter = Backbone.Router.extend({
 			groupEditview.editType="edit";
 			groupEditview.device=device;
 			groupEditview.editMode = editMode;
-			groupEditview.headerTitle="Edit Group: "+ group;
+			if (device != 'phone'){
+					groupEditview.headerTitle="Edit Group: "+ group;
+			}else{
+					groupEditview.headerTitle=group;
+			}
+			
 			this.changePage(groupEditview);
     	}
     	});
@@ -2064,7 +2106,11 @@ var AppRouter = Backbone.Router.extend({
 			userEditview.editType="edit";
 			userEditview.device=device;
 			userEditview.editMode = editMode;
-			userEditview.headerTitle="Edit User: "+ user;
+			if (device != 'phone'){
+				userEditview.headerTitle="Edit User: "+ user;
+			}else{
+				userEditview.headerTitle= user;
+			}
 			this.changePage(userEditview);
     	}
     	});
@@ -2141,7 +2187,12 @@ var AppRouter = Backbone.Router.extend({
     	siteEditview.editType="edit";
     	siteEditview.device=device;
     	siteEditview.editMode = editMode;
-    	siteEditview.headerTitle="Edit Site :" +site;
+    	if (device != 'phone'){
+				siteEditview.headerTitle="Edit Site :" +site;
+		}else{
+				siteEditview.headerTitle= site;
+		}
+    	
     	this.changePage(siteEditview);
     	}
     	});

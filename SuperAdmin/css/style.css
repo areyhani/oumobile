@@ -1,3 +1,16 @@
+
+body{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+max-height: 100%;
+max-width: 100%;
+z-index:99;
+}
+
+
 .ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b
 {
 color: white;
@@ -325,27 +338,41 @@ margin-left:4px;
 }
 .account-info, .site-info,.user-info, .group-info{
     border-top: 1px dotted gray;
-    margin-left: 67px;
+    margin-left: 25px;
     margin-right: 20px;
     padding-top: 5px;
+    width:80%;
 } 
  .account-label, .site-label, .user-label, .group-label{
- 	margin-bottom: 15px;
-    margin-left: 70px;
+ 	margin-bottom: 25px;
+    margin-left: 75px;
     margin-top: 10px;
     }
-  #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count,#userview  .ui-li-count,#groupview  .ui-li-count, .information {
+
+ #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count,#userview  .ui-li-count,#groupview  .ui-li-count, .information {
     float: right;
     font-size: 11px;
-    left: 185px;
+    left: 135px;
     margin: 0 32px;
     padding: 0px;
     position: absolute;
     text-align: center;
 
 }
+
+
+#groupview  .ui-li-count{
+	left: 195px;
+}
+.information{
+margin:2px  32px;
+}
+#accountview .information {
+    margin: 2px 40px;
+    min-width: 100px;
+}
   #accountview .account-info .ui-li-count,  #siteview .site-info .ui-li-count, #userview .ui-li-count,  #groupview .ui-li-count{
-      width: 10%;
+      width: 15%;
   }
 
 
@@ -392,9 +419,23 @@ margin-left:4px;
     text-shadow: 0 1px 1px #FFFFFF;
 }
 
-
+.ui-focus {
+    box-shadow: 0 1px 4px #3A9A3A;
+}
 #feedback { font-size: 1.4em; }
 #selectable .ui-selecting { background: #FECA40; }
 #selectable .ui-selected { background: #F39814; color: white; }
 #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
 #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+.undo {
+    margin-bottom: 5px;
+    margin-left: 5px;}
+    
+.ui-body-c .ui-link {   
+	color:#2D792D;
+}
+.ui-body-c .ui-link:hover , .icon-background:hover{   
+	color:#ffffff;
+}
+.ui-listview-filter-inset{
+margin:-5px;}
