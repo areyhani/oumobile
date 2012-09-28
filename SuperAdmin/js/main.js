@@ -147,89 +147,7 @@ initialize : function() {
 	}
 });
 
-/*var AccountCollection = Backbone.Collection.extend({
-model: AccountModel,
 
-});
-//-----collections-----
-var AccountListCollection = Backbone.Collection.extend({
-	model: AccountModel,
-	currentSort : { column : "created", order : "desc" }, // default sort order is created date descending
-	//comparator : Sorters.date("created", "desc"),
-	sync : function(method, collection, options) {
-		if(method == "read") {
-			var params = { type: "GET", url: "/accounts/list", dataType: "json" };
-		}
-		return $.ajax(_.extend(params, options));
-	},
-	parse : function(accounts) {
-		//accounts = SampleData.accounts; // for testing different data sets, comment out for actual data
-		_.each(accounts, function(account) {
-			account.id = account.account;
-			account.first_name = account.first_name || "";
-			account.last_name = account.last_name || "";
-			// convert date strings to Date objects
-			account.created = _.parseISO8601(account.created);
-			account.last_saved = _.parseISO8601(account.last_saved);
-			account.createdDisplay = _.dateString(account.created);
-			account.savedDisplay = account.last_saved ? _.dateString(account.last_saved) : "";
-		});
-		return accounts;
-	}
-});
-
-var SiteListCollection = Backbone.Collection.extend({
-	model: SiteModel,
-	initialize : function() {
-		this.currentSort = { column : "site", order : "asc" }; // default sort order is user name ascending
-	},
-	//comparator : Sorters.string("site", "asc"),
-	sync : function(method, collection, options) {
-		if(method == "read") {
-			var params = { type: "GET", url: "/sites/list", dataType: "json", data: {} };
-			if(this.account)
-				params.data.account = this.account;
-		}
-		return $.ajax(_.extend(params, options));
-	},
-	parse : function(sites) {
-		//sites = SampleData.sites; // for testing different data sets, comment out for actual data
-		_.each(sites, function(site) {
-			site.id = site.site;
-			// convert date strings to Date objects
-			site.last_saved = site.last_saved ? new Date(site.last_saved) : "";
-			site.savedDisplay = site.last_saved ? _.dateString(site.last_saved) : "";
-		});
-		return sites;
-	}
-});
-
-var UserListCollection = Backbone.Collection.extend({
-	model: UserModel,
-	initialize : function() {
-		this.currentSort = { column : "user", order : "asc" }; // default sort order is user name ascending
-	},
-	//comparator : Sorters.string("user", "asc"),
-	sync : function(method, collection, options) {
-		if(method == "read") {
-			var params = { type: "GET", url: "/users/list", dataType: "json", data: {} };
-			if(this.account)
-				params.data.account = this.account;
-		}
-		return $.ajax(_.extend(params, options));
-	},
-	parse : function(users) {
-		//users = SampleData.users; // for testing different data sets, comment out for actual data
-		_.each(users, function(user) {
-			user.id = user.user;
-			user.first_name = user.first_name || "";
-			user.last_name = user.last_name || "";
-			user.email = user.email || "";
-		});
-		return users;
-	}
-});
-*/
 //Views
 window.adminLoginView = Backbone.View.extend({
 	initialize:function(){
@@ -365,6 +283,8 @@ window.accountsEditModeView = Backbone.View.extend({
 	},
 	pageShow: function(){
 	console.log("groups-edit-mode");
+
+		$('#editModePagesanchore').attr('id','editModePages');
 		$.mobile.fixedToolbars.show(true);
 		var editPath ='#'+this.skin+'/account-edit/multiple/tablet';
 		var Browser = browserdetect();
@@ -446,7 +366,7 @@ window.accountsEditModeView = Backbone.View.extend({
 							self.model.destroy({
 							success: function(){
 								console.log('success');
-								Common.direct(self.skin,'','account'); 	
+								Common.direct(self.skin,'','accounts'); 	
 								$.page.refresh();
 							},
 							error:function() {
@@ -594,35 +514,25 @@ window.accountEditView = Backbone.View.extend({
 
 	pageShow: function(){
 	console.log("pageShow");
-	var accountcontext = $('#accountform').serializeObject();
-	console.log(accountcontext);
+	//var accountcontext = $('#accountform').serializeObject();
    			var editType = this.editType;
 			$.mobile.fixedToolbars.show(true);
 			if (editType == "edit"){
 				   var accountsDiv =$('#accountdiv');
 				   var data= this.model.context.data;
-			
+			    			$.each(data,function(key,value){
+									var element= $("#"+key + "");
+									 $("#"+key + "").val(value);
+								   if( value == true && $("#"+key+"")[0]){ 
+								   $("input[type='checkbox'][id='"+key+"']").attr("checked",true).checkboxradio("refresh");
+										$("#"+key+"")[0].selectedIndex = 1;
+									 }
+			    			});
 							$('#headerEditAccount').text(data.account);
-							$('#state').val(data.state).selectmenu('refresh', true);
-							$('#country').selectmenu('refresh', true);
-							$('#country').val(data.country).selectmenu('refresh', true);
-							if(data.spell_check){
-							$("input[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-							}else{
-							$("input[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
-			
-							var switches = $("select[ data-role='slider']");
-							$.each(switches, function(index, el){
-							$(this).attr('switch', index);
-							var element =$("select[switch='"+index+"']").attr('id');
-							
-							if(data.element){
-							var switchelement=$('#dependancymanager');
-							switchelement[0].selectedIndex =1;
-							switchelement.slider("refresh");
-							}
+							$('.dropdown').selectmenu('refresh');
+							$('.slide').slider('refresh');
+							$("input[type='checkbox']").checkboxradio("refresh"); 
 
-							});
 			
 			 }	
 	},
@@ -753,6 +663,7 @@ initialize:function(){
 	},
 	pageShow:function(){
 		$.mobile.fixedToolbars.show(true);
+		$('#editModePagesanchore').attr('id','editModePages');
 		var Browser = browserdetect();
 		var editPath = '#'+this.skin+'/group-edit/multiple/tablet/'+this.account;
 		if(Browser.phone){
@@ -930,7 +841,7 @@ window.groupEditView = Backbone.View.extend({
    			 $("#selectable").selectable();
   		});
 	
-		$.mobile.fixedToolbars.show(true);
+		//$.mobile.fixedToolbars.show(true);
 		var sessionObj = Common.whoamI();
 		var user = sessionObj.user;
 		var skin = sessionObj.skin;
@@ -1128,6 +1039,7 @@ window.usersView = Backbone.View.extend({
 								var a = $(document.createElement('a'))
 											.attr({href : nextstepurl})
 											.attr({rel:'external'})
+											.attr({'data-transition':'slidedown'})
 											.addClass('ui-link-inherit hyperlinkli')
 											.html(value.username);
 											a.append(privilege).append(userIcon);
@@ -1165,7 +1077,7 @@ window.userView = Backbone.View.extend({
 	template:_.template($('#usertemplate').html()),
 	footertemplate:_.template($('#footer').html()),
 	render:function (eventName) {
-			$(this.el).html(this.headertemplate({page:"user",mode:"workflow",editType:" ",skin:this.skin, account:this.account, site:this.site,logoutid:"userLogout",headertitle:"User Actions"}));
+			$(this.el).html(this.headertemplate({page:"user",mode:"workflow",editType:" ",skin:this.skin, account:this.account, site:this.site,logoutid:"userLogout",headertitle:"User"}));
 			$(this.el).append(this.template());
 			$(this.el).append(this.footertemplate({toolbar:"back"}));
 			return this;
@@ -1208,9 +1120,17 @@ window.userView = Backbone.View.extend({
 		$('#privilege').append(privilegea).append(privilege);
 		$('#fname').append(data.first_name);
 		$('#lname').append(data.last_name);
-		$('#last-save-date').append(savedate);
-		$('#last-login-date').append(logindate);
+		if(savedate){
+			$('#last-save-date').append(savedate);
+		}else{
+			$('#last-save-date').append("N/A");
+		}
 		
+		if(logindate){
+			$('#last-login-date').append(logindate);
+		}else{
+			$('#last-login-date').append("N/A");
+		}
 		$('#save-count').append(savecounta).append(savecount);
 		$('#headertitle').text(user);
 
@@ -1245,6 +1165,7 @@ initialize:function(){
 	},
 	pageShow:function(){
 		$.mobile.fixedToolbars.show(true);
+		$('#editModePagesanchore').attr('id','editModePages');
 		var Browser = browserdetect();
 		var editPath = '#'+this.skin+'/user-edit/multiple/tablet/'+this.account;
 		if(Browser.phone){
@@ -1393,18 +1314,18 @@ window.userEditView = Backbone.View.extend({
 				   var data= this.model.context.data;
 
 							$('#headerEditUser').text(data.user);
-							$('#state').val(data.state).selectmenu('refresh', true);
-							$('#country').selectmenu('refresh', true);
-							$('#country').val(data.country).selectmenu('refresh', true);
-							if(data.spell_check){
-							$("input[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-							}else{
-							$("input[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
-							var switches = $("select[ data-role='slider']");
-							$.each(switches, function(index, el){
-							$(this).attr('switch', index);
-							var element =$("select[switch='"+index+"']").attr('id');
+							$.each(data,function(key,value){
+								var element= $("#"+key + "");
+								$("#"+key + "").val(value);
+						   if( value == true && $("#"+key+"")[0]){ 
+						 		$("input[type='checkbox'][id='"+key+"']").attr("checked",true).checkboxradio("refresh");
+								$("#"+key+"")[0].selectedIndex = 1;
+							 }
 							});
+							
+							$('#headerEditAccount').text(data.account);
+							$('.dropdown').selectmenu('refresh');
+							$('.slide').slider('refresh');
 						
 			 }
 			 
@@ -1428,7 +1349,7 @@ window.userEditView = Backbone.View.extend({
 					}
 				});
 				
-		  $.ajax({
+		 $.ajax({
 					url:'/toolbars/list',
 					data:{'account':this.account},
 					type: 'get',
@@ -1586,6 +1507,7 @@ window.sitesEditModeView =Backbone.View.extend({
 	pageShow:function(){
 		$.mobile.fixedToolbars.show(true);
 		var Browser = browserdetect();
+		$('#editModePagesanchore').attr('id','editModePages');
 		var idCount = 0;  
 		//console.log(Browser);
 		var editPath ='#'+this.skin+'/site-edit/multiple/tablet/'+ this.account;
@@ -1747,13 +1669,19 @@ window.siteEditView = Backbone.View.extend({
 		'pageshow' : 'pageShow',
 		'click #cancelBtn': 'cancelBtn',
 		'click #createsite' :'SiteEdit',
-		'click #savesite': 'SiteEdit'
+		'click #savesite': 'SiteEdit',
+		'click #testConnectivityBtn' : 'testLDP',
+		'click #buildIndex' : 'buildIndex',
+		'click #downloadRegBtn' : 'downloadReg',
+		"keyup #file_regex, #test_file_regex, #binary_regex, #test_binary_regex" : "testRegex",
+		"click #negate_regex span, #negate_binary_regex span" : "testRegex"
+		
 	},
 	headertemplate:_.template($('#header').html()),
 	template: _.template($('#siteEdit').html()),
 	phoneTemplate:_.template($('#siteEditphone').html()),
 	render:function(){
-		var device = this.device; 
+		var device = this.device;
 		$(this.el).html(this.headertemplate({page:"site",mode:"edit",skin:this.skin, account:this.account, site:this.site,logoutid:"logout", mode:"edit",editType:this.editType, headertitle: this.headerTitle}));
 		if(device =='tablet'){
 		console.log('render');
@@ -1767,34 +1695,42 @@ window.siteEditView = Backbone.View.extend({
 	var sitecontext= $('#siteform').serializeObject();
 	console.log(sitecontext);
 	$.mobile.fixedToolbars.show(true);
-	
 		
 		if (this.editType == "edit"){
 				   var accountsDiv =$('#sitediv');
 				   var data= this.model.context.data;
 							$('#headerEditSite').text(data.account);
-							$('#state').val(data.state).selectmenu('refresh', true);
-							$('#country').selectmenu('refresh', true);
-							$('#country').val(data.country).selectmenu('refresh', true);
-							if(data.spell_check){
-							$("input[type='checkbox']").attr("checked",true).checkboxradio("refresh"); 
-							}else{
-							$("input[type='checkbox']").attr("checked",false).checkboxradio("refresh"); }
-			
-							var switches = $("select[ data-role='slider']");
-							$.each(switches, function(index, el){
-							$(this).attr('switch', index);
-							var element =$("select[switch='"+index+"']").attr('id');
-							
-							if(data.element){
-							var switchelement=$('#dependancymanager');
-							switchelement[0].selectedIndex =1;
-							switchelement.slider("refresh");
-							}
+							$.each(data,function(key,value){
+								var element= $("#"+key + "");
+								$("#"+key + "").val(value.toString());
+								$('input:[name='+key+']').val(value).attr("checked",true);
 
-							});
-						
+							});					
+							$('#headerEditAccount').text(data.account);
+							$('.dropdown').selectmenu('refresh');
+							$('.slide').slider('refresh');
+							$('.fixcheckbox').checkboxradio("refresh");
+							$('.fixcheckbox:radio:checked').checkboxradio("refresh");
+
 			 }	
+			$("#file_regex").keypress(function() {
+			   if ($(this).val() == ""){
+ 				$('.regextest').hide('slideup',false,true);
+ 				}
+				else{
+				$('.regextest').show('slidedown',false,true);
+				}
+			});
+			
+			$("#binary_regex").keypress(function() {
+				if ($(this).val() == ""){
+ 					$('.binaryregextest').hide('slideup',false,true);
+ 				}
+				else{
+					$('.binaryregextest').show('slidedown',false,true);
+				}
+			});
+			 
 		    $.ajax({
 					url:'/toolbars/list',
 					data:{'account':this.account},
@@ -1809,7 +1745,6 @@ window.siteEditView = Backbone.View.extend({
 							var option = $(document.createElement('option'))
 							.text(value.name)
 							.attr({'value': index +1 });
-	
 							$('#toolbar').append(option);
 							});	
 						}
@@ -1843,11 +1778,132 @@ window.siteEditView = Backbone.View.extend({
 												var  mode="edit";
 												var name = self.site;
 												self.errorhandler(response, pageType, mode , name);
-												//alertpage(response,pageType, mode ,name,page);
 												return false;
 										}
 										});	 
 						return false;
+	},
+	testRegex : function(evt) { 
+		this.regexTimer && clearTimeout(this.regexTimer);
+		var $this = $(evt.currentTarget);
+		var self = this;
+		var binary = $this.attr("id").indexOf("binary") >= 0;
+		var $fileRegex = binary ? $("#binary_regex") : $("#file_regex");
+		var $testRegex = binary ? $("#test_binary_regex") : $("#test_file_regex");
+		var negate =binary ? $("#negate_binary_regex").serializeObject() : $("#negate_regex").serializeObject() ;
+		var inverse = binary ? negate.negate_binary_regex : negate.negate_regex;
+		console.log(inverse);
+		if(!$fileRegex.val()) {
+			$fileRegex.removeClass("success error");
+			$testRegex.removeClass("success error");
+			$fileRegex.closest('i.error').detach();
+			$testRegex.closest('i.success').detach();	
+			return;
+		}
+		this.regexTimer = setTimeout(function() {
+			clearTimeout(self.regexTimer);
+			self.regexTimer = false;
+						var checkmark = $(document.createElement('i'))
+							.addClass('success icon-checkmark');
+			var errormark = $(document.createElement('i'))
+							.addClass('error icon-cancel-3');
+			$('i.error').detach();
+			$('i.success').detach();
+			$fileRegex.removeClass("success error");
+			$testRegex.removeClass("success error");
+			if(!($this.attr("id").indexOf("test") >= 0 && $fileRegex.closest(".control-group").hasClass("error"))) {
+				$.ajax({
+					type: "GET", url: "/servlet/OX/checkRE", dataType: "json",
+					data: { re: $fileRegex.val(), test: $testRegex.val() },
+					success: function(data) {
+						if(data["re-valid"])
+							$fileRegex.removeClass("error").addClass("success") ;
+						else
+							$fileRegex.removeClass("success").addClass("error") ;
+							
+						if(!$testRegex.val() || !$fileRegex.val()){
+							$testRegex.removeClass("success error") ;
+						}else if((data["test-passed"] && !inverse) || (!data["test-passed"] && inverse)){
+							$testRegex.removeClass("error").addClass("success") ;
+						}else{
+							$testRegex.removeClass("success").addClass("error");
+						}
+							$('input[type=text].error').after(errormark);
+							$('input[type=text].success').after(checkmark);
+					},	
+					error: function() {
+						$this.addClass("error");
+						$('input[type=text].error').after(errormark);
+	
+					}
+				});
+			}
+		}, 500);
+	},
+
+	testLDP : function(evt) {
+			var self = this;
+			$.ajax({
+				type: "POST", url: "/servlet/OX/ldptest", dataType: "json",
+				data: {
+					site: this.model.get("site"),
+					user: this.model.get("account")
+				},
+				success: function(data) {
+						if(data.error){
+							$("#testConnectivityStatus").show();
+							$("#testConnectivityStatus").addClass("error").html(data.output);
+						}else{
+							$("#testConnectivityStatus").show();
+							$("#testConnectivityStatus").addClass("success").html(data.output);
+						}
+				},
+				error: function() {
+						$("#testConnectivityStatus").show();
+						$("#testConnectivityStatus").addClass("error").html(data.output);
+				}
+				});
+	},
+	Index : function() {
+			var self = this;
+			$.ajax({
+				type: "GET", url: "/servlet/OX/buildindex",
+				data: {
+					superadmin: true,
+					user: this.model.get("account"),
+					site: this.model.get("site"),
+					action: this.interval ? "checkstatus" : "build"
+				},
+				success: function(data) {
+				console.log(data.status);
+				    if(data.status == "wait") {
+						$("#buildIndexStauts").html(data.message).attr("class","success");
+				    }
+					else if(data.status == "ok") {
+						clearInterval(self.interval);
+						self.interval = false;
+						$("#buildIndexStauts").html(data.message).attr("class","success");
+						$("#buildIndex").prop("disabled", false);
+					}
+				},
+				error: function(data) {
+					clearInterval(self.interval);
+					$("#buildIndexStauts").html(data.message).attr("class","error");
+					$("#buildIndex").prop("disabled", false);
+				}
+	});
+	},
+	buildIndex : function() {	
+		$("#buildIndexStauts").show();
+		$("#buildIndexBtn").prop("disabled", true);
+		this.Index();
+		this.interval = setInterval(this.Index, 2000);
+		return false;
+	},
+	downloadReg:function(){
+		document.location.href = "/servlet/OX/ldpregfile?user="+this.account+ "&site=" + this.site;
+		return false;
+
 	},
 	cancelBtn:function(){
 			if(this.editMode == 'multiple'){
@@ -1924,7 +1980,7 @@ var AppRouter = Backbone.Router.extend({
      	var accountseditmode= new accountsEditModeView({model:accountmodel});
      	accountmodel.context.skin= skin;
      	accountseditmode.skin = skin;
-     	this.changePage(accountseditmode);
+     	this.changePage(accountseditmode,false, true);
      	
     },
     account:function (skin,account){
@@ -1932,7 +1988,7 @@ var AppRouter = Backbone.Router.extend({
     	var accountview= new accountView();
     	accountview.skin=skin;
     	accountview.account=account;
-    	this.changePage(accountview);
+    	this.changePage(accountview,"pop");
     
     },
     accountAdd:function(skin,editMode,device){
@@ -1946,7 +2002,7 @@ var AppRouter = Backbone.Router.extend({
       accountAddview.editMode= editMode;
       accountAddview.headerTitle="Add Account";
       accountAddview.device=device;
-      this.changePage(accountAddview);
+      this.changePage(accountAddview,"slidedown");
     },
     accountEdit:function(skin,editMode,device,account){
       console.log('#account-edit');
@@ -1970,7 +2026,7 @@ var AppRouter = Backbone.Router.extend({
 			accountEditview.headerTitle= account;
 	  }
 
-      this.changePage(accountEditview);
+      this.changePage(accountEditview,"slidedown");
 		}
 		});
     },
@@ -1990,7 +2046,7 @@ var AppRouter = Backbone.Router.extend({
 		 groupsEditModeview.account=account;
 		 groupmodel.skin = skin;
 		 groupmodel.account = account;
-		 this.changePage(groupsEditModeview);
+		 this.changePage(groupsEditModeview,false, true);
     },
     group:function(skin,account,group){
 	    console.log('#group');
@@ -2033,7 +2089,7 @@ var AppRouter = Backbone.Router.extend({
 					groupEditview.headerTitle=group;
 			}
 			
-			this.changePage(groupEditview);
+			this.changePage(groupEditview,"slidedown");
     	}
     	});
 
@@ -2050,7 +2106,7 @@ var AppRouter = Backbone.Router.extend({
     	groupAddview.device=device;
     	groupAddview.editMode= editMode;
     	groupAddview.headerTitle="Add Group";
-    	this.changePage(groupAddview);
+    	this.changePage(groupAddview,"slidedown");
     },
     
     users:function(skin,account){ 
@@ -2089,7 +2145,7 @@ var AppRouter = Backbone.Router.extend({
 		 usersEditModeview.account=account;
 		 usermodel.skin = skin;
 		 usermodel.account = account;
-		 this.changePage(usersEditModeview);
+		 this.changePage(usersEditModeview,false, true);
     },
     userEdit:function(skin,editMode,device,account,user){
     	console.log('#user-edit');
@@ -2111,7 +2167,7 @@ var AppRouter = Backbone.Router.extend({
 			}else{
 				userEditview.headerTitle= user;
 			}
-			this.changePage(userEditview);
+			this.changePage(userEditview,"slidedown");
     	}
     	});
 
@@ -2128,7 +2184,7 @@ var AppRouter = Backbone.Router.extend({
     	userAddview.device=device;
     	userAddview.editMode= editMode;
     	userAddview.headerTitle="Add User";
-    	this.changePage(userAddview);
+    	this.changePage(userAddview,"slidedown");
     },
     sites:function(skin,account){
 		 console.log('#sites');
@@ -2145,7 +2201,7 @@ var AppRouter = Backbone.Router.extend({
 		 sitemodel.account= account;
 		 sitesEditModeview.skin= skin;
 		 sitesEditModeview.account=account;
-		 this.changePage(sitesEditModeview);
+		 this.changePage(sitesEditModeview,false, true);
 
      
     },
@@ -2193,7 +2249,7 @@ var AppRouter = Backbone.Router.extend({
 				siteEditview.headerTitle= site;
 		}
     	
-    	this.changePage(siteEditview);
+    	this.changePage(siteEditview,"slidedown");
     	}
     	});
 
@@ -2210,31 +2266,32 @@ var AppRouter = Backbone.Router.extend({
     	siteAddview.device= device;
     	siteAddview.editMode = editMode;
     	siteAddview.headerTitle="Add Site";
-    	this.changePage(siteAddview);
+    	this.changePage(siteAddview,"slidedown");
     },
-    changePage:function (page,alertPage) {
+    changePage:function (page,transitionType,dialog) {
 		if (interval != null) {
 			clearInterval(interval);
 		}
-    	if(alertPage){
-    		$(page.el).attr('data-role' , 'dialog');
-    		
-    	} else{
+       	 if(dialog){
+    		$(page.el).attr('id' , 'editModePagesanchore');
+		}
        		$(page.el).attr('data-role', 'page');
-        }
+		
         page.render();
+        
         $('body').append($(page.el));
-        var transition = $.mobile.defaultPageTransition;
+        var transition='fade';
         // We don't want to slide the first page
         if (this.firstPage) {
             transition = 'none';
             this.firstPage = false;
         }
-        else if(alertPage){
-           transition = 'pop';
+        if(transitionType){
+        	transition = transitionType;
         }
-        $.mobile.changePage($(page.el), {changeHash:false, transition: transition, reloadPage:true});
-    },
+
+        $.mobile.changePage($(page.el), {changeHash:false,transition:transition, reloadPage:true});
+    }
 
 });
 

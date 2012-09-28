@@ -14,6 +14,7 @@
 
     <!-- The Templates -->
 <script type="text/template" id="adminLogin">
+
 <div data-role="header" data-theme="b " class="omnistyle" id="index">
 		<img src="images/oucampus.png" title="OU Campus"  style="margin-left: 10px;" />
 		<h1 style="display:inline;margin:0px;"> Mobile</h1>
@@ -185,21 +186,21 @@
 						<input type="text" value="<%= data.email %>"  id="email" name="email" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label id="companylabel" for="company" class="ui-input-text">Organization</label>
+						<label id="companylabel" for="company" class="ui-input-text">Organization:</label>
 						<input type="text" value="<%= data.company %>"  id="company" name="company" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="street" class="ui-input-text">Street</label>
+						<label for="street" class="ui-input-text">Street:</label>
 						<input type="text" value="<%= data.street %>"  id="street" name="street" class="ui-input-text ui-body-c ui-corner-all ">
 					 </li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="city" class="ui-input-text">City</label>
+						<label for="city" class="ui-input-text">City:</label>
 						<input type="text" value="<%= data.city %>"  id="city" name="city" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						 <div>
 							<label for="state" class="ui-input-text">State:</label>
-							<select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+							<select name="state"  class="dropdown" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
 								<option value="0">Select a State</option>
 								<option value="AL">Alabama</option>
 								<option value="AK">Alaska</option>
@@ -257,14 +258,14 @@
 	
 	
 			 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			  <label for="zip" class="ui-input-text">Zip</label>
+			  <label for="zip" class="ui-input-text">Zip:</label>
 			  <input  type="text" value="<%= data.zip %>"  id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
 			 </li>
 			  
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div>
 					<label for="country" class="ui-input-text">Country:</label>
-					<select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+					<select class="dropdown" name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
 									<option value="0">Select a country</option>
 									<option value="AF">Afghanistan</option>
 									<option value="AL">Albania</option>
@@ -518,11 +519,11 @@
 				   <li data-role="list-divider" id="page_checkHelp" class="help" style="display:none;"></li>
 				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					   <label id="page_checkLabel" for="file_check" class="ui-input-text">Page Check:</label>
-					   <select id="page_check" name="page_check">
+					   <select class="dropdown" id="page_check" name="page_check">
 								<option value="0">Disabled</option>
 								<option value="1">Admin Enabled</option>
 								<option value="2">User Enabled</option>
-								<option value="3" selected="selected">Force Enabled</option>
+								<option value="3"  >Force Enabled</option>
 						</select>
 					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-label" role="heading"></div>
 					<div class="ui-controlgroup-controls">
@@ -555,17 +556,17 @@
 				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 					<li data-role="list-divider" id="sso_urlHelp" class="help" style="display:none;"></li> 
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label id="sso_urlLabel"   for="sso_url" class="ui-input-text"> CAS or Shibboleth URL</label>
+						<label id="sso_urlLabel"   for="sso_url" class="ui-input-text"> CAS or Shibboleth URL:</label>
 						<input type="text" value="<%= data.sso_url %>"  id="sso_url" name="sso_url" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 					<li data-role="list-divider" id="announcement_urlHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label id="announcement_urlLabel" for="announcement_url" class="ui-input-text"> Announcement URL</label>
+						<label id="announcement_urlLabel" for="announcement_url" class="ui-input-text"> Announcement URL:</label>
 						<input type="text" value="<%= data.announcement_url %>"  id="announcement_url" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 					<li data-role="list-divider" id="logout_urlHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label  id="logout_urlLabel"   for="logout_url" class="ui-input-text">  Logout URL</label>
+						<label  id="logout_urlLabel"   for="logout_url" class="ui-input-text">  Logout URL:</label>
 						<input type="text" value="<%= data.logout_url %>"  id="logout_url" name="logout_url" class="ui-input-text ui-body-c ui-corner-all ">   		  
 					</li>               
 				</ul>        
@@ -579,7 +580,7 @@
 		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
-					<select data-role="slider" id="addons" name="addons" class="ui-slider-switch">
+					<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -587,7 +588,7 @@
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="dependency_manager" id="dependency_manager-label" class="ui-slider"> Dependency Manager:</label>
-					<select data-role="slider" id="dependency_manager" name="dependency_manager" class="ui-slider-switch">
+					<select data-role="slider" id="dependency_manager" name="dependency_manager" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -595,7 +596,7 @@
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="show_pass" id="show_pass-label" class="ui-slider">Reveal Site's Password:</label>
-					<select data-role="slider" id="show_pass" name="show_pass" class="ui-slider-switch">
+					<select data-role="slider" id="show_pass" name="show_pass" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -603,7 +604,7 @@
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="ldp" id="ldp-label" class="ui-slider"> LDP - Image Gallery:</label>
-					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch">
+					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -611,7 +612,7 @@
 							
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="search" id="search-label" class="ui-slider">Search On:</label>
-					<select data-role="slider" id="search" name="search" class="ui-slider-switch">
+					<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -619,7 +620,7 @@
 				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="hidden" id="hidden-label" class="ui-slider"> Hide Account:</label>
-					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch">
+					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -703,21 +704,21 @@
 			<input type="text" value="<%= data.email %>"  id="email" name="email" class="ui-input-text ui-body-c ui-corner-all ">
 		</li>
 		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			<label for="company" class="ui-input-text">Organization</label>
+			<label for="company" class="ui-input-text">Organization: </label>
 			<input type="text" value="<%= data.company %>"  id="company" name="company" class="ui-input-text ui-body-c ui-corner-all ">
 		</li>
 		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="street" class="ui-input-text">Street</label>
+						<label for="street" class="ui-input-text">Street: </label>
 						<input type="text" value="<%= data.street %>"  id="street" name="street" class="ui-input-text ui-body-c ui-corner-all ">
 					 </li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="city" class="ui-input-text">City</label>
+						<label for="city" class="ui-input-text">City: </label>
 						<input type="text" value="<%= data.city %>"  id="city" name="city" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						 <div>
 							<label for="state" class="ui-input-text">State:</label>
-							<select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+							<select name="state" id="state" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
 								<option value="0">Select a State</option>
 								<option value="AL">Alabama</option>
 								<option value="AK">Alaska</option>
@@ -775,14 +776,14 @@
 	
 	
 			 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			  <label for="zip" class="ui-input-text">Zip</label>
+			  <label for="zip" class="ui-input-text">Zip:</label>
 			  <input  type="text" value="<%= data.zip %>"  id="zip" name="zip" class="ui-input-text ui-body-c ui-corner-all ">
 			 </li>
 			  
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<div>
 					<label for="country" class="ui-input-text">Country:</label>
-					<select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false">
+					<select name="country" id="country" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
 									<option value="0">Select a country</option>
 									<option value="AF">Afghanistan</option>
 									<option value="AL">Albania</option>
@@ -1035,14 +1036,14 @@
 		</h3>
 		<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 			 
-  			<li data-role="list-divider" id="page_checkLabelHelp" class="help" style="display:none;"></li>
+  			<li data-role="list-divider" id="page_checkHelp" class="help" style="display:none;"></li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-			     <label style="width:20%;" id="page_checkLabel" for="page_check" class="ui-input-text">Page Check:</label>
-                 <select id="page_check" name="page_check">
+			     <label  id="page_checkLabel" for="page_check" class="ui-input-text">Page Check:</label>
+                 <select id="page_check" name="page_check" class="dropdown">
 							<option value="0">Disabled</option>
 							<option value="1">Admin Enabled</option>
 							<option value="2">User Enabled</option>
-							<option value="3" selected="selected">Force Enabled</option>
+							<option value="3"  >Force Enabled</option>
 				 </select>
 	            <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 	             <div class="ui-controlgroup-label" role="heading"></div><div class="ui-controlgroup-controls">
@@ -1073,17 +1074,17 @@
             	 
 				<li data-role="list-divider" id="sso_urlHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="sso_urlLabel"   for="sso_url" class="ui-input-text"> CAS or Shibboleth URL</label>
+					<label id="sso_urlLabel"   for="sso_url" class="ui-input-text"> CAS or Shibboleth URL:</label>
 					<input type="text" value="<%= data.sso_url %>"  id="sso_url" name="sso_url" class="ui-input-text ui-body-c ui-corner-all ">
    		  		</li>
    		        <li data-role="list-divider" id="announcement_urlHelp" class="help" style="display:none;"></li>
    		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="announcement_urlLabel"   for="announcement_url" class="ui-input-text"> Announcement URL</label>
+					<label id="announcement_urlLabel"   for="announcement_url" class="ui-input-text"> Announcement URL:</label>
 					<input type="text" value="<%= data.announcement_url %>"  id="announcement_url" name="announcementurl" class="ui-input-text ui-body-c ui-corner-all ">
    		    	</li>
    		        <li data-role="list-divider" id="logout_urlHelp" class="help" style="display:none;"></li>
    		      	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="logout_urlLabel"   for="logout_url" class="ui-input-text">  Logout URL</label>
+					<label  id="logout_urlLabel"   for="logout_url" class="ui-input-text">  Logout URL:</label>
 					<input type="text" value="<%= data.logout_url %>"  id="logout_url" name="logout_url" class="ui-input-text ui-body-c ui-corner-all ">
    		  		 </li>        
             </ul>             
@@ -1097,28 +1098,28 @@
             	 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
-					<select data-role="slider" id="addons" name="addons" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option  selected="selected"  value="on">On</option>
+					<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="dependancy_manager" id="dependancymanager-label" class="ui-slider"> Dependency Manager:</label>
-					<select data-role="slider" id="dependancy_manager" name="dependancy_manager" class="ui-slider-switch">
+					<select data-role="slider" id="dependancy_manager" name="dependancy_manager" class="ui-slider-switch slide">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="compare" id="compare-label" class="ui-slider">Document Comparison:</label>
-					<select data-role="slider" id="compare" name="compare" class="ui-slider-switch">
+					<select data-role="slider" id="compare" name="compare" class="ui-slider-switch slide">
 						<option value="off">Off</option>
-						<option selected="selected"  value="on">On</option>
+						<option value="on">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="show_pass" id="show_pass-label" class="ui-slider">Reveal Site's Password:</label>
-					<select data-role="slider" id="show_pass" name="show_pass" class="ui-slider-switch">
+					<select data-role="slider" id="show_pass" name="show_pass" class="ui-slider-switch slide">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
@@ -1126,21 +1127,21 @@
 			
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="ldp" id="ldpimagegallery-label" class="ui-slider"> LDP - Image Gallery:</label>
-					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch">
+					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch slide">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</li>		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="search" id="searchon-label" class="ui-slider">Search On:</label>
-					<select data-role="slider" id="search" name="search" class="ui-slider-switch">
+					<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
 						<option value="off">Off</option>
-						<option selected="selected"  value="on">On</option>
+						<option    value="on">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="hidden" id="hidden-label" class="ui-slider"> Hide Account:</label>
-					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch">
+					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch slide">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
@@ -1181,7 +1182,7 @@
 			<li style="padding:10px 0px 15px 15px;">
 			<img  style="margin:2px"  src="images/group-icon.png" title="Site"   />
 			<div class="group-label">
-				<h1 id="group-name">Group Name: &nbsp; </h1> 
+				<span>Group Name:<h1 id="group-name" style="display:inline;">&nbsp; </h1> </span><br />
 				<span >Number of Members: &nbsp; &nbsp;</span><span id="member-count"> &nbsp; </span> <br />
 			</div>
 			<div class="group-info">
@@ -1269,7 +1270,7 @@
 			<li style="padding:10px 0px 15px 15px;">
 			<img  style="margin:2px"  src="images/user-icon.png" title="User" />
 			<div class="user-label">
-			<h1 id="user-name"> Username: &nbsp; </h1> 
+			<span>Username:<h1 style="display:inline;" id="user-name"> &nbsp; </h1> </span><br />
 			<span >Privilege: <span id="privilege">&nbsp;</span> </span><br />
 			<span  >Firstname:<span id="fname" class="information"> &nbsp; </span></span><br />
 			<span  >Lastname:<span id="lname" class="information" > &nbsp; </span></span>
@@ -1282,10 +1283,8 @@
 			
 			</div>
 			</li>
-			
-			
 		</ul>
-
+</div>
 </script>
 <script type="text/template" id="userEdit">
 <div data-role="content" style="padding:10px 1px;">
@@ -1345,11 +1344,34 @@
 					</li>
 					<li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li> 
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="locale" class="ui-input-text">Locale</label>
+						<label for="locale" class="ui-input-text">Locale:</label>
 						<input type="text" value="<%= data.locale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 				</ul> 
 				<br />
+				
+				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all" id="tablet">
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<fieldset style="width:100%" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+							<div  id="controler" class="ui-controlgroup-controls">
+								<div class="ui-checkbox"><input type="checkbox" id="sendmessage" class="custom" name="sendmessage"><label for="sendmessage" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"   class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px;margin-left:20px;"  class="ui-btn-text">Send Welcome Message:</span></span></label></div>
+							</div>
+						</fieldset>
+					</li>
+					<li  data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<div id="showmessagedetails"   style="display:none;">
+							<fieldset   style="width:100%" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+								<div class="ui-controlgroup-controls">
+									<div class="ui-checkbox"><input type="checkbox" id="sendpass" class="custom" name="sendpass"><label for="sendpass" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c"  class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-top:4px"  class="ui-btn-text">Send Password in Message</span></span></label></div>	
+								</div>
+							</fieldset>
+							<div data-role="fieldcontain">
+								<label   style="width:44%" for="textarea" class="ui-input-text">Additional Message to User:</label><br />
+								<textarea  class="textarea1" cols="40" rows="8" name="welcomeM" id="welcomeM"></textarea>
+						   </div>
+						</div>
+					</li>
+				</ul>
 			</div> <!-- User Information-->
 			<div id="preferences-div" style="display:none"> 
 				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
@@ -1359,29 +1381,29 @@
 					<li data-role="list-divider" id="just_editHelp" class="help" style="display:none;"></li> 
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="just_edit" id="just_edit-label" class="ui-slider">Just Edit:</label>
-						<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
-							<option  selected="selected" value="false">Off</option>
+						<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch slide">
+							<option value="false">Off</option>
 							<option value="true">On</option>
 						</select>
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="dictionary_add" id="dictionary_add-label" class="ui-slider">Add to Dictionary:</label>
-						<select data-role="slider" id="dictionary_add" name="dictionary_add" class="ui-slider-switch">
-							<option  selected="selected"  value="false">Off</option>
+						<select data-role="slider" id="dictionary_add" name="dictionary_add" class="ui-slider-switch slide">
+							<option value="false">Off</option>
 							<option value="true">On</option>
 						</select>
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="page_check" id="pagecheck-label" class="ui-slider">Page Check:</label>
-						<select data-role="slider" id="page_check" name="page_check" class="ui-slider-switch">
-							<option  selected="selected"   value="false">Off</option>
+						<select data-role="slider" id="page_check" name="page_check" class="ui-slider-switch slide">
+							<option value="false">Off</option>
 							<option value="true">On</option>
 						</select>
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="failed_login_notification" id="failed_login_notification-label" class="ui-slider">Failed Login Notification:</label>
-						<select data-role="slider" id="ffailed_login_notification" name="failed_login_notification" class="ui-slider-switch">
-							<option  selected="selected"   value="false">Off</option>
+						<select data-role="slider" id="failed_login_notification" name="failed_login_notification" class="ui-slider-switch slide">
+							<option value="false">Off</option>
 							<option value="true">On</option>
 						</select>
 					</li>		
@@ -1395,8 +1417,8 @@
 				   <li data-role="list-divider" id="privilegeHelp" class="help" style="display:none;"></li> 
 				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="privilege" class="ui-input-text">User Level:</label>
-						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-								<option selected="selected" value="0">0-Reviewer</option>
+						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false"class="dropdown">
+								<option value="0">0-Reviewer</option>
 								<option value="1">1-Contributor</option>
 								<option value="2">2-Contributor</option>
 								<option value="3">3-Contributor</option>
@@ -1414,15 +1436,15 @@
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					 <div>
 						<label for="approver" class="ui-input-text">Approver:</label>
-							 <select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-								<option selected="selected" value=" ">None</option>
+							 <select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+								<option value=" ">None</option>
 							  </select>	
 					 </div>
 					</li>
 					<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="enforceApprover" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
-						<select data-role="slider" id="enforceApprover" name="enforce_approver" class="ui-slider-switch">
-							<option  selected="selected" value="off">No</option>
+						<label for="enforce_approver" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
+						<select data-role="slider" id="enforce_approver" name="enforce_approver" class="ui-slider-switch slide">
+							<option    value="off">No</option>
 							<option value="on">Yes</option>
 						</select>
 					</li>	
@@ -1430,8 +1452,8 @@
 				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					 <div>
 						<label for="toolbar" class="ui-input-text">Toolbar:</label>
-						<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-							<option selected="selected" value=" ">Default</option>
+						<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+							<option value=" ">Default</option>
 						</select>
 					  </div>
 					</li>
@@ -1445,8 +1467,8 @@
 					<li data-role="list-divider" id="ldap_authHelp" class="help" style="display:none;"></li> 
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="ldap_auth" class="ui-input-text">Authentication Type:</label>
-						<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-							<option selected="selected" value="0">Simple</option>
+						<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+							<option value="0">Simple</option>
 							<option value="1">Simple (SSL)</option>
 							<option value="2">Simple (StartTLS)</option>
 						</select>
@@ -1516,12 +1538,12 @@
 				</li>
 				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="time_zone" class="ui-input-text">Time Zone</label>
+					<label for="time_zone" class="ui-input-text">Time Zone:</label>
 					<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				 <li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li> 
 				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="locale" class="ui-input-text">Locale</label>
+					<label for="locale" class="ui-input-text">Locale:</label>
 					<input type="text" value="<%= data.loacale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
    		  		</li>	
 			</ul> <br />	
@@ -1567,30 +1589,24 @@
         	    <li data-role="list-divider" id="just_editHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="just_edit" id="just_edit-label" class="ui-slider"> Just Edit:</label>
-					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
+					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch slide">
+						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</li>
 			  
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="just_edit" id="justEdit-label" class="ui-slider">JustEdit:</label>
-					<select data-role="slider" id="just_edit" name="just_edit" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
+
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="page_check" id="pagecheck-label" class="ui-slider">Page Check:</label>
-					<select data-role="slider" id="file_check" name="page_check" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
+					<select data-role="slider" id="file_check" name="page_check" class="ui-slider-switch slide">
+						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="failed_login_notification" id="failedlogin-label" class="ui-slider">Failed Login Notification:</label>
-					<select data-role="slider" id="failed_login_notification" name="failed_login_notification" class="ui-slider-switch">
-						<option  selected="selected"   value="off">Off</option>
+					<select data-role="slider" id="failed_login_notification" name="failed_login_notification" class="ui-slider-switch slide">
+						<option      value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</li>	
@@ -1605,8 +1621,8 @@
 	 		    <li data-role="list-divider" id="privillegeHelp" class="help" style="display:none;"></li> 
 				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="privilege" class="ui-input-text">User Level:</label>
-						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-								<option selected="selected" value="0">0-Reviewer</option>
+						<select name="privilege" id="privilege" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+								<option " value="0">0-Reviewer</option>
 								<option value="1">1-Contributor</option>
 								<option value="2">2-Contributor</option>
 								<option value="3">3-Contributor</option>
@@ -1624,15 +1640,15 @@
 			   	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				 <div>
 					<label for="approver" class="ui-input-text">Approver:</label>
-					<select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-						 <option selected="selected" value=" ">None</option>
+					<select name="approver" id="approver" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+						 <option value=" ">None</option>
 					</select>
 				  </div>
 				</li>
 				<li data-role="enforceApprover" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="enforce_approver" id="enforceApprover-label" class="ui-slider">Enforce Approver:</label>
-					<select data-role="slider" id="enforcea_pprover" name="enforce_approver" class="ui-slider-switch">
-						<option  selected="selected" value="off">No</option>
+					<select data-role="slider" id="enforce_approver" name="enforce_approver" class="ui-slider-switch slide">
+						<option    value="off">No</option>
 						<option value="on">Yes</option>
 					</select>
 				</li>
@@ -1640,8 +1656,8 @@
 		  		<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				 	<div>
 						<label for="toolbar" class="ui-input-text">Toolbar:</label>
-			  			<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-							<option selected="selected" value=" ">Default</option>
+			  			<select name="toolbar" id="toolbar" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+								<option value=" ">Default</option>
 						</select>
 					</div>
 				</li>
@@ -1656,8 +1672,8 @@
 				<li data-role="list-divider" id="ldap_authHelp" class="help" style="display:none;"></li> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="ldap_auth" class="ui-input-text">Authentication Type:</label>
-					<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false">
-						<option selected="selected" value="0">Simple</option>
+					<select name="ldap_auth" id="ldap_auth" style="min-width:100px" data-theme="c"  data-iconshadow="false" class="dropdown">
+						<option value="0">Simple</option>
 						<option value="1">Simple (SSL)</option>
 						<option value="2">Simple (StartTLS)</option>
 					</select>
@@ -1710,7 +1726,7 @@
 			<li style="padding:10px 0px 15px 15px;">
 			<img  style="margin:2px"  src="images/site-icon.png" title="Site"   />
 			<div class="site-label">
-			<h1 id="site-name">Site Name: &nbsp; </h1> 
+			<span>Site Name: <h1 style="display:inline;" id="site-name"> &nbsp; </h1> </span><br />
 			<span id="url" style="text-align:center"><span id="url-label">URL:</span> &nbsp; </span>
 			</div>
 			<div class="site-info">
@@ -1722,7 +1738,7 @@
 			
 			
 		</ul>
-
+</div>
 </script>
 <script type="text/template" id="siteEdit">
 <div data-role="content" style="padding:10px 1px;" id="sitediv">
@@ -1747,7 +1763,9 @@
 		   	 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
 	  	  </ul>
 			<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
-					<li data-role="list-divider" id="siteHelp" class="help" style="display:none;"></li>       
+			    <% if(editType != "edit"){ %>
+					<li data-role="list-divider" id="siteHelp" class="help" style="display:none;"></li>  
+				<%} %>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label  id="siteLabel" for="site" class="ui-input-text">Site Name:</label>
 						<% if(editType == "edit"){ %>
@@ -1756,6 +1774,17 @@
 						<input type="text" value="" id="site" name="name" class="ui-input-text ui-body-c ui-corner-all ">
 						<%}%>
 					</li>
+					<% if(editType == "edit"){ %>
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+								<label  id="uuidLabel" for="uuid" class="ui-input-text">UUID:</label>
+								<labelid="uuid"  class="edit-element-label"><%=data.uuid %></label>
+						</li>
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+								<label id="public_keyLabel" for="public_key" class="ui-input-text">Public Key:</label>
+								<textarea style="height:100px;" id="public_key" name="public_key"> </textarea>
+						</li>
+					<%}%>
+
 			</ul>
 			<br />		
 		    <div class="ui-body ui-body-b ui-corner-all">
@@ -1775,9 +1804,9 @@
 					  </li>
 					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 							<div id="authtype-container" class="oubox-edit-setting">
-								<label for="fauthtype0">Authentication Type:</label>
+								<label >Authentication Type:</label>
 								<fieldset data-role="controlgroup">
-									<input type="radio" checked="checked" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
+									<input checked="checked" type="radio" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
 									<label for="fauthtype0"> Password</label>
 									<input type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
 									<label for="fauthtype1"> Public Key</label>
@@ -1785,7 +1814,7 @@
 							</div>
 					  </li>	
 					  <li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
-					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c" id="passwordLi">
 						<div id="password-container" class="oubox-edit-setting">
 							<div class="oubox-edit-setting-field-div">
 								<label id="passwordLabel" for="password">Password:</label>
@@ -1798,7 +1827,7 @@
 							<div id="umask-container" class="oubox-edit-setting">
 									<label id="umaskLabel" for="umask">UMask:</label>
 									<fieldset data-role="controlgroup">
-										<input  type="radio" checked="checked" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+										<input type="radio" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
 										<input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label>
 									</fieldset>
 							</div>
@@ -1810,7 +1839,7 @@
 									<div id="ftp_root-div" class="oubox-edit-setting-field-div  ">
 									<label id="ftp_rootLabel" for="ftp_root">FTP Root:</label>
 									<input type="text" maxlength="128" size="64" name="ftp_root" id="ftp_root">
-								</div>
+									</div>
 							</div>
 					  </li>
 						
@@ -1864,8 +1893,8 @@
 						<li data-role="list-divider" id="local_template_pathHelp" class="help" style="display:none;"></li>
 						<li id="templateDirectory" data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 							<label  id="local_templatesLabel" for="use_local_templates" id="use_local_templates-label">Template Source: </label>
-							<select data-role="slider" id="use_local_templates" name="use_local_templates" class="ui-slider-switch">
-								<option  selected="selected" value="false">Remote</option>
+							<select data-role="slider" id="use_local_templates" name="use_local_templates" class="ui-slider-switch slide">
+								<option value="false">Remote</option>
 								<option value="true"> Local</option>	
 							</select>
 							<div  id="LocalTemplatePath" class="oubox-edit-setting" style="display:none;margin-top:5px;">
@@ -1881,6 +1910,7 @@
 							    </div>
 							</div>
 						 </li>
+
 			   </ul>
 		   </div>	
 	</div>	<!--siteinformation-div -->
@@ -1891,10 +1921,10 @@
 	  	  </ul>
 		  <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="button_type" class="ui-input-text">Button Type</label>
-					<select id="button_type" name="button_type" onchange="toggleFileCheckList(this.value)">
+					<label for="button_type" class="ui-input-text">Button Type:</label>
+					<select id="button_type" name="button_type" onchange="toggleFileCheckList(this.value)" class="dropdown">
 						<option value="0">None</option>
-						<option selected="selected" value="1">Standard</option>
+						<option value="1">Standard</option>
 						<option value="2">Transparent</option>
 					</select>
 				</li>  
@@ -1913,14 +1943,16 @@
 		 <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
 				<li data-role="list-divider" id="ldpAdminHostHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="ldpAdminHostLabel"    for="tweet" class="ui-input-text"> LDP Admin Host:</label>
+					<label id="ldpAdminHostLabel" for="ldpAdminHost" class="ui-input-text"> LDP Admin Host:</label>
 					<input type="text" value="<%= data.ldpAdminHost %>"  id="ldpAdminHost" name="ldpAdminHost" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li-statis ui-body-c">
 					<input type="button"  name="downloadRegBtn"  id="downloadRegBtn" value="Download Reg File"/> 
+					<div id="downloadRegStatus"> </div>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li-statis ui-body-c">
 					<input type="button" name="testConnectivityBtn" id="testConnectivityBtn" value="Test Conectivity"/> 
+					<div id="testConnectivityStatus"></div>
 			   </li>		
 		</ul>
 	</div> <!-- LDP Setting-->
@@ -1932,41 +1964,42 @@
 		  <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">	
 				<li data-role="list-divider" id="trash_pathHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="trash_pathLabel" class="inputb" for="trash_path" class="ui-input-text"> Recycle Bin</label>
+					<label id="trash_pathLabel" class="inputb" for="trash_path" class="ui-input-text"> Recycle Bin:</label>
 					<input type="text" value="/trash" id="trash_path" name="trash_path" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="time_zoneLabel" class="inputb" for="time_zone" class="ui-input-text"> Time Zone</label>
+					<label  id="time_zoneLabel" class="inputb" for="time_zone" class="ui-input-text"> Time Zone:</label>
 					<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				<li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="localeLabel" class="inputb"  for="locale" class="ui-input-text">  Locale</label>
+					<label  id="localeLabel" class="inputb"  for="locale" class="ui-input-text">  Locale:</label>
 					<input type="text" value="<%= data.locale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label  for="dependency_mgr" id="dependency_mgr-label" class="ui-slider">Dependency Manager:</label>
-					<select data-role="slider" id="dependency_mgr" name="dependency_mgr" class="ui-slider-switch">
-						<option  selected="selected" value="off">Off</option>
-						<option value="on"> On </option>
+					<select data-role="slider" id="dependency_mgr" name="dependency_mgr" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true"> On </option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="addons" id="find_replace" class="ui-slider">Find / Replace</label>
-					<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option  selected="selected"  value="on">On</option>
+					<label for="addons" id="find_replaceLabel" class="ui-slider">Find / Replace:</label>
+					<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 				</li>   
 				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label  for="quick_search" id="addons-label" class="ui-slider">Search:</label>
-					<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option  selected="selected"  value="on">On</option>
+					<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 					<br /><br />
-					<input type="button" id="buildIndex" name="buildIndex" value=" Build Index"/> 
+					<input type="button" id="buildIndex" name="buildIndex" value=" Build Index"/>
+					<div id="buildIndexStauts">&nbsp;</div>
 				</li>		
 		   </ul>      
 	 </div> 	   
@@ -1976,17 +2009,17 @@
 	  	  </ul>
 		   <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="final_check" id="final_check-label" class="ui-slider">Final Check:</label>
-					<select data-role="slider" id="final_check" name="final_check" class="ui-slider-switch">
-						<option  selected="selected"  value="off">Off</option>
-						<option  value="on">On</option>
+					<label for="final_check" id="final_checklabel" class="ui-slider">Final Check:</label>
+					<select data-role="slider" id="final_check" name="final_check" class="ui-slider-switch slide">
+						<option  value="false">Off</option>
+						<option  value="true">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="filter_tags" id="filter_tags-label" class="ui-slider"> Remove OU Tags:</label>
-					<select data-role="slider" id="filter_tags" name="filter_tags" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option selected="selected" value="on">On</option>
+					<select data-role="slider" id="filter_tags" name="filter_tags" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 			   </li>
 			   <li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>
@@ -2006,17 +2039,17 @@
 					<li data-role="list-divider" id="url_typeHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="url_type" class="ui-input-text">Short URL: </label>
-						 <select id="url_type" name="url_type" onchange="toggleFileCheckList(this.value)">
+						 <select id="url_type" name="url_type" onchange="toggleFileCheckList(this.value)" class="dropdown">
 							<option value="0">ABSOLUTE</option>
-							<option selected="selected" value="1">ROOT_RELATIVE</option>
+							<option value="1">ROOT_RELATIVE</option>
 							<option value="2">PAGE_RELATIVE</option>
 						  </select>
 					</li>
 					<li data-role="list-divider" id="decorative_imagesHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					  <label for="decorative_images"  id="decorative_images-label" class="ui-input-text"> Decorative Images: </label>
-					  <select name="decorative_images" id="decorative_images">
-							<option selected="selected" value="0">Disabled</option>
+					  <select name="decorative_images" id="decorative_images" class="dropdown">
+							<option value="0">Disabled</option>
 							<option value="1">Admin Only</option>
 							<option value="2">All Users</option>
 					 </select>
@@ -2024,30 +2057,30 @@
 					<li data-role="list-divider" id="toolbarHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						 <label for="toolbar"  id="toolbar-label" class="ui-input-text"> Toolbar: </label>
-						 <select name="toolbar" id="toolbar">
-							<option selected="selected" value="0">Default</option>
+						 <select name="toolbar" id="toolbar" class="dropdown" >
+							<option value=" ">Default</option>
 						</select>
 					</li>
 				   
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="ascii_only" id="asciiOnly-label" class="ui-slider"> ASCII Only:</label>
-						<select data-role="slider" id="ascii_only" name="ascii_only" class="ui-slider-switch">
-							<option  selected="selected" value="off">Off</option>
-							<option value="on"> On </option>
+						<select data-role="slider" id="ascii_only" name="ascii_only" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option value="true"> On </option>
 						</select>
 					</li>
 				    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="imageresizing" id="imageresizing-label" class="ui-slider">Image Resizing:</label>
-						<select data-role="slider" id="imageresising" name="imageresizing" class="ui-slider-switch">
-							<option value="off">Off</option>
-							<option selected="selected" value="on">On</option>
+						<label for="disable_image_resizing" id="disable_image_resizingLabel" class="ui-slider">Image Resizing:</label>
+						<select data-role="slider" id="disable_image_resizing" name="disable_image_resizing" class="ui-slider-switch slide">
+							<option value="true">Off</option>
+							<option value="false">On</option>
 						</select>
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="imagealignmentmenu" id="imageresizing-label" class="ui-slider">Image Alignment Menu:</label>
-						<select data-role="slider" id="imagealignmentmenu" name="imagealignmentmenu" class="ui-slider-switch">
-							<option value="off">Off</option>
-							<option selected="selected" value="on">On</option>
+						<label for="disable_image_alignment" id="disable_image_alignmentLabel" class="ui-slider">Image Alignment Menu:</label>
+						<select data-role="slider" id="disable_image_alignment" name="disable_image_alignment" class="ui-slider-switch slide">
+							<option value="true">Off</option>
+							<option value="false">On</option>
 						</select>
 					</li>
 		   </ul>
@@ -2065,7 +2098,7 @@
 							<input type="text" value="<%= data.default_extension %>"  id="default_extension" name="default_extension" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 						
-					<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>	      
+					<li data-role="list-divider" id="file_regexHelp" class="help" style="display:none;"></li>	      
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 							<label  for="file_regex" class="ui-input-text"> File Name Regex:</label>
 							<input type="text" value="<%= data.file_regex %>"  id="file_regex" name="file_regex" class="ui-input-text ui-body-c ui-corner-all ">
@@ -2073,35 +2106,31 @@
 						
 					 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 							<label  for="negate_regex" id="notregex-label" class="ui-slider"> Filename Must NOT Match Regex:</label>
-							<select data-role="slider" id="negate_regex" name="negate_regex" class="ui-slider-switch">
-								<option  selected="selected" value="off">Off</option>
-								<option value="on"> On </option>
+							<select data-role="slider" id="negate_regex" name="negate_regex" class="ui-slider-switch slide">
+								<option value="false">Off</option>
+								<option value="true"> On </option>
 									
 							</select>
 					</li>
-					<li data-role="list-divider" id="file_regexHelp" class="help" style="display:none;"></li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-							<label id="file_regexLabel"  for="file_regex" class="ui-input-text"> File Name Regex:</label>
-							<input type="text" value="<%= data.file_regex %>"  id="file_regex" name="file_regex" class="ui-input-text ui-body-c ui-corner-all ">
-					</li>
+
 						
 					<li data-role="list-divider" id="file_regex_descHelp" class="help" style="display:none;"></li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-							<label id="file_regex_descLabel"  for="file_regex_desc" class="ui-input-text"> File Name Regex description:</label>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c regextest" style="display:none;">
+							<label id="file_regex_descLabel"  for="file_regex_desc" class=" ui-input-text"> File Name Regex description:</label>
 							<input type="text" value="<%= data.file_regex_desc %>"  id="file_regex_desc" name="file_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 						
-					<li data-role="list-divider" id="filenameregexTestHelp" class="help" style="display:none;"></li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<li data-role="list-divider" id="test_file_regexHelp" class="help" style="display:none;"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c regextest" style="display:none;">
 							<label id="filenameregexTestLabel"  for="test_file_regex" class="ui-input-text">Test File Name Regex:</label>
 							<input type="text" value="<%= data.test_file_regex %>"  id="test_file_regex" name="test_file_regex" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 						
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-							<label for="uppercasefoldernames" id="negate_regex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
-							<select data-role="slider" id="uppercasefoldernames" name="uppercasefoldernames" class="ui-slider-switch">
-								<option  selected="selected" value="off">Off</option>
-								<option value="on"> On </option>
+							<label for="allow_uppercase_folders" id="negate_regex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
+							<select data-role="slider" id="allow_uppercase_folders" name="allow_uppercase_folders" class="ui-slider-switch slide">
+								<option value="false">Off</option>
+								<option value="true"> On </option>
 							</select>
 					</li>		  
 		     </ul>
@@ -2115,26 +2144,26 @@
 			
 					
 				<li data-role="list-divider" id="bin_file_regexHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label id="bin_file_regexLabel"    for="bin_file_regex" class="ui-input-text"> Binary File Name Regex:</label>
-						<input type="text" value="<%= data.binaryfielnameregex %>"  id="binaryfielnameregex" name="bin_file_regex" class="ui-input-text ui-body-c ui-corner-all " />
+				<li data-role="fieldcontain" class=" ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label id="binary_regexLabel"    for="binary_regex" class="ui-input-text"> Binary File Name Regex:</label>
+						<input type="text" value="<%= data.binary_regex %>"  id="binary_regex" name="binary_regex" class="ui-input-text ui-body-c ui-corner-all " />
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  for="binarynegate_regex" id="binarynegate_regex-label" class="ui-slider">Binary Filename Must NOT Match Regex:</label>
-					<select data-role="slider" id="binarynegate_regex" name="binarynegate_regex" class="ui-slider-switch">
-						<option  selected="selected" value="off">Off</option>
-						<option value="on"> On </option>	
+					<label  for="negate_binary_regex" id="binarynegate_regex-label" class="ui-slider">Binary Filename Must NOT Match Regex:</label>
+					<select data-role="slider" id="negate_binary_regex" name="negate_binary_regex" class="ui-slider-switch slide">
+						<option  value="false">Off</option>
+						<option value="true"> On </option>	
 					</select>
 				</li>
 				<li data-role="list-divider" id="button_codeHelp" class="help" style="display:none;"></li>
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="button_codeLabel"  for="binaryfilenameregexDesc" class="ui-input-text"> Binary File Regex Description:</label>
-					<input type="text" value="<%= data.binaryfilenameregexDesc %>"  id="binaryfilenameregexDesc" name="binaryfilenameregexDesc" class="ui-input-text ui-body-c ui-corner-all ">
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c  binaryregextest" style="display:none;">
+					<label style="min-width:163px;"  id="binary_regex_descLabel"  for="binaryfilenameregexDesc" class="ui-input-text"> Binary File Regex Description:</label>
+					<input type="text" value="<%= data.binary_regex_desc %>"  id="binary_regex_desc" name="binary_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				<li data-role="list-divider" id="binaryfilenameregexTestHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label  id="binaryfilenameregexTestLabel"    for="binaryfilenameregexTest" class="ui-input-text">Test Binary File Regex:</label>
-					<input type="text" value="<%= data.binaryfilenameregexTest %>"  id="binaryfilenameregexTest" name="binaryfilenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
+					<input type="text" value="<%= data.test_binary_regex %>"  id="test_binary_regex" name="test_binary_regex" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>	
 		     </ul>
 		     </div>
@@ -2160,16 +2189,27 @@
 			
 		</h3>
 		<ul   data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-			<li data-role="list-divider" id="siteHelp" class="help" style="display:none;"></li>       
-			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				<label  id="siteLabel" for="site" class="ui-input-text">Site Name: </label>
-				<% if(editType == "edit"){ %>
-					<label class="edit-element-label"> <%= data.site %> </label>
-				<%}else{ %>
-					<input  type="text" value=""  id="site" name="name" class="ui-input-text ui-body-c ui-corner-all ">
+			 <% if(editType != "edit"){ %>
+					<li data-role="list-divider" id="siteHelp" class="help" style="display:none;"></li>  
+				<%} %>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label  id="siteLabel" for="site" class="ui-input-text">Site Name:</label>
+						<% if(editType == "edit"){ %>
+							<label class="edit-element-label"><%=data.site %></label>
+						<%} else{ %>
+						<input type="text" value="" id="site" name="name" class="ui-input-text ui-body-c ui-corner-all ">
+						<%}%>
+					</li>
+					<% if(editType == "edit"){ %>
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+								<label  id="uuidLabel" for="uuid" class="ui-input-text">UUID:</label>
+								<labelid="uuid"  class="edit-element-label"><%=data.uuid %></label>
+						</li>
+						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+								<label id="public_keyLabel" for="public_key" class="ui-input-text">Public Key:</label>
+								<textarea style="height:100px;" id="public_key" name="public_key"> </textarea>
+						</li>
 				<%}%>
-			</li>
-			</li>
 		</ul>
 		<br />		
 		<div class="ui-body ui-body-b ui-corner-all">
@@ -2192,15 +2232,15 @@
 						<div id="authtype-container" class="oubox-edit-setting">
 							<label for="fauthtype0">Authentication Type:</label>
 							<fieldset data-role="controlgroup">  
-								<input type="radio" checked="checked" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
+								<input checked="checked"  type="radio" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
 								<label for="fauthtype0"> Password</label>
-								<input type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
+								<input  type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
 								<label for="fauthtype1"> Public Key</label>
 							</fieldset>
 						</div>
 					</li>	
 					<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
-					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c" id="passwordLi">
 						<div id="password-container" class="oubox-edit-setting">
 							<div class="oubox-edit-setting-field-div">
 								<label id="passwordLabel" for="password">Password:</label>
@@ -2209,11 +2249,11 @@
 						</div>
 					</li>	
 					  <li data-role="list-divider" id="umaskHelp" class="help" style="display:none;"></li> 
-					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c" >
 							<div id="umask-container" class="oubox-edit-setting">
 									<label id="umaskLabel" for="umask">UMask:</label>
 									<fieldset data-role="controlgroup">
-										<input  type="radio" checked="checked" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+										<input  type="radio"   value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
 										<input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label>
 									</fieldset>
 							</div>
@@ -2275,9 +2315,9 @@
 					<li data-role="list-divider" id="remote_template_pathHelp" class="help" style="display:none;"></li>
 					<li data-role="list-divider" id="local_template_pathHelp" class="help" style="display:none;"></li>
 					<li id="templateDirectory" data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label id="use_local_templatesLabel" style="width:25%" for="use_local_templates" id="">Template Source: </label>
-						<select data-role="slider" id="use_local_templates" name="use_local_templates" class="ui-slider-switch">
-							<option  selected="selected" value="false">Remote</option>
+						<label id="use_local_templatesLabel" style="width:25%" for="use_local_templates">Template Source: </label>
+						<select data-role="slider" id="use_local_templates" name="use_local_templates" class="ui-slider-switch slide">
+							<option value="false">Remote</option>
 							<option value="true"> Local</option>	
 						</select>
 						<br /><br />
@@ -2311,9 +2351,11 @@
 				</li>		
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li-statis ui-body-c">
 					<input type="button" id="downloadRegBtn" value="Download Reg File"/> 
+						<div id="downloadRegStatus"> </div>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li-statis ui-body-c">
 					<input type="button" id="testConnectivityBtn" value="Test Conectivity"/> 
+						<div id="testConnectivityStatus"> </div>
 				</li>		
 			</ul>
 		</div><!-- Collapsible LDP Settings -->
@@ -2326,10 +2368,10 @@
 			</h3>
 			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="button_type" class="ui-input-text">Button Type</label>
-					<select id="button_type" name="button_type" onchange="toggleFileCheckList(this.value)">
+					<label for="button_type" class="ui-input-text">Button Type:</label>
+					<select id="button_type" name="button_type" onchange="toggleFileCheckList(this.value)" class="dropdown">
 						<option value="0">None</option>
-						<option selected="selected" value="1">Standard</option>
+						<option value="1">Standard</option>
 						<option value="2">Transparent</option>
 					</select>
 				</li> 
@@ -2349,41 +2391,42 @@
 			<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">	
 				<li data-role="list-divider" id="trash_pathHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="trash_pathLabel" class="inputb" for="trash_path" class="ui-input-text"> Recycle Bin</label>
+					<label id="trash_pathLabel" class="inputb" for="trash_path" class="ui-input-text"> Recycle Bin:</label>
 					<input type="text" value="/trash" id="trash_path" name="trash_path" class="ui-input-text ui-body-c ui-corner-all ">
 				</li> 
 				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="time_zoneLabel" class="inputb" for="time_zone" class="ui-input-text"> Time Zone</label>
+					<label  id="time_zoneLabel" class="inputb" for="time_zone" class="ui-input-text"> Time Zone:</label>
 					<input type="text" value="<%= data.time_zone %>"  id="time_zone" name="time_zone" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				<li data-role="list-divider" id="localeHelp" class="help" style="display:none;"></li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="localeLabel" class="inputb"  for="locale" class="ui-input-text">  Locale</label>
+					<label  id="localeLabel" class="inputb"  for="locale" class="ui-input-text">  Locale:</label>
 					<input type="text" value="<%= data.locale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label  for="dependency_mgr" id="dependency_mgr-label" class="ui-slider">Dependency Manager:</label>
-					<select data-role="slider" id="dependency_mgr" name="dependency_mgr" class="ui-slider-switch">
-						<option  selected="selected" value="off">Off</option>
-						<option value="on"> On </option>	
+					<select data-role="slider" id="dependency_mgr" name="dependency_mgr" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true"> On </option>	
 					</select>
 				</li>   
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="addons" id="find_replace" class="ui-slider">Find / Replace</label>
-					<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option  selected="selected"  value="on">On</option>
+					<label for="addons" id="find_replace" class="ui-slider">Find / Replace:</label>
+					<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 				</li>       
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label  for="quick_search" id="addons-label" class="ui-slider">Search:</label>
-					<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option  selected="selected"  value="on">On</option>
+					<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 					<br /><br />
 					<input type="button"  id="buildIndex" name="buildIndex" value=" Build Index"/> 
+					<div id="buildIndexStatus">&nbsp;</div>
 				</li>        
             </ul>      
         </div> 
@@ -2396,16 +2439,16 @@
 	 		<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all"> 
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="final_check" id="final_check-label" class="ui-slider">Final Check:</label>
-					<select data-role="slider" id="final_check" name="final_check" class="ui-slider-switch">
-						<option  selected="selected"  value="off">Off</option>
-						<option  value="on">On</option>
+					<select data-role="slider" id="final_check" name="final_check" class="ui-slider-switch slide">
+						<option  value="false">Off</option>
+						<option  value="true">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="filter_tags" id="filter_tags-label" class="ui-slider"> Remove OU Tags:</label>
-					<select data-role="slider" id="filter_tags" name="filter_tags" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option selected="selected" value="on">On</option>
+					<select data-role="slider" id="filter_tags" name="filter_tags" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 				</li>
 				<li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>
@@ -2426,9 +2469,9 @@
  				<li data-role="list-divider" id="url_typeHelp" class="help" style="display:none;"></li>
                  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
                    <label for="url_type" class="ui-input-text">Short URL: </label>
-                   <select id="url_type" name="url_type" onchange="toggleFileCheckList(this.value)">
+                   <select id="url_type" name="url_type" onchange="toggleFileCheckList(this.value)" class="dropdown">
 						<option value="0">ABSOLUTE</option>
-						<option selected="selected" value="1">ROOT_RELATIVE</option>
+						<option value="1">ROOT_RELATIVE</option>
 						<option value="2">PAGE_RELATIVE</option>
 					</select>
                   </li>
@@ -2437,8 +2480,8 @@
                    <li data-role="list-divider" id="decorative_imagesHelp" class="help" style="display:none;"></li>
                    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
                   <label for="decorative_images"  id="decorative_images-label" class="ui-input-text"> Decorative Images: </label>
-                  <select name="decorative_images" id="decorative_images">
-						<option selected="selected" value="0">Disabled</option>
+                  <select name="decorative_images" id="decorative_images" class="dropdown">
+						<option value="0">Disabled</option>
 						<option value="1">Admin Only</option>
 						<option value="2">All Users</option>
 				 </select>
@@ -2446,30 +2489,30 @@
                 <li data-role="list-divider" id="toolbarHelp" class="help" style="display:none;"></li>
                 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
                     <label for="toolbar"  id="toolbar-label" class="ui-input-text"> Toolbar: </label>
-                    <select name="toolbar" id="toolbar">
-						<option selected="selected" value="0">Default</option>
+                    <select name="toolbar" id="toolbar" class="dropdown">
+						<option value=" ">Default</option>
 	
                     </select>
                 </li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="ascii_only" id="asciiOnly-label" class="ui-slider"> ASCII Only:</label>
-					<select data-role="slider" id="ascii_only" name="ascii_only" class="ui-slider-switch">
-						<option  selected="selected" value="off">Off</option>
-						<option value="on"> On </option>	
+					<select data-role="slider" id="ascii_only" name="ascii_only" class="ui-slider-switch slide">
+						<option  value="false">Off</option>
+						<option value="true"> On </option>	
 					</select>
 				</li>
 			 	<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="imageresizing" id="imageresizing-label" class="ui-slider">Image Resizing:</label>
-					<select data-role="slider" id="imageresising" name="imageresizing" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option selected="selected" value="on">On</option>
+					<label for="disable_image_resizing" id="disable_image_resizingLabel" class="ui-slider">Image Resizing:</label>
+					<select data-role="slider" id="disable_image_resizing" name="disable_image_resizing" class="ui-slider-switch slide">
+						<option value="true">Off</option>
+						<option value="false">On</option>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="imagealignmentmenu" id="imageresizing-label" class="ui-slider">Image Alignment Menu:</label>
-					<select data-role="slider" id="imagealignmentmenu" name="imagealignmentmenu" class="ui-slider-switch">
-						<option value="off">Off</option>
-						<option selected="selected" value="on">On</option>
+					<label for="disable_image_alignment" id="disable_image_alignmentLabel" class="ui-slider">Image Alignment Menu:</label>
+					<select data-role="slider" id="disable_image_alignment" name="disable_image_alignment" class="ui-slider-switch slide">
+						<option value="true">Off</option>
+						<option value="false">On</option>
 					</select>
 				</li>
  	   		</ul>
@@ -2480,80 +2523,87 @@
 		   		<span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
 		   		File Naming
 		  </h3>
-		  <!--File Naming +Binary File Naming--!>
-		  <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
-			   	<li data-role="list-divider" id="default_extensionHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="default_extensionLabel"  for="default_extension" class="ui-input-text"> Default Extention</label>
-					<input type="text" value="<%= data.default_extension %>"  id="default_extension" name="default_extension" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				
-				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>	      
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="file_regex" class="ui-input-text"> File Name Regex:</label>
-					<input type="text" value="<%= data.file_regex %>"  id="file_regex" name="file_regex" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label  for="notregex" id="notregex-label" class="ui-slider"> Filename Must NOT Match Regex:</label>
-					<select data-role="slider" id="negate_regex" name="negate_regex" class="ui-slider-switch">
-						<option  selected="selected" value="off">Off</option>
-						<option value="on"> On </option>	
-					</select>
-				</li>
-				<li data-role="list-divider" id="file_regexHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="file_regexLabel"   for="file_regex" class="ui-input-text"> File Name Regex:</label>
-					<input type="text" value="<%= data.file_regex %>"  id="file_regex" name="file_regex" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>	
-			    <li data-role="list-divider" id="file_regex_descHelp" class="help" style="display:none;"></li>
-			    <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="file_regex_descLabel"   for="file_regex_desc" class="ui-input-text"> File Name Regex description:</label>
-					<input type="text" value="<%= data.file_regex_desc %>"  id="file_regex_desc" name="file_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="list-divider" id="filenameregexTestHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="filenameregexTestLabel"  for="test_file_regex" class="ui-input-text">Test File Name Regex:</label>
-					<input type="text" value="<%= data.test_file_regex %>"  id="test_file_regex" name="test_file_regex" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small" style="height:43px">
-					<label  for="uppercasefoldernames" id="negate_regex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
-					<select data-role="slider" id="uppercasefoldernames" name="uppercasefoldernames" class="ui-slider-switch">
-						<option  selected="selected" value="off">Off</option>
-						<option value="on"> On </option>	
-					</select>
-				</li>		  
-		  </ul>
-    	  <br />
-  		  <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
-				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-				Binary File Naming
-				</li>
-				<li data-role="list-divider" id="bin_file_regexHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label id="bin_file_regexLabel" for="bin_file_regex" class="ui-input-text"> Binary File Name Regex:</label>
-					<input type="text" value="<%= data.binaryfielnameregex %>"  id="binaryfielnameregex" name="bin_file_regex" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
+		<!--File Naming +Binary File Naming--!>
+		<div id="fileNaming-div"   style="display:none;" >
+			   <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
+		   	 			<li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
+	  	       </ul>
+				<ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
+					<li data-role="list-divider" id="default_extensionHelp" class="help" style="display:none;"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+							<label  id="default_extensionLabel"  for="default_extension" class="ui-input-text"> Default Extention:</label>
+							<input type="text" value="<%= data.default_extension %>"  id="default_extension" name="default_extension" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+						
+					<li data-role="list-divider" id="file_regexHelp" class="help" style="display:none;"></li>	      
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+							<label  for="file_regex" class="ui-input-text"> File Name Regex:</label>
+							<input type="text" value="<%= data.file_regex %>"  id="file_regex" name="file_regex" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+						
 					 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 							<label  for="negate_regex" id="notregex-label" class="ui-slider"> Filename Must NOT Match Regex:</label>
-							<select data-role="slider" id="negate_regex" name="negate_regex" class="ui-slider-switch">
-								<option  selected="selected" value="off">Off</option>
-								<option value="on"> On </option>
+							<select data-role="slider" id="negate_regex" name="negate_regex" class="ui-slider-switch slide">
+								<option value="false">Off</option>
+								<option value="true"> On </option>
 									
 							</select>
 					</li>
+
+					<li data-role="list-divider" id="file_regex_descHelp" class="help" style="display:none;"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c regextest" style="display:none;">
+							<label id="file_regex_descLabel"  for="file_regex_desc" class="ui-input-text"> File Name Regex description:</label>
+							<input type="text" value="<%= data.file_regex_desc %>"  id="file_regex_desc" name="file_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+						
+					<li data-role="list-divider" id="filenameregexTestHelp" class="help" style="display:none;"></li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c regextest" style="display:none;">
+							<label id="filenameregexTestLabel"  for="test_file_regex" class="ui-input-text">Test File Name Regex:</label>
+							<input type="text" value="<%= data.test_file_regex %>"  id="test_file_regex" name="test_file_regex" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+						
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+							<label for="allow_uppercase_folders" id="negate_regex-label" class="ui-slider"> Allow Upercase Folder Names:</label>
+							<select data-role="slider" id="allow_uppercase_folders" name="allow_uppercase_folders" class="ui-slider-switch slide">
+								<option value="false">Off</option>
+								<option value="true"> On </option>
+							</select>
+					</li>		  
+		     </ul>
+		
+			<br />
+			<div class="ui-body ui-body-b ui-corner-all">
+			<div style="width:50%; padding:5px;font-weight:bold;" id="address-div" data-theme="b " class="oubox-edit-setting-field-div">Binary File Naming:</div> 
+			 <ul data-inset="true" data-role="listview" class="ui-body ui-body-b ui-corner-all">
+				<li data-role="list-divider" id="time_zoneHelp" class="help" style="display:none;"></li>
+				
+			
+					
+				<li data-role="list-divider" id="bin_file_regexHelp" class="help" style="display:none;"></li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label id="bin_file_regexLabel"    for="bin_file_regex" class="ui-input-text"> Binary File Name Regex:</label>
+						<input type="text" value="<%= data.binary_regex %>"  id="binary_regex" name="binary_regex" class="ui-input-text ui-body-c ui-corner-all " />
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label  for="negate_binary_regex" id="binarynegate_regex-label" class="ui-slider">Binary Filename Must NOT Match Regex:</label>
+					<select data-role="slider" id="negate_binary_regex" name="negate_binary_regex" class="ui-slider-switch slide">
+						<option  value="false">Off</option>
+						<option value="true"> On </option>	
+					</select>
+				</li>
 				<li data-role="list-divider" id="button_codeHelp" class="help" style="display:none;"></li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="button_codeLabel"   for="bin_negate_regex_desc" class="ui-input-text"> Binary File Regex Description:</label>
-					<input type="text" value="<%= data.bin_negate_regex_desc %>"  id="bin_negate_regex_desc" name="bin_negate_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
+					<label style="min-width:163px;"  id="button_codeLabel"  for="binaryfilenameregexDesc" class="ui-input-text binaryregextest" style="display:none;"> Binary File Regex Description:</label>
+					<input type="text" value="<%= data.binary_regex_desc %>"  id="binary_regex_desc" name="binary_regex_desc" class="ui-input-text ui-body-c ui-corner-all ">
 				</li>
 				<li data-role="list-divider" id="binaryfilenameregexTestHelp" class="help" style="display:none;"></li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  id="binaryfilenameregexTestLabel"  for="binaryfilenameregexTest" class="ui-input-text">Test Binary File Regex:</label>
-					<input type="text" value="<%= data.binaryfilenameregexTest %>"  id="binaryfilenameregexTest" name="binaryfilenameregexTest" class="ui-input-text ui-body-c ui-corner-all ">
-				</li>
-		  </ul>
-		</div> <!-- collapsible file Naming -->
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c binaryregextest" style="display:none;">
+					<label  id="binaryfilenameregexTestLabel"    for="binaryfilenameregexTest" class="ui-input-text">Test Binary File Regex:</label>
+					<input type="text" value="<%= data.test_binary_regex %>"  id="test_binary_regex" name="test_binary_regex" class="ui-input-text ui-body-c ui-corner-all ">
+				</li>	
+		     </ul>
+		     </div>
+		</div><!--File Naming +Binary File Naming--!>
 	</div> <!-- collapsable set -->
 </form>
 </div> <!-- content -->
@@ -2685,42 +2735,45 @@
 </script>
 
 
+
 <script type="text/template" id="header">
+<div id="radius-background">
 	<div id="header" data-role="header" data-theme="b " class="omnistyle">
 <% if(page == "accounts") { %>
-		<a  data-icon="back" data-transition="fade" class="logout"><span id="<%=logoutid%>">Logout</span></a>
-		<a  id="editBtn" data-icon="gear"  data-transition="slidedown" onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+		<a  data-icon="back" class="logout"><span id="<%=logoutid%>">Logout</span></a>
+		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
 <% } else if(mode=="edit" || mode=="action"){%>	
 		<% if (editType =="add"){ %>
-		<a id="cancelBtn"  rel="external" data-role="back" data-transition="slideup" data-icon="back">Cancel</a>
-		<a   data-icon="gear" data-transition="slideup" class="top-right-btn"><span id="save<%=page%>">Create</span></a>
+		<a id="cancelBtn"   data-direction="reverse" rel="external" data-role="back" data-icon="back">Cancel</a>
+		<a   data-icon="gear"  data-direction="reverse" class="top-right-btn"><span id="save<%=page%>">Create</span></a>
 		<%} else if (editType =="edit"){ %>
-		<a  id="cancelBtn"  rel="external" data-role="back" data-transition="slideup" data-icon="back">Cancel</a>
-		<a   data-icon="gear" data-transition="slideup" class="top-right-btn"><span id="save<%=page%>">Save</span></a>
+		<a  id="cancelBtn"  rel="external" data-role="back"  data-direction="reverse" data-icon="back">Cancel</a>
+		<a   data-icon="gear"  data-direction="reverse" class="top-right-btn"><span id="save<%=page%>">Save</span></a>
 		<%} else if(page == "account"){ %>
-		<a  id="homeBtn" data-icon="home"  data-transition="flip" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
-		<a  class="top-right-btn logout" data-icon="back" data-transition="fade" ><span id="<%=logoutid%>">Logout</span></a>
+		<a  id="homeBtn" data-icon="home"  donClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a  class="top-right-btn logout" data-icon="back"><span id="<%=logoutid%>">Logout</span></a>
 		
 		<%} %>
 <% }else if (mode=="workflow"){ %>
-		<a   id="homeBtn" data-icon="home" data-transition="flip" onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a   id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
 		<% if ((page != "account")){%>
-		<a  id="editBtn" data-icon="gear"  data-transition="slidedown" onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
 		<%}%>
 	<% }else if (mode =="edit-mode"){ %>
-		<a   id="homeBtn" data-icon="home" data-transition="flip"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
-		<a   id="DoneBtn" data-icon="gear" data-transition="slideup" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Done</span></a>
+		<a   id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
+		<a   id="DoneBtn" data-icon="gear"  data-direction="reverse" onClick="Common.workflowMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Done</span></a>
 	<% }else {%>
 		<a  onClick="window.history.back();" rel="external" data-role="back"  data-direction="reverse" data-icon="back">Back</a>
-		<a   id="homeBtn" data-icon="gear"  data-transition="flip" onClick="Common.home('<%=skin%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Home</span></a>
+		<a   id="homeBtn" data-icon="gear"  onClick="Common.home('<%=skin%>');" class="top-right-btn  ui-btn-right"><span id="<%=logoutid%>">Home</span></a>
 <% }%>
 		<h5 id="headertitle"><%= headertitle%></h5>
 	</div>
 
-
+</div>
 </script>
 
 <script type="text/template" id="footer">
+
 <% if(toolbar == "toolbar"){%>
 	<div id="footer" data-position="fixed" data-role="footer" class="ui-footer ui-bar-a ui-footer-fixed fade ui-fixed-overlay" role="contentinfo" style="top: 401px;">
 		<div data-role="navbar" class="ui-navbar" role="navigation">
@@ -2733,16 +2786,16 @@
 <% }else if (toolbar =="back"){ %>
 <div data-position="fixed" class="undo ui-footer ui-footer-fixed" data-theme="b">
 	<div data-theme="b" data-role="none" class="undo fade ui-fixed-overlay icon-background"  data-position="fixed" class="undo ui-footer ui-footer-fixed fade ui-fixed-overlay icon-background">
-			<a   title="Logout"  rel="tooltip" class="top-right-btn logout" data-icon="back" data-transition="fade" ><span id="logout"><i class="icon-arrow-up-left-2"> &nbsp;</i> </a>	
+			<a   title="Logout"   class="top-right-btn logout" data-icon="back"  ><span id="logout"><i class="icon-arrow-up-left-2"> &nbsp;</i> </a>	
 		
 	</div>
 	
 	<div data-role="none"  class="undo fade ui-fixed-overlay icon-background" >
-			<a   title="Back"  rel="tooltip"  data-role="none" onClick="window.history.back();" rel="external" data-role="back"  data-direction="reverse" ><i class="icon-undo"> &nbsp;</i> </a>
+			<a   title="Back"  data-role="none" onClick="window.history.back();" rel="external" data-role="back"  data-direction="reverse" ><i class="icon-undo"> &nbsp;</i> </a>
 			
 	</div>
 		<div data-role="none" class="accountPage undo fade ui-fixed-overlay icon-background"  data-position="fixed" class="undo ui-footer ui-footer-fixed fade ui-fixed-overlay icon-background">
-			<a   data-role="none" title="My Account"  rel="tooltip"  rel="external" data-direction="reverse" ><i class="icon-documents"> &nbsp;</i> </a>
+			<a   data-role="none" title="My Account"   rel="external" data-direction="reverse" ><i class="icon-documents"> &nbsp;</i> </a>
 	
 	</div>
 	
@@ -2751,6 +2804,8 @@
 <%}%>
 
 </script>
+
+
 
 <script type="text/template" id="alertmessage">
 	<div  data-theme="b " id="alert-page">
@@ -2790,7 +2845,6 @@
 </head>
 
 <body>
-
 
 </body>
 

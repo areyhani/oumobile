@@ -36,11 +36,6 @@
         text-shadow: 0 1px 0 #FFFFFF;
     }
 
-
-.help {
-    font-weight: normal;
-    padding: 5px;
-}
 .error {
     color: #B7110D;
     font-weight: bold;
@@ -49,6 +44,12 @@
     color: #FFFFFF;
     font-weight: bold;
     text-shadow: 0 -1px 1px #397114;
+}
+.help{
+	padding:5px; 
+    color: #B7110D;
+    font-weight: bold;
+    text-shadow: 0 -1px 1px #FFFFFF;
 }
     
  .settings label, .settings .ui-input-text,.ui-input-search .ui-input-text {

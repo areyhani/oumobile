@@ -5,9 +5,6 @@ function sessionClass(){
 	this.account= null;
 	this.skin=null;
 }
-
-
-
 _.mixin({
 capitalize : function(str) {
 	return (_.isString(str) && str.length > 0) ? (str[0].toUpperCase() + str.substr(1)) : "";
@@ -37,9 +34,8 @@ parseISO8601 : function(str) { // returns a Date object for ISO8601 date strings
 	return new Date(date + hourOffset + minuteOffset);
 }
 });
-
 var Common = {
-    whoamI: function(){
+ whoamI: function(){
     var sessionObj= new sessionClass();
     $.ajax({
     		url:'/authentication/whoami',
@@ -157,8 +153,7 @@ var Common = {
 			}else{
 				window.app.navigate(skin+'/'+element+'-edit-mode',{trigger:true});
 			}
-			window.location.reload();
-			//return false;
+			 $.mobile.page();
 	},
 	add: function(skin,account,element,pagetype,editMode,editType){
 			//element is either site or user, depending where this function is being called.
@@ -208,7 +203,9 @@ var Common = {
 	errorhandler : function errorhandler (data, pageType, mode , name){
 			var errorMessageObj =jQuery.parseJSON(data.responseText);
 			var errorMessage_formvalidation = errorMessageObj.validation_errors;
+			console.log(errorMessageObj.validation_errors);
 			var system_error = errorMessageObj.error;
+			
 			if ( errorMessage_formvalidation){  
 						 $("#alert_body","alert_title").empty();
 						 var errorCount=0;
@@ -219,18 +216,24 @@ var Common = {
 						  $("#"+index+"Label").addClass('error');
 						  $("#"+index+"Help").show();
 						  $("#"+index+"Help").text(value);
-						  var str =$("#"+index+"Help").parent().parent().attr("id");
-						  if(str) {
-							  var parentstab= str.substring(0, str.indexOf('-')); 
+						  var str ;
+						  var str1 =$("#"+index+"Help").parent().parent().attr("id");
+						  var str2 =$("#"+index+"Help").parent().parent().parent().attr("id");
+						  if(str1) {
+							 str=str1;
+						  }else if (str2){
+							 str= str2;
 						  }else{
-							  parentstab= $("#"+index+"Help").parent().parent().parent().attr("id");
+						    str= $("#"+index+"Help").parent().parent().parent().parent().attr("id");
 						  }
+						  
+						var parentstab= str.substring(0, str.indexOf('-')); 
 						  var suberrorcount =  parseInt( $("#"+parentstab + " .suberrorcount").text());
 						  $("#"+parentstab + " .suberrorcount").show();
 						  $("#"+parentstab + " .suberrorcount").text(suberrorcount+1);
 						  $("#"+parentstab + " .suberrorcount").css({"color":"red"});
 						  $("#"+index+"Help").addClass('errormessage');
-						 // $("#"+index+"Help").text(value);
+						  //$("#"+index+"Help").text(value);
 							suberrorcount=0;
 							errorCount++; 
 						});

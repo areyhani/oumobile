@@ -80,15 +80,34 @@
 		
 		
 			$('#templateDirectory').live('click', function(){
-			$(this).dblclick();
-			var templateDirectory = $('#use_local_templates').val();
-			if(templateDirectory == "false"){ 
-			$('#LocalTemplatePath').hide();
-			$('#RemoteTemplatePath').show();
-			}
-			else{
-			$('#RemoteTemplatePath').hide();
-			$('#LocalTemplatePath').show();
-			}
-			}
+				$(this).dblclick();
+				var templateDirectory = $('#use_local_templates').val();
+				if(templateDirectory == "false"){ 
+					$('#LocalTemplatePath').hide();
+					$('#RemoteTemplatePath').show();
+				}
+				else{
+					$('#RemoteTemplatePath').hide();
+					$('#LocalTemplatePath').show();
+				}
+				}
 			);
+			
+			$('#fauthtype1').live('change', function(){
+				$(this).dblclick();
+				var element =$('#fauthtype0').siblings()[0].className;
+				if(jQuery.contains(element,'ui-radio-on')){
+					$('#passwordLi').hide('slidup', false,true);
+				}
+				}
+			);
+			$('#fauthtype0').live('change', function(){
+				$(this).dblclick();
+				var element =$('#fauthtype0').siblings()[0].className;
+				if(jQuery.contains(element,'ui-radio-on')){
+					$('#passwordLi').show('slidedown',false,true);
+				}
+				}
+			);
+			
+			
