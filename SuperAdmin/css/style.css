@@ -457,7 +457,7 @@ margin:2px  32px;
 margin:-5px;
 }
 #editModePagesanchore{
-   width:80%;
+   width:0%;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -473,11 +473,11 @@ margin:-5px;
 	-moz-opacity:1;
 	-khtml-opacity: 1;
 	opacity: 1;
-	transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear,opacity 3s ease-in-out;
-	-webkit-transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear,opacity 3s ease-in-out;
-	-moz-transition:width 0.5s linear,margin-left 0.5s linear,  margin-right 0.5s linear,opacity 3s ease-in-out;
-	-o-transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear,  opacity 3s ease-in-out;
-	-ms-transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear, opacity 3s ease-in-out; 
+	transition:width 0.25s linear,margin-left 0.25s linear, margin-right 0.25s linear,opacity 4s ease-in-out;
+	-webkit-transition:width 0.25s linear,margin-left 0.25s linear, margin-right 0.25s linear,opacity 4s ease-in-out;
+	-moz-transition:width 0.25s linear,margin-left 0.25s linear,  margin-right 0.25s linear,opacity 4s ease-in-out;
+	-o-transition:width 0.25s linear,margin-left 0.25s linear, margin-right 0.25s linear,  opacity 4s ease-in-out;
+	-ms-transition:width 0.25s linear,margin-left 0.25s linear, margin-right 0.25s linear, opacity 4s ease-in-out; 
 
 }
 #editModePages #header{
