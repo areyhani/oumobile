@@ -184,7 +184,7 @@ color:#FFFFFF;}
     border-radius: 0.5em 0.5em 0.5em 0.5em;
     color: #2D792D;
     margin: 0 10px 0 0;
-    padding: 7px 2px 5px 8px;
+     padding: 7px 5px 4px 8px;
     overflow: hidden;
     width:20px;
     height:20px;
@@ -427,9 +427,25 @@ margin:2px  32px;
 #selectable .ui-selected { background: #F39814; color: white; }
 #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
 #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
-.undo {
-    margin-bottom: 5px;
-    margin-left: 10px;}
+
+
+.ui-footer .icon-background{
+    background-color: #CCCCCC;
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    color: #2D792D;
+    float: left;
+    height: 20px;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    padding: 7px 2px 5px 30px;
+    width: 40px;
+}
+
+.ui-footer  .undo {
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
     
 .ui-body-c .ui-link {   
 	color:#2D792D;
@@ -441,7 +457,7 @@ margin:2px  32px;
 margin:-5px;
 }
 #editModePagesanchore{
-   width:50%;
+   width:80%;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
   filter: alpha(opacity=0);
   -moz-opacity: 0;
@@ -457,13 +473,11 @@ margin:-5px;
 	-moz-opacity:1;
 	-khtml-opacity: 1;
 	opacity: 1;
-
- 
-	transition:width 2s linear -1s,margin-left 1s linear, margin-right 1s linear,opacity 1s ease-in-out;
-	-webkit-transition:width 2s linear -1s,margin-left 1s linear, margin-right 1s linear,opacity 1s ease-in-out;
-	-moz-transition:width 2s linear -1s,margin-left 1s linear,  margin-right 1s linear,opacity 1s ease-in-out;
-	-o-transition:width 2s linear -1s,margin-left 1s linear, margin-right 1s linear,  opacity 1s ease-in-out;
-	-ms-transition:width 2s linear -1s,margin-left 1s linear, margin-right 1s linear, opacity 1s ease-in-out; 
+	transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear,opacity 3s ease-in-out;
+	-webkit-transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear,opacity 3s ease-in-out;
+	-moz-transition:width 0.5s linear,margin-left 0.5s linear,  margin-right 0.5s linear,opacity 3s ease-in-out;
+	-o-transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear,  opacity 3s ease-in-out;
+	-ms-transition:width 0.5s linear,margin-left 0.5s linear, margin-right 0.5s linear, opacity 3s ease-in-out; 
 
 }
 #editModePages #header{

@@ -143,7 +143,7 @@ width:53%;  margin-bottom: 2px;}
 #userinformation .ui-checkbox .ui-btn-icon-left .ui-btn-inner,#userinformation .ui-radio .ui-btn-icon-left .ui-btn-inner{
 padding-top:0px;
  padding-left: 5%;
-}
+} 
 
 #remote_template_path-div, #local_template_path-div {
     margin-left: 0px;
@@ -161,8 +161,17 @@ padding-top:0px;
     padding-top: 3px;
 }
 
+  
+.ui-footer .icon-background{
+    padding: 7px 2px 5px 10px;
+    width: 25px;
+}
 
-
+.ui-footer  .undo,.undo {
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+  
 }
 @media (min-width:420px) { 
 .icon-alignment .action-btn, .action-btn{
