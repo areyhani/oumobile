@@ -221,7 +221,8 @@ window.accountView = Backbone.View.extend({
 		'click .groups' : 'groups',
 		'click .report' : 'report',
 		'click #addBtn' :'addBtn',
-		'click #editBtn' : 'editBtn'
+		'click #editBtn' : 'editBtn',
+		'click .logout' :'logout',
 	},
 	template: _.template($('#account').html()),
 	headertemplate:_.template($('#header').html()),
@@ -316,6 +317,9 @@ window.accountView = Backbone.View.extend({
 		var account=this.account;
 		window.app.navigate(skin+'/site-reports/'+account+'/'+this.site,{trigger:true});
 		return false;
+	},
+	logout:function(){
+	Common.subuserLogout();
 	}
 	});
 window.accountEditView = Backbone.View.extend({
@@ -890,7 +894,7 @@ window.usersView = Backbone.View.extend({
 								var userIcon = $(document.createElement('div'))
 										 .addClass('icon-user-2 user-icon')
 										 .html('<span>&nbsp;</span>');
-								if(!value.locked){ 
+								if(value.locked){ 
 								    var sup =$(document.createElement('sup'));
 									var lock = $(document.createElement('i'))
 									.addClass('error icon-locked');
@@ -979,7 +983,7 @@ window.userView = Backbone.View.extend({
 			approver ="None";
 	
 		}
-		if(!data.locked){
+		if(data.locked){
 			$('#unlockUser').show();
 		}
 		$('#user-name').append(data.user);

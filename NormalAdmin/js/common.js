@@ -84,13 +84,7 @@ var Common = {
 						 $("#alert_title").text("Error logging out ...");
 						 $("#alert_body").text(errorMessage.error);
 						
-					$.mobile.changePage($('#alert-page'),{
-						type: "get", 
-						data:"alert_message",
-						transition:"pop",
-						role: "dialog",
-						reloadPage:true,
-						});
+
 					}
 				});
 			}
@@ -114,8 +108,7 @@ var Common = {
 										 success: function(data){
 													 var skin= data.skin;
 													 var account= data.account;
-													 console.log(data);
-													 window.app.navigate(skin+'/accounts/'+account,{trigger:true});
+													 window.location.href = '#'+skin+ '/'+account;
 										 }
 								});
 					}
