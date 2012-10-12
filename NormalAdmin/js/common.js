@@ -31,12 +31,17 @@ parseISO8601 : function(str) { // returns a Date object for ISO8601 date strings
 	var date = Date.UTC(parseInt(parts[1]), parseInt(parts[2]) - 1, parseInt(parts[3]), parseInt(parts[4]), parseInt(parts[5]), parseInt(parts[6]));
 	var hourOffset = parseInt(parts[8]) * (parts[7] == "-" ? 3600000 : -3600000);
 	var minuteOffset = parseInt(parts[9]) * (parts[7] == "-" ? 60000 : -60000);
-	return new Date(date + hourOffset + minuteOffset); 
-
+	return new Date(date + hourOffset + minuteOffset);
 }
 });
+
+$(document).ajaxStart(function(){
+$("#ajaxSpinnerImage").show();
+$(".ui-input-search").hide();
+});
+
 var Common = {
-    whoamI: function(){
+ whoamI: function(){
     var sessionObj= new sessionClass();
     $.ajax({
     		url:'/authentication/whoami',
@@ -58,7 +63,6 @@ var Common = {
 		{title: 'Warning', titleClass: 'anim warning', modal:true,buttons: [{id: 0, label: 'Yes', val: 'Y'}, {id: 1, label: 'No', val: 'N'}],
 		callback : function(val){
 			if(val == 'Y'){
-				localStorage.clear();
 				console.log('#logout');
 				$.ajax({
 					url: '/authentication/admin_logout',
@@ -98,7 +102,6 @@ var Common = {
 		{title: 'Warning', titleClass: 'anim warning', buttons: [{id: 0, label: 'Yes', val: 'Y'}, {id: 1, label: 'No', val: 'N'}],
 		callback: function(val){
 					if (val == 'Y'){
-								localStorage.clear();
 								console.log('subuserlogout');
 								$.ajax({
 										 url:'/authentication/logout',
@@ -133,7 +136,8 @@ var Common = {
 		      		console.log(data);
 		      	 	var pageType="user";
 		      		var mode="login";
-		      		var name = localStorage.getItem('account');
+		      		var sessionObj = Common.whoamI();
+		      		var name = this.account;
 					alertPage(data,pageType, mode ,name);
 		     		},
 					success: function(data) {
@@ -144,20 +148,10 @@ var Common = {
 	           				nextstepurl =data.skin+'/sites/'+account+'/'+site;
 	           				 }
 							window.app.navigate(nextstepurl, {trigger:true});
-							localStorage.setItem('user',subuser);
 					}
 					});
 			},
-    subuserLogoutBtn: function(){
-     		$('#userLogout').text(localStorage.getItem("user"));
-			$('#userLogout').hover(function(){
-			$('#userLogout').text("Logout");
-			},function(){
-			$('#userLogout').text(localStorage.getItem("user"));
-			$.mobile.page();
-			});
-     
-     },
+
 	direct: function(skin,account,element){
 			console.log('cancel: go to edit mode');
 			if(skin && account){
@@ -165,19 +159,18 @@ var Common = {
 			}else{
 				window.app.navigate(skin+'/'+element+'-edit-mode',{trigger:true});
 			}
-			window.location.reload();
-			//return false;
+			 $.mobile.page();
 	},
-	add: function(skin,account,element,pagetype,editType){
+	add: function(skin,account,element,pagetype,editMode,editType){
 			//element is either site or user, depending where this function is being called.
 			var OPType ="add";
 			if(editType){
 			OPType = editType;
 			}
-			var editPath =skin+'/'+pagetype+'-'+OPType+'/tablet';
+			var editPath =skin+'/'+pagetype+'-'+OPType+'/'+editMode+'/tablet';
 			var Browser = browserdetect();
 			if(Browser.phone){
-				var editPath =skin+'/'+pagetype+'-'+OPType+'/phone';
+				var editPath =skin+'/'+pagetype+'-'+OPType+'/'+editMode+'/phone';
 			 }	
 			if(element && account){
 					window.app.navigate(editPath+'/'+account+'/'+element,{trigger:true});
@@ -187,7 +180,6 @@ var Common = {
 			else{
 					window.app.navigate(editPath,{trigger:true});
 			}
-		
 	},
 	home:function(skin){
 		 window.location.href='#'+skin+'/accounts';
@@ -217,7 +209,9 @@ var Common = {
 	errorhandler : function errorhandler (data, pageType, mode , name){
 			var errorMessageObj =jQuery.parseJSON(data.responseText);
 			var errorMessage_formvalidation = errorMessageObj.validation_errors;
+			console.log(errorMessageObj.validation_errors);
 			var system_error = errorMessageObj.error;
+			
 			if ( errorMessage_formvalidation){  
 						 $("#alert_body","alert_title").empty();
 						 var errorCount=0;
@@ -228,18 +222,24 @@ var Common = {
 						  $("#"+index+"Label").addClass('error');
 						  $("#"+index+"Help").show();
 						  $("#"+index+"Help").text(value);
-						  var str =$("#"+index+"Help").parent().parent().attr("id");
-						  if(str) {
-							  var parentstab= str.substring(0, str.indexOf('-')); 
+						  var str ;
+						  var str1 =$("#"+index+"Help").parent().parent().attr("id");
+						  var str2 =$("#"+index+"Help").parent().parent().parent().attr("id");
+						  if(str1) {
+							 str=str1;
+						  }else if (str2){
+							 str= str2;
 						  }else{
-							  parentstab= $("#"+index+"Help").parent().parent().parent().attr("id");
+						    str= $("#"+index+"Help").parent().parent().parent().parent().attr("id");
 						  }
+						  
+						var parentstab= str.substring(0, str.indexOf('-')); 
 						  var suberrorcount =  parseInt( $("#"+parentstab + " .suberrorcount").text());
 						  $("#"+parentstab + " .suberrorcount").show();
 						  $("#"+parentstab + " .suberrorcount").text(suberrorcount+1);
 						  $("#"+parentstab + " .suberrorcount").css({"color":"red"});
 						  $("#"+index+"Help").addClass('errormessage');
-						 // $("#"+index+"Help").text(value);
+						  //$("#"+index+"Help").text(value);
 							suberrorcount=0;
 							errorCount++; 
 						});
@@ -262,7 +262,7 @@ var Common = {
 						new Messi(system_error,
 								 {title: 'Error', titleClass: 'anim error', buttons: [{id: 0, label: 'Close', val: 'X'}],
 								 callback: function(val){
-										   this.logout();
+
 								 }
 						});
 				}		

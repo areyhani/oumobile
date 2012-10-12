@@ -3,10 +3,11 @@
 <head>
 
 <title>OU Mobile</title>
+ <meta charset="UTF-8">
  <meta name=viewport content="user-scalable=no,width=device-width,initial-scale=1, maximum-scale=1" />
-	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.0.1.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css" />
 	<link rel="stylesheet" type="text/css" href="css/font.css" />
 	<link rel="stylesheet" type="text/css" href="icomoon/style.css" />
 	<link rel="stylesheet" type="text/css" href="css/mobile-style.css" />
@@ -29,6 +30,7 @@
 	  <div >	
 		<label for="password" class="setting">Password</label>
 		<input type="password" name="password" id="password" class="setting" /> 
+		
 	  </div>
    	  <div style="margin: 5px 0px 5px 5px;">
 			<input type="button" id="submit" data-theme="b " data-inline="true" data-iconpos="center" value="Login"  />
@@ -60,24 +62,24 @@
 			
 		</ul>
 		<div class="action-btns-div">
-			<a style="float:left;" class="sites action-btn action-btn-row1"  rel="external"  href="" data-role="button" data-theme="b " >
+			<a style="float:left;" class="sites action-btn action-btn-row1"  rel="external"   data-role="button" data-theme="b" >
 			<span class="col-a"><div class="icon-background">
 			<i class="icon-globe">&nbsp;</i> </div>
 			<label class="label" id="sitelabel" for="sitecount"> Sites </label></span> <span  id="sitecount">  </span> </a> 
 			
-			<a style="float:right;" class="users action-btn action-btn-row1" rel="external"  href="" data-role="button" data-theme="b " >
+			<a style="float:right;" class="users action-btn action-btn-row1" rel="external"  data-role="button" data-theme="b" >
 			<span class="col-a">
 			<div class="icon-background">
 			<i class="icon-user-2">&nbsp;</i> </div>
 			<label class="label" id="userlabel" for="usercount"> Users </label> </span><span  id="usercount">  </span> </a>
 		  <br />
-			<a  style="float:left;" class="groups action-btn" rel="external"  href="" data-role="button" data-theme="b " >
+			<a  style="float:left;" class="groups action-btn" rel="external" data-role="button" data-theme="b" >
 			<span class="col-a">
 			<div class="icon-background">
-			<i class="icon-users">&nbsp;</i> </div><label class="label" id="grouplabel" for="groupcount"> Groups </label></span> <span  id="groupcount">  </span> </a>
+			<i class="icon-users">&nbsp;</i> </div>
+			<label class="label" id="grouplabel" for="groupcount"> Groups </label></span> <span  id="groupcount">  </span> </a>
 			
-			
-			<a style="float:right;" id="editBtn" class="users action-btn action-btn-row1" rel="external" data-role="button" data-theme="b " >
+			<a style="float:right;" id="editBtn" class="edit action-btn action-btn-row1" rel="external" data-role="button" data-theme="b" >
 			<span class="col-a">
 			<div class="icon-background">
 			<i class="icon-settings">&nbsp;</i> </div>
@@ -160,6 +162,11 @@
 						<label id="logo_urlLabel" for="logo_url" class="ui-input-text">Logo URL:</label>
 						<input type="text" value="<%= data.logo_url %>"  id="logo_url" name="logo_url" class="ui-input-text ui-body-c ui-corner-all ">
 					</li> 
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label id="fail_countLabel" for="fail_count" class="ui-input-text">Number of Failed Attempts:</label>
+						<input type="text" value="<%= data.fail_count %>"  id="fail_count" name="fail_count" class="ui-input-text ui-body-c ui-corner-all ">
+					</li>
+
 		  </ul>
 	  </div> <!-- general settings-->
 		
@@ -517,7 +524,7 @@
 		   		</ul>
 				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 				   <li data-role="list-divider" id="page_checkHelp" class="help" style="display:none;"></li>
-				   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+				   <li data-role="fieldcontain"  class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					   <label id="page_checkLabel" for="file_check" class="ui-input-text">Page Check:</label>
 					   <select class="dropdown" id="page_check" name="page_check">
 								<option value="0">Disabled</option>
@@ -526,13 +533,41 @@
 								<option value="3"  >Force Enabled</option>
 						</select>
 					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-label" role="heading"></div>
-					<div class="ui-controlgroup-controls">
+					<div id="filechecklist" class="ui-controlgroup-controls">
 						<div class="ui-checkbox"><input type="checkbox" class="custom" id="spell_check" name="spell_check"><label for="spell_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Spell Check:</span></span></label></div>
 						<div class="ui-checkbox"><input type="checkbox" class="custom" id="link_check" name="link_check"><label for="link_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Link Check</span></span></label></div>
 						<div class="ui-checkbox"><input type="checkbox" class="custom" id="page_validate" name="page_validate"><label for="page_validate" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;"  class="ui-btn-text">Page Validate</span></span></label></div>
-						<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility"><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span  style="padding-left:40px;"  class="ui-btn-text">Accessibility Check</span></span></label></div>
+						<div class="ui-checkbox"><input type="checkbox" class="custom" id="accessibility" name="accessibility"><label for="accessibility" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="b " class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-bottom ui-controlgroup-last"><span class="ui-btn-inner ui-corner-bottom ui-controlgroup-last"><span  style="padding-left:40px;"  class="ui-btn-text">Accessibility Check</span></span></label>
+
+						</div>
+
+						
 					</div>
+						
 					</fieldset>
+			
+					</li>
+					<li id="accessibilityOptions" data-role="fieldcontain"  class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					 <label id="page_checkLabel" for="file_check" class="ui-input-text">Accessibility:</label>
+						   <select class="dropdown" id="accessibilityguideline" name="accessibilityguideline">
+								   <option value="0">BITV 1.0 (Level 2)</option>
+								   <option value="1">Section 508</option>
+								   <option value="2">Stanca Act</option><option value="3">WCAG 1.0 (Level A)</option>
+								   <option value="4">WCAG 1.0 (Level AA)</option>
+								   <option value="5">WCAG 1.0 (Level AAA)</option>
+								   <option value="6">WCAG 2.0 (Level A)</option>
+								   <option value="7" selected="selected">WCAG 2.0 (Level AA)</option>
+								   <option value="8">WCAG 2.0 (Level AAA)</option>
+							 </select>
+						    <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-label" role="heading"></div>
+					         <div  class="ui-controlgroup-controls">
+								 <div class="ui-controlgroup-controls" style="width:100%">
+									<div class="ui-checkbox"><input type="checkbox" class="custom" id="known_problems" name="known_problems"><label for="known_problems" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span style="padding-left:40px;" class="ui-btn-text">Show Known Problems</span></span></label></div>
+									<div class="ui-checkbox"><input type="checkbox" class="custom" id="likely_problems" name="likely_problems"><label for="likely_problems" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Show Likely Problems</span></span></label></div>
+									<div class="ui-checkbox"><input type="checkbox" class="custom" id="potential_problems" name="potential_problems"><label for="potential_problems" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;"  class="ui-btn-text">Show Potential Problems</span></span></label></div>
+								</div>
+								</div>
+							</fieldset>
 					</li>
 				 
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -543,7 +578,7 @@
 					<li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>       
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label id="default_tweetLabel" for="tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
-						<input type="text" value="<%= data.default_tweet %>"  id="default_tweet" name="default_tweet" class="ui-input-text ui-body-c ui-corner-all ">
+						<textarea  class="textarea1" cols="40" rows="8" value="<%= data.default_tweet %>"  id="default_tweet" name="default_tweet" class="ui-input-text ui-body-c ui-corner-all "></textarea>
 					</li>
 							
 				</ul>
@@ -577,18 +612,92 @@
 		  		 <li data-role="fieldcontain"   class="alert_body help" style="display:none;"></li>
 		 </ul>
 		 <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
-		
+		       <li data-role="fieldcontain"  class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					   <label id="just_editLabel" for="just_edit" class="ui-input-text">JustEdit:</label>
+					   <select class="dropdown" id="just_edit" name="just_edit">
+								<option value="0">Disabled</option>
+								<option value="1">Admin Enabled</option>
+								<option value="2">User Enabled</option>
+						</select>
+				 </li>
+				<% if(editType != "edit"){ %>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
+						<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+							<option  value="false">Off</option>
+							<option  selected="selected" value="true">On</option>
+						</select>
+					</li>
+				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="search" id="search-label" class="ui-slider">Search On:</label>
+						<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option selected="selected" value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="asset_manager" id="asset_manager-label" class="ui-slider">Asset Manager:</label>
+						<select data-role="slider" id="asset_manager" name="asset_manager" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option selected="selected" value="true">On</option>
+						</select>
+					</li>
+			 <% }else{%>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
+						<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+							<option  value="false">Off</option>
+							<option  value="true">On</option>
+						</select>
+					</li>
+				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="search" id="search-label" class="ui-slider">Search On:</label>
+						<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option  value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="asset_manager" id="asset_manager-label" class="ui-slider">Asset Manager:</label>
+						<select data-role="slider" id="asset_manager" name="asset_manager" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option  value="true">On</option>
+						</select>
+					</li>
+			 
+			  <% }%>
+
+				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
-					<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+					<label for="dependency_manager" id="dependency_manager-label" class="ui-slider"> Dependency Manager:</label>
+					<select data-role="slider" id="dependency_manager" name="dependency_manager" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
 				</li>
 				
+
+				
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="dependency_manager" id="dependency_manager-label" class="ui-slider"> Dependency Manager:</label>
-					<select data-role="slider" id="dependency_manager" name="dependency_manager" class="ui-slider-switch slide">
+					<label for="ldp" id="ldp-label" class="ui-slider"> LDP - Image Gallery:</label>
+					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
+					</select>
+				</li>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="ldp" id="webdav-label" class="ui-slider">WebDAV:</label>
+					<select data-role="slider" id="webdav" name="webdav" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
+					</select>
+				</li>
+							
+
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="hidden" id="hidden-label" class="ui-slider"> Hide Account:</label>
+					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
@@ -601,30 +710,15 @@
 						<option value="true">On</option>
 					</select>
 				</li>
-				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="ldp" id="ldp-label" class="ui-slider"> LDP - Image Gallery:</label>
-					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch slide">
-						<option value="false">Off</option>
-						<option value="true">On</option>
+				<% if(editType == "edit"){ %>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="lockdown" id="lockdownLabel" class="ui-slider"> Lockdown:</label>
+					<select data-role="slider" id="lockdown" name="lockdown" class="ui-slider-switch slide">
+						<option value="off">Off</option>
+						<option value="on">On</option>
 					</select>
 				</li>
-							
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="search" id="search-label" class="ui-slider">Search On:</label>
-					<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
-						<option value="false">Off</option>
-						<option value="true">On</option>
-					</select>
-				</li>
-				
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="hidden" id="hidden-label" class="ui-slider"> Hide Account:</label>
-					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch slide">
-						<option value="false">Off</option>
-						<option value="true">On</option>
-					</select>
-				</li>
+			 <% } %>
 		  </ul>                      
 		</div> <!-- optional settings -->
 	</div> <!-- block b-->
@@ -675,6 +769,11 @@
 			<label id="logo_urlLabel" for="logo_url" class="ui-input-text">Logo URL:</label>
 			<input type="text" value="<%= data.log_url %>"  id="logo_url" name="logo_url" class="ui-input-text ui-body-c ui-corner-all ">
 		</li> 
+        <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			<label id="fail_countLabel" for="fail_count" class="ui-input-text">Number of Failed Attempts:</label>
+			<input type="text" value="<%= data.fail_count %>"  id="fail_count" name="fail_count" class="ui-input-text ui-body-c ui-corner-all ">
+		</li>
+
 	 </ul>    
   </div> <!-- collapsible1 -->
   <div  id="personalinformation"  class="coll" data-role="collapsible" data-collapsed="true">
@@ -1046,7 +1145,7 @@
 							<option value="3"  >Force Enabled</option>
 				 </select>
 	            <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
-	             <div class="ui-controlgroup-label" role="heading"></div><div class="ui-controlgroup-controls">
+	             <div class="ui-controlgroup-label"  id="filechecklist"  role="heading"></div><div class="ui-controlgroup-controls">
 					<div class="ui-checkbox"><input type="checkbox" class="custom" id="spell_check" name="spell_check"><label for="spell_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span style="padding-left:40px;" class="ui-btn-text">Spell Check:</span></span></label></div>
 					<div class="ui-checkbox"><input type="checkbox" class="custom" id="link_check" name="link_check"><label for="link_check" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Link Check</span></span></label></div>
 					<div class="ui-checkbox"><input type="checkbox" class="custom" id="page_validate" name="page_validate"><label for="page_validate" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;"  class="ui-btn-text">Page Validate</span></span></label></div>
@@ -1054,6 +1153,28 @@
    			    </div>
    			  </fieldset>
 			 </li>
+			<li id="accessibilityOptions" data-role="fieldcontain"  class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+			 <label id="page_checkLabel" for="file_check" class="ui-input-text">Accessibility:</label>
+				   <select class="dropdown" id="accessibilityguideline" name="accessibilityguideline">
+						   <option value="0">BITV 1.0 (Level 2)</option>
+						   <option value="1">Section 508</option>
+						   <option value="2">Stanca Act</option><option value="3">WCAG 1.0 (Level A)</option>
+						   <option value="4">WCAG 1.0 (Level AA)</option>
+						   <option value="5">WCAG 1.0 (Level AAA)</option>
+						   <option value="6">WCAG 2.0 (Level A)</option>
+						   <option value="7" selected="selected">WCAG 2.0 (Level AA)</option>
+						   <option value="8">WCAG 2.0 (Level AAA)</option>
+					 </select>
+					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical"><div class="ui-controlgroup-label" role="heading"></div>
+					 <div  class="ui-controlgroup-controls">
+						 <div class="ui-controlgroup-controls" style="width:100%">
+							<div class="ui-checkbox"><input type="checkbox" class="custom" id="known_problems" name="known_problems"><label for="known_problems" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off ui-corner-top"><span class="ui-btn-inner ui-corner-top"><span style="padding-left:40px;" class="ui-btn-text">Show Known Problems</span></span></label></div>
+							<div class="ui-checkbox"><input type="checkbox" class="custom" id="likely_problems" name="likely_problems"><label for="likely_problems" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;" class="ui-btn-text">Show Likely Problems</span></span></label></div>
+							<div class="ui-checkbox"><input type="checkbox" class="custom" id="potential_problems" name="potential_problems"><label for="potential_problems" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span class="ui-btn-inner"><span style="padding-left:40px;"  class="ui-btn-text">Show Potential Problems</span></span></label></div>
+						</div>
+						</div>
+					</fieldset>
+			</li>
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label for="publish_threshold" class="ui-input-text">Publish Threshold:</label>
 				<input type="text" value="<%= data.publish_threshold %>"  id="publish_threshold" name="publish_threshold" class="ui-input-text ui-body-c ui-corner-all ">
@@ -1061,7 +1182,7 @@
 			<li data-role="list-divider" id="default_tweetHelp" class="help" style="display:none;"></li>    
 			<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 				<label id="default_tweetLabel" for="default_tweet" class="ui-input-text"> Default Tweet/ Wall Post:</label>
-				<input type="text" value="<%= data.default_tweet %>"  id="default_tweet" name="default_tweet" class="ui-input-text ui-body-c ui-corner-all ">
+				<textarea  class="textarea1" cols="40" rows="8" value="<%= data.default_tweet %>"  id="default_tweet" name="default_tweet" class="ui-input-text ui-body-c ui-corner-all "></textarea>
 			</li>    
 		</ul>
     </div><!-- collapsible 3 -->
@@ -1095,57 +1216,114 @@
 				Optional Settings
 			</h3>           
             <ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">	
-            	 
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
-					<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+            	<li data-role="fieldcontain"  class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					   <label id="just_editLabel" for="just_edit" class="ui-input-text">JustEdit:</label>
+					   <select class="dropdown" id="just_edit" name="just_edit">
+								<option value="0">Disabled</option>
+								<option value="1">Admin Enabled</option>
+								<option value="2">User Enabled</option>
+						</select>
+				 </li>
+				<% if(editType != "edit"){ %>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
+						<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+							<option  value="false">Off</option>
+							<option  selected="selected" value="true">On</option>
+						</select>
+					</li>
+				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="search" id="search-label" class="ui-slider">Search On:</label>
+						<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option selected="selected" value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="asset_manager" id="asset_manager-label" class="ui-slider">Asset Manager:</label>
+						<select data-role="slider" id="asset_manager" name="asset_manager" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option selected="selected" value="true">On</option>
+						</select>
+					</li>
+			 <% }else{%>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="addons" id="addons-label" class="ui-slider">Add-Ons:</label>
+						<select data-role="slider" id="addons" name="addons" class="ui-slider-switch slide">
+							<option  value="false">Off</option>
+							<option  value="true">On</option>
+						</select>
+					</li>
+				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="search" id="search-label" class="ui-slider">Search On:</label>
+						<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option  value="true">On</option>
+						</select>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<label for="asset_manager" id="asset_manager-label" class="ui-slider">Asset Manager:</label>
+						<select data-role="slider" id="asset_manager" name="asset_manager" class="ui-slider-switch slide">
+							<option value="false">Off</option>
+							<option  value="true">On</option>
+						</select>
+					</li>
+			 
+			  <% }%>
+
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="dependency_manager" id="dependency_manager-label" class="ui-slider"> Dependency Manager:</label>
+					<select data-role="slider" id="dependency_manager" name="dependency_manager" class="ui-slider-switch slide">
 						<option value="false">Off</option>
 						<option value="true">On</option>
 					</select>
 				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="dependancy_manager" id="dependancymanager-label" class="ui-slider"> Dependency Manager:</label>
-					<select data-role="slider" id="dependancy_manager" name="dependancy_manager" class="ui-slider-switch slide">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="compare" id="compare-label" class="ui-slider">Document Comparison:</label>
-					<select data-role="slider" id="compare" name="compare" class="ui-slider-switch slide">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="show_pass" id="show_pass-label" class="ui-slider">Reveal Site's Password:</label>
-					<select data-role="slider" id="show_pass" name="show_pass" class="ui-slider-switch slide">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>
-			
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="ldp" id="ldpimagegallery-label" class="ui-slider"> LDP - Image Gallery:</label>
+				
+
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="ldp" id="ldp-label" class="ui-slider"> LDP - Image Gallery:</label>
 					<select data-role="slider" id="ldp" name="ldp" class="ui-slider-switch slide">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select>
-				</li>		
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="search" id="searchon-label" class="ui-slider">Search On:</label>
-					<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
-						<option value="off">Off</option>
-						<option    value="on">On</option>
+						<option value="false">Off</option>
+						<option value="true">On</option>
 					</select>
 				</li>
-				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="ldp" id="webdav-label" class="ui-slider">WebDAV:</label>
+					<select data-role="slider" id="webdav" name="webdav" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
+					</select>
+				</li>
+							
+
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label for="hidden" id="hidden-label" class="ui-slider"> Hide Account:</label>
 					<select data-role="slider" id="hidden" name="hidden" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
+					</select>
+				</li>
+				
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+					<label for="show_pass" id="show_pass-label" class="ui-slider">Reveal Site's Password:</label>
+					<select data-role="slider" id="show_pass" name="show_pass" class="ui-slider-switch slide">
+						<option value="false">Off</option>
+						<option value="true">On</option>
+					</select>
+				</li>
+			<% if(editType == "edit"){ %>
+				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
+					<label for="lockdown" id="lockdownLabel" class="ui-slider"> Lockdown:</label>
+					<select data-role="slider" id="lockdown" name="lockdown" class="ui-slider-switch slide">
 						<option value="off">Off</option>
 						<option value="on">On</option>
 					</select>
 				</li>
+			 <% } %>
+		
 			</ul>
 		</div><!--collapsible 5  -->
     </div><!-- collapsible-set -->
@@ -1317,6 +1495,7 @@
 					</li>
 						<li data-role="list-divider" id="passwordHelp" class="help" style="display:none;"></li> 
 						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+	
 						<label for="lastname" class="ui-input-text">Password:</label>
 						<input type="password" value="<%= data.password %>"  id="password" name="password" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
@@ -1348,9 +1527,16 @@
 						<input type="text" value="<%= data.locale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
 					</li>
 				</ul> 
-				<br />
+
 				
 				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all" id="tablet">
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+						<fieldset  style="width:100%"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+							<div class="ui-controlgroup-controls">
+								<div class="ui-checkbox"><input type="checkbox" id="created" class="custom" name="created"><label for="created" data-corners="true" data-shadow="false" data-iconshadow="false" data-inline="false" data-wrapperels="span" data-icon="checkbox-off" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-left ui-checkbox-off"><span id="sendmessage-span"  class="ui-btn-inner"><span style="padding-top:4px;margin-left:20px;"   class="ui-btn-text">Create Group for this User:</span></span></label></div>
+							</div>
+						</fieldset>
+					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<fieldset style="width:100%" data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 							<div  id="controler" class="ui-controlgroup-controls">
@@ -1546,7 +1732,8 @@
 					<label for="locale" class="ui-input-text">Locale:</label>
 					<input type="text" value="<%= data.loacale %>"  id="locale" name="locale" class="ui-input-text ui-body-c ui-corner-all ">
    		  		</li>	
-			</ul> <br />	
+			</ul> 
+			<br /> 
 			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
@@ -1555,9 +1742,6 @@
 						</div>
 					</fieldset>
 				</li>
-			</ul>
-			<br /> 
-			<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 						<div  id="controler" class="ui-controlgroup-controls">
@@ -1781,7 +1965,7 @@
 						</li>
 						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 								<label id="public_keyLabel" for="public_key" class="ui-input-text">Public Key:</label>
-								<textarea style="height:100px;" id="public_key" name="public_key"> </textarea>
+								<textarea disabled="disabled" style="height:100px;" id="public_key" name="public_key"> </textarea>
 						</li>
 					<%}%>
 
@@ -1819,6 +2003,9 @@
 							<div class="oubox-edit-setting-field-div">
 								<label id="passwordLabel" for="password">Password:</label>
 								<input type="password" maxlength="32" size="32" name="password" id="password" />
+								<i class="icon-eye"><i class="icon-arrow-down"></i></i>
+								<label id="showpasswordLabel" for="showpassword"></label>
+								<input disabled="disabled" type="text" maxlength="32" size="32" name="password" id="showpassword" />
 							</div>
 						</div>
 					  </li>	
@@ -1827,7 +2014,11 @@
 							<div id="umask-container" class="oubox-edit-setting">
 									<label id="umaskLabel" for="umask">UMask:</label>
 									<fieldset data-role="controlgroup">
-										<input type="radio" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+										<% if(editType != "edit"){ %>
+										<input  checked="checked" type="radio" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+										<% }else{ %>
+											  <input type="radio" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+										<% }%>
 										<input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label>
 									</fieldset>
 							</div>
@@ -1985,17 +2176,28 @@
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label for="addons" id="find_replaceLabel" class="ui-slider">Find / Replace:</label>
+					<label for="find_replace" id="find_replaceLabel" class="ui-slider">Find / Replace:</label>
+
 					<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch slide">
 						<option value="false">Off</option>
+					<% if(editType != "edit"){ %>
+						<option  selected="selected" value="true">On</option>		
+				   <% }else{ %>
 						<option value="true">On</option>
+					<%} %>
+					
 					</select>
+
 				</li>   
 				 <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  for="quick_search" id="addons-label" class="ui-slider">Search:</label>
+					<label  for="quick_search" id="quick_search-label" class="ui-slider">Search:</label>
 					<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch slide">
 						<option value="false">Off</option>
+					<% if(editType != "edit"){ %>
+						<option  selected="selected" value="true">On</option>		
+				   <% }else{ %>
 						<option value="true">On</option>
+					<%} %>
 					</select>
 					<br /><br />
 					<input type="button" id="buildIndex" name="buildIndex" value=" Build Index"/>
@@ -2026,6 +2228,7 @@
 			   <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 					<label id="default_tweetLabel" style="width:50%" for="default_tweet" id="default_tweet-label" class="ui-slider">Default Tweet / Wall Post:</label>
 					<br />
+					
 					 <textarea style="width:85%; margin-left:15px;" cols="200" rows="8" name="default_tweet" id="default_tweet"></textarea>
 			   </li>
 			</ul>				
@@ -2073,14 +2276,22 @@
 						<label for="disable_image_resizing" id="disable_image_resizingLabel" class="ui-slider">Image Resizing:</label>
 						<select data-role="slider" id="disable_image_resizing" name="disable_image_resizing" class="ui-slider-switch slide">
 							<option value="true">Off</option>
-							<option value="false">On</option>
+						<% if(editType != "edit"){ %>
+						    <option  selected="selected" value="true">On</option>		
+				        <% }else{ %> 
+						<option value="true">On</option>
+					    <%} %>
 						</select>
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<label for="disable_image_alignment" id="disable_image_alignmentLabel" class="ui-slider">Image Alignment Menu:</label>
 						<select data-role="slider" id="disable_image_alignment" name="disable_image_alignment" class="ui-slider-switch slide">
 							<option value="true">Off</option>
-							<option value="false">On</option>
+						<% if(editType != "edit"){ %>
+							<option  selected="selected" value="true">On</option>		
+					   <% }else{ %>
+							<option value="true">On</option>
+						<%} %>
 						</select>
 					</li>
 		   </ul>
@@ -2207,7 +2418,7 @@
 						</li>
 						<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 								<label id="public_keyLabel" for="public_key" class="ui-input-text">Public Key:</label>
-								<textarea style="height:100px;" id="public_key" name="public_key"> </textarea>
+								<textarea disabled="disabled" style="height:100px;" id="public_key" name="public_key"> </textarea>
 						</li>
 				<%}%>
 		</ul>
@@ -2231,8 +2442,8 @@
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<div id="authtype-container" class="oubox-edit-setting">
 							<label for="fauthtype0">Authentication Type:</label>
-							<fieldset data-role="controlgroup">  
-								<input checked="checked"  type="radio" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
+							<fieldset data-role="controlgroup"> 
+								<input   type="radio" value="0" class="fixcheckbox" id="fauthtype0" name="fauthtype">
 								<label for="fauthtype0"> Password</label>
 								<input  type="radio" value="1" class="fixcheckbox" id="fauthtype1" name="fauthtype">
 								<label for="fauthtype1"> Public Key</label>
@@ -2244,7 +2455,10 @@
 						<div id="password-container" class="oubox-edit-setting">
 							<div class="oubox-edit-setting-field-div">
 								<label id="passwordLabel" for="password">Password:</label>
-								<input type="password" maxlength="32" size="32" name="password" id="password">
+								<input type="password" maxlength="32" size="32" name="password" id="password" />
+								<i class="icon-eye"><i class="icon-arrow-down"></i></i>
+								<label id="showpasswordLabel" for="showpassword"></label>
+								<input disabled="disabled" type="text" maxlength="32" size="32" name="password" id="showpassword" />
 							</div>
 						</div>
 					</li>	
@@ -2253,7 +2467,11 @@
 							<div id="umask-container" class="oubox-edit-setting">
 									<label id="umaskLabel" for="umask">UMask:</label>
 									<fieldset data-role="controlgroup">
-										<input  type="radio"   value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+								<% if(editType != "edit"){ %>
+										<input  checked="checked" type="radio" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+								<% }else{ %>
+								      <input type="radio" value="0022" class="fixcheckbox" id="umask0" name="umask"><label for="umask0"> User writable</label>
+								<% }%>
 										<input type="radio" value="0002" class="fixcheckbox" id="umask1" name="umask"><label for="umask1"> User + group writable</label>
 									</fieldset>
 							</div>
@@ -2412,17 +2630,25 @@
 					</select>
 				</li>   
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
-					<label for="addons" id="find_replace" class="ui-slider">Find / Replace:</label>
+					<label for="find_replace" id="find_replaceLabel" class="ui-slider">Find / Replace:</label>
 					<select data-role="slider" id="find_replace" name="find_replace" class="ui-slider-switch slide">
 						<option value="false">Off</option>
+					<% if(editType != "edit"){ %>
+						<option  selected="selected" value="true">On</option>		
+				   <% }else{ %>
 						<option value="true">On</option>
+					<%} %>>
 					</select>
 				</li>       
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-					<label  for="quick_search" id="addons-label" class="ui-slider">Search:</label>
+					<label  for="quick_search" id="quick_search-label" class="ui-slider">Search:</label>
 					<select style="margin-buttom:5px;"  data-role="slider" id="quick_search" name="quick_search" class="ui-slider-switch slide">
 						<option value="false">Off</option>
+					<% if(editType != "edit"){ %>
+						<option  selected="selected" value="true">On</option>		
+				   <% }else{ %>
 						<option value="true">On</option>
+					<%} %>
 					</select>
 					<br /><br />
 					<input type="button"  id="buildIndex" name="buildIndex" value=" Build Index"/> 
@@ -2505,14 +2731,22 @@
 					<label for="disable_image_resizing" id="disable_image_resizingLabel" class="ui-slider">Image Resizing:</label>
 					<select data-role="slider" id="disable_image_resizing" name="disable_image_resizing" class="ui-slider-switch slide">
 						<option value="true">Off</option>
-						<option value="false">On</option>
+					<% if(editType != "edit"){ %>
+						<option  selected="selected" value="true">On</option>		
+				   <% }else{ %>
+						<option value="true">On</option>
+					<%} %>
 					</select>
 				</li>
 				<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c slider-small">
 					<label for="disable_image_alignment" id="disable_image_alignmentLabel" class="ui-slider">Image Alignment Menu:</label>
 					<select data-role="slider" id="disable_image_alignment" name="disable_image_alignment" class="ui-slider-switch slide">
 						<option value="true">Off</option>
-						<option value="false">On</option>
+					<% if(editType != "edit"){ %>
+						<option  selected="selected" value="true">On</option>		
+				   <% }else{ %>
+						<option value="true">On</option>
+					<%} %>
 					</select>
 				</li>
  	   		</ul>
@@ -2609,132 +2843,6 @@
 </div> <!-- content -->
 </script>
 
-<script type="text/template" id="sitePublish">
-	<div data-role="content" style="overflow-y:hidden;min-height:300px" id="site-publish">
-		 <ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
-			<li>		
-				<div id="status" style="text-align:center">
-					<h3 id="siteName" > Site </h3>
-						<span id="progress" data-inset="true" class=" frame ui-corner-all ui-shadow" style="display:none" ><img  src="images/progress.gif" title="Publish Progress"  /></span>
-						<span id="message" style="display:none">&nbsp;</span>
-				</div>
-				<div id="buttons" style="margin-bottom: 35px;">
-						<button  data-theme="b " id="start">Publish</button>
-				</div>
-				<div id="errors" style="display:none;">
-						<span><a id="display-errors" href="#">Click here</a> to <span id="action">see</span> the list of errors.</span>
-						<ul id="error-list" data-role="listview" data-inset="true" style="display:none;">
-						</ul>
-				</div>
-			</li>
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="siteReports"> 
-	<div class="icon-alignment"  data-role="content" id="site-reports">
-		<ul data-role="listview" data-theme="c" id="actions">
-			<li>
-				<a href=" " id="checkedout" class="report-item">
-				<span class="icon-background">
-				<span class="icon-light-bulb">&nbsp;</span> </span>
-				<label>Checked Out Content</label>
-				<a id="checkedouttooltip"  title=" "  rel="tooltip"  href=" " class="checkedout">&nbsp;</a>
-				</a>
-					
-			</li>
-			<li>
-				<a href=" " id="published"  class="report-item">
-				<span class="icon-background report-item">
-				<span class="icon-publish">&nbsp;</span> </span>
-				<label>Recently Published Pages </label>
-				<a id="publishedtooltip" title=" "  rel="tooltip" href=" " class="published">&nbsp;</a>
-				</a>
-			</li>
-			<li>
-				<a href=" "  id="scheduled" class="report-item">
-				<span class="icon-background">
-				<span class="icon-clock">&nbsp;</span> </span>
-				<label>Scheduled Actions</label>
-				<a id="scheduledtooltip" title=" "  rel="tooltip" href=" " class="scheduled">&nbsp;</a>
-				</a>
-			</li>	
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="siteReportCheckedOut">
-<div class="report">
-	<div data-role="content" id="report-checkout" >
-		<ul id="pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
-		<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete">Checked out Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> Check In</span></li>
-		</ul>
-	</div>
-</div>
-</script>
-<script type="text/template" id="siteReportPublished">
-	<div data-role="content" id="report-published">
-	<ul id="published-pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"></span></li>
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="siteReportScheduled">
-	<div data-role="content" id="report-scheduled">
-		<ul id="published-pages" data-role="listview" data-inset="true" data-theme="c" data-inset="true" class="frame ui-corner-all ui-shadow">
-	<li data-role="list-divider" style="padding-right:2px;font-size:13px;"> <span style="margin-left:-7px;" data-icon="delete"> Content</span> <span style="float:right;margin-right:2px;"  data-icon="gear"> </span></li>
-		</ul>
-	</div>
-</script>
-<script type="text/template" id="siteScan" >
-	<div data-role="content" data-theme="b " id="site-scan" style="overflow-y:hidden" >
-	<ul data-inset="true" data-inset="true" class=" frame ui-corner-all ui-shadow">
-	<li>
-		<ol id="passes" data-role="listview" data-inset="true">
-			<li id="pass1">
-				<span>Synchronizing database</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-			<li id="pass2">
-				<span>Removing old entries</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-			<li id="pass3" >
-				<span>Initializing</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-			<li id="pass4">
-				<span >Scanning Site</span>
-				<span class="ui-icon ui-icon-minus"></span>
-			</li>
-		</ol>
-		<div id="buttons"   style="margin-top: 30px;">
-			<button   data-theme="b " id="start">Start Scan</button>
-		</div>
-	</li></ul>
-	</div>
-</script>
-<script type="text/template" id="siteSettings"> 
-	<div data-role="content"  id="site-settings">
-		<h3 id="sitename"></h3>
-		<div class="settings">
-			<input type="hidden" id="name" />
-			<label for="server" class="setting">Server:</label>
-			<input type="text" data-theme="d" name="server" id="server" class="setting" />
-			<label for="username" class="setting">Username:</label>
-			<input type="text"  data-theme="d" name="username" id="username" class="setting" />
-			<label for="password" class="setting">Password:</label>
-			<input type="password"data-theme="d"  name="password" id="password" class="setting" />
-			<label for="http_root" class="setting">HTTP Root:</label>
-			<input type="text" data-theme="d" name="http_root" id="http_root" class="setting" />
-			<label for="ftp_root" class="setting">FTP Root:</label>
-			<input type="text" data-theme="d" name="ftp_root" id="ftp_root" class="setting" />
-			<div style="margin: 5px 0px 5px 5px;">
-				<input type="button" data-theme="b " data-inline="true" data-iconpos="center" value="Save" id="save" />
-			</div>
-		</div>
-	</div>
-</script>
-
-
 
 <script type="text/template" id="header">
 <div id="radius-background">
@@ -2757,7 +2865,11 @@
 <% }else if (mode=="workflow"){ %>
 		<a   id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
 		<% if ((page != "account")){%>
-		<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+		   <%if(page == "group"){%>
+			<a  id="editBtn" data-icon="gear" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+			<%}else{%>
+			<a  id="editBtn" data-icon="gear"  onClick="Common.editMode('<%=skin%>','<%=account%>','<%=site%>','<%=page%>');" class="top-right-btn  ui-btn-right"><span >Edit</span></a>
+			<%}%>
 		<%}%>
 	<% }else if (mode =="edit-mode"){ %>
 		<a   id="homeBtn" data-icon="home"  onClick="Common.home('<%=skin%>');" ><span >Home</span></a>
@@ -2786,16 +2898,16 @@
 <% }else if (toolbar =="back"){ %>
 <div data-position="fixed" class="undo ui-footer ui-footer-fixed" data-theme="b">
 	<div data-theme="b" data-role="none" class="undo fade ui-fixed-overlay icon-background"  data-position="fixed" class="undo ui-footer ui-footer-fixed fade ui-fixed-overlay icon-background">
-			<a   title="Logout"   class="top-right-btn logout" data-icon="back"  ><span id="logout"><i class="icon-arrow-up-left-2"> &nbsp;</i> </a>	
+			<a   title="Logout"   class="top-right-btn logout" data-icon="back"  ><span id="logout"><i class="icon-arrow-up-left-2"> <sub> Logout</sub></i> </a>	
 		
 	</div>
 	
 	<div data-role="back"  class="undo fade ui-fixed-overlay icon-background" >
-			<a   title="Back"  data-role="back" onClick="window.history.back();" rel="external"  data-direction="reverse" ><i class="icon-undo"> &nbsp;</i> </a>
+			<a   title="Back"  data-role="back" onClick="window.history.back();" rel="external"  data-direction="reverse" ><i class="icon-undo"><sub> Back</sub></i> </a>
 			
 	</div>
 		<div data-role="none" class="accountPage undo fade ui-fixed-overlay icon-background"  data-position="fixed" class="undo ui-footer ui-footer-fixed fade ui-fixed-overlay icon-background">
-			<a   data-role="none" title="My Account"   rel="external" data-direction="reverse" ><i class="icon-documents"> &nbsp;</i> </a>
+			<a   data-role="none" title="My Account"   rel="external" data-direction="reverse" ><i class="icon-documents"><sub> Account</sub></i> </a>
 	
 	</div>
 	

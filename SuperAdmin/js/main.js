@@ -533,8 +533,21 @@ window.accountEditView = Backbone.View.extend({
 							$('.slide').slider('refresh');
 							$("input[type='checkbox']").checkboxradio("refresh"); 
 
-			
+							var value= $('#page_check').val();
+							if (value != "0") {
+									$('#filechecklist').show();
+							} else {
+									$('#filechecklist').hide();
+							}
+							var value= $('#accessibility').attr("checked");
+								if (value) {
+									$('#accessibilityOptions').show();
+								} else {
+									$('#accessibilityOptions').hide();
+							}
 			 }	
+
+
 	},
 	AccountEdit:function(){
 		     		    $('.error').removeClass('error');
@@ -565,6 +578,7 @@ window.accountEditView = Backbone.View.extend({
 										});	 
 						return false;
 	},
+	
 	errorhandler: function(response, pageType, mode , name) {
 		Common.errorhandler (response, pageType, mode , name);
 	},
@@ -648,6 +662,7 @@ initialize:function(){
 	},
 	events:{
 		'pageshow' : 'pageShow',
+		'click .Everyone':'EveryoneGroup',
 		'click #deleteBtn':'deleteBtn',
 		'click #okBtn':'okBtn',
 		'click #addBtn' : 'addBtn',
@@ -700,11 +715,17 @@ initialize:function(){
 						    		  .attr({id:idCount+1})
 						     	   	 .text(value.name);
 							
+						  if (value.name == 'Everyone'){
 						    var a = $(document.createElement('a'))
+						           .attr({rel:'external'})
+						           .addClass('Everyone ui-link-inherit hyperlinkli');
+							}else{
+									 var a = $(document.createElement('a'))
 						           .attr({href: editPath +'/'+value.name })
 						           .attr({rel:'external'})
 						           .addClass('ui-link-inherit hyperlinkli');
 							
+							}
 				
 					
 					         var hyperlinkInputText = a.append(inputText);
@@ -719,6 +740,9 @@ initialize:function(){
 			});
 			
 	
+	},
+	EveryoneGroup:function(){
+	     new Messi('Group "Everyone" can not be modified',{title: 'Editing Groups', titleClass: 'anim error', buttons: [{id: 0, label: 'Close', val: 'X'}]});
 	},
 	deleteBtn: function(event){
 			var deletArray =$("input:checked");
@@ -804,7 +828,11 @@ window.groupView = Backbone.View.extend({
 
 	},
 	editBtn: function(){
-	Common.add(this.skin, this.account, this.group,'group','single','edit');
+		if(this.group == 'Everyone'){
+		  new Messi('Group "Everyone" can not be modified',{title: 'Editing Groups', titleClass: 'anim error', buttons: [{id: 0, label: 'Close', val: 'X'}]});
+		}else{
+			Common.add(this.skin, this.account, this.group,'group','single','edit');
+		}
 	},
 	logout:function(){Common.logout();},
 	accountPage: function(){Common.workflowMode (this.skin, this.account, '' ,'account')}
@@ -1705,7 +1733,13 @@ window.siteEditView = Backbone.View.extend({
 								$("#"+key + "").val(value.toString());
 								$('input:[name='+key+']').val(value).attr("checked",true);
 
-							});					
+							});		
+							if(sitecontext.password){
+								$("#fauthtype0").attr("checked",true);
+							}else{
+								$("#fauthtype1").attr("checked",true);
+								$('#passwordLi').hide();
+							}
 							$('#headerEditAccount').text(data.account);
 							$('.dropdown').selectmenu('refresh');
 							$('.slide').slider('refresh');

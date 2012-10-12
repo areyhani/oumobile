@@ -110,4 +110,47 @@
 				}
 			);
 			
+			$('#page_check').live('change', function(){
+			var value= $('#page_check').val();
+				if (value != "0") {
+
+					$('#filechecklist').show('slidedown',false,true);
+				} else {
+
+					$('spell_check').checked = false;
+					$('link_check').checked = false;
+					$('page_validate').checked = false;
+					$('accessibility').checked = false;
+					$('#filechecklist').hide('slidup', false,true);
+			}
+				} );
+				
+			$('#accessibility').live('change', function(){
+				var value= $('#accessibility').attr("checked");
+				if (value) {
+					$('#accessibilityOptions').show('slidedown',false,true);
+				} else {
+					$('#accessibilityOptions').hide('slidup', false,true);
+			}
+			} );
+			
+				
+			
+			$('.icon-eye').live('click', function(){
+				var value= $('#showpassword').css('display');
+			   if (value == 'none') {
+					$('#showpassword').show('slidedown',false,true);
+					$('.icon-eye i').removeClass('icon-arrow-down');
+					$('.icon-eye i').addClass('icon-arrow-up');
+				} else {
+					$('#showpassword').hide('slidup', false,true);
+					$('.icon-eye i').removeClass('icon-arrow-up');
+					$('.icon-eye i').addClass('icon-arrow-down');
+			     }
+			});
+			
+			$('#productionServer-div #password').live('keyup', function(){
+			   $('#showpassword').val($('#password').val());
+			   console.log($('#password').val());
+			});
 			

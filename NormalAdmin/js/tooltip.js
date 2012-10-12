@@ -60,7 +60,7 @@ $( document ).ready( function()
         init_tooltip();
         $( window ).resize( init_tooltip );
  
-        var remove_tooltip = function()
+       target.live( 'mouseleave', function()
         {
             tooltip.animate( { top: '-=10', opacity: 0 }, 50, function()
             {
@@ -68,10 +68,17 @@ $( document ).ready( function()
             });
  
             target.attr( 'title', tip );
-        };
+        });
+         
+       target.live( 'click', function()
+        {
+            tooltip.animate( { top: '-=10', opacity: 0 }, 50, function()
+            {
+                $( this ).remove();
+            });
  
-        target.live( 'mouseleave', remove_tooltip );
-        tooltip.live( 'click', remove_tooltip );
+            target.attr( 'title', tip );
+        });
     });
 });
 

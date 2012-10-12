@@ -76,29 +76,23 @@ function alertpage(data,pageType, mode , name,page){
 }
 
 
-
-   
-function changePage (page,alertPage) {
+function changePage(page,transitionType) {
 		if (interval != null) {
 			clearInterval(interval);
 		}
-    	if(alertPage){
-    		$(page.el).attr('data-role' , 'dialog');
-    		$(page.el).attr('role' , 'dialog');
-    		
-    	} else{
-       		$(page.el).attr('data-role', 'page');
-        }
+       	$(page.el).attr('data-role', 'page');
         page.render();
         $('body').append($(page.el));
-        var transition = $.mobile.defaultPageTransition;
+        var transition='fade';
         // We don't want to slide the first page
         if (this.firstPage) {
             transition = 'none';
             this.firstPage = false;
         }
-        else if(alertPage){
-           transition = 'pop';
+        if(transitionType){
+        	transition = transitionType;
         }
-        $.mobile.changePage($(page.el), {changeHash:false, transition: transition, reloadPage:true});
+
+        $.mobile.changePage($(page.el), {changeHash:false,transition:transition, reloadPage:true});
     }
+   
