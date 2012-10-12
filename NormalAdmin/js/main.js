@@ -2470,8 +2470,6 @@ var AppRouter = Backbone.Router.extend({
         this.firstPage = true;
     },
     login:function (skinPraram, accountParam) {
-    	var account = encodeURIComponent(accountParam);
-    	var skin =encodeURIComponent(skinParam);
         console.log('#adminLogin');
         var loginview =new loginView(); 
         loginview.skin =skin;
@@ -2560,8 +2558,7 @@ var AppRouter = Backbone.Router.extend({
 		 groupmodel.account = account;
 		 this.changePage(groupsEditModeview,false, true);
     },
-    group:function(skin,account,groupParam){
-    	var group =encodeURIComponent(groupParam);
+    group:function(skin,account,group){
 	    console.log('#group');
     	var self= this;  
     	var groupmodel =  new GroupModel({skin:skin,account:account, group:group, name:group, id: group});
@@ -2581,9 +2578,8 @@ var AppRouter = Backbone.Router.extend({
 		});
     },
     
-	groupEdit:function(skin,editMode,device,account,groupParam){
-		console.log('#group-edit');
-		var group =encodeURIComponent(groupParam);
+	groupEdit:function(skin,editMode,device,account,group){
+    	console.log('#group-edit');
 		var groupmodel = new GroupModel({skin:skin,account:account, group:group, name:group, id: group});
 		groupmodel.context.skin=skin;
 	    groupmodel.context.editType= "edit";
@@ -2631,10 +2627,9 @@ var AppRouter = Backbone.Router.extend({
 	 this.changePage(usersview);
     },
     
-    user:function(skin,account,userParam){
+    user:function(skin,account,user){
 	    console.log('#user');
-    	var self= this; 
-		var user =encodeURIComponent(userParam);
+    	var self= this;  
     	var usermodel =  new UserModel({skin:skin,account:account, user:user, name:user, id: user});
     	usermodel.context.skin=skin;
         usermodel.context.editType= "edit";
@@ -2662,9 +2657,8 @@ var AppRouter = Backbone.Router.extend({
 		 usermodel.account = account;
 		 this.changePage(usersEditModeview,false, true);
     },
-    userEdit:function(skin,editMode,device,account,userParam){
+    userEdit:function(skin,editMode,device,account,user){
     	console.log('#user-edit');
-    	var user =encodeURIComponent(userParam);
 		var usermodel = new UserModel({skin:skin,account:account,user:user,id:user});
 		usermodel.context.skin=skin;
 	    usermodel.context.editType= "edit";
@@ -2721,10 +2715,9 @@ var AppRouter = Backbone.Router.extend({
 
      
     },
-    site:function(skin,account,siteParam){
-	    console.log('#site');
+    site:function(skin,account,site){
+	    	console.log('#site');
     	var self= this;  
-    	var site =encodeURIComponent(siteParam);
     	var sitemodel =  new SiteModel({skin:skin,account:account, site:site, name:site, id: site});
     	sitemodel.context.skin=skin;
         sitemodel.context.editType= "edit";
@@ -2743,10 +2736,9 @@ var AppRouter = Backbone.Router.extend({
 		});
 		
     },
-    siteEdit:function(skin,editMode,device,account,siteParam){
+    siteEdit:function(skin,editMode,device,account,site){
     	console.log('#site-edit');
     	var self= this;  
-    	var site =encodeURIComponent(siteParam);
     	var sitemodel =  new SiteModel({skin:skin,account:account, site:site, name:site, id: site});
     	sitemodel.context.skin=skin;
         sitemodel.context.editType= "edit";
