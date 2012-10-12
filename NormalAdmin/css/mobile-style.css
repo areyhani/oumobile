@@ -121,7 +121,7 @@ background-image:-webkit-linear-gradient( #2276BB, #124065);
 
 }
 .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
-    background-color: #2D792D;
+
 }
 
 
@@ -163,7 +163,7 @@ padding-top:0px;
   
 .ui-footer .icon-background{
     padding: 7px 2px 5px 10px;
-    width: 25px;
+    width: 60px;
 }
 
 .ui-footer  .undo,.undo {
