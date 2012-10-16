@@ -2469,10 +2469,10 @@ var AppRouter = Backbone.Router.extend({
         });
         this.firstPage = true;
     },
-    login:function (skinPraram, accountParam) {
+    login:function (skin, account) {
         console.log('#adminLogin');
         var loginview =new loginView(); 
-        loginview.skin =skin;
+        loginview.skin=skin;
         if(account){
         	loginview.account=account;
         }

@@ -628,8 +628,9 @@
 							<option  selected="selected" value="true">On</option>
 						</select>
 					</li>
+
 				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="search" id="search-label" class="ui-slider">Search On:</label>
+						<label for="search" id="search-label" class="ui-slider">Search:</label>
 						<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
 							<option value="false">Off</option>
 							<option selected="selected" value="true">On</option>
@@ -651,7 +652,7 @@
 						</select>
 					</li>
 				  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
-						<label for="search" id="search-label" class="ui-slider">Search On:</label>
+						<label for="search" id="search-label" class="ui-slider">Search:</label>
 						<select data-role="slider" id="search" name="search" class="ui-slider-switch slide">
 							<option value="false">Off</option>
 							<option  value="true">On</option>
@@ -1987,6 +1988,14 @@
 							</div>
 					  </li>
 					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+		        	   <label for="ftp" class="ui-input-text">FTP Type:</label>
+			            <select name="ldap_auth" id="ftp" style="min-width:100px" data-theme="c"  data-iconshadow="falseå" cßlass="dropdown">
+							<option value="0">Passive (p:)</option>
+							<option value="1">Active (a:)</option>
+							<option value="2">Secured (s:)</option>
+						</select>
+					  </li>
+					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 							<div id="authtype-container" class="oubox-edit-setting">
 								<label >Authentication Type:</label>
 								<fieldset data-role="controlgroup">
@@ -2438,6 +2447,14 @@
 							<div id="username-div" class="oubox-edit-setting-field-div ok"><label id="usernameLabel" for="username">Username:</label><input type="text" maxlength="32" size="32" name="username" id="username">
 							</div>
 						</div>
+					</li>
+					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
+		        	   <label for="ftp" class="ui-input-text">FTP Type:</label>
+			            <select name="ldap_auth" id="ftp" style="min-width:100px" data-theme="c"  data-iconshadow="falseå" cßlass="dropdown">
+							<option value="0">Passive (p:)</option>
+							<option value="1">Active (a:)</option>
+							<option value="2">Secured (s:)</option>
+						</select>
 					</li>
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
 						<div id="authtype-container" class="oubox-edit-setting">
