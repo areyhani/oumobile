@@ -1933,6 +1933,7 @@
 	<div  style="padding: 0px 5px" data-role="content" class="ui-content" role="main">
 		<div id="selectbutton" style="margin-top:0px;"  data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
 			<div id="siteinformation" style="text-align:left;"  data-corners="true" data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-corner-top ui-btn-up-b ui-btn-hover-c" aria-disabled="false"><span class="ui-btn-inner ui-corner-top"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Site Information</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
+			<div id="productionServer" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Production Server</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 			<div id="ldp" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>LDP Settings</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 			<div id="directEditBtn" style="text-align:left;"  data-corners="true"  data-shadow="false" data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text">  <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Direct Edit Button</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
 			<div id="sitepreference" style="text-align:left;"  data-corners="true" data-shadow="false"  data-iconshadow="false" data-wrapperels="span" data-icon="arrow-r" data-iconpos="right" data-theme="b " data-inline="false" data-mini="false" class="ui-btn ui-fullsize ui-btn-block ui-btn-icon-right ui-btn-up-b" aria-disabled="false"><span class="ui-btn-inner"><span class="ui-btn-text"> <span style="display:none" class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all">0</span>Site Preferences</span><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></span></div>
@@ -1971,9 +1972,10 @@
 					<%}%>
 
 			</ul>
-			<br />		
+		</div>	<!--siteinformation-div -->
+		<div id="productionServer-div" style="display:none;" >	
 		    <div class="ui-body ui-body-b ui-corner-all">
-				<div style="width:50%; padding:5px;font-weight:bold;" id="address-div" data-theme="b " class="oubox-edit-setting-field-div">Production Server:</div> 
+				<div style="width:50%; padding:5px;font-weight:bold;" id="address-div" data-theme="b " class="oubox-edit-setting-field-div"></div> 
 				<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 					  <li data-role="list-divider" id="addressHelp" class="help" style="display:none;"></li>       
 					  <li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -2113,7 +2115,7 @@
 
 			   </ul>
 		   </div>	
-	</div>	<!--siteinformation-div -->
+	</div>	<!--productionServer-div -->
 	<!-- Direct Edit Button -->
 	<div id="directEditBtn-div" style="display:none;" >
 		  	<ul data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">  
@@ -2431,9 +2433,15 @@
 						</li>
 				<%}%>
 		</ul>
-		<br />		
+		</div>	<!--siteinformation-div -->
+		<div id="productionServer" class="coll" data-role="collapsible" data-collapsed="true">	
+		<h3>
+	 		<span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>
+			Production Server
+			
+		</h3>		
 		<div class="ui-body ui-body-b ui-corner-all">
-			<div  padding:5px;font-weight:bold;" id="address-div" data-theme="b " class="oubox-edit-setting-field-div">Production Server:</div> 
+			<div  padding:5px;font-weight:bold;" id="address-div" data-theme="b " class="oubox-edit-setting-field-div"></div> 
 				<ul  id="site-info" data-inset="true" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 					<li data-role="list-divider" id="addressHelp" class="help" style="display:none;"></li>       
 					<li data-role="fieldcontain" class="ui-field-contain ui-body ui-br ui-li ui-li-static ui-body-c">
@@ -2571,7 +2579,7 @@
 					</li>
 				</ul>
 			</div>
-		</div> <!--  collapsible Site Information -->
+		</div> <!--  collapsible Production server -->
 		<div  id="ldp" data-role="collapsible" data-collapsed="true">
 			<h3>
 				<span  class="suberrorcount priv ui-li-count ui-btn-up-c ui-btn-corner-all" style="display:none;">0</span>

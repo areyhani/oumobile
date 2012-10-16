@@ -1,6 +1,6 @@
 	accounttabs=['#generalsettings','#personalinformation' , '#publishsettings' , '#loginpage' , '#optionalsettings'];
 	usertabs =['#userinformation','#LDAPconfiguration' , '#restrictions' , '#preferences'];
-	sitetabs=['#siteinformation','#productionserver' , '#ldp' , '#sitepreference' , '#publishSettings' , '#wysiwygSettings', '#directEditBtn', '#fileNaming'];
+	sitetabs=['#siteinformation','#productionServer' , '#ldp' , '#sitepreference' , '#publishSettings' , '#wysiwygSettings', '#directEditBtn', '#fileNaming'];
 	
 	function toggle (value,tabs){
 		$(this).dblclick();
@@ -55,6 +55,9 @@
 			
 			$('#siteinformation').live('click', function(){
 				toggle('#siteinformation',sitetabs);
+			});
+			$('#productionServer').live('click', function(){
+				toggle('#productionServer',sitetabs);
 			});
 			$('#productionserver').live('click', function(){
 				toggle('#productionserver',sitetabs);
