@@ -17,7 +17,14 @@ z-index:99;
 
 }
 
-.ui-page { -webkit-backface-visibility: hidden; }
+.ui-page {
+-webkit-backface-visibility: hidden; 
+background-image: -moz-linear-gradient(center top , #C0C0C0 0%, #E0E0E0 100%);
+background-image:-moz-linear-gradient(center top ,#C0C0C0 0%, #E0E0E0 );
+background-image:-webkit-linear-gradient(center top , #C0C0C0 0%, #E0E0E0 );
+background-image:-webkit-linear-gradient(#C0C0C0 0%, #E0E0E0);
+background-image: -ms-linear-gradient(center top,  #C0C0C0, #E0E0E0);
+}
 
 
 .ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b
@@ -39,7 +46,10 @@ text-decoration: none;
     font-weight: bold;
     text-shadow: 0 -1px 1px #397114;
 }
-
+#index{
+    height: 50px;
+    padding-top: 10px;
+}
 
 div li span.ui-icon {
 	float: right;
@@ -64,6 +74,9 @@ span#message {
 h3.path {
 	text-overflow: ellipses;
 }
+h1.ui-title ,h2#test{
+text-shadow:#F0F0F0 0.1em 0.1em 0.2em
+}
 
 .lighter {
 	font-weight: normal;
@@ -73,13 +86,20 @@ li.pageitem {
 }
 
 div.settings {
-	padding: 3px;
-	box-shadow: 1px 1px 10px 1px #888888;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 10px 5px #888888;
+    padding: 3px;
+    -webkit-backface-visibility: hidden; 
+	background-image: -moz-linear-gradient(center top , #D0D0D0 0%, #F0F0F0 100%);
+	background-image:-moz-linear-gradient(center top ,#D0D0D0 0%, #F0F0F0 );
+	background-image:-webkit-linear-gradient(center top , #D0D0D0 0%, #F0F0F0 );
+	background-image:-webkit-linear-gradient(#D0D0D0 0%, #F0F0F0);
+	background-image: -ms-linear-gradient(center top,  #D0D0D0, #F0F0F0);
 }
 
 input.setting {
-	margin: 0px 0px 1px 12px;
-	width: 90%;
+	margin: 10px 25px;
+	width: 85%;
 }
 
 label.setting {

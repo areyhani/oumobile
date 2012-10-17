@@ -15,9 +15,19 @@ background-image:-webkit-linear-gradient(#666666, #222222);
 background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666666), color-stop(1, #222222));
 z-index:99;
 
+
 }
 
-.ui-page { -webkit-backface-visibility: hidden; }
+
+.ui-page { 
+    -webkit-backface-visibility: hidden; 
+	-webkit-backface-visibility: hidden; 
+	background-image: -moz-linear-gradient(center top , #C0C0C0 0%, #E0E0E0 100%);
+	background-image:-moz-linear-gradient(center top ,#C0C0C0 0%, #E0E0E0 );
+	background-image:-webkit-linear-gradient(center top , #C0C0C0 0%, #E0E0E0 );
+	background-image:-webkit-linear-gradient(#C0C0C0 0%, #E0E0E0);
+	background-image: -ms-linear-gradient(center top,  #C0C0C0, #E0E0E0);
+    }
 .ui-btn-up-b
 {
 border: 1px solid #397114;
@@ -40,6 +50,10 @@ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, 
 	background-image:-webkit-linear-gradient( #619e39, #7ec44f);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #619e39), color-stop(1, #7ec44f));
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#619e39', EndColorStr='#7ec44f')";
+}
+#index{
+    height: 50px;
+    padding-top: 10px;
 }
 
 .ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b
@@ -86,6 +100,9 @@ span#message {
 h3.path {
 	text-overflow: ellipses;
 }
+h1.ui-title ,h2#test{
+text-shadow:#F0F0F0 0.1em 0.1em 0.2em
+}
 
 .lighter {
 	font-weight: normal;
@@ -95,8 +112,14 @@ li.pageitem {
 }
 
 div.settings {
-	padding: 3px;
-	box-shadow: 1px 1px 10px 1px #888888;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 10px 5px #888888;
+    padding: 3px;
+  	background-image: -moz-linear-gradient(center top , #D0D0D0 0%, #F0F0F0 100%);
+	background-image:-moz-linear-gradient(center top ,#D0D0D0 0%, #F0F0F0 );
+	background-image:-webkit-linear-gradient(center top , #D0D0D0 0%, #F0F0F0 );
+	background-image:-webkit-linear-gradient(#D0D0D0 0%, #F0F0F0);
+	background-image: -ms-linear-gradient(center top,  #D0D0D0, #F0F0F0);
 }
 
 input.setting {

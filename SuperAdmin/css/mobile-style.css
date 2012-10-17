@@ -21,7 +21,12 @@ label.ui-input-text, label.ui-slider{  color: #555555;}
     padding-left: 22px;
     padding-top: 5px;
 }
-
+.settings .ui-btn-inner {
+    padding: 0.6em 26px;
+}
+.settings .ui-btn-up-b{
+width:70%;
+}
 
 .ui-controlgroup .ui-checkbox label, .ui-controlgroup .ui-radio label {
     font-size: 13px;
