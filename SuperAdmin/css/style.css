@@ -56,6 +56,11 @@ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, 
     padding-top: 10px;
 }
 
+#loginBtn{
+margin: 5px 0px 5px 5px;
+
+}
+
 .ui-btn-up-b, .ui-btn-hover-b, .ui-btn-down-b
 {
 color: white;

@@ -60,6 +60,10 @@ label.ui-slider{display:inline;}
 #site-info .ui-slider-switch {
     width: 50%;
 }
+#loginBtn{
+text-align:center;
+margin:0px;
+}
 .ui-li-has-count .ui-li-count {
     right: 22px;
 }
